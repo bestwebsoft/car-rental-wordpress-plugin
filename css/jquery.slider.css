@@ -1,0 +1,88 @@
+/* Slider width */
+#slider {
+	width: 200px;
+}
+
+/* Slider container */
+.ui-slider {
+	position: relative;
+	top: 0.6em;
+	display: block;
+	width: 100%;
+	height: 1em;
+	background: url(../images/jslider.png) no-repeat;
+}
+
+/* range slider */
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 18px; /* width */
+	height: 18px; /* height */
+	border: none;
+	background: url(../images/jslider.png) no-repeat 0 -57px;
+	cursor: pointer;
+}
+.ui-slider .ui-slider-range {
+	position: absolute;
+	z-index: 1;
+	display: block;
+	overflow: hidden;
+	border: 0;
+	font-size: .7em;
+}
+
+/* horizontal range */
+.ui-slider-horizontal {
+	height: 10px; /* height */
+}
+
+/* position of the range slider */
+.ui-slider-horizontal .ui-slider-handle {
+	top: -4px;
+	margin-left: -0.6em;
+}
+.ui-slider-horizontal .ui-slider-range {
+	top: 0;
+	height: 100%;
+}
+.ui-slider-horizontal .ui-slider-range-min {
+	left: 0;
+}
+.ui-slider-horizontal .ui-slider-range-max {
+	right: 0;
+}
+
+/* range decoration */
+.ui-slider .ui-widget-content {
+	border: none;
+	background: url(../images/jslider.png) no-repeat 0 0;
+}
+
+/* active range decoration */
+.ui-slider .ui-widget-header {
+	border: none;
+	background: url(../images/jslider.png) no-repeat;
+	background-position: 0 -37px !important;
+}
+
+/* rounding of the range */
+.ui-slider .ui-corner-all {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+.crrntl-slider-result {
+	position: absolute;
+	top: 40px;
+	margin: 0;
+	font-size: 13px;
+}
+.crrntl-price-result-from,
+.crrntl-pass-result-from {
+	left: 20px;
+}
+.crrntl-price-result-to,
+.crrntl-pass-result-to {
+	right: 20px;
+}

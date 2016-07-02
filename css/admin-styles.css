@@ -1,0 +1,315 @@
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+.clearfix:after {
+	clear: both;
+}
+.clear {
+	float: none !important;
+	clear: both;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 0;
+}
+.crrntl-hidden {
+	display: none;
+}
+#crrntl-map {
+	max-width: 600px;
+	height: 400px;
+	display: none;
+}
+.crrntl-controls {
+	box-sizing: border-box;
+	margin-top: 10px;
+	padding: 0 11px 0 13px;
+	height: 29px;
+	outline: none;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	background-color: #fff;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	text-overflow: ellipsis;
+	font-weight: 300;
+	font-size: 15px;
+	font-family: inherit;
+}
+.crrntl-controls:focus {
+	border-color: #4d90fe;
+}
+.crrntl-edit-order .datepicker {
+	width: 105px;
+}
+.crrntl-table-extras td {
+	padding: 0 10px 0 0;
+}
+.crrntl-car-info input[type="number"],
+.crrntl-table-extras input[type="number"] {
+	width: 105px;
+}
+.crrntl-status-item input[type="text"] {
+	max-width: 88% !important;
+	display: inline-block !important;
+}
+.crrntl-status-item label {
+	display: inline-block;
+}
+.crrntl-status-item label + label {
+	display: inline-block !important;
+}
+.crrntl-add-status {
+	padding: 4px 4px 4px 0;
+	border: none;
+	color: #008ec2;
+	line-height: normal;
+	cursor: pointer;
+}
+.crrntl-delete-status,
+.crrntl-delete-status-live {
+	padding: 4px 4px 4px 0;
+	border: none;
+	color: #ccc;
+	line-height: normal;
+	cursor: pointer;
+}
+.crrntl-delete-status:hover,
+.crrntl-delete-status-live:hover {
+	color: #d54e21;
+}
+#crrntl-filter-submit {
+	margin: 1px 8px 0 0;
+}
+
+/* Slider */
+#crrntl-settings-slider-form table {
+	display: block;
+	overflow: hidden;
+	margin: 10px 0;
+	width: auto;
+	border: 1px solid #dfdfdf;
+	border-collapse: collapse;
+}
+#crrntl-settings-slider-form tbody {
+	display: block;
+}
+#crrntl-settings-slider-form {
+	max-width: 100%;
+}
+#crrntl-settings-slider-form .crrntl-header {
+	display: block;
+	float: none;
+	padding: 5px 10px;
+	text-align: center;
+	font-weight: bold;
+}
+#crrntl-settings-slider-form .crrntl-header th {
+	display: block;
+	width: 98%;
+}
+#crrntl-settings-slider-form table td {
+	display: block;
+	padding: 5px 10px;
+}
+#crrntl-settings-slider-form label {
+	float: left;
+	margin: 5px 0;
+	vertical-align: top;
+}
+#crrntl-settings-slider-form input[type="checkbox"],
+#crrntl-settings-slider-form input[type="radio"],
+#crrntl-settings-slider-form input[type="text"] {
+	margin-top: 6px;
+	margin-left: 6px;
+}
+#crrntl-slides-list {
+	display: block;
+	overflow: hidden;
+	margin: 10px 0;
+	max-width: 100%;
+	width: auto;
+}
+.crrntl-slider-item {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: 10px;
+	min-width: 298px;
+	max-width: 100%;
+	height: 258px;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+}
+.crrntl-slider-item > span {
+	width: 100%;
+	white-space: nowrap;
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 10px 40px 10px 10px;
+	text-overflow: ellipsis;
+	display: block;
+	overflow: hidden;
+}
+.crrntl-slider-item-edit {
+	position: relative;
+	display: block;
+	padding: 10px 0;
+	margin-top: 18px;
+	width: 100%;
+	box-sizing: content-box;
+}
+.crrntl-slider-item-edit a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	margin: 10px 0;
+	width: 100%;
+	height: 200px;
+	background: #e5e5e5;
+	vertical-align: middle;
+	text-decoration: none;
+	opacity: 0.8;
+}
+.crrntl-slider-item-edit a span {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 2em;
+	line-height: 2em;
+}
+.crrntl-slider-item-edit a span::before {
+	display: block;
+	content: "\f464";
+	font-size: 3em;
+	font-family: dashicons;
+}
+.crrntl-slider-item-edit:hover a {
+	display: table;
+}
+.crrntl-slider-item-delete {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 100;
+	display: block;
+	color: #ccc;
+	text-decoration: none;
+	font-size: 3em;
+	line-height: 1em;
+}
+.crrntl-slider-item-delete:hover {
+	color: #d54e21;
+}
+.crrntl-slider-item-delete::before {
+	display: block;
+	content: "\f153";
+	font-family: dashicons;
+}
+.crrntl-slider-item .crrntl-uploaded-image {
+	display: block;
+	margin: auto;
+	max-width: 100%;
+	max-height: 200px;
+	width: auto;
+	height: auto;
+}
+.crrntl-slider-item.crrntl-add-slide a {
+	display: table;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+}
+.crrntl-slider-item.crrntl-add-slide a:hover {
+	background: #e5e5e5;
+}
+.crrntl-slider-item.crrntl-add-slide a span {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 2em;
+	line-height: 2em;
+}
+.crrntl-slider-item.crrntl-add-slide a span::before {
+	display: block;
+	content: "\f132";
+	font-size: 3em;
+	font-family: dashicons;
+}
+#crrntl-slides-list #crrntl-single-image-options input[type="text"],
+#crrntl-slides-list #crrntl-single-image-options textarea {
+	float: left;
+	margin: 5px 0;
+}
+#crrntl-slides-list .crrntl-header th {
+	display: block;
+	width: 98%;
+}
+#crrntl-slides-list td {
+	padding: 5px 10px;
+}
+#crrntl-slides-list .crrntl-header a {
+	float: right;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 13px;
+}
+.crrntl-setting-item .crrntl-uploaded-image {
+	display: block;
+	padding: 10px;
+	max-width: 300px;
+	height: auto;
+	border: 1px solid #dcdcdc;
+	border-radius: 3px 3px 3px 3px;
+}
+.widget-inside .crrntl-uploaded-image {
+	display: block;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 10px;
+	max-width: 100%;
+	height: auto;
+	border: 1px solid #dcdcdc;
+}
+.crrntl-upload-image,
+.crrntl-remove-image {
+	margin: 5px 0 !important;
+}
+#crrntl-edit-slide-link {
+	text-decoration: none;
+}
+#crrntl-delete-slide-link {
+	text-decoration: none;
+}
+
+.crrntl-edit-slide-form {
+	margin-right: 20px;
+}
+.crrntl-edit-slide-form table input[type="text"],
+.crrntl-edit-slide-form table input[type="url"],
+.crrntl-edit-slide-form table textarea {
+	width: 300px;
+}
+.crrntl-submit-bottom-button, .crrntl-additional-button {
+	width: 50%;
+}
+.crrntl-submit-bottom-button {
+	float: left;
+}
+.crrntl-additional-button {
+	float: right;
+}
+.crrntl-additional-button .crrntl-demo-button {
+	display: block;
+	float: right;
+	clear: both;
+}
+.crrntl-confirm-invalid {
+	border: 1px solid #ef5a37 !important;
+	box-shadow: 0 0 3px #ef5a37 !important;
+	color: #ef5a37 !important;
+}
