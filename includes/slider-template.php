@@ -108,7 +108,7 @@ if ( ! function_exists( 'crrntl_slider_settings' ) ) {
 		$new_slide_id = ( ! empty( $crrntl_slider_options ) ) ? max( array_keys( $crrntl_slider_options ) ) + 1 : 0;
 		$crrntl_current_theme = wp_get_theme();
 		if ( 'Renty' != $crrntl_current_theme ) {
-			echo '<p>' . __( 'If you want to add the slider, paste the following strings into the template source code:', 'car-rental' ) . ' <b>&lt;?php do_action( "crrntl_display_slider" ); ?&gt;</b></p>';
+			echo '<p>' . __( 'If you want to add the slider, paste the following strings into the template source code', 'car-rental' ) . ': <b>&lt;?php do_action( "crrntl_display_slider" ); ?&gt;</b></p>';
 		} ?>
 		<div class="error below-h2" <?php echo ( empty( $error ) ) ? 'style="display:none"' : ''; ?>>
 			<p><strong><?php echo $error; ?></strong></p>
@@ -187,7 +187,7 @@ if ( ! function_exists( 'crrntl_slider_settings' ) ) {
 								</th>
 								<td>
 									<input id="crrntl-slider-image" class="crrntl-image-url" type="url" name="crrntl_slide_url" value="<?php echo $crrntl_slide_data['image']; ?>" placeholder="http://example.com" /><br />
-									<input class="button-primary crrntl-upload-image" type="button" value="<?php echo ( 'add_slide' == $_GET['action'] ) ? __( 'Upload Image', 'car-rental' ) : __( 'Change Image', 'car-rental' ); ?>">
+									<input class="button-secondary crrntl-upload-image" type="button" value="<?php echo ( 'add_slide' == $_GET['action'] ) ? __( 'Upload Image', 'car-rental' ) : __( 'Change Image', 'car-rental' ); ?>">
 								</td>
 							</tr>
 							<tr valign="top">

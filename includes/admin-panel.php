@@ -135,9 +135,9 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 		foreach ( $crrntl_filenames as $page_name => $page_file ) {
 			$selected_page_id = ! empty( $crrntl_options[ $page_name . '_id' ] ) ? $crrntl_options[ $page_name . '_id' ] : 0;
 			if ( empty( $selected_page_id ) ) {
-				$crrntl_notice .= '<p><strong>' . __( 'Important:', 'car-rental' ) . '</strong> ' . sprintf( __( 'for the correct plugin work, please choose the page %s', 'car-rental' ), $crrntl_page_description[ $i ] ) . ' - <a href="admin.php?page=car-rental-settings">' . __( 'edit', 'car-rental' ) . '</a></p>';
+				$crrntl_notice .= '<p><strong>' . __( 'Important', 'car-rental' ) . ':</strong> ' . sprintf( __( 'for the correct plugin work, please choose the page %s', 'car-rental' ), $crrntl_page_description[ $i ] ) . ' - <a href="admin.php?page=car-rental-settings">' . __( 'edit', 'car-rental' ) . '</a></p>';
 			} elseif ( get_post_meta( $selected_page_id, '_wp_page_template', true ) != $page_file ) {
-				$crrntl_notice .= '<p><strong>' . __( 'Important:', 'car-rental' ) . '</strong> ' . sprintf( __( 'for the correct plugin work, please choose the %2$s template for the %1$s page', 'car-rental' ), '<strong>"' . get_post_field( 'post_title', $selected_page_id, 'raw' ) . '"</strong>', '<strong>"' . $page_template_name[ $i ] . '"</strong>' ) . ' - <a href="' . get_edit_post_link( $selected_page_id, '' ) . '">' . __( 'edit', 'car-rental' ) . '</a></p>';
+				$crrntl_notice .= '<p><strong>' . __( 'Important', 'car-rental' ) . ':</strong> ' . sprintf( __( 'for the correct plugin work, please choose the %2$s template for the %1$s page', 'car-rental' ), '<strong>"' . get_post_field( 'post_title', $selected_page_id, 'raw' ) . '"</strong>', '<strong>"' . $page_template_name[ $i ] . '"</strong>' ) . ' - <a href="' . get_edit_post_link( $selected_page_id, '' ) . '">' . __( 'edit', 'car-rental' ) . '</a></p>';
 			}
 			$crrntl_select_pages .= '<label for="crrntl_' . $page_name . '_id' . '">' .
 			                          $crrntl_page_description[ $i ] . ': ' .
@@ -186,14 +186,14 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 				<?php bws_show_settings_notice(); ?>
 				<div id="crrntl_settings_notice" class="updated fade below-h2" style="display:none;">
 					<p>
-						<strong><?php _e( 'Notice:', 'car-rental' ); ?></strong> <?php _e( "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button.", 'car-rental' ); ?>
+						<strong><?php _e( 'Notice', 'car-rental' ); ?>:</strong> <?php _e( "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button.", 'car-rental' ); ?>
 					</p>
 				</div>
 				<?php if ( ! isset( $_GET['tab'] ) ) { ?>
 					<form id="crrntl_settings_form" class="bws_form" method="post" action="admin.php?page=car-rental-settings">
 						<table class="form-table">
 							<tr valign="top">
-								<th scope="row"><?php _e( 'Pages:', 'car-rental' ); ?></th>
+								<th scope="row"><?php _e( 'Pages', 'car-rental' ); ?>:</th>
 								<td>
 									<?php echo $crrntl_select_pages; ?>
 								</td>

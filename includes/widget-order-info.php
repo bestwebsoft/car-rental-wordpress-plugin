@@ -217,7 +217,7 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 
 				<div class="crrntl-subtotal-content">
 					<div class="crrntl-subtotal clearfix">
-						<?php _e( 'Subtotal:', 'car-rental' ); ?> <p class="crrntl-price"><?php echo $crrntl_subtotal_display; ?></p>
+						<?php _e( 'Subtotal', 'car-rental' ); ?>: <p class="crrntl-price"><?php echo $crrntl_subtotal_display; ?></p>
 					</div>
 				</div><!-- .crrntl-subtotal-content -->
 
@@ -270,7 +270,7 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 					} else {
 						$crrntl_total_display = '<span data-price="' . $crrntl_total . '">' . number_format_i18n( $crrntl_total, 2 ) . '</span>';
 					}
-					_e( 'Total:', 'car-rental' ); ?> <p class="crrntl-price"><?php echo $crrntl_total_display; ?></p>
+					_e( 'Total', 'car-rental' ); ?>: <p class="crrntl-price"><?php echo $crrntl_total_display; ?></p>
 					<?php if ( is_page_template( 'page-review-book.php' ) ) {
 						$_SESSION['crrntl_total'] = $crrntl_total;
 					} ?>

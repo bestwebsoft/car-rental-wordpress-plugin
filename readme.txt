@@ -3,16 +3,18 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: cars, rental, renting, booking, retail, add cars, car rental plugin, renting cars, cars website, manufacturers, machine, vehicle
 Requires at least: 3.8
-Tested up to: 4.5.2
-Stable tag: 1.0.0
+Tested up to: 4.5.3
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A convenient plugin that adds Car Rental functionality.
+Create your personal car rental/booking and reservation website.
 
 == Description ==
 
 Car Rental plugin allows you to create your fully functional for renting cars website with a single plugin. The admin panel functionality is easy to use and loaded with features. If you'd like to give the plugin features a try before uploading the actual data, you can install demo data and go through all the options you receive with Car Rental.
+
+http://www.youtube.com/watch?v=Oq4pkADwTks
 
 <a href="http://wordpress.org/plugins/car-rental/faq/" target="_blank">FAQ</a>
 
@@ -37,7 +39,7 @@ If you have a feature, suggestion or idea you'd like to see in the plugin, we'd 
 * Russian (ru_RU)
 * Ukrainian (uk_UA)
 
-If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
 
 = Technical support =
 
@@ -52,7 +54,7 @@ We can fix some things for free for the users who provide translation of our plu
 1. Upload the folder `car-rental` to the directory '/wp-content/plugins/'
 2. Activate the plugin via the 'Plugins' menu in WordPress
 3. Please check if you have the template files `page-choose-car.php`, `page-choose-extras.php` and `page-review-book.php` in your themes directory. If you can't find these files, then just copy them from the directory `/wp-content/plugins/car-rental/templates/` to your themes directory.
-4. You can adjust the necessary settings using your WordPress admin panel in "BWS Plugins" > "Car Rental".
+4. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Car Rental".
 
 == Frequently Asked Questions ==
 
@@ -108,10 +110,16 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Changelog ==
 
+= V1.0.1 - 08.07.2016 =
+* Bugfix : The phone number displaying has been added in dashboard and email.
+
 = V1.0.0 - 09.06.2016 =
 * NEW : Release date of Car Rental by BestWebSoft plugin.
 
 == Upgrade Notice ==
+
+= V1.0.1 =
+The phone number displaying has been added in dashboard and email.
 
 = V1.0.0 =
 Release date of Car Rental by BestWebSoft plugin.

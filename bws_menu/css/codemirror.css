@@ -1,3 +1,7 @@
+/* custom */
+.CodeMirror span.bws-readonly {
+  color: #aaa;
+}
 /* BASICS */
 
 .CodeMirror {

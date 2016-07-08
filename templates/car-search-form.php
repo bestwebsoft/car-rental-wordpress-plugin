@@ -35,8 +35,8 @@ $crrntl_car_classes = get_terms( 'car_class' ); ?>
 				<?php _e( 'Edit Locations & Dates', 'car-rental' );
 			} else { ?>
 				<img src="<?php echo $crrntl_plugin_directory . '/images/search.png'; ?>" alt="" />
-				<?php _e( 'Search for a car:', 'car-rental' );
-			} ?>
+				<?php _e( 'Search for a car', 'car-rental' ); ?>:
+			<?php } ?>
 		</div><!-- #crrntl-book-car .crrntl-title-form .crrntl-current -->
 	<?php } ?>
 	<div id="crrntl-book-car-content" class="crrntl-content-form">

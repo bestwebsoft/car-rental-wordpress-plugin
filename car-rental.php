@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Car Rental by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/
-Description: A convenient plugin that adds Car Rental functionality.
+Plugin URI: http://bestwebsoft.com/products/car-rental/
+Description: Create your personal car rental/booking and reservation website.
 Author: BestWebSoft
 Text Domain: car-rental
 Domain Path: /languages
-Version: 1.0.0
+Version: 1.0.1
 Author URI: http://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -51,7 +51,7 @@ if ( ! function_exists( 'crrntl_admin_menu' ) ) {
 	function crrntl_admin_menu() {
 		bws_general_menu();
 
-		add_submenu_page( 'bws_plugins', __( 'Car Rental Settings', 'car-rental' ), 'Car Rental', 'manage_options', 'car-rental-settings', 'crrntl_settings_page' );
+		add_submenu_page( 'bws_panel', __( 'Car Rental Settings', 'car-rental' ), 'Car Rental', 'manage_options', 'car-rental-settings', 'crrntl_settings_page' );
 		crrntl_add_menu_items();
 	}
 }
@@ -101,7 +101,7 @@ if ( ! function_exists( 'crrntl_admin_init' ) ) {
 	function crrntl_admin_init() {
 		global $bws_plugin_info, $crrntl_plugin_info;
 
-		if ( ! isset( $bws_plugin_info ) || empty( $bws_plugin_info ) ) {
+		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '576', 'version' => $crrntl_plugin_info['Version'] );
 		}		
 	}
@@ -110,9 +110,9 @@ if ( ! function_exists( 'crrntl_admin_init' ) ) {
 if ( ! function_exists( 'crrntl_get_pages_link' ) ) {
 	function crrntl_get_pages_link() {
 		global $crrntl_filenames, $crrntl_options;
-		if ( empty( $crrntl_options ) ) {
+		if ( empty( $crrntl_options ) )
 			$crrntl_options = get_option( 'crrntl_options' );
-		}
+
 		$crrntl_options_old = $crrntl_options;
 		$i = 0;
 		foreach ( $crrntl_filenames as $page_name => $page_file ) {
@@ -188,10 +188,10 @@ if ( ! function_exists( 'crrntl_widget_init' ) ) {
 if ( ! function_exists( 'crrntl_settings' ) ) {
 	function crrntl_settings() {
 		global $crrntl_options, $crrntl_option_defaults, $crrntl_plugin_info;
-		$crrntl_db_version = '1.0';
+		$db_version = '1.0';
 
 		$crrntl_option_defaults = array(
-			'plugin_db_version'               => $crrntl_db_version,
+			'plugin_db_version'               => $db_version,
 			'plugin_option_version'           => $crrntl_plugin_info['Version'],
 			'theme_banner'					  => 1,
 			'currency_custom_display'         => 0,
@@ -214,18 +214,19 @@ if ( ! function_exists( 'crrntl_settings' ) ) {
 
 		$crrntl_options = get_option( 'crrntl_options' );
 
-		if ( ! isset( $crrntl_options['plugin_option_version'] ) || $crrntl_options['plugin_option_version'] != $crrntl_plugin_info['Version'] ) {
+		if ( ! isset( $crrntl_options['plugin_option_version'] ) || $crrntl_options['plugin_option_version'] != $crrntl_option_defaults['plugin_option_version'] ) {
 			$crrntl_options = array_merge( $crrntl_option_defaults, $crrntl_options );
-			$crrntl_options['plugin_option_version'] = $crrntl_plugin_info['Version'];
+			$crrntl_options['plugin_option_version'] = $crrntl_option_defaults['plugin_option_version'];
 			$update_option = true;
 			crrntl_plugin_templates_install();
 		}
 
-		if ( ! isset( $crrntl_options['plugin_db_version'] ) || $crrntl_options['plugin_db_version'] != $crrntl_db_version ) {
+		if ( ! isset( $crrntl_options['plugin_db_version'] ) || $crrntl_options['plugin_db_version'] != $db_version ) {
 			crrntl_install();
-			$crrntl_options['plugin_db_version'] = $crrntl_db_version;
+			$crrntl_options['plugin_db_version'] = $db_version;
 			$update_option = true;
 		}
+
 		if ( isset( $update_option ) )
 			update_option( 'crrntl_options', $crrntl_options );
 	}
@@ -239,36 +240,24 @@ if ( ! function_exists( 'crrntl_plugin_templates_install' ) ) {
 		global $crrntl_filenames, $crrntl_filepath;
 		$crrntl_themepath = get_stylesheet_directory() . '/';
 		foreach ( $crrntl_filenames as $filename ) {
-			if ( ! file_exists( $crrntl_themepath . $filename ) ) {
-				$handle   = @fopen( $crrntl_filepath . $filename, 'r' );
-				$contents = @fread( $handle, filesize( $crrntl_filepath . $filename ) );
-				@fclose( $handle );
-				if ( ! ( $handle = @fopen( $crrntl_themepath . $filename, 'w' ) ) ) {
-					return false;
-				}
-				@fwrite( $handle, $contents );
-				@fclose( $handle );
-				@chmod( $crrntl_themepath . $filename, octdec( 644 ) );
-			} else {
+			if ( file_exists( $crrntl_themepath . $filename ) ) {
 				$handle   = @fopen( $crrntl_themepath . $filename, 'r' );
 				$contents = @fread( $handle, filesize( $crrntl_themepath . $filename ) );
 				@fclose( $handle );
-				if ( ! ( $handle = @fopen( $crrntl_themepath . $filename . '.bak', 'w' ) ) ) {
+				if ( ! ( $handle = @fopen( $crrntl_themepath . $filename . '.bak', 'w' ) ) )
 					return false;
-				}
 				@fwrite( $handle, $contents );
 				@fclose( $handle );
-
-				$handle   = @fopen( $crrntl_filepath . $filename, 'r' );
-				$contents = @fread( $handle, filesize( $crrntl_filepath . $filename ) );
-				@fclose( $handle );
-				if ( ! ( $handle = @fopen( $crrntl_themepath . $filename, 'w' ) ) ) {
-					return false;
-				}
-				@fwrite( $handle, $contents );
-				@fclose( $handle );
-				@chmod( $crrntl_themepath . $filename, octdec( 644 ) );
 			}
+				
+			$handle   = @fopen( $crrntl_filepath . $filename, 'r' );
+			$contents = @fread( $handle, filesize( $crrntl_filepath . $filename ) );
+			@fclose( $handle );
+			if ( ! ( $handle = @fopen( $crrntl_themepath . $filename, 'w' ) ) )
+				return false;
+			@fwrite( $handle, $contents );
+			@fclose( $handle );
+			@chmod( $crrntl_themepath . $filename, octdec( 644 ) );
 		}
 	}
 }
@@ -820,17 +809,14 @@ if ( ! function_exists( 'crrntl_car_info_metabox' ) ) {
 					</th>
 					<td>
 						<input type="number" id="crrntl-passengers" name="crrntl_passengers" value="<?php echo ( ! empty( $car_passengers ) ) ? $car_passengers : ''; ?>" min="0" max="999" />
-						<span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999)</span>
 					</td>
 				</tr>
 				<tr>
 					<th><?php _e( 'Luggage Quantity', 'car-rental' ); ?>:</th>
 					<td>
 						<label><input type="number" id="crrntl-luggage-large" name="crrntl_luggage_large" value="<?php echo ( ! empty( $car_info['luggage_large'] ) ) ? $car_info['luggage_large'] : ''; ?>" min="0" max="999" /> <?php _e( 'large suitcases', 'car-rental' ); ?></label>
-						<span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999)</span>
 						<br />
 						<label><input type="number" id="crrntl-luggage-small" name="crrntl_luggage_small" value="<?php echo ( ! empty( $car_info['luggage_small'] ) ) ? $car_info['luggage_small'] : ''; ?>" min="0" max="999" /> <?php _e( 'small suitcases', 'car-rental' ); ?></label>
-						<span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999)</span>
 					</td>
 				</tr>
 				<tr>
@@ -859,7 +845,6 @@ if ( ! function_exists( 'crrntl_car_info_metabox' ) ) {
 					</th>
 					<td>
 						<input type="number" id="crrntl-consumption" name="crrntl_consumption" value="<?php echo ( ! empty( $car_info['consumption'] ) ) ? $car_info['consumption'] : ''; ?>" min="0" max="999" /> <?php echo $unit_consumption; ?>
-						<span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999)</span>
 					</td>
 				</tr>
 				<tr>
@@ -869,7 +854,6 @@ if ( ! function_exists( 'crrntl_car_info_metabox' ) ) {
 					<td>
 						<input type="text" pattern="^\d{1,9}(\.\d{2})?$" id="crrntl-price" name="crrntl_price" size="10" value="<?php echo ( ! empty( $car_price ) ) ? $car_price : ''; ?>" />
 						<span class="crrntl-info"><?php _e( 'for example', 'car-rental' ); ?>: 258.00</span>
-						<span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999999999.99)</span>
 					</td>
 				</tr>
 			</tbody>
@@ -1177,7 +1161,7 @@ if ( ! function_exists( 'crrntl_enqueue_scripts' ) ) {
 if ( ! function_exists( 'crrntl_admin_enqueue_scripts' ) ) {
 	function crrntl_admin_enqueue_scripts() {
 		$screen = get_current_screen();
-		if ( 'bws-plugins_page_car-rental-settings' == $screen->id || 'cars' == $screen->id || 'edit-cars' == $screen->id || 'edit-manufacturer' == $screen->id || 'edit-vehicle_type' == $screen->id || 'edit-car_class' == $screen->id || 'edit-extra' == $screen->id || 'toplevel_page_orders' == $screen->id ) {
+		if ( 'bws-panel_page_car-rental-settings' == $screen->id || 'cars' == $screen->id || 'edit-cars' == $screen->id || 'edit-manufacturer' == $screen->id || 'edit-vehicle_type' == $screen->id || 'edit-car_class' == $screen->id || 'edit-extra' == $screen->id || 'toplevel_page_orders' == $screen->id ) {
 			global $crrntl_options;
 			if ( empty( $crrntl_options ) ) {
 				$crrntl_options = get_option( 'crrntl_options' );
@@ -1404,28 +1388,28 @@ if ( ! function_exists( 'crrntl_save_reservation' ) ) {
 				}
 				$extras_to_mail_string = implode( ', ', $extras_to_mail );
 			}
-			if ( ! empty( $extras_to_mail_string ) ) {
-				$extras_to_mail_string = __( 'Extras: ', 'car-rental' ) . $extras_to_mail_string . '<br />';
-			}
+			if ( ! empty( $extras_to_mail_string ) )
+				$extras_to_mail_string = __( 'Extras', 'car-rental' ) . ': ' . $extras_to_mail_string . '<br />';
 
 			$admin_email = ( is_multisite() ) ? get_site_option( 'admin_email' ) : get_option( 'admin_email' );
-			$user_mail   = get_userdata( $_SESSION['crrntl_user_id'] )->user_email;
+			$user_data = get_userdata( $_SESSION['crrntl_user_id'] );
 
 			$subject = get_bloginfo( 'name' ) . ' | ' . __( 'New booking order #', 'car-rental' ) . $order_id . "\n";
 
 			$message = '<p>' . $crrntl_order_info['success'] . '</p>
-			<p><strong>' . __( 'Order Info:', 'car-rental' ) . '</strong><br />'
-			           . __( 'Car: ', 'car-rental' ) . get_the_title( $_SESSION['crrntl_selected_product_id'] ) . '<br />'
-			           . $extras_to_mail_string
-			           . __( 'Pick-Up Date: ', 'car-rental' ) . $_SESSION['crrntl_date_from'] . ' ' . $_SESSION['crrntl_time_from'] . '<br />'
-			           . __( 'Drop-Off Date: ', 'car-rental' ) . $_SESSION['crrntl_date_to'] . ' ' . $_SESSION['crrntl_time_to'] . '<br />'
-			           . __( 'Pick-Up Location: ', 'car-rental' ) . $pickuploc_to_mail . '<br />'
-			           . __( 'Drop-Off Location: ', 'car-rental' ) . $dropoffloc_to_mail . '<br />'
-			           . __( 'Total: ', 'car-rental' ) . $total_to_mail . '</p>';
+			<p><strong>' . __( 'Order Info', 'car-rental' ) . ':</strong><br />'
+				. __( 'Car', 'car-rental' ) . get_the_title( $_SESSION['crrntl_selected_product_id'] ) . '<br />'
+				. $extras_to_mail_string
+				. __( 'Pick-Up Date', 'car-rental' ) . ': ' . $_SESSION['crrntl_date_from'] . ' ' . $_SESSION['crrntl_time_from'] . '<br />'
+				. __( 'Drop-Off Date', 'car-rental' ) . ': ' . $_SESSION['crrntl_date_to'] . ' ' . $_SESSION['crrntl_time_to'] . '<br />'
+				. __( 'Pick-Up Location', 'car-rental' ) . ': ' . $pickuploc_to_mail . '<br />'
+				. __( 'Drop-Off Location', 'car-rental' ) . ': ' . $dropoffloc_to_mail . '<br />'
+				. __( 'Total', 'car-rental' ) . ': ' . $total_to_mail . '<br />'
+				. __( 'Phone number', 'car-rental-pro' ) . ': ' . $user_data->user_phone . '</p>';
 
 			$send_to = array(
 				$admin_email,
-				$user_mail,
+				$user_data->user_email
 			);
 
 			$headers = 'From: ' . get_bloginfo( 'name' ) . ' <' . $admin_email . '>' . "\r\n";
@@ -1452,13 +1436,11 @@ if ( ! function_exists( 'crrntl_save_reservation' ) ) {
 if ( ! function_exists( 'crrntl_register_plugin_links' ) ) {
 	function crrntl_register_plugin_links( $links, $file ) {
 		if ( 'car-rental/car-rental.php' == $file ) {
-			if ( ! is_network_admin() ) {
+			if ( ! is_network_admin() )
 				$links[] = '<a href="admin.php?page=car-rental-settings">' . __( 'Settings', 'car-rental' ) . '</a>';
-			}
 			$links[] = '<a href="http://bestwebsoft.com/products/car-rental/faq/" target="_blank">' . __( 'FAQ', 'car-rental' ) . '</a>';
 			$links[] = '<a href="http://support.bestwebsoft.com">' . __( 'Support', 'car-rental' ) . '</a>';
 		}
-
 		return $links;
 	}
 }
@@ -1536,7 +1518,7 @@ if ( ! function_exists( 'crrntl_admin_notices' ) ) {
 					if ( isset( $crrntl_options['first_install'] ) && strtotime( '-1 week' ) > $crrntl_options['first_install'] )
 						bws_plugin_banner( $crrntl_plugin_info, 'crrntl', 'car-rental', '693c590c4eab04459481ef6f1239ba20', '576', 'car-rental' );
 
-					bws_plugin_banner_to_settings( $crrntl_plugin_info, 'crrntl_options', 'car-rental', 'admin.php?page=car-rental-settings', 'post-new.php?post_type=cars', __( 'Car', 'car-rental' ) );
+					bws_plugin_banner_to_settings( $crrntl_plugin_info, 'crrntl_options', 'car-rental', 'admin.php?page=car-rental-settings', 'post-new.php?post_type=cars' );
 				}
 			} else {
 				bws_plugin_suggest_feature_banner( $crrntl_plugin_info, 'crrntl_options', 'car-rental' );

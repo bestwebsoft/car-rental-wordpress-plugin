@@ -72,8 +72,8 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 					</span>
 				</h4>
 				<div class="crrntl-widget-content-range">
-					<label><?php _e( 'from:', 'car-rental' ); ?> <input type="number" id="crrntl-price-min" name="crrntl_price_min" value="<?php echo $crrntl_min_price; ?>" /></label>
-					<label> <?php _e( 'to:', 'car-rental' ); ?> <input type="number" id="crrntl-price-max" name="crrntl_price_max" value="<?php echo $crrntl_max_price; ?>" /></label>
+					<label><?php _e( 'from', 'car-rental' ); ?>: <input type="number" id="crrntl-price-min" name="crrntl_price_min" value="<?php echo $crrntl_min_price; ?>" /></label>
+					<label> <?php _e( 'to', 'car-rental' ); ?>: <input type="number" id="crrntl-price-max" name="crrntl_price_max" value="<?php echo $crrntl_max_price; ?>" /></label>
 					<div class="crrntl-price-range" data-min="<?php echo floor( $crrntl_min_max_price[0]->min_price ); ?>" data-max="<?php echo ceil( $crrntl_min_max_price[0]->max_price ); ?>"></div>
 					<?php if ( ! empty( $crrntl_currency_position ) ) {
 						if ( 'before' == $crrntl_currency_position ) { ?>
@@ -114,8 +114,8 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 					</span>
 				</h4>
 				<div class="crrntl-widget-content-range">
-					<label><?php _e( 'from:', 'car-rental' ); ?> <input type="number" id="crrntl-pass-min" name="crrntl_pass_min" value="<?php echo $crrntl_min_pass; ?>" /></label>
-						<label> <?php _e( 'to:', 'car-rental' ); ?> <input type="number" id="crrntl-pass-max" name="crrntl_pass_max" value="<?php echo $crrntl_max_pass; ?>" /></label>
+					<label><?php _e( 'from', 'car-rental' ); ?>: <input type="number" id="crrntl-pass-min" name="crrntl_pass_min" value="<?php echo $crrntl_min_pass; ?>" /></label>
+						<label> <?php _e( 'to', 'car-rental' ); ?>: <input type="number" id="crrntl-pass-max" name="crrntl_pass_max" value="<?php echo $crrntl_max_pass; ?>" /></label>
 					<div class="crrntl-pass-range" data-min="<?php echo $crrntl_min_max_pass[0]->min_pass; ?>" data-max="<?php echo $crrntl_min_max_pass[0]->max_pass; ?>"></div>
 					<div class="crrntl-slider-result crrntl-pass-result-from crrntl-hidden"><span><?php echo $crrntl_min_pass; ?></span></div>
 					<div class="crrntl-slider-result crrntl-pass-result-to crrntl-hidden"><span><?php echo $crrntl_max_pass; ?></span></div>

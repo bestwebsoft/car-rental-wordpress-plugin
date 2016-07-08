@@ -1,14 +1,13 @@
-#adminmenu #toplevel_page_bws_plugins div.wp-menu-image,
-.admin-color-classic #adminmenu #toplevel_page_bws_plugins div.wp-menu-image,
-#adminmenu #toplevel_page_bws_plugins:hover div.wp-menu-image,
-#adminmenu #toplevel_page_bws_plugins.wp-has-current-submenu div.wp-menu-image {
-	background: url("../images/icon_16_single.png") no-repeat scroll center center transparent;
+#adminmenu #toplevel_page_bws_panel div.wp-menu-image img,
+.admin-color-classic #adminmenu #toplevel_page_bws_panel div.wp-menu-image img,
+#adminmenu #toplevel_page_bws_panel:hover div.wp-menu-image img,
+#adminmenu #toplevel_page_bws_panel.wp-has-current-submenu div.wp-menu-image img {
+    width: 18px;
 }
-#adminmenu #toplevel_page_bws_plugins.wp-not-current-submenu div.wp-menu-image {
-	opacity: 0.7;
-}
-.sticky-menu #toplevel_page_bws_plugins .wp-submenu .wp-first-item {
-	display: none;
+#adminmenu #toplevel_page_bws_panel .wp-submenu li:nth-child(4) a {
+    border-bottom: 1px solid #444;
+    padding-bottom: 12px;
+    margin-bottom: 5px;
 }
 .bws_info {
     color: #888;
@@ -40,13 +39,13 @@
 .bws_go_pro_tab {
     background-color: #2A95C5;
     border-color: #11688F;
-    color: #FFFFFF;
+    color: #fff;
     font-weight: normal;
     text-shadow: none;
 }
 .bws_go_pro_tab:hover {
     background-color: #2080AB;
-    color: #FFFFFF;
+    color: #fff;
     border-color: #11688F;
 }
 .bws_go_pro_tab.nav-tab-active {
@@ -62,7 +61,6 @@ tr.bws_pro_version,
 .nav-tab.bws_plugin_menu_pro_version,
 .nav-tab.bws_plugin_menu_pro_version:hover {
     background: rgba(248, 226, 104, 0.11) url("../images/pattern_bg.png");
-    border: 1px solid #AAA;
 }
 td.bws_pro_version_tooltip {
     border: 1px solid #AAA;
@@ -266,6 +264,49 @@ div.bws_banner_on_plugin_page .icon {
 .bws_banner_on_plugin_page .text + .icon {
     display: none;
 }
+.bws_banner_to_settings_joint .bws-text {
+    color: #000;
+    font-size: 16px;
+    line-height: 26px;
+    padding: 13px 14px 14px; 
+}
+.bws_banner_to_settings_joint .icon span.dashicons-admin-plugins {
+    font-size: 48px;
+    color: #d6d6d6;
+    width: 48px;
+    height: 48px;
+}
+.bws_banner_on_plugin_page.bws_banner_to_settings_joint .icon {
+    margin: 2px 16px 0 0;
+}
+.bws_banner_to_settings_joint .bws-details {
+    background: #f2f2f2;
+    padding: 15px 78px 21px;
+}
+.bws_banner_to_settings_joint a {
+    text-decoration: none;
+}
+.bws_banner_to_settings_joint .bws-more-links {
+    font-size: 14px;
+}
+.bws_banner_to_settings_joint .bws-more:after {
+    content: "\f347";
+    font-family: dashicons;
+    margin: 0 5px;
+    top: 2px;
+    position: relative;
+}
+.bws_banner_to_settings_joint .bws-less:after {
+    content: "\f343";
+    font-family: dashicons;
+    margin: 0 5px;
+    top: 2px;
+    position: relative;
+}
+.bws_banner_to_settings_joint .bws-details strong {
+    font-size: 14px;
+    line-height: 30px;
+}
 .rtl div.bws_banner_on_plugin_page .button,
 .rtl .bws_pro_version_tooltip .bws_button {
     float: left;
@@ -274,6 +315,9 @@ div.bws_banner_on_plugin_page .icon {
 .rtl .bws_banner_on_plugin_page .text,
 .rtl .bws_pro_version_tooltip .bws_info {
     float: right;
+}
+.rtl .bws_banner_on_plugin_page.bws_banner_to_settings_joint .icon {
+    margin: 2px 0 0 16px;
 }
 .rtl table.bws_pro_version th,
 .rtl table.bws_pro_version td {
@@ -292,6 +336,11 @@ div.bws_banner_on_plugin_page .icon {
     .bws_banner_on_plugin_page .icon {
         position: relative;
         left: 8px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .bws_banner_to_settings_joint .bws-details {
+        padding: 15px 20px 21px;
     }
 }
 /* display shortcodes */

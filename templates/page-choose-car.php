@@ -194,7 +194,7 @@ get_header(); ?>
 												<?php echo __( 'Results', 'car-rental' ) . ' <span>( ' . $crrntl_query->post_count . '&nbsp;' . __( 'from', 'car-rental' ) . '&nbsp;' . $crrntl_query->found_posts . ' )</span>'; ?>
 											</div>
 											<div class="crrntl-widget-title-sort">
-												<span class="crrntl-sorting"><?php _e( 'Sort by:', 'car-rental' ); ?> </span>
+												<span class="crrntl-sorting"><?php _e( 'Sort by', 'car-rental' ); ?>: </span>
 												<a href="<?php echo esc_url( add_query_arg( 'sortby', 'price' ) ); ?>" title="" <?php echo ( isset( $_GET['sortby'] ) && 'price' == $_GET['sortby'] ) ? 'class="crrntl-current"' : ''; ?>><?php _e( 'Price', 'car-rental' ); ?></a> |
 												<a href="<?php echo esc_url( add_query_arg( 'sortby', 'name' ) ); ?>" title="" <?php echo ( isset( $_GET['sortby'] ) && 'name' == $_GET['sortby'] ) ? 'class="crrntl-current"' : ''; ?>><?php _e( 'Name', 'car-rental' ); ?></a>
 											</div><!-- .crrntl-widget-title-sort -->

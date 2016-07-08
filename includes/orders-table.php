@@ -29,11 +29,14 @@ if ( ! class_exists( 'Crrntl_List_Table' ) ) {
 				case 'pickup_loc_id':
 				case 'dropoff_loc_id':
 				case 'pickup_date':
-				case 'dropoff_date':
-				case 'user_id':
+				case 'dropoff_date':				
 				case 'total':
 				case 'status_id':
 					return $item[ $column_name ];
+				case 'user_id':
+					$userdata = get_userdata( $item['user_id'] );
+					$phone = isset( $userdata->user_phone ) ? '<br/>' . $userdata->user_phone : '';
+					return $item['user_name'] . $phone;
 				default:
 					return print_r( $item, true ); /* Show the whole array for troubleshooting purposes */
 			}
@@ -258,7 +261,8 @@ if ( ! function_exists( 'crrntl_table_data' ) ) {
 				rl2.formatted_address AS dropoff_loc_id,
 				ro.pickup_date,
 				ro.dropoff_date,
-				CONCAT(um1.meta_value, ' ', um2.meta_value ) AS user_id,
+				ro.user_id,
+				CONCAT(um1.meta_value, ' ', um2.meta_value ) AS user_name,
 				ro.total,
 				rs.status_name AS status_id
 				FROM {$wpdb->prefix}crrntl_orders AS ro

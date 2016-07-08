@@ -5,11 +5,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
 if ( ! function_exists( 'crrntl_plugin_delete' ) ) {
 	function crrntl_plugin_delete() {
 		global $wpdb;
-		$crrntl_filenames = array(
-			'car_page'    => 'page-choose-car.php',
-			'extra_page'  => 'page-choose-extras.php',
-			'review_page' => 'page-review-book.php',
-		);
+		
 		/* Deactivating plugin if it is active */
 		if ( ! function_exists( 'deactivate_plugins' ) )
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -18,6 +14,7 @@ if ( ! function_exists( 'crrntl_plugin_delete' ) ) {
 			deactivate_plugins( 'car-rental/car-rental.php' );
 
 		$all_plugins = get_plugins();
+
 		if ( ! array_key_exists( 'car-rental-pro/car-rental-pro.php', $all_plugins ) ) {
 			crrntl_remove_data();
 
@@ -55,25 +52,29 @@ if ( ! function_exists( 'crrntl_plugin_delete' ) ) {
 					wp_delete_term( $term['term_id'], $term['taxonomy'] );
 				}
 			}
+			/* Delete plugin's options */
+			delete_option( 'crrntl_slider_options' );			
+			delete_option( 'crrntl_demo_options' );
+			delete_option( 'crrntl_options' );	
+		
+			/* Delete plugin's page template from the active theme */
+			$crrntl_themepath = get_stylesheet_directory() . '/';
+			$crrntl_filenames = array(
+				'car_page'    => 'page-choose-car.php',
+				'extra_page'  => 'page-choose-extras.php',
+				'review_page' => 'page-review-book.php',
+			);
 
-			delete_option( 'crrntl_slider_options' );
-		}
-
-		/* Delete plugin's page template from the active theme */
-		$crrntl_themepath = get_stylesheet_directory() . '/';
-
-		foreach ( $crrntl_filenames as $filename ) {
-			/* Delete templates */
-			if ( file_exists( $crrntl_themepath . $filename ) && ! unlink( $crrntl_themepath . $filename ) ) {
-				add_action( 'admin_notices', create_function( '', ' return __( "Error delete template file", "car-rental" );' ) );
-			}
-			if ( file_exists( $crrntl_themepath . $filename . '.bak' ) && ! unlink( $crrntl_themepath . $filename . '.bak' ) ) {
-				add_action( 'admin_notices', create_function( '', ' return __( "Error delete template file", "car-rental" );' ) );
-			}
-		}
-		/* Delete plugin's options */
-		delete_option( 'crrntl_demo_options' );
-		delete_option( 'crrntl_options' );		
+			foreach ( $crrntl_filenames as $filename ) {
+				/* Delete templates */
+				if ( file_exists( $crrntl_themepath . $filename ) && ! unlink( $crrntl_themepath . $filename ) ) {
+					add_action( 'admin_notices', create_function( '', ' return __( "Error delete template file", "car-rental" );' ) );
+				}
+				if ( file_exists( $crrntl_themepath . $filename . '.bak' ) && ! unlink( $crrntl_themepath . $filename . '.bak' ) ) {
+					add_action( 'admin_notices', create_function( '', ' return __( "Error delete template file", "car-rental" );' ) );
+				}
+			}	
+		}		
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
