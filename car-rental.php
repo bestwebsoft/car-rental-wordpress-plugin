@@ -6,7 +6,7 @@ Description: Create your personal car rental/booking and reservation website.
 Author: BestWebSoft
 Text Domain: car-rental
 Domain Path: /languages
-Version: 1.0.1
+Version: 1.0.2
 Author URI: http://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -64,17 +64,7 @@ if ( ! function_exists( 'crrntl_plugin_loaded' ) ) {
 
 if ( ! function_exists( 'crrntl_init' ) ) {
 	function crrntl_init() {
-		global $crrntl_plugin_info;
-
-		if ( ! session_id() ) {
-			session_start();
-		}
-
-		/* Trigger our function that registers the custom post type */
-		crrntl_setup_post_types();
-
-		add_image_size( 'crrntl_product_image', 161, 9999 );
-		add_image_size( 'crrntl_product_image_widget', 105, 9999 );
+		global $crrntl_plugin_info;		
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
@@ -88,6 +78,15 @@ if ( ! function_exists( 'crrntl_init' ) ) {
 
 		/* Function check if plugin is compatible with current WP version */
 		bws_wp_version_check( plugin_basename( __FILE__ ), $crrntl_plugin_info, '3.8' );
+
+		if ( ! session_id() )
+			session_start();
+
+		/* Trigger our function that registers the custom post type */
+		crrntl_setup_post_types();
+
+		add_image_size( 'crrntl_product_image', 161, 9999 );
+		add_image_size( 'crrntl_product_image_widget', 105, 9999 );
 
 		/* Call register settings function */
 		if ( ! is_admin() || ( isset( $_REQUEST['page'] ) && 'car-rental-settings' == $_REQUEST['page'] ) ) {
@@ -191,21 +190,23 @@ if ( ! function_exists( 'crrntl_settings' ) ) {
 		$db_version = '1.0';
 
 		$crrntl_option_defaults = array(
-			'plugin_db_version'               => $db_version,
-			'plugin_option_version'           => $crrntl_plugin_info['Version'],
-			'theme_banner'					  => 1,
-			'currency_custom_display'         => 0,
-			'currency_unicode'                => 109,
-			'custom_currency'                 => '',
-			'currency_position'               => 'before',
-			'unit_consumption_custom_display' => 0,
-			'unit_consumption'                => __( 'l/100km', 'car-rental' ),
-			'custom_unit_consumption'         => '',
-			'per_page'                        => get_option( 'posts_per_page' ),
-			'display_demo_notice'             => 1,
-			'suggest_feature_banner'          => 1,
-			'cflag'						  	  => '0A',
-			'eflag'						  	  => '03'
+			'plugin_db_version'					=> $db_version,
+			'plugin_option_version'				=> $crrntl_plugin_info['Version'],
+			'theme_banner'						=> 1,
+			'currency_custom_display'			=> 0,
+			'currency_unicode'					=> 109,
+			'custom_currency'					=> '',
+			'currency_position'					=> 'before',
+			'unit_consumption_custom_display'	=> 0,
+			'unit_consumption'					=> __( 'l/100km', 'car-rental' ),
+			'custom_unit_consumption'			=> '',
+			'per_page'							=> get_option( 'posts_per_page' ),
+			'display_demo_notice'				=> 1,
+			'suggest_feature_banner'			=> 1,
+			'cflag'								=> '0A',
+			'eflag'								=> '03',
+			'time_selecting'					=> 1,
+			'time_from'							=> '12:00'
 		);
 
 		/* Install the option defaults */

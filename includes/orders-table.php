@@ -380,7 +380,7 @@ if ( ! function_exists( 'crrntl_orders_list_page' ) ) {
  */
 if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 	function crrntl_order_edit_page() {
-		global $wpdb;
+		global $wpdb, $crrntl_options;
 		/* Save orders changes */
 		if ( ! empty( $_POST['crrntl_save_orders_changes'] ) && check_admin_referer( plugin_basename( __FILE__ ), 'crrntl_nonce_name' ) ) {
 			$extras_update_result = '';
@@ -534,24 +534,32 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 							<th><?php _e( 'Pick-up date', 'car-rental' ); ?>:</th>
 							<td class="crrntl-pick-up">
 								<input class="datepicker" type="text" value="<?php echo $pickup_date[0]; ?>" name="crrntl_date_from" title="<?php _e( 'Choose Pick-up date', 'car-rental' ); ?>" placeholder="<?php _e( 'YYYY-MM-DD', 'car-rental' ); ?>" />
-								<select name="crrntl_time_from" title="<?php _e( 'Choose Pick-up time', 'car-rental' ); ?>">
-									<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
-										<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00:00', $pickup_date['1'] ); ?>><?php echo $i; ?>:00</option>
-										<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30:00', $pickup_date['1'] ); ?>><?php echo $i; ?>:30</option>
-									<?php } ?>
-								</select>
+								<?php if ( 1 == $crrntl_options['time_selecting'] ) { ?>
+									<select name="crrntl_time_from" title="<?php _e( 'Choose Pick-up time', 'car-rental' ); ?>">
+										<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
+											<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00:00', $pickup_date['1'] ); ?>><?php echo $i; ?>:00</option>
+											<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30:00', $pickup_date['1'] ); ?>><?php echo $i; ?>:30</option>
+										<?php } ?>
+									</select>
+								<?php } else {
+									echo $pickup_date['1'];
+								} ?>
 							</td>
 						</tr>
 						<tr>
 							<th><?php _e( 'Drop-off date', 'car-rental' ); ?>:</th>
 							<td class="crrntl-drop-off">
 								<input class="datepicker" type="text" value="<?php echo $dropoff_date[0]; ?>" name="crrntl_date_to" title="<?php _e( 'Choose Drop-off date', 'car-rental' ); ?>" />
-								<select name="crrntl_time_to" title="<?php _e( 'Choose Pick-up time', 'car-rental' ); ?>">
-									<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
-										<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00:00', $dropoff_date['1'] ); ?>><?php echo $i; ?>:00</option>
-										<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30:00', $dropoff_date['1'] ); ?>><?php echo $i; ?>:30</option>
-									<?php } ?>
-								</select>
+								<?php if ( 1 == $crrntl_options['time_selecting'] ) { ?>
+									<select name="crrntl_time_to" title="<?php _e( 'Choose Pick-up time', 'car-rental' ); ?>">
+										<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
+											<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00:00', $dropoff_date['1'] ); ?>><?php echo $i; ?>:00</option>
+											<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30:00', $dropoff_date['1'] ); ?>><?php echo $i; ?>:30</option>
+										<?php } ?>
+									</select>
+								<?php } else {
+									echo $dropoff_date['1'];
+								} ?>
 							</td>
 						</tr>
 						<tr>

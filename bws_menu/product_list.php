@@ -474,20 +474,25 @@ $bws_plugins = array(
 	)
 );	
 
-$themes = array(
+$themes = array(	
+	(object) array( 
+		'name' 		=> 'Opening',
+		'slug' 		=> 'opening',
+		'href' 		=> 'http://bestwebsoft.com/products/opening-job-board-wordpress-theme/'
+	),
 	(object) array( 
 		'name' 		=> 'Real Estate',
 		'slug' 		=> 'realestate',
 		'href' 		=> 'http://bestwebsoft.com/products/real-estate-creative-wordpress-theme/'
 	),
 	(object) array( 
+		'name' 		=> 'Renty',
+		'slug' 		=> 'renty',
+		'href' 		=> 'http://bestwebsoft.com/products/renty-car-rental-booking-wordpress-theme/'
+	),
+	(object) array( 
 		'name' 		=> 'Unity',
 		'slug' 		=> 'unity',
 		'href' 		=> 'http://bestwebsoft.com/products/unity-multipurpose-wordpress-theme/'
-	),
-	(object) array( 
-		'name' 		=> 'Opening',
-		'slug' 		=> 'opening',
-		'href' 		=> 'http://bestwebsoft.com/products/opening-job-board-wordpress-theme/'
 	)
 );

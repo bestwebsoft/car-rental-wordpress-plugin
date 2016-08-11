@@ -53,6 +53,8 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 			$crrntl_options['car_page_id']                     = $_POST['crrntl_car_page_id'];
 			$crrntl_options['extra_page_id']                   = $_POST['crrntl_extra_page_id'];
 			$crrntl_options['review_page_id']                  = $_POST['crrntl_review_page_id'];
+			$crrntl_options['time_selecting'] 					= ( isset( $_POST['crrntl_time_selecting'] ) ) ? 1 : 0;
+			$crrntl_options['time_from'] 						= $_POST['crrntl_time_from'];			
 			$crrntl_options['maps_key'] = ( ! empty( $_POST['crrntl_maps_key'] ) ) ? sanitize_text_field( $_POST['crrntl_maps_key'] ) : '';
 
 			if ( 1 == $crrntl_options['currency_custom_display'] && empty( $crrntl_options['custom_currency'] ) ) {
@@ -140,7 +142,6 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 				$crrntl_notice .= '<p><strong>' . __( 'Important', 'car-rental' ) . ':</strong> ' . sprintf( __( 'for the correct plugin work, please choose the %2$s template for the %1$s page', 'car-rental' ), '<strong>"' . get_post_field( 'post_title', $selected_page_id, 'raw' ) . '"</strong>', '<strong>"' . $page_template_name[ $i ] . '"</strong>' ) . ' - <a href="' . get_edit_post_link( $selected_page_id, '' ) . '">' . __( 'edit', 'car-rental' ) . '</a></p>';
 			}
 			$crrntl_select_pages .= '<label for="crrntl_' . $page_name . '_id' . '">' .
-			                          $crrntl_page_description[ $i ] . ': ' .
 			                          wp_dropdown_pages( array(
 				                          'name'              => 'crrntl_' . $page_name . '_id',
 				                          'echo'              => 0,
@@ -148,6 +149,7 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 				                          'option_none_value' => '0',
 				                          'selected'          => $selected_page_id,
 			                          ) ) .
+			                          $crrntl_page_description[ $i ] .
 			                          '</label><br />';
 			$i ++;
 		} 
@@ -193,7 +195,7 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 					<form id="crrntl_settings_form" class="bws_form" method="post" action="admin.php?page=car-rental-settings">
 						<table class="form-table">
 							<tr valign="top">
-								<th scope="row"><?php _e( 'Pages', 'car-rental' ); ?>:</th>
+								<th scope="row"><?php _e( 'Pages', 'car-rental' ); ?></th>
 								<td>
 									<?php echo $crrntl_select_pages; ?>
 								</td>
@@ -236,6 +238,18 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 									<label><input type="radio" name="crrntl_unit_consumption_custom_display" id="crrntl_unit_consumption_custom_display_true" value="1" <?php checked( $crrntl_options['unit_consumption_custom_display'], 1 ); ?> /></label>
 									<label><input type="text" id="crrntl_custom_unit_consumption" name="crrntl_custom_unit_consumption" value="<?php echo $crrntl_options['custom_unit_consumption']; ?>" />
 										<span class="bws_info"><?php _e( 'Custom unit of consumption', 'car-rental' ); ?></span></label>
+								</td>
+							</tr>
+							<tr valign="top">
+								<th scope="row"><?php _e( 'Enable selecting pick-up&drop-off time', 'car-rental' ); ?></th>
+								<td>
+									<input type="checkbox" <?php if ( 1 == $crrntl_options['time_selecting'] ) echo 'checked="checked"'; ?> value="1" name="crrntl_time_selecting" />
+									<select name="crrntl_time_from">
+										<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
+											<option value="<?php echo $i; ?>:00" <?php selected( ( $i . ':00' ) == $crrntl_options['time_from'] ); ?>><?php echo $i; ?>:00</option>
+											<option value="<?php echo $i; ?>:30" <?php selected( ( $i . ':30' ) == $crrntl_options['time_from'] ); ?>><?php echo $i; ?>:30</option>
+										<?php } ?>
+									</select>
 								</td>
 							</tr>
 							<tr valign="top">

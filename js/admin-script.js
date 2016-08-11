@@ -185,5 +185,12 @@
 			}
 		} );
 
+		$( 'input[name="crrntl_time_selecting"]' ).change( function() {
+			if ( $( this ).is( ':checked' ) ) {
+				$( 'select[name="crrntl_time_from"]' ).hide();
+			} else {
+				$( 'select[name="crrntl_time_from"]' ).show();
+			}
+		} ).trigger( 'change' );
 	} );
 } )( jQuery );
