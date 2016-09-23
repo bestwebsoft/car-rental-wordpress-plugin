@@ -574,12 +574,12 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 						</tr>
 					</tbody>
 				</table>
-				<div class="submit crrntl-submit-bottom-button">
+				<div class="clear"></div>
+				<div class="submit">
 					<input type="submit" class="button-primary" value="<?php _e( 'Save Changes', 'car-rental' ); ?>" />
 					<input type="hidden" name="crrntl_save_orders_changes" value="1" />
-				</div>
-				<?php wp_nonce_field( plugin_basename( __FILE__ ), 'crrntl_nonce_name' ); ?>
-				<div class="clear"></div>
+					<?php wp_nonce_field( plugin_basename( __FILE__ ), 'crrntl_nonce_name' ); ?>
+				</div>				
 			</form>
 		</div>
 	<?php }

@@ -23,6 +23,7 @@
 	background: url(../images/jslider.png) no-repeat 0 -57px;
 	cursor: pointer;
 }
+
 .ui-slider .ui-slider-range {
 	position: absolute;
 	z-index: 1;
@@ -42,13 +43,16 @@
 	top: -4px;
 	margin-left: -0.6em;
 }
+
 .ui-slider-horizontal .ui-slider-range {
 	top: 0;
 	height: 100%;
 }
+
 .ui-slider-horizontal .ui-slider-range-min {
 	left: 0;
 }
+
 .ui-slider-horizontal .ui-slider-range-max {
 	right: 0;
 }
@@ -72,16 +76,19 @@
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 }
+
 .crrntl-slider-result {
 	position: absolute;
 	top: 40px;
 	margin: 0;
 	font-size: 13px;
 }
+
 .crrntl-price-result-from,
 .crrntl-pass-result-from {
 	left: 20px;
 }
+
 .crrntl-price-result-to,
 .crrntl-pass-result-to {
 	right: 20px;

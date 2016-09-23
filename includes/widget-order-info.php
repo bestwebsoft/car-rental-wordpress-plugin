@@ -87,21 +87,21 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 						if ( $date_to > $date_from ) {
 							$crrntl_dropoff = date_i18n( 'D, d M, Y ', $date_to ) . __( 'at', 'car-rental' ) . date_i18n( ' H:i', $date_to );
 							if ( ! empty( $date_from ) && ! empty( $date_to ) ) {
-								$diff_in_hrs = ceil( ( $date_to - $date_from ) / 3600 );
+								$diff_time = ( 'hour' == $crrntl_options['rent_per'] ) ? ceil( ( $date_to - $date_from ) / 3600 ) : ceil( ( $date_to - $date_from ) / 86400 );
 							}
 						}
 					}
 				}
 			}
-			$crrntl_locations = '<span class="crrntl-error-message">' . __( 'Please, choose location', 'car-rental' ) . '</span>';
+			
 			if ( ! empty( $_SESSION['crrntl_location'] ) ) {
-				$crrntl_pickup_loc = $wpdb->get_var( $wpdb->prepare( "SELECT `formatted_address` FROM {$wpdb->prefix}crrntl_locations WHERE `loc_id` = %d", $_SESSION['crrntl_location'] ) );
-				if ( ! empty( $_SESSION['crrntl_return_location'] ) ) {
+				$crrntl_locations = $wpdb->get_var( $wpdb->prepare( "SELECT `formatted_address` FROM {$wpdb->prefix}crrntl_locations WHERE `loc_id` = %d", $_SESSION['crrntl_location'] ) );
+				if ( ! empty( $_SESSION['crrntl_return_location'] ) && $_SESSION['crrntl_location'] != $_SESSION['crrntl_return_location'] ) {
 					$crrntl_dropoff_loc = $wpdb->get_var( $wpdb->prepare( "SELECT `formatted_address` FROM {$wpdb->prefix}crrntl_locations WHERE `loc_id` = %d", $_SESSION['crrntl_return_location'] ) );
-					$crrntl_locations = $crrntl_pickup_loc . ' -<br />' . $crrntl_dropoff_loc;
-				} else {
-					$crrntl_locations = $crrntl_pickup_loc . ' -<br />' . $crrntl_pickup_loc;
+					$crrntl_locations .= ' -<br />' . $crrntl_dropoff_loc;
 				}
+			} else {
+				$crrntl_locations = '<span class="crrntl-error-message">' . __( 'Please, choose location', 'car-rental' ) . '</span>';
 			}
 
 			echo $args['before_widget'] . $args['before_title']; ?>
@@ -184,8 +184,8 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 					</div>
 				<?php }
 				wp_reset_postdata();
-				if ( isset( $diff_in_hrs ) ) {
-					$crrntl_subtotal = $crrntl_total = ( isset( $car_price ) ? $car_price : 0 ) * $diff_in_hrs;
+				if ( isset( $diff_time ) ) {
+					$crrntl_subtotal = $crrntl_total = ( isset( $car_price ) ? $car_price : 0 ) * $diff_time;
 				} else {
 					$crrntl_subtotal = $crrntl_total = 0;
 				}
@@ -240,7 +240,10 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 								$selected_extra_total    = $selected_extra_total * $selected_extra_quantity;
 								$selected_extra_name     = $selected_extra->name . ' &times; ' . $selected_extra_quantity;
 							}
-							$crrntl_total = $crrntl_total + $selected_extra_total;
+							if ( isset( $diff_time ) ) {
+								$selected_extra_total = $selected_extra_total * $diff_time;
+								$crrntl_total = $crrntl_total + $selected_extra_total;
+							}							
 							if ( ! empty( $crrntl_currency_position ) ) {
 								if ( 'before' == $crrntl_currency_position ) {
 									$selected_extra_total_display = $crrntl_currency . '<span data-price="' . $selected_extra_total . '">' . number_format_i18n( $selected_extra_total, 2 ) . '</span>';
@@ -260,7 +263,7 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 					<?php } ?>
 				</div><!-- .widget-content .crrntl-widget-extras-info -->
 
-				<div class="crrntl-widget-footer-total clearfix">
+				<div class="crrntl-widget-footer-total clearfix" data-time-diff="<?php if ( isset( $diff_time ) ) echo $diff_time; ?>">
 					<?php if ( ! empty( $crrntl_currency_position ) ) {
 						if ( 'before' == $crrntl_currency_position ) {
 							$crrntl_total_display    = $crrntl_currency . '<span data-price="' . $crrntl_total . '">' . number_format_i18n( $crrntl_total, 2 ) . '</span>';

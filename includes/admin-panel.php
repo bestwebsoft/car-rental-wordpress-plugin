@@ -55,6 +55,8 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 			$crrntl_options['review_page_id']                  = $_POST['crrntl_review_page_id'];
 			$crrntl_options['time_selecting'] 					= ( isset( $_POST['crrntl_time_selecting'] ) ) ? 1 : 0;
 			$crrntl_options['time_from'] 						= $_POST['crrntl_time_from'];			
+			$crrntl_options['rent_per'] 						= $_POST['crrntl_rent_per'];
+			$crrntl_options['return_location_selecting'] 		= ( isset( $_POST['crrntl_return_location_selecting'] ) ) ? 1 : 0;
 			$crrntl_options['maps_key'] = ( ! empty( $_POST['crrntl_maps_key'] ) ) ? sanitize_text_field( $_POST['crrntl_maps_key'] ) : '';
 
 			if ( 1 == $crrntl_options['currency_custom_display'] && empty( $crrntl_options['custom_currency'] ) ) {
@@ -253,6 +255,21 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 								</td>
 							</tr>
 							<tr valign="top">
+								<th scope="row"><?php _e( 'Enable selecting return location', 'car-rental' ); ?></th>
+								<td>
+									<input type="checkbox" <?php if ( 1 == $crrntl_options['return_location_selecting'] ) echo 'checked="checked"'; ?> value="1" name="crrntl_return_location_selecting" />
+								</td>
+							</tr>
+							<tr valign="top">
+								<th scope="row"><?php _e( 'Rent', 'car-rental' ); ?></th>
+								<td>
+									<fieldset>
+										<label><input type="radio" name="crrntl_rent_per" value="hour" <?php checked( $crrntl_options['rent_per'], 'hour' ); ?> /> <?php _e( 'per hour', 'car-rental' ); ?></label><br/>
+										<label><input type="radio" name="crrntl_rent_per" value="day" <?php checked( $crrntl_options['rent_per'], 'day' ); ?> /> <?php _e( 'per day', 'car-rental' ); ?></label>
+									</fieldset>
+								</td>
+							</tr>
+							<tr valign="top">
 								<th scope="row">
 									<label for="crrntl_maps_key"><?php _e( 'Google Maps Key', 'car-rental' ); ?></label>
 								</th>
@@ -300,12 +317,12 @@ if ( ! function_exists( 'crrntl_settings_page' ) ) {
 								</td>
 							</tr>
 						</table>
-						<input type="hidden" name="crrntl_form_submit" value="submit" />
-						<div class="submit crrntl-submit-bottom-button">
-							<input type="submit" id="bws-submit-button" class="button-primary" value="<?php _e( 'Save Changes', 'car-rental' ); ?>" />
-						</div>
-						<?php wp_nonce_field( $plugin_basename, 'crrntl_nonce_name' ); ?>
 						<div class="clear"></div>
+						<div class="submit">
+							<input type="submit" id="bws-submit-button" class="button-primary" value="<?php _e( 'Save Changes', 'car-rental' ); ?>" />
+							<input type="hidden" name="crrntl_form_submit" value="submit" />
+							<?php wp_nonce_field( $plugin_basename, 'crrntl_nonce_name' ); ?>
+						</div>						
 					</form>
 					<?php bws_form_restore_default_settings( $plugin_basename );
 					$crrntl_bws_demo_data->bws_show_demo_button( __( 'If you install the demo-data, will be created demo-cars with images and details, demo-extras with images and details, manufacturers, vehicles types and car classes.', 'car-rental' ) );

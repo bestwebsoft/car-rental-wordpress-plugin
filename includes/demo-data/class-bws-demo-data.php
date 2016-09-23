@@ -773,18 +773,10 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 									position: relative;
 									top: -4px;
 								<?php } ?>
-							}
-							.bws_hide_demo_notice:hover {
 								cursor: pointer;
 							}
-						</style>
-					<?php }
-					if ( 4.2 <= $wp_version ) { ?>
-						<style type="text/css">
-							#bws_handle_notice_form {
-								position: absolute;
-								top: 2px;
-								right: 0;
+							.rtl #bws_handle_notice_form {
+								float: left;
 							}
 						</style>
 					<?php } ?>
@@ -794,7 +786,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 							<input type="hidden" name="bws_hide_demo_notice" value="hide" />
 							<?php wp_nonce_field( $this->bws_plugin_basename, 'bws_demo_nonce_name' ); ?>
 						</form>
-						<div style="margin-right: 20px;"><a href="<?php echo admin_url( 'admin.php?page=' . $this->bws_plugin_page . '#bws_handle_demo_data' ); ?>"><?php _e( 'Install demo data', 'car-rental' ); ?></a>&nbsp;<?php echo __( 'for an acquaintance with the possibilities of the', 'car-rental' ) . '&nbsp;' . $this->bws_plugin_name; ?>.</div>
+						<div style="margin: 0 20px;"><a href="<?php echo admin_url( 'admin.php?page=' . $this->bws_plugin_page . '#bws_handle_demo_data' ); ?>"><?php _e( 'Install demo data', 'car-rental' ); ?></a>&nbsp;<?php echo __( 'for an acquaintance with the possibilities of the', 'car-rental' ) . '&nbsp;' . $this->bws_plugin_name; ?>.</div>
 					</div>
 				<?php }
 			}

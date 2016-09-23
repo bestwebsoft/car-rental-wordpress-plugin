@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: cars, rental, renting, booking, retail, add cars, car rental plugin, renting cars, cars website, manufacturers, machine, vehicle
 Requires at least: 3.8
-Tested up to: 4.6
-Stable tag: 1.0.2
+Tested up to: 4.6.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,11 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Changelog ==
 
+= V1.0.3 - 23.09.2016 =
+* NEW : Rent option allowing to select time per hour/per day.
+* NEW : Ability to disable "Return at different location".
+* Bugfix : Price calculation for extras was fixed.
+
 = V1.0.2 - 11.08.2016 =
 * NEW : Ability to disable selecting pick-up&drop-off time.
 * Update : All functionality for WordPress 4.6 was updated.
@@ -121,6 +126,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW : Release date of Car Rental by BestWebSoft plugin.
 
 == Upgrade Notice ==
+
+= V1.0.3 =
+* Functionality expanded.
 
 = V1.0.2 =
 * Functionality expanded.

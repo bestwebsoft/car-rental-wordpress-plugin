@@ -41,8 +41,8 @@
 				if ( bookCarContent.find( '.crrntl-error-message' ).length == 0 ) {
 					if ( bookCarContent.find( '.checkbox' ).length > 0 ) {
 						bookCarContent.find( '.checkbox' ).before( errorMessage );
-					} else if ( bookCarContent.find( '#crrntl-location-checkbox' ).length > 0 ) {
-						bookCarContent.find( '#crrntl-location-checkbox' ).before( errorMessage );
+					} else if ( bookCarContent.find( '#crrntl-pickup-location' ).length > 0 ) {
+						bookCarContent.find( '#crrntl-pickup-location' ).after( errorMessage );
 					}
 				}
 				e.preventDefault();
@@ -148,9 +148,9 @@
 		} );
 		$( 'a.crrntl-reset-price' ).on( 'click', function( e ) {
 			var element = $( this ).closest( '#crrntl-filter-form' ),
-					priceRange = element.find( '.crrntl-price-range' ),
-					min = priceRange.slider( "option", "min" ),
-					max = priceRange.slider( "option", "max" );
+				priceRange = element.find( '.crrntl-price-range' ),
+				min = priceRange.slider( "option", "min" ),
+				max = priceRange.slider( "option", "max" );
 			priceRange.slider( "option", "values", [min, max] );
 			element.find( '#crrntl-price-min' ).val( min );
 			element.find( '#crrntl-price-max' ).val( max );
@@ -160,9 +160,9 @@
 		} );
 		$( 'a.crrntl-reset-pass' ).on( 'click', function( e ) {
 			var element = $( this ).closest( '#crrntl-filter-form' ),
-					passRange = element.find( '.crrntl-pass-range' ),
-					min = passRange.slider( "option", "min" ),
-					max = passRange.slider( "option", "max" );
+				passRange = element.find( '.crrntl-pass-range' ),
+				min = passRange.slider( "option", "min" ),
+				max = passRange.slider( "option", "max" );
 			passRange.slider( "option", "values", [min, max] );
 			element.find( '#crrntl-pass-min' ).val( min );
 			element.find( '#crrntl-pass-max' ).val( max );
@@ -173,23 +173,27 @@
 
 		/* Recalculate totals when extras was changed */
 		var curData       = $( '.crrntl-currency-data' ),
-				curPos        = curData.attr( 'data-cur-pos' ),
-				currency      = curData.attr( 'data-cur' ),
-				dec_point     = curData.attr( 'data-dec-point' ),
-				thousands_sep = curData.attr( 'data-thous-sep' );
+			curPos        = curData.attr( 'data-cur-pos' ),
+			currency      = curData.attr( 'data-cur' ),
+			dec_point     = curData.attr( 'data-dec-point' ),
+			thousands_sep = curData.attr( 'data-thous-sep' );
+
 		$( '.crrntl-checkbox-block' ).each( function() {
 			$( this ).on( 'click', '.crrntl-extra-checkbox, span.checkbox', function( e ) {
 				var element = $( e.target ).closest( '.crrntl-checkbox-block' ).find( '.crrntl-extra-checkbox' ),
-						extraId = element.val();
+					extraId = element.val();
 
 				if ( $( element ).attr( 'checked' ) ) {
 					var extraName  = $( element ).closest( '.crrntl-extra' ).find( '.crrntl-product-title' ).find( 'label' ).text(),
-							extraPrice = parseFloat( $( element ).closest( '.crrntl-extra' ).find( '.crrntl-extra-price' ).attr( 'data-price' ) ),
-							extraString, extraQuantity, extraPriceFormatted;
+						extraPrice = parseFloat( $( element ).closest( '.crrntl-extra' ).find( '.crrntl-extra-price' ).attr( 'data-price' ) ),
+						time_diff = parseFloat( $( '.crrntl-widget-footer-total' ).attr( 'data-time-diff' ) ),
+						extraString, extraQuantity, extraPriceFormatted;
+
+					extraPrice = extraPrice * time_diff;
 
 					if ( $( element ).closest( '.crrntl-extra' ).find( '.crrntl-product-quantity' ).length > 0 ) {
 						extraQuantity       = parseInt( $( element ).closest( '.crrntl-extra' ).find( '.crrntl-product-quantity' ).val() );
-						extraPrice          = ( extraPrice * extraQuantity);
+						extraPrice          = extraPrice * extraQuantity;
 						extraPriceFormatted = number_format( extraPrice, 2, dec_point, thousands_sep );
 						if ( 'before' == curPos ) {
 							extraString = '<div class="crrntl-selected-extra-' + extraId + '">' + extraName + ' &times; ' + extraQuantity + ' <p class="crrntl-price">' + currency + '<span data-price="' + extraPrice + '">' + extraPriceFormatted + '</span></p></div>';
@@ -211,81 +215,79 @@
 								extraString = '<div class="crrntl-selected-extra-' + extraId + '">' + extraName + ' <p class="crrntl-price"><span data-price="' + extraPrice + '">' + extraPriceFormatted + '</span></p></div>';
 							}
 					}
-
 					$( '.widget_car-rental-order-info' ).find( '.crrntl-widget-extras-info' ).append( extraString );
 				} else {
 					$( '.widget_car-rental-order-info' ).find( '.crrntl-selected-extra-' + extraId ).remove();
 				}
 
 				var result = parseFloat( $( '.crrntl-subtotal p.crrntl-price span' ).attr( 'data-price' ) ),
-						resultFormatted;
+					resultFormatted;
+
 				$( '.crrntl-widget-extras-info' ).find( 'p.crrntl-price span' ).each( function() {
 					result += parseFloat( $( this ).attr( 'data-price' ) );
 				} );
+
 				resultFormatted = number_format( result, 2, dec_point, thousands_sep );
 				$( '.crrntl-widget-footer-total p.crrntl-price span' ).text( resultFormatted ).attr( 'data-price', result );
 			} );
 		} );
 
 		/* Calculate total price for one extra if quantity is available */
-		$( '.crrntl-product-quantity' ).each( function() {
-			$( this ).on( 'change', function() {
-				if ( ! $( this ).closest( '.crrntl-extra' ).find( 'input:checkbox' ).attr( 'checked' ) ) {
-					$( this ).closest( '.crrntl-extra' ).find( 'input:checkbox' ).trigger( 'click' );
-				}
+		$( '.crrntl-product-quantity' ).on( 'change', function() {
 
-				var prodQuantity       = parseInt( $( this ).val() ),
-						prodPrice = parseFloat( $( this ).closest( '.crrntl-extra' ).find( '.crrntl-extra-price' ).attr( 'data-price' ) ),
-						extraId            = $( this ).closest( '.crrntl-extra' ).find( 'input:checkbox' ).val(),
-						extraName          = $( this ).closest( '.crrntl-extra' ).find( '.crrntl-product-title' ).find( 'label' ).text(),
-						prodPriceFormatted, extraString, result, resultFormatted;
+			if ( ! $( this ).closest( '.crrntl-extra' ).find( 'input:checkbox' ).attr( 'checked' ) ) {
+				$( this ).closest( '.crrntl-extra' ).find( 'input:checkbox' ).trigger( 'click' );
+			}
 
-				prodPrice = parseFloat( prodPrice * prodQuantity );
-				prodPriceFormatted = number_format( prodPrice, 2, dec_point, thousands_sep );
-				$( this ).closest( '.crrntl-extra' ).find( 'p.crrntl-item-price span' ).first().text( prodQuantity );
-				$( this ).closest( '.crrntl-extra' ).find( '.crrntl-extra-total' ).text( prodPriceFormatted ).attr( 'data-price', prodPrice );
+			var prodQuantity 	= parseInt( $( this ).val() ),
+				prodPrice 		= parseFloat( $( this ).closest( '.crrntl-extra' ).find( '.crrntl-extra-price' ).attr( 'data-price' ) ),
+				extraId         = $( this ).closest( '.crrntl-extra' ).find( 'input:checkbox' ).val(),
+				extraName       = $( this ).closest( '.crrntl-extra' ).find( '.crrntl-product-title' ).find( 'label' ).text(),
+				time_diff 		= parseFloat( $( '.crrntl-widget-footer-total' ).attr( 'data-time-diff' ) ),
+				prodPriceFormatted, extraString, result, resultFormatted;
 
-				if ( 'before' == curPos ) {
-					extraString = extraName + ' &times; ' + prodQuantity + ' <p class="crrntl-price">' + currency + '<span data-price="' + prodPrice + '">' + prodPriceFormatted + '</span></p>';
-				} else if ( 'after' == curPos ) {
-					extraString = extraName + ' &times; ' + prodQuantity + ' <p class="crrntl-price"><span data-price="' + prodPrice + '">' + prodPriceFormatted + '</span> ' + currency + '</p>';
-				} else {
-					extraString = extraName + ' &times; ' + prodQuantity + ' <p class="crrntl-price"><span data-price="' + prodPrice + '">' + prodPriceFormatted + '</span></p>';
-				}
-				$( '.crrntl-widget-extras-info' ).find( '.crrntl-selected-extra-' + extraId ).html( extraString );
+			prodPrice = parseFloat( prodPrice * prodQuantity ) * time_diff;
+			
+			prodPriceFormatted = number_format( prodPrice, 2, dec_point, thousands_sep );
+			$( this ).closest( '.crrntl-extra' ).find( 'p.crrntl-item-price span' ).first().text( prodQuantity );
+			$( this ).closest( '.crrntl-extra' ).find( '.crrntl-extra-total' ).text( prodPriceFormatted ).attr( 'data-price', prodPrice );
 
-				result = parseFloat( $( '.crrntl-subtotal p.crrntl-price span' ).attr( 'data-price' ) );
-				$( '.crrntl-widget-extras-info' ).find( 'p.crrntl-price span' ).each( function() {
-					result += parseFloat( $( this ).attr( 'data-price' ) );
-				} );
-				resultFormatted = number_format( result, 2, dec_point, thousands_sep );
-				$( '.crrntl-widget-footer-total p.crrntl-price span' ).text( resultFormatted ).attr( 'data-price', result );
+			if ( 'before' == curPos ) {
+				extraString = extraName + ' &times; ' + prodQuantity + ' <p class="crrntl-price">' + currency + '<span data-price="' + prodPrice + '">' + prodPriceFormatted + '</span></p>';
+			} else if ( 'after' == curPos ) {
+				extraString = extraName + ' &times; ' + prodQuantity + ' <p class="crrntl-price"><span data-price="' + prodPrice + '">' + prodPriceFormatted + '</span> ' + currency + '</p>';
+			} else {
+				extraString = extraName + ' &times; ' + prodQuantity + ' <p class="crrntl-price"><span data-price="' + prodPrice + '">' + prodPriceFormatted + '</span></p>';
+			}
+			$( '.crrntl-widget-extras-info' ).find( '.crrntl-selected-extra-' + extraId ).html( extraString );
+
+			result = parseFloat( $( '.crrntl-subtotal p.crrntl-price span' ).attr( 'data-price' ) );
+			$( '.crrntl-widget-extras-info' ).find( 'p.crrntl-price span' ).each( function() {
+				result += parseFloat( $( this ).attr( 'data-price' ) );
 			} );
+			resultFormatted = number_format( result, 2, dec_point, thousands_sep );
+			$( '.crrntl-widget-footer-total p.crrntl-price span' ).text( resultFormatted ).attr( 'data-price', result );
 		} );
 
 		function number_format( number, decimals, dec_point, thousands_sep ) {
 			number         = (number + '').replace( /[^0-9+\-Ee.]/g, '' );
 			var n          = !isFinite( +number ) ? 0 : +number,
-					prec       = !isFinite( +decimals ) ? 0 : Math.abs( decimals ),
-					sep        = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-					dec        = (typeof dec_point === 'undefined') ? '.' : dec_point,
-					s          = '',
-					toFixedFix = function( n, prec ) {
-						var k = Math.pow( 10, prec );
-						return '' + (Math.round( n * k ) / k)
-										.toFixed( prec );
-					};
+				prec       = !isFinite( +decimals ) ? 0 : Math.abs( decimals ),
+				sep        = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+				dec        = (typeof dec_point === 'undefined') ? '.' : dec_point,
+				s          = '',
+				toFixedFix = function( n, prec ) {
+					var k = Math.pow( 10, prec );
+					return '' + (Math.round( n * k ) / k).toFixed( prec );
+				};
 			/* Fix for IE parseFloat(0.55).toFixed(0) = 0; */
-			s = (prec ? toFixedFix( n, prec ) : '' + Math.round( n ))
-					.split( '.' );
+			s = (prec ? toFixedFix( n, prec ) : '' + Math.round( n )).split( '.' );
 			if ( s[0].length > 3 ) {
 				s[0] = s[0].replace( /\B(?=(?:\d{3})+(?!\d))/g, sep );
 			}
-			if ( (s[1] || '')
-							.length < prec ) {
+			if ( (s[1] || '').length < prec ) {
 				s[1] = s[1] || '';
-				s[1] += new Array( prec - s[1].length + 1 )
-						.join( '0' );
+				s[1] += new Array( prec - s[1].length + 1 ).join( '0' );
 			}
 			return s.join( dec );
 		}
@@ -294,7 +296,6 @@
 		var sliderContainer = $( '#crrntl-slider-container' );
 		if ( sliderContainer.length ) {
 			var _SlideshowTransitions = [
-				//Fade
 				{ $Duration: 1200, $Opacity: 2 }
 			];
 
@@ -344,7 +345,6 @@
 					}
 				} )
 			}, 500 );
-
 		}
 	} );
 } )( jQuery );

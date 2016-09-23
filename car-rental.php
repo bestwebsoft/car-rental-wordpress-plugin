@@ -6,7 +6,7 @@ Description: Create your personal car rental/booking and reservation website.
 Author: BestWebSoft
 Text Domain: car-rental
 Domain Path: /languages
-Version: 1.0.2
+Version: 1.0.3
 Author URI: http://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -206,7 +206,9 @@ if ( ! function_exists( 'crrntl_settings' ) ) {
 			'cflag'								=> '0A',
 			'eflag'								=> '03',
 			'time_selecting'					=> 1,
-			'time_from'							=> '12:00'
+			'time_from'							=> '12:00',
+			'rent_per'							=> 'hour',
+			'return_location_selecting'			=> 1
 		);
 
 		/* Install the option defaults */
@@ -850,7 +852,10 @@ if ( ! function_exists( 'crrntl_car_info_metabox' ) ) {
 				</tr>
 				<tr>
 					<th>
-						<label for="crrntl-price"><?php _e( 'Price per hour', 'car-rental' ); ?> (<?php echo $crrntl_currency; ?>):</label>
+						<label for="crrntl-price">
+							<?php if ( 'hour' == $crrntl_options['rent_per'] ) _e( 'Price per hour', 'car-rental' ); else _e( 'Price per day', 'car-rental' ); ?>
+							 (<?php echo $crrntl_currency; ?>):
+						</label>
 					</th>
 					<td>
 						<input type="text" pattern="^\d{1,9}(\.\d{2})?$" id="crrntl-price" name="crrntl_price" size="10" value="<?php echo ( ! empty( $car_price ) ) ? $car_price : ''; ?>" />
@@ -977,7 +982,7 @@ if ( ! function_exists( 'crrntl_extra_add_form_fields' ) ) {
 			<p class="description"><?php _e( 'More about this extra', 'car-rental' ); ?></p>
 		</div>
 		<div class="form-field">
-			<label for="crrntl-extra-rpice"><?php _e( 'Price per hour', 'car-rental' ); ?> (<?php echo $crrntl_currency; ?>)</label>
+			<label for="crrntl-extra-rpice"><?php if ( 'hour' == $crrntl_options['rent_per'] ) _e( 'Price per hour', 'car-rental' ); else _e( 'Price per day', 'car-rental' ); ?> (<?php echo $crrntl_currency; ?>)</label>
 			<input type="text" pattern="^\d{1,9}(\.\d{2})?$" name="crrntl_extra_price" id="crrntl-extra-rpice" />
 			<p class="description"><?php _e( 'The price for one unit. For example', 'car-rental' ); ?>: 258.00 <span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999999999.99)</span></p>
 		</div>
@@ -1028,7 +1033,7 @@ if ( ! function_exists( 'crrntl_extra_edit_form_fields' ) ) {
 		</tr>
 		<tr class="form-field">
 			<th valign="top" scope="row">
-				<label for="crrntl-extra-rpice"><?php _e( 'Price per hour', 'car-rental' ); ?> (<?php echo $crrntl_currency; ?>)</label>
+				<label for="crrntl-extra-rpice"><?php if ( 'hour' == $crrntl_options['rent_per'] ) _e( 'Price per hour', 'car-rental' ); else _e( 'Price per day', 'car-rental' ); ?> (<?php echo $crrntl_currency; ?>)</label>
 			</th>
 			<td>
 				<input type="text" pattern="^\d{1,9}(\.\d{2})?$" name="crrntl_extra_price" id="crrntl-extra-rpice" value="<?php echo ( ! empty( $extra_metadata['extra_price'][0] ) ) ? $extra_metadata['extra_price'][0] : ''; ?>" />
@@ -1399,7 +1404,7 @@ if ( ! function_exists( 'crrntl_save_reservation' ) ) {
 
 			$message = '<p>' . $crrntl_order_info['success'] . '</p>
 			<p><strong>' . __( 'Order Info', 'car-rental' ) . ':</strong><br />'
-				. __( 'Car', 'car-rental' ) . get_the_title( $_SESSION['crrntl_selected_product_id'] ) . '<br />'
+				. __( 'Car', 'car-rental' ) . ': ' . get_the_title( $_SESSION['crrntl_selected_product_id'] ) . '<br />'
 				. $extras_to_mail_string
 				. __( 'Pick-Up Date', 'car-rental' ) . ': ' . $_SESSION['crrntl_date_from'] . ' ' . $_SESSION['crrntl_time_from'] . '<br />'
 				. __( 'Drop-Off Date', 'car-rental' ) . ': ' . $_SESSION['crrntl_date_to'] . ' ' . $_SESSION['crrntl_time_to'] . '<br />'

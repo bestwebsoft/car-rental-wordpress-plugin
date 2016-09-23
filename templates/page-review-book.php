@@ -10,15 +10,18 @@ get_header(); ?>
 	<div class="main-content">
 		<div class="content-area">
 			<div class="site-content">
-				<?php if ( ! function_exists( 'is_plugin_active' ) ) {
+				<?php if ( ! function_exists( 'is_plugin_active' ) )
 					require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-				}
-				/*if the plugin Car Rental Pro active */
+
+				/*if the plugin Car Rental active */
 				if ( is_plugin_active( 'car-rental/car-rental.php' ) ) {
 					global $crrntl_options, $wpdb, $crrntl_currency, $crrntl_selected_prod_id;
-					if ( empty( $crrntl_options ) ) {
+
+					$crrntl_error = $message = $confirm_invalid = '';					
+
+					if ( empty( $crrntl_options ) )
 						$crrntl_options = get_option( 'crrntl_options' );
-					}
+
 					if ( empty( $crrntl_options['custom_currency'] ) || 0 == $crrntl_options['currency_custom_display'] ) {
 						$crrntl_currency = $wpdb->get_var( "SELECT currency_unicode FROM {$wpdb->prefix}crrntl_currency WHERE currency_id = {$crrntl_options['currency_unicode']}" );
 						if ( empty( $crrntl_currency ) ) {
@@ -27,6 +30,7 @@ get_header(); ?>
 					} else {
 						$crrntl_currency = $crrntl_options['custom_currency'];
 					}
+
 					$crrntl_currency_position = $crrntl_options['currency_position'];
 					$crrntl_plugin_directory  = plugins_url( 'car-rental' );
 					if ( ! empty( $_POST['crrntl_selected_product'] ) || ! empty( $_SESSION['crrntl_selected_product_id'] ) ) {
@@ -36,12 +40,12 @@ get_header(); ?>
 							$crrntl_selected_prod_id = $_SESSION['crrntl_selected_product_id'];
 						} elseif ( $_SESSION['crrntl_selected_product_id'] != $_POST['crrntl_selected_product'] ) {
 							$crrntl_selected_prod_id = $_SESSION['crrntl_selected_product_id'] = $_POST['crrntl_selected_product'];
-							unset( $_SESSION['crrntl_opted_extras'] );
-							unset( $_SESSION['crrntl_extra_quantity'] );
+							unset( $_SESSION['crrntl_opted_extras'], $_SESSION['crrntl_extra_quantity'] );
 						} else {
 							$crrntl_selected_prod_id = $_SESSION['crrntl_selected_product_id'];
 						}
 					}
+
 					if ( isset( $_POST['crrntl_form_extras_submit'] ) ) {
 						if ( isset( $_POST['crrntl_opted_extras'] ) ) {
 							$_SESSION['crrntl_opted_extras'] = $_POST['crrntl_opted_extras'];
@@ -49,8 +53,7 @@ get_header(); ?>
 								$_SESSION['crrntl_extra_quantity'] = $_POST['crrntl_extra_quantity'];
 							}
 						} else {
-							unset( $_SESSION['crrntl_opted_extras'] );
-							unset( $_SESSION['crrntl_extra_quantity'] );
+							unset( $_SESSION['crrntl_opted_extras'], $_SESSION['crrntl_extra_quantity'] );
 						}
 					}
 					$extras = get_the_terms( $crrntl_selected_prod_id, 'extra' );
@@ -59,20 +62,19 @@ get_header(); ?>
 
 					if ( $crrntl_logged_in ) {
 						$crrntl_current_user  = wp_get_current_user();
-						$userdata               = array();
-						$userdata['first_name'] = ( isset( $_POST['crrntl_first_name'] ) ) ? sanitize_text_field( $_POST['crrntl_first_name'] ) : '';
-						$userdata['last_name']  = ( isset( $_POST['crrntl_last_name'] ) ) ? sanitize_text_field( $_POST['crrntl_last_name'] ) : '';
-						$userdata['user_age']   = ( isset( $_POST['crrntl_user_age'] ) ) ? $_POST['crrntl_user_age'] : '';
-						$userdata['user_phone'] = ( isset( $_POST['crrntl_user_phone'] ) ) ? sanitize_text_field( $_POST['crrntl_user_phone'] ) : '';
 
-						$_SESSION['crrntl_first_name'] = ( ! empty( $userdata['first_name'] ) ) ? $userdata['first_name'] : $crrntl_current_user->user_firstname;
-						$_SESSION['crrntl_last_name']  = ( ! empty( $userdata['last_name'] ) ) ? $userdata['last_name'] : $crrntl_current_user->user_lastname;
-						$_SESSION['crrntl_user_age']   = ( ! empty( $userdata['user_age'] ) ) ? $userdata['user_age'] : $crrntl_current_user->user_age;
-						$_SESSION['crrntl_user_phone'] = ( ! empty( $userdata['user_phone'] ) ) ? $userdata['user_phone'] : $crrntl_current_user->user_phone;
 						$_SESSION['crrntl_user_id']    = $crrntl_current_user->ID;
+						if ( ! isset( $_POST['crrntl_first_name'] ) && isset( $crrntl_current_user->user_firstname ) )
+							$_SESSION['crrntl_first_name'] = $crrntl_current_user->user_firstname;
+						if ( ! isset( $_POST['crrntl_last_name'] ) && isset( $crrntl_current_user->user_lastname ) )
+							$_SESSION['crrntl_last_name']  = $crrntl_current_user->user_lastname;
+						if ( ! isset( $_POST['crrntl_user_age'] ) && isset( $crrntl_current_user->user_age ) )
+							$_SESSION['crrntl_user_age']   = $crrntl_current_user->user_age;
+						if ( ! isset( $_POST['crrntl_user_phone'] ) && isset( $crrntl_current_user->user_phone ) )
+							$_SESSION['crrntl_user_phone'] = $crrntl_current_user->user_phone;						
 					}
-					if ( isset( $_POST['crrntl_form_save_order'] ) && wp_verify_nonce( $_POST['crrntl_nonce_name'], plugin_basename( __FILE__ ) ) ) {
-						$crrntl_error = $message = $confirm_invalid = '';
+
+					if ( isset( $_POST['crrntl_form_save_order'] ) && wp_verify_nonce( $_POST['crrntl_nonce_name'], plugin_basename( __FILE__ ) ) ) {						
 
 						if ( empty( $_SESSION['crrntl_selected_product_id'] ) ) {
 							$crrntl_error .= __( 'Please, choose a Car', 'car-rental' ) . '<br />';
@@ -116,6 +118,13 @@ get_header(); ?>
 						if ( empty( $_SESSION['crrntl_total'] ) ) {
 							$crrntl_error .= __( 'Error in total calculate', 'car-rental' ) . '<br />';
 						}
+
+						$userdata = array();
+						$userdata['first_name'] = $_SESSION['crrntl_first_name'] = ( isset( $_POST['crrntl_first_name'] ) ) ? sanitize_text_field( $_POST['crrntl_first_name'] ) : '';
+						$userdata['last_name'] = $_SESSION['crrntl_last_name'] = ( isset( $_POST['crrntl_last_name'] ) ) ? sanitize_text_field( $_POST['crrntl_last_name'] ) : '';
+						$userdata['user_age']   = $_SESSION['crrntl_user_age'] = ( isset( $_POST['crrntl_user_age'] ) ) ? $_POST['crrntl_user_age'] : '';
+						$userdata['user_phone'] = $_SESSION['crrntl_user_phone'] = ( isset( $_POST['crrntl_user_phone'] ) ) ? sanitize_text_field( $_POST['crrntl_user_phone'] ) : '';
+						
 						if ( ! $crrntl_logged_in ) {
 							if ( ! is_email( $_POST['crrntl_user_email'] ) ) {
 								$crrntl_error .= __( 'Please, enter correct e-mail address.', 'car-rental' ) . '<br />';
@@ -123,27 +132,18 @@ get_header(); ?>
 								$crrntl_error .= __( 'Please, confirm your e-mail address.', 'car-rental' ) . '<br />';
 								$confirm_invalid = ' class="crrntl-confirm-invalid"';
 							}
+
 							if ( email_exists( $_POST['crrntl_user_email'] ) ) {
-								$user                            = get_user_by( 'email', $_POST['crrntl_user_email'] );
-								$userdata                        = array();
-								$_SESSION['crrntl_first_name'] = $userdata['first_name'] = $user->user_firstname;
-								$_SESSION['crrntl_last_name']  = $userdata['last_name'] = $user->user_lastname;
+								$user                          = get_user_by( 'email', $_POST['crrntl_user_email'] );
 								$_SESSION['crrntl_user_email'] = $user->user_email;
-								$_SESSION['crrntl_user_age']   = $userdata['user_age'] = $user->user_age;
-								$_SESSION['crrntl_user_phone'] = $userdata['user_phone'] = $user->user_phone;
 								$_SESSION['crrntl_user_id']    = $user->ID;
 							} else {
-								$userdata                        = array();
-								$_SESSION['crrntl_first_name'] = $userdata['first_name'] = ( isset( $_POST['crrntl_first_name'] ) ) ? sanitize_text_field( $_POST['crrntl_first_name'] ) : '';
-								$_SESSION['crrntl_last_name']  = $userdata['last_name'] = ( isset( $_POST['crrntl_last_name'] ) ) ? sanitize_text_field( $_POST['crrntl_last_name'] ) : '';
-								$_SESSION['crrntl_user_age']   = $userdata['user_age'] = ( isset( $_POST['crrntl_user_age'] ) ) ? $_POST['crrntl_user_age'] : '';
-								$_SESSION['crrntl_user_phone'] = $userdata['user_phone'] = ( isset( $_POST['crrntl_user_phone'] ) ) ? sanitize_text_field( $_POST['crrntl_user_phone'] ) : '';
 								$_SESSION['crrntl_user_email'] = ( isset( $_POST['crrntl_user_email'] ) ) ? sanitize_text_field( $_POST['crrntl_user_email'] ) : '';
 
 								if ( empty( $crrntl_error ) ) {
 									if ( has_filter( 'sbscrbr_checkbox_check' ) && ! empty( $_POST['sbscrbr_checkbox_subscribe'] ) ) {
 										$sbscrbr_check = apply_filters( 'sbscrbr_checkbox_check', array(
-											'email' => isset( $_SESSION['crrntl_user_email'] ) ? $_SESSION['crrntl_user_email'] : '',
+											'email' => $_SESSION['crrntl_user_email'],
 										) );
 										if ( isset( $sbscrbr_check['response'] ) ) {
 											echo $sbscrbr_check['response']['message'];
@@ -157,6 +157,7 @@ get_header(); ?>
 								}
 							}
 						}
+
 						if ( ! empty( $userdata ) && ! empty( $_SESSION['crrntl_user_id'] ) ) {
 							foreach ( $userdata as $userdata_key => $userdata_value ) {
 								update_user_meta( $_SESSION['crrntl_user_id'], $userdata_key, $userdata_value );
@@ -164,6 +165,7 @@ get_header(); ?>
 						} elseif ( empty( $_SESSION['crrntl_user_id'] ) && empty( $crrntl_error ) ) {
 							$crrntl_error .= __( 'Error in user create', 'car-rental' ) . '<br />';
 						}
+
 						if ( empty( $crrntl_error ) && empty( $_SESSION['crrntl_save_order'] ) ) {
 							$crrntl_order_info = crrntl_save_reservation();
 							if ( ! empty( $crrntl_order_info['error'] ) ) {
@@ -173,7 +175,6 @@ get_header(); ?>
 							}
 						}
 					} ?>
-
 					<div id="crrntl-progress-bar">
 						<div id="crrntl-progress-bar-steps">
 							<a href="<?php echo home_url(); ?>">
@@ -213,12 +214,11 @@ get_header(); ?>
 										<div class="crrntl-result-title">
 											<div>
 												<img src="<?php echo $crrntl_plugin_directory . '/images/list.png'; ?>" alt="" />
-												<?php echo __( 'Complete reservation form', 'car-rental' ); ?>
+												<?php _e( 'Complete reservation form', 'car-rental' ); ?>
 											</div>
 											<div class="clear"></div>
 										</div><!-- .crrntl-result-title -->
 									</header>
-
 									<?php while ( have_posts() ) : the_post(); ?>
 										<article class="crrntl-review clearfix">
 											<?php if ( ! empty( $post->post_content ) ) { ?>
@@ -232,8 +232,7 @@ get_header(); ?>
 												$_SESSION['crrntl_save_order'] = true;
 											} else { ?>
 	
-												<h4><?php _e( 'Personal Information', 'car-rental' ); ?></h4>
-	
+												<h4><?php _e( 'Personal Information', 'car-rental' ); ?></h4>	
 												<div>
 													<?php if ( ! empty( $crrntl_error ) ) {
 														echo '<div class="crrntl-error-message">' . $crrntl_error . '</div>';
