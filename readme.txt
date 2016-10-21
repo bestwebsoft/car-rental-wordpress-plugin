@@ -178,7 +178,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 
 == Changelog ==
 
-= V1.0.4 - 21.10.2016 =
+= V1.0.4 - 21.10.2016 = 
 * NEW : Responsive design has been implemented.
 * NEW : Slider script has been replaced with "Owl Carousel".
 
