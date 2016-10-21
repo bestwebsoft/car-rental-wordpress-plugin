@@ -35,8 +35,9 @@
 		/* Display error massage if required data is not chosen */
 		$( '.car-rental' ).on( 'click', '.crrntl-form-update, .crrntl-form-continue, .crrntl-filter-form-update, .crrntl-select-car', function( e ) {
 			var locValue     = $( '#crrntl-pickup-location' ).val(),
-					bookCarContent = $( '#crrntl-book-car-content' ),
-					errorMessage = '<div class="crrntl-error-message clearfix" style="padding-bottom: 10px;">' + crrntlScriptVars['crrntl_choose_location'] + '</div>';
+				bookCarContent = $( '#crrntl-book-car-content' ),
+				errorMessage = '<div class="crrntl-error-message clearfix" style="padding-bottom: 10px;">' + crrntlScriptVars['crrntl_choose_location'] + '</div>';
+
 			if ( locValue.length == 0 ) {
 				if ( bookCarContent.find( '.crrntl-error-message' ).length == 0 ) {
 					if ( bookCarContent.find( '.checkbox' ).length > 0 ) {
@@ -247,7 +248,7 @@
 				prodPriceFormatted, extraString, result, resultFormatted;
 
 			prodPrice = parseFloat( prodPrice * prodQuantity ) * time_diff;
-			
+
 			prodPriceFormatted = number_format( prodPrice, 2, dec_point, thousands_sep );
 			$( this ).closest( '.crrntl-extra' ).find( 'p.crrntl-item-price span' ).first().text( prodQuantity );
 			$( this ).closest( '.crrntl-extra' ).find( '.crrntl-extra-total' ).text( prodPriceFormatted ).attr( 'data-price', prodPrice );
@@ -291,60 +292,14 @@
 			}
 			return s.join( dec );
 		}
-
-		/* Slider */
-		var sliderContainer = $( '#crrntl-slider-container' );
-		if ( sliderContainer.length ) {
-			var _SlideshowTransitions = [
-				{ $Duration: 1200, $Opacity: 2 }
-			];
-
-			var sliderWidth = sliderContainer.width();
-			sliderContainer.css( 'width', sliderWidth + 'px' );
-			$( '.crrntl-one-slide' ).css( 'width', sliderWidth + 'px' );
-
-			var options = {
-				$FillMode:               2,
-				$AutoPlay:               true, //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
-				$SlideDuration:          500, //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
-				$SlideshowOptions:       {
-					$Class:            $JssorSlideshowRunner$,
-					$Transitions:      _SlideshowTransitions,
-					$TransitionsOrder: 1,
-					$ShowLink:         true
-				},
-				$BulletNavigatorOptions: { //[Optional] Options to specify and enable navigator or not
-					$Class:        $JssorBulletNavigator$, //[Required] Class to create navigator instance
-					$ChanceToShow: 2, //[Required] 0 Never, 1 Mouse Over, 2 Always
-					$AutoCenter:   0, //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-					$Steps:        1, //[Optional] Steps to go for each navigation request, default value is 1
-					$Lanes:        1, //[Optional] Specify lanes to arrange items, default value is 1
-					$SpacingX:     10, //[Optional] Horizontal space between each item in pixel, default value is 0
-					$SpacingY:     10, //[Optional] Vertical space between each item in pixel, default value is 0
-					$Orientation:  1 //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
-				}
-			};
-
-			var jssor_slider2 = new $JssorSlider$( 'crrntl-slider-container', options );
-
-			setTimeout( function() {
-				sliderContainer.find( '.crrntl-one-slide' ).each( function() {
-					var slideTitle           = $( this ).find( '.crrntl-slide-title h3' ),
-							slideTitleHeight     = parseInt( $( this ).find( '.crrntl-slide-title' ).height(), 10 ),
-							slideTitleLineHeight = parseInt( slideTitle.css( 'line-height' ), 10 ),
-							slideDesc            = $( this ).find( '.crrntl-slide-description .crrntl-entry-content' ),
-							slideDescHeight      = parseInt( $( this ).find( '.crrntl-slide-description' ).height(), 10 ),
-							slideDescLineHeight  = parseInt( slideDesc.css( 'line-height' ), 10 );
-					if ( ( slideTitleHeight + slideDescHeight ) > 149 ) {
-						if ( slideTitleHeight <= 46 ) {
-							slideDesc.css( 'height', slideDescLineHeight * 4 );
-						} else {
-							slideTitle.css( 'height', slideTitleLineHeight * 2 );
-							slideDesc.css( 'height', slideDescLineHeight * 2 );
-						}
-					}
-				} )
-			}, 500 );
+		if ( $.fn.owlCarousel ) {
+			$('.crrntl-slider').owlCarousel({
+				animateOut: 'fadeOut',
+				items:1,
+				smartSpeed:250,
+				autoplay: true,
+				loop: true
+			});
 		}
 	} );
 } )( jQuery );

@@ -203,10 +203,6 @@ get_header(); ?>
 						<div class="clear"></div>
 					</div><!-- #crrntl-progress-bar -->
 					<div class="crrntl-without-form-search">
-						<aside class="sidebars-area crrntl-sidebar-info">
-							<?php the_widget( 'Car_Rental_Order_Info_Widget' );
-							dynamic_sidebar( 'sidebar-review' ); ?>
-						</aside><!-- .sidebars-area .crrntl-sidebar-info -->
 						<div class="crrntl-content-area">
 							<form id="crrntl-user-info" method="post" action="">
 								<main id="content" class="crrntl-site-content">
@@ -307,6 +303,10 @@ get_header(); ?>
 							</form>
 							<div class="clear"></div>
 						</div><!-- .crrntl-content-area -->
+						<aside class="sidebars-area crrntl-sidebar-info">
+							<?php the_widget( 'Car_Rental_Order_Info_Widget' );
+							dynamic_sidebar( 'sidebar-review' ); ?>
+						</aside><!-- .sidebars-area .crrntl-sidebar-info -->
 						<div class="clear"></div>
 					</div><!-- .crrntl-with-form-search -->
 				<?php } else { ?>

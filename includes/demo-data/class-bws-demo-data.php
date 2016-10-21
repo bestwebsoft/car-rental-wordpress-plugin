@@ -27,7 +27,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 		 *
 		 * @param $form_title
 		 */
-		function bws_show_demo_button( $form_title ) {			
+		function bws_show_demo_button( $form_title ) {
 			if ( ! ( is_multisite() && is_network_admin() ) ) {
 				global $crrntl_car_notice;
 				if ( empty( $this->bws_demo_options ) ) {

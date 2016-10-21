@@ -13,8 +13,10 @@ if ( ! function_exists( 'crrntl_slider_scripts' ) ) {
 	function crrntl_slider_scripts() {
 		if ( is_front_page() || is_home() || is_page_template( 'page-homev1.php' ) || is_page_template( 'page-homev2.php' ) || is_page_template( 'page-homev3.php' ) ) {
 			wp_enqueue_style( 'crrntl-slider-style', plugins_url( 'css/slider.css', dirname( __FILE__ ) ) );
-			wp_enqueue_script( 'crrntl-slider-script', plugins_url( 'js/jssor.js', dirname( __FILE__ ) ), array( 'jquery' ) );
-			wp_enqueue_script( 'crrntl-slider-script-min', plugins_url( 'js/jssor.slider.mini.js', dirname( __FILE__ ) ), array( 'jquery' ) );
+			wp_enqueue_style( 'crrntl-animate-style', plugins_url( 'css/animate.css', dirname( __FILE__ ) ) );
+			wp_enqueue_style( 'crrntl-owl-carousel-style', plugins_url( 'css/owl.carousel.css', dirname( __FILE__ ) ) );
+			wp_enqueue_style( 'crrntl-owl-theme-style', plugins_url( 'css/owl.theme.default.css', dirname( __FILE__ ) ) );
+			wp_enqueue_script( 'crrntl-owl-carousel-script', plugins_url( 'js/owl.carousel.js', dirname( __FILE__ ) ), array( 'jquery' ) );
 		}
 	}
 }
@@ -116,13 +118,14 @@ if ( ! function_exists( 'crrntl_slider_settings' ) ) {
 		<div class="updated fade below-h2" <?php echo ( empty( $message ) ) ? 'style="display:none"' : ''; ?>>
 			<p><strong><?php echo $message; ?></strong></p>
 		</div><!-- .updated.fade below-h2 -->
+
 		<?php if ( ! isset( $_GET['action'] ) || 'delete_slide_admin' == $_GET['action'] ) { ?>
 			<form id="crrntl-settings-slider-form" method="post" action="<?php echo $action_query; ?>">
 				<div id="crrntl-slides-list" class="crrntl-slider-settings">
 					<h3 class="crrntl-header">
 						<?php _e( 'List of Slides', 'car-rental' ); ?>
 					</h3><!-- .crrntl-header -->
-					<div id="crrntl-slider-list">
+					<div id="crrntl-slider-list" class="crrntl-slider owl-carousel">
 						<?php if ( ! empty( $crrntl_slider_options ) ) {
 							foreach ( $crrntl_slider_options as $id => $option ) { ?>
 								<div class="crrntl-slider-item">
@@ -247,60 +250,51 @@ if ( ! function_exists( 'crrntl_slider_template' ) ) {
 			if ( empty( $crrntl_slider_options ) )
 				$crrntl_slider_options = get_option( 'crrntl_slider_options' );
 
+			if ( ! empty( $crrntl_slider_options ) && ( ! empty( $crrntl_renty_slider_options['display_slider'] ) || ! isset( $crrntl_renty_slider_options ) ) ) {
+				if ( ! wp_is_mobile() ) { ?>
+					<div id="crrntl-slider-container" class="crrntl-slider-container">
+						<!-- Slides Container -->
+						<div class="crrntl-slider owl-carousel">
+							<?php foreach ( $crrntl_slider_options as $crrntl_slide_data ) {
+								if ( ! empty( $crrntl_slide_data['image'] ) ) { ?>
+									<div class="crrntl-one-slide">
+										<img data-u="image" src="<?php echo $crrntl_slide_data['image']; ?>" alt="" />
+										<span class="crrntl-slider-overlay"></span>
 
-			if ( ! empty( $crrntl_slider_options ) && ( ! empty( $crrntl_renty_slider_options['display_slider'] ) || ! isset( $crrntl_renty_slider_options ) ) ) { ?>
-				<div id="crrntl-slider-container" class="crrntl-slider-container">
-					<!-- Slides Container -->
-					<div data-u="slides" class="crrntl-slider">
-						<?php foreach ( $crrntl_slider_options as $crrntl_slide_data ) {
-							if ( ! empty( $crrntl_slide_data['image'] ) ) { ?>
-								<div class="crrntl-one-slide">
-									<img data-u="image" src="<?php echo $crrntl_slide_data['image']; ?>" alt="" />
-									<span class="crrntl-slider-overlay"></span>
+										<div class="crrntl-slider-post clearfix">
+											<?php if ( ! empty( $crrntl_slide_data['title'] ) ) { ?>
+												<div class="crrntl-slide-title">
+													<h3><?php echo $crrntl_slide_data['title']; ?></h3>
+												</div><!-- .crrntl-slide-title -->
+											<?php }
+											if ( ! empty( $crrntl_slide_data['description'] ) ) { ?>
+												<div class="crrntl-slide-description">
+													<div class="crrntl-entry-content"><?php echo $crrntl_slide_data['description']; ?></div>
+												</div><!-- .crrntl-slide-description -->
+											<?php }
 
-									<div class="crrntl-slider-post clearfix">
-										<?php if ( ! empty( $crrntl_slide_data['title'] ) ) { ?>
-											<div class="crrntl-slide-title">
-												<h3><?php echo $crrntl_slide_data['title']; ?></h3>
-											</div><!-- .crrntl-slide-title -->
-										<?php }
-										if ( ! empty( $crrntl_slide_data['description'] ) ) { ?>
-											<div class="crrntl-slide-description">
-												<div class="crrntl-entry-content"><?php echo $crrntl_slide_data['description']; ?></div>
-											</div><!-- .crrntl-slide-description -->
-										<?php }
-
-										if ( ! empty( $crrntl_slide_data['link'] ) ) { ?>
-											<div class="crrntl-entry-meta">
-												<a class="crrntl-slider-link" title="<?php echo __( 'Go to', 'car-rental' ) . ' ' . $crrntl_slide_data['title']; ?>" href="<?php echo esc_url( $crrntl_slide_data['link'] ); ?>" target="_blank"><?php _e( 'Learn More', 'car-rental' ); ?></a>
-											</div><!-- .crrntl-entry-meta -->
-										<?php } ?>
-									</div><!-- .crrntl-slider-post -->
-								</div>
-							<?php }
-						} ?>
-					</div><!-- .crrntl-one-slide -->
-					<!-- bullet navigator container -->
-					<div class="crrntl-navigator-container">
-						<div class="crrntl-navigator-block">
-							<div data-u="navigator" class="crrntl-jssorb11" style="bottom: 16px; right: 6px;">
-							<!-- bullet navigator item prototype -->
-								<div data-u="prototype"></div>
-							</div><!-- .jssorb11 -->
-						</div><!-- .crrntl-navigator-block -->
-					</div><!-- .crrntl-navigator-container -->
-					<!--#end region Bullet Navigator Skin End -->
-					<?php if ( is_page_template( 'page-homev1.php' ) ) { ?>
-						<div class="crrntl-front-img">
-							<img src="<?php echo plugins_url( 'images/slider-front-img.png', dirname( __FILE__ ) ); ?>">
-						</div><!-- .crrntl-front-img -->
-					<?php } elseif ( is_page_template( 'page-homev2.php' ) ) { ?>
-						<div class="crrntl-front-img">
-							<img src="<?php echo plugins_url( 'images/slider-front-img-right.png', dirname( __FILE__ ) ); ?>">
-						</div><!-- .crrntl-front-img -->
-					<?php } ?>
-				</div><!-- .crrntl-slider-container -->
-				<?php if ( is_front_page() || is_home() || is_page_template( 'page-homev1.php' ) || is_page_template( 'page-homev2.php' ) || is_page_template( 'page-homev3.php' ) ) {
+											if ( ! empty( $crrntl_slide_data['link'] ) ) { ?>
+												<div class="crrntl-entry-meta">
+													<a class="crrntl-slider-link" title="<?php echo __( 'Go to', 'car-rental' ) . ' ' . $crrntl_slide_data['title']; ?>" href="<?php echo esc_url( $crrntl_slide_data['link'] ); ?>" target="_blank"><?php _e( 'Learn More', 'car-rental' ); ?></a>
+												</div><!-- .crrntl-entry-meta -->
+											<?php } ?>
+										</div><!-- .crrntl-slider-post -->
+									</div>
+								<?php }
+							} ?>
+						</div><!-- .crrntl-one-slide -->
+						<?php if ( is_page_template( 'page-homev1.php' ) ) { ?>
+							<div class="crrntl-front-img">
+								<img src="<?php echo plugins_url( 'images/slider-front-img.png', dirname( __FILE__ ) ); ?>">
+							</div><!-- .crrntl-front-img -->
+						<?php } elseif ( is_page_template( 'page-homev2.php' ) ) { ?>
+							<div class="crrntl-front-img">
+								<img src="<?php echo plugins_url( 'images/slider-front-img-right.png', dirname( __FILE__ ) ); ?>">
+							</div><!-- .crrntl-front-img -->
+						<?php } ?>
+					</div><!-- .crrntl-slider-container -->
+				<?php }
+				if ( is_front_page() || is_home() || is_page_template( 'page-homev1.php' ) || is_page_template( 'page-homev2.php' ) || is_page_template( 'page-homev3.php' ) ) {
 					echo '<div id="crrntl-slider-form-container">';
 					load_template( $crrntl_filepath . 'car-search-form.php' );
 					echo '</div>';

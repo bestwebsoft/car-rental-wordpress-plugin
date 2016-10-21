@@ -219,7 +219,7 @@ if ( ! function_exists( 'bws_plugin_banner' ) ) {
 							<span><?php _e( 'Extend standard plugin functionality with new great options.', 'bestwebsoft' ); ?></span>
 						</div>
 						<div class="button_div">
-							<a class="button" target="_blank" href="http://bestwebsoft.com/products/<?php echo $link_slug; ?>/?k=<?php echo $link_key; ?>&amp;pn=<?php echo $link_pn; ?>&amp;v=<?php echo $plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>"><?php _e( 'Learn More', 'bestwebsoft' ); ?></a>
+							<a class="button" target="_blank" href="http://bestwebsoft.com/products/wordpress/plugins/<?php echo $link_slug; ?>/?k=<?php echo $link_key; ?>&amp;pn=<?php echo $link_pn; ?>&amp;v=<?php echo $plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>"><?php _e( 'Learn More', 'bestwebsoft' ); ?></a>
 						</div>
 					</div>
 				</div>
@@ -470,7 +470,7 @@ if ( ! function_exists( 'bws_go_pro_tab_show' ) ) {
 			<form method="post" action="">
 				<p>
 					<?php _e( 'Enter your license key to install and activate', 'bestwebsoft' ); ?> 
-					<a href="http://bestwebsoft.com/products/<?php echo $link_slug; ?>/?k=<?php echo $link_key; ?>&amp;pn=<?php echo $link_pn; ?>&amp;v=<?php echo $plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php echo $plugin_info["Name"]; ?> Pro">Pro</a> 
+					<a href="http://bestwebsoft.com/products/wordpress/plugins/<?php echo $link_slug; ?>/?k=<?php echo $link_key; ?>&amp;pn=<?php echo $link_pn; ?>&amp;v=<?php echo $plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php echo $plugin_info["Name"]; ?> Pro">Pro</a> 
 					<?php _e( 'version of the plugin.', 'bestwebsoft' ); ?><br />
 					<span class="bws_info">
 						<?php _e( 'License key can be found in the', 'bestwebsoft' ); ?> 
@@ -479,7 +479,7 @@ if ( ! function_exists( 'bws_go_pro_tab_show' ) ) {
 					</span>
 				</p>
 				<?php if ( $trial_days_number !== false )
-					$trial_days_number = __( 'or', 'bestwebsoft' ) . ' <a href="http://bestwebsoft.com/products/' . $link_slug . '/trial/" target="_blank">' . sprintf( __( 'Start Your Free %s-Day Trial Now', 'bestwebsoft' ), $trial_days_number ) . '</a>';
+					$trial_days_number = __( 'or', 'bestwebsoft' ) . ' <a href="http://bestwebsoft.com/products/wordpress/plugins/' . $link_slug . '/trial/" target="_blank">' . sprintf( __( 'Start Your Free %s-Day Trial Now', 'bestwebsoft' ), $trial_days_number ) . '</a>';
 				if ( isset( $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] ) &&
 					'5' < $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] &&
 					$bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['time'] > ( time() - ( 24 * 60 * 60 ) ) ) { ?>
@@ -511,7 +511,7 @@ if ( ! function_exists( 'bws_go_pro_from_trial_tab' ) ) {
 		if ( $trial_license_is_set ) { ?>
 			<form method="post" action="">
 				<p>
-					<?php echo sprintf( __( 'In order to continue using the plugin it is necessary to buy a %s license.', 'bestwebsoft' ), '<a href="http://bestwebsoft.com/products/' . $link_slug . '/?k=' . $link_key . '&amp;pn=' . $link_pn . '&amp;v=' . $plugin_info["Version"] . '&amp;wp_v=' . $wp_version .'" target="_blank" title="' . $plugin_info["Name"] . '">Pro</a>' ) . ' ';
+					<?php echo sprintf( __( 'In order to continue using the plugin it is necessary to buy a %s license.', 'bestwebsoft' ), '<a href="http://bestwebsoft.com/products/wordpress/plugins/' . $link_slug . '/?k=' . $link_key . '&amp;pn=' . $link_pn . '&amp;v=' . $plugin_info["Version"] . '&amp;wp_v=' . $wp_version .'" target="_blank" title="' . $plugin_info["Name"] . '">Pro</a>' ) . ' ';
 					_e( 'After that you can activate it by entering your license key.', 'bestwebsoft' ); ?><br />
 					<span class="bws_info">
 						<?php _e( 'License key can be found in the', 'bestwebsoft' ); ?> 
@@ -607,7 +607,7 @@ if ( ! function_exists( 'bws_check_pro_license' ) ) {
 										$result['message'] .= ' ' . __( 'Your license will expire on', 'bestwebsoft' ) . ' ' . $value->time_out . '.';
 
 									if ( isset( $value->trial ) && $trial_plugin != false )
-										$result['message'] .= ' ' . sprintf( __( 'In order to continue using the plugin it is necessary to buy a %s license.', 'bestwebsoft' ), '<a href="http://bestwebsoft.com/products/' . $trial_plugin['link_slug'] . '/?k=' . $trial_plugin['link_key'] . '&pn=' . $trial_plugin['link_pn'] . '&v=' . $trial_plugin['plugin_info']['Version'] . '&wp_v=' . $wp_version . '" target="_blank" title="' . $trial_plugin['plugin_info']['Name'] . '">Pro</a>' );
+										$result['message'] .= ' ' . sprintf( __( 'In order to continue using the plugin it is necessary to buy a %s license.', 'bestwebsoft' ), '<a href="http://bestwebsoft.com/products/wordpress/plugins/' . $trial_plugin['link_slug'] . '/?k=' . $trial_plugin['link_key'] . '&pn=' . $trial_plugin['link_pn'] . '&v=' . $trial_plugin['plugin_info']['Version'] . '&wp_v=' . $wp_version . '" target="_blank" title="' . $trial_plugin['plugin_info']['Name'] . '">Pro</a>' );
 
 									if ( isset( $value->trial ) ) {
 										$bstwbsftwppdtplgns_options['trial'][ $plugin_basename ] = 1;
@@ -701,7 +701,7 @@ if ( ! function_exists ( 'bws_plugin_update_row' ) ) {
 						if ( $wp_version >= 4.6 )
 							echo '<p>';
 						if ( isset( $bstwbsftwppdtplgns_options['trial'][ $plugin_key ] ) && $link_slug != false ) {
-							echo __( 'Notice: Your Pro Trial license has expired. To continue using the plugin you should buy a Pro license', 'bestwebsoft' ) . ' - <a href="http://bestwebsoft.com/products/' . $link_slug .'/">http://bestwebsoft.com/products/' . $link_slug . '/</a>';
+							echo __( 'Notice: Your Pro Trial license has expired. To continue using the plugin you should buy a Pro license', 'bestwebsoft' ) . ' - <a href="http://bestwebsoft.com/products/wordpress/plugins/' . $link_slug .'/">http://bestwebsoft.com/products/wordpress/plugins/' . $link_slug . '/</a>';
 						} else {
 							echo __( 'Your license has expired. To continue getting top-priority support and plugin updates you should extend it.', 'bestwebsoft' ) . ' <a target="_new" href="http://support.bestwebsoft.com/entries/53487136">' . __( "Learn more", 'bestwebsoft' ) . '</a>';
 						}
@@ -749,19 +749,19 @@ if ( ! function_exists ( 'bws_plugin_banner_timeout' ) ) {
 					$(document).ready( function() {
 						var hide_message = $.cookie( "<?php echo $plugin_prefix; ?>_timeout_hide_banner_on_plugin_page" );
 						if ( hide_message == "true" ) {
-							$( ".<?php echo $plugin_prefix; ?>_message" ).css( "display", "none" );
+							$( ".<?php echo $plugin_prefix; ?>_message_timeout" ).css( "display", "none" );
 						} else {
-							$( ".<?php echo $plugin_prefix; ?>_message" ).css( "display", "block" );
+							$( ".<?php echo $plugin_prefix; ?>_message_timeout" ).css( "display", "block" );
 						}
 						$( ".<?php echo $plugin_prefix; ?>_close_icon" ).click( function() {
-							$( ".<?php echo $plugin_prefix; ?>_message" ).css( "display", "none" );
+							$( ".<?php echo $plugin_prefix; ?>_message_timeout" ).css( "display", "none" );
 							$.cookie( "<?php echo $plugin_prefix; ?>_timeout_hide_banner_on_plugin_page", "true", { expires: 30 } );
 						});
 					});
 				})(jQuery);
 			</script>
 			<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
-				<div class="<?php echo $plugin_prefix; ?>_message bws_banner_on_plugin_page bws_banner_timeout" style="display:none;">
+				<div class="<?php echo $plugin_prefix; ?>_message_timeout bws_banner_on_plugin_page bws_banner_timeout" style="display:none;">
 					<button class="<?php echo $plugin_prefix; ?>_close_icon close_icon notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
 					<div class="icon">
 						<img title="" src="<?php echo $banner_url; ?>" alt="" />

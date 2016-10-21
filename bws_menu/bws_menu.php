@@ -1,7 +1,7 @@
 <?php
 /*
 * Function for displaying BestWebSoft menu
-* Version: 1.9.2
+* Version: 1.9.3
 */
 
 if ( ! function_exists ( 'bws_admin_enqueue_scripts' ) )
@@ -696,7 +696,8 @@ if ( ! function_exists( 'bws_add_menu_render' ) ) {
 if ( ! function_exists( 'bws_get_banner_array' ) ) {
 	function bws_get_banner_array() {
 		global $bstwbsftwppdtplgns_banner_array;
-		$bstwbsftwppdtplgns_banner_array = array(			
+		$bstwbsftwppdtplgns_banner_array = array(
+			array( 'pgntn_hide_banner_on_plugin_page', 'pagination/pagination.php', '1.0.6' ),	
 			array( 'crrntl_hide_banner_on_plugin_page', 'car-rental/car-rental.php', '1.0.0' ),
 			array( 'lnkdn_hide_banner_on_plugin_page', 'bws-linkedin/bws-linkedin.php', '1.0.1' ),
 			array( 'pntrst_hide_banner_on_plugin_page', 'bws-pinterest/bws-pinterest.php', '1.0.1' ),

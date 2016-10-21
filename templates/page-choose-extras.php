@@ -81,10 +81,6 @@ get_header(); ?>
 					<div class="crrntl-with-form-search">
 						<?php load_template( $crrntl_filepath . 'car-search-form.php' ); ?>
 						<div class="clear"></div>
-						<aside class="sidebars-area crrntl-sidebar-info">
-							<?php the_widget( 'Car_Rental_Order_Info_Widget' );
-							dynamic_sidebar( 'sidebar-choose-extras' ); ?>
-						</aside><!-- .sidebars-area .crrntl-sidebar-info -->
 						<div class="crrntl-content-area">
 							<form method="post" action="<?php echo ( ! empty( $crrntl_options['review_page_id'] ) ) ? get_permalink( $crrntl_options['review_page_id'] ) : ''; ?>">
 								<main id="content" class="crrntl-site-content">
@@ -193,6 +189,10 @@ get_header(); ?>
 							</form>
 							<div class="clear"></div>
 						</div><!-- .crrntl-content-area -->
+						<aside class="sidebars-area crrntl-sidebar-info">
+							<?php the_widget( 'Car_Rental_Order_Info_Widget' );
+							dynamic_sidebar( 'sidebar-choose-extras' ); ?>
+						</aside><!-- .sidebars-area .crrntl-sidebar-info -->
 						<div class="clear"></div>
 					</div><!-- .crrntl-with-form-search -->
 				<?php } else { ?>

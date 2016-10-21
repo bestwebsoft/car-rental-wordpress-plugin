@@ -83,10 +83,6 @@ get_header(); ?>
 					</div><!-- #crrntl-progress-bar -->
 					<div class="crrntl-with-form-search">
 						<?php load_template( $crrntl_filepath . 'car-search-form.php' ); ?>
-						<aside class="sidebars-area crrntl-sidebar-info">
-							<?php the_widget( 'Car_Rental_Filters_Widget' );
-							dynamic_sidebar( 'sidebar-choose-car' ); ?>
-						</aside><!-- .sidebars-area .crrntl-sidebar-info -->
 						<div class="crrntl-content-area">
 							<main id="content" class="crrntl-site-content">
 								<?php /* WP_Query arguments */
@@ -317,6 +313,10 @@ get_header(); ?>
 							/* Restore original Post Data */
 							wp_reset_postdata(); ?>
 						</div><!-- .crrntl-content-area -->
+						<aside class="sidebars-area crrntl-sidebar-info">
+							<?php the_widget( 'Car_Rental_Filters_Widget' );
+							dynamic_sidebar( 'sidebar-choose-car' ); ?>
+						</aside><!-- .sidebars-area .crrntl-sidebar-info -->
 						<div class="clear"></div>
 					</div><!-- .crrntl-with-form-search -->
 				<?php } else { ?>

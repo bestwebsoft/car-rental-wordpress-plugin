@@ -4,7 +4,7 @@ Donate link: http://bestwebsoft.com/donate/
 Tags: cars, rental, renting, booking, retail, add cars, car rental plugin, renting cars, cars website, manufacturers, machine, vehicle
 Requires at least: 3.8
 Tested up to: 4.6.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,42 +12,110 @@ Create your personal car rental/booking and reservation website.
 
 == Description ==
 
-Car Rental plugin allows you to create your fully functional for renting cars website with a single plugin. The admin panel functionality is easy to use and loaded with features. If you'd like to give the plugin features a try before uploading the actual data, you can install demo data and go through all the options you receive with Car Rental.
+Car Rental plugin is a key tool which helps you to create fully functional WordPress website for renting cars. Add, edit and manage cars info, manufacturers, vehicle types, car classes, extras, orders, and many other advanced features with a single plugin.
+
+Start your online car rental business on WordPress website today!
 
 http://www.youtube.com/watch?v=Oq4pkADwTks
 
-<a href="http://wordpress.org/plugins/car-rental/faq/" target="_blank">FAQ</a>
+= Free Features =
 
-<a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+* Add and manage:
+	* Cars
+	* Manufacturers
+	* Vehicle types
+	* Car classes
+	* Extras
+* Add widgets:
+	* Car filters
+	* Order info
+* Manage orders
+* Add slider with unlimited slides including:
+	* Image
+	* Title
+	* Description
+	* URL
+* Set the order status:
+	* Reserved
+	* Free
+	* In use
+	* Custom
+* Manage your car info:
+	* Location
+		* Choose from the list
+		* Add custom one
+	* Number of passengers 
+	* Luggage quantity
+		* Large suitcases 
+		* Small suitcases
+	* Transmission
+		* Unknown
+		* Automatic
+		* Manual
+	* Air conditioning
+	* Average consumption
+	* Price per hour
+* Edit your extras info:
+	* Name
+	* Slug
+	* Parent
+	* Description
+	* Details
+	* Price per hour
+	* Quantity
+	* Photo
+* Choose currency:
+	* From the list
+	* Custom
+* Set currency position
+	* Before numerals
+	* After numerals
+* Choose the consumption unit:
+	* l/100km
+	* km/l
+	* Custom
+* Select the rent period per:
+	* Hour
+	* Day
+* Enable select field for:
+	* Pick-up & drop-off time
+	* Return location
+* Add custom code via plugin settings page
+* Compatible with latest WordPress version
+* Incredibly simple settings for fast setup without modifying code
+* Detailed step-by-step documentation and videos
 
-<a href="http://bestwebsoft.com/products/car-rental/?k=3f5c94058f6e182a4530050cbb63dd44" target="_blank">Upgrade to Car Rental Pro by BestWebSoft</a>
+> **Pro Features**
+>
+> All features from Free version included plus:
+>
+> * Add unlimited number of Cars and Extras
+> * Get answer to your support question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+>
+> [Upgrade to Pro Now](http://bestwebsoft.com/products/wordpress/plugins/car-rental/?k=3f5c94058f6e182a4530050cbb63dd44)
 
-= Features =
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
 
-* Create and edit Cars.
-* Create and edit Manufacturers.
-* Create and edit Vehicle Types.
-* Create and edit Car Classes.
-* Create and edit Extras.
-* Manage and edit Orders.
-* Install (and delete) demo data.
+= Help & Support =
 
-If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
 
 = Translation =
 
 * Russian (ru_RU)
 * Ukrainian (uk_UA)
 
-If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> for <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a> and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
-= Technical support =
+= Recommended Plugins =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
+* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=0f949d8b3b87e3f7d52f08b79cb230a1) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
 
-If you notice any bugs in the plugins, you can notify us about it and we'll investigate and fix the issue then. Your request should contain URL of the website, issues description and WordPress admin panel credentials.
-Moreover we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then. 
-We can fix some things for free for the users who provide translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+= Donate =
+
+Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
+
+[Donate Now](http://bestwebsoft.com/donate/)
 
 == Installation ==
 
@@ -83,12 +151,12 @@ if you want to use the plugin with another theme and enable the slider, find the
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed on our forum yet (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If not, please provide the following data along with the description of your problem:
+Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
-1. the link to the page, on which the problem occurs
+1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instruction on System Status</a> 
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
 
 == Screenshots ==
 
@@ -110,6 +178,10 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Changelog ==
 
+= V1.0.4 - 21.10.2016 =
+* NEW : Responsive design has been implemented.
+* NEW : Slider script has been replaced with "Owl Carousel".
+
 = V1.0.3 - 23.09.2016 =
 * NEW : Rent option allowing to select time per hour/per day.
 * NEW : Ability to disable "Return at different location".
@@ -126,6 +198,10 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW : Release date of Car Rental by BestWebSoft plugin.
 
 == Upgrade Notice ==
+
+= V1.0.4 =
+* Appearance improved.
+* Bugs fixed.
 
 = V1.0.3 =
 * Functionality expanded.

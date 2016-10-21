@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Car Rental by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/car-rental/
+Plugin URI: http://bestwebsoft.com/products/wordpress/plugins/car-rental/
 Description: Create your personal car rental/booking and reservation website.
 Author: BestWebSoft
 Text Domain: car-rental
 Domain Path: /languages
-Version: 1.0.3
+Version: 1.0.4
 Author URI: http://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -64,7 +64,7 @@ if ( ! function_exists( 'crrntl_plugin_loaded' ) ) {
 
 if ( ! function_exists( 'crrntl_init' ) ) {
 	function crrntl_init() {
-		global $crrntl_plugin_info;		
+		global $crrntl_plugin_info;
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
@@ -102,7 +102,7 @@ if ( ! function_exists( 'crrntl_admin_init' ) ) {
 
 		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '576', 'version' => $crrntl_plugin_info['Version'] );
-		}		
+		}
 	}
 }
 
@@ -252,7 +252,7 @@ if ( ! function_exists( 'crrntl_plugin_templates_install' ) ) {
 				@fwrite( $handle, $contents );
 				@fclose( $handle );
 			}
-				
+
 			$handle   = @fopen( $crrntl_filepath . $filename, 'r' );
 			$contents = @fread( $handle, filesize( $crrntl_filepath . $filename ) );
 			@fclose( $handle );
@@ -489,7 +489,7 @@ if ( ! function_exists( 'crrntl_install' ) ) {
  */
 if ( ! function_exists( 'crrntl_setup_post_types' ) ) {
 	function crrntl_setup_post_types() {
-		
+
 		/* Register "Cars" custom post type */
 		$labels = array(
 			'name'                  => _x( 'Cars', 'post type general name', 'car-rental' ),
@@ -517,7 +517,7 @@ if ( ! function_exists( 'crrntl_setup_post_types' ) ) {
 			'show_in_menu'    => true,
 			'menu_icon'       => 'dashicons-sos',
 			'rewrite'         => true,
-			'capability_type' => 'post',			
+			'capability_type' => 'post',
 			'has_archive'     => true,
 			'hierarchical'    => false,
 			'menu_position'   => 58,
@@ -1444,7 +1444,7 @@ if ( ! function_exists( 'crrntl_register_plugin_links' ) ) {
 		if ( 'car-rental/car-rental.php' == $file ) {
 			if ( ! is_network_admin() )
 				$links[] = '<a href="admin.php?page=car-rental-settings">' . __( 'Settings', 'car-rental' ) . '</a>';
-			$links[] = '<a href="http://bestwebsoft.com/products/car-rental/faq/" target="_blank">' . __( 'FAQ', 'car-rental' ) . '</a>';
+			$links[] = '<a href="http://bestwebsoft.com/products/wordpress/plugins/car-rental/faq/" target="_blank">' . __( 'FAQ', 'car-rental' ) . '</a>';
 			$links[] = '<a href="http://support.bestwebsoft.com">' . __( 'Support', 'car-rental' ) . '</a>';
 		}
 		return $links;
@@ -1509,7 +1509,7 @@ if ( ! function_exists( 'crrntl_admin_notices' ) ) {
 				</p></div>
 			<?php }
 			if ( true == $crrntl_car_notice ) { ?>
-				<div class="update-nag"><strong><?php printf( __( 'You have reached the limit for Cars. Create unlimited Cars and Extras with %s', 'car-rental' ), '<a href="http://bestwebsoft.com/products/car-rental/?k=664b00b8cd82b35c4f9b2a4838de35ff&pn=576&v=' . $crrntl_plugin_info["Version"] . '&wp_v=' . $wp_version . '" target="_blank">Car Rental Pro</a>' ); ?></strong></div>
+				<div class="update-nag"><strong><?php printf( __( 'You have reached the limit for Cars. Create unlimited Cars and Extras with %s', 'car-rental' ), '<a href="http://bestwebsoft.com/products/wordpress/plugins/car-rental/?k=664b00b8cd82b35c4f9b2a4838de35ff&pn=576&v=' . $crrntl_plugin_info["Version"] . '&wp_v=' . $wp_version . '" target="_blank">Car Rental Pro</a>' ); ?></strong></div>
 			<?php }
 		}
 
@@ -1539,12 +1539,12 @@ if ( ! function_exists( 'crrntl_admin_notices' ) ) {
 			update_option( 'crrntl_options', $crrntl_options );
 			return;
 		}
-		
+
 		if ( 'Renty' != wp_get_theme() && isset( $crrntl_options['theme_banner'] ) && 1 == $crrntl_options['theme_banner'] ) { ?>
 			<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
 				<div class="bws_banner_on_plugin_page crrntl_theme_notice">
 					<div class="text">
-						<strong><?php printf( __( 'Your theme does not declare Car Rental plugin support. Please check out our %s theme which has been developed specifically for use with Car Rental plugin.', 'car-rental' ), '<a href="http://bestwebsoft.com/products/renty-car-rental-booking-wordpress-theme/" target="_blank">Renty</a>' ); ?></strong>
+						<strong><?php printf( __( 'Your theme does not declare Car Rental plugin support. Please check out our %s theme which has been developed specifically for use with Car Rental plugin.', 'car-rental' ), '<a href="http://bestwebsoft.com/products/wordpress/themes/renty-car-rental-booking-wordpress-theme/" target="_blank">Renty</a>' ); ?></strong>
 					</div>
 					<form action="" method="post">
 						<button class="notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
@@ -1674,18 +1674,18 @@ if ( ! function_exists( 'crrntl_check_args_filter' ) ) {
 		}
 		return $args;
 	}
-}		
+}
 
 if ( ! function_exists( 'crrntl_check_term' ) ) {
 	function crrntl_check_term( $term, $taxonomy ) {
 		global $crrntl_options, $wpdb;
-		if ( $taxonomy == 'extra' ) {			
+		if ( $taxonomy == 'extra' ) {
 			if ( empty( $crrntl_options ) )
 				$crrntl_options = get_option( 'crrntl_options' );
 
 			if ( ! isset( $crrntl_options['eflag'] ) || $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->term_taxonomy} WHERE `taxonomy` = %s", $taxonomy ) ) >= base_convert( $crrntl_options['eflag'], 16, 10 ) ) {
 				return new WP_Error( 'extra_term_error', __( 'You have reached the limit for Extras.', 'car-rental' ) );
-			}		
+			}
 		}
 		return $term;
 	}
