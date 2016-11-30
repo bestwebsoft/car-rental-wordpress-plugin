@@ -1,9 +1,7 @@
-<a href="http://bestwebsoft.com/products/car-rental/" target=_blank>Car Rental WordPress Plugin</a>
+<a href="http://bestwebsoft.com/products/wordpress/plugins/car-rental/" target=_blank>Car Rental WordPress Plugin</a>
 ========================
 
 Create your personal car rental/booking and reservation website.
-
-<img src="http://bestwebsoft.com/wp-content/uploads/2016/03/car-rental-banner-website.jpg" />
 
 <p>Car Rental plugin is a key tool which helps you to create fully functional WordPress website for renting cars. Add, edit and manage cars info, manufacturers, vehicle types, car classes, extras, orders, and many other advanced features with a single plugin.</p>
 
