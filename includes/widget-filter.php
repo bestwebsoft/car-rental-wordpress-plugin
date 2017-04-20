@@ -49,16 +49,11 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 			$action_link            = ( ! empty( $crrntl_options['car_page_id'] ) ) ? get_permalink( $crrntl_options['car_page_id'] ) : '';
 			$crrntl_manufacturers = get_terms( 'manufacturer' );
 			$crrntl_vehicle_types = get_terms( 'vehicle_type' );
-			$crrntl_min_max_price = $wpdb->get_results(
-				"SELECT MIN( cast( meta_value AS DECIMAL(10, 2) ) ) AS min_price,
- 				MAX( cast( meta_value AS DECIMAL(10, 2) ) ) AS max_price
- 				FROM {$wpdb->postmeta} AS pm, {$wpdb->posts} AS po WHERE pm.post_id = po.ID AND po.post_status = 'publish' AND po.post_type = 'cars' AND pm.meta_key = 'car_price'" );
+
 			$crrntl_min_max_pass  = $wpdb->get_results(
 				"SELECT MIN( cast( meta_value AS UNSIGNED ) ) AS min_pass,
  				MAX( cast( meta_value AS UNSIGNED ) ) AS max_pass
- 				FROM {$wpdb->postmeta} AS pm, {$wpdb->posts} AS po WHERE pm.post_id = po.ID AND po.post_status = 'publish' AND po.post_type = 'cars' AND pm.meta_key = 'car_passengers'" );
-			$crrntl_min_price     = ( isset( $_GET['crrntl_price_min'] ) ) ? $_GET['crrntl_price_min'] : floor( $crrntl_min_max_price[0]->min_price );
-			$crrntl_max_price     = ( isset( $_GET['crrntl_price_max'] ) ) ? $_GET['crrntl_price_max'] : ceil( $crrntl_min_max_price[0]->max_price );
+ 				FROM {$wpdb->postmeta} AS pm, {$wpdb->posts} AS po WHERE pm.post_id = po.ID AND po.post_status = 'publish' AND po.post_type = '{$crrntl_options['post_type_name']}' AND pm.meta_key = 'car_passengers'" );
 			$crrntl_min_pass      = ( isset( $_GET['crrntl_pass_min'] ) ) ? $_GET['crrntl_pass_min'] : $crrntl_min_max_pass[0]->min_pass;
 			$crrntl_max_pass      = ( isset( $_GET['crrntl_pass_max'] ) ) ? $_GET['crrntl_pass_max'] : $crrntl_min_max_pass[0]->max_pass;
 
@@ -66,34 +61,43 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 			<img class="widget-title-img" src="<?php echo plugins_url( 'car-rental/images/filter-results.png' ); ?>">
 			<?php echo __( 'Filter', 'car-rental' ) . $args['after_title']; ?>
 			<form action="<?php echo $action_link; ?>" method="get" id="crrntl-filter-form">
-				<h4 class="clearfix"><?php _e( 'Price range', 'car-rental' ); ?>
-					<span class="crrntl-select-clear">
-						<a class="crrntl-reset-price" href="#"><?php _e( 'Reset', 'car-rental' ); ?></a>
-					</span>
-				</h4>
-				<div class="crrntl-widget-content-range">
-					<label><?php _e( 'from', 'car-rental' ); ?>: <input type="number" id="crrntl-price-min" name="crrntl_price_min" value="<?php echo $crrntl_min_price; ?>" /></label>
-					<label> <?php _e( 'to', 'car-rental' ); ?>: <input type="number" id="crrntl-price-max" name="crrntl_price_max" value="<?php echo $crrntl_max_price; ?>" /></label>
-					<div class="crrntl-price-range" data-min="<?php echo floor( $crrntl_min_max_price[0]->min_price ); ?>" data-max="<?php echo ceil( $crrntl_min_max_price[0]->max_price ); ?>"></div>
-					<?php if ( ! empty( $crrntl_currency_position ) ) {
-						if ( 'before' == $crrntl_currency_position ) { ?>
+				<?php $isset_price = $wpdb->get_var( "SELECT meta_value FROM {$wpdb->postmeta} AS pm, {$wpdb->posts} AS po WHERE pm.post_id = po.ID AND po.post_status = 'publish' AND po.post_type = '{$crrntl_options['post_type_name']}' AND pm.meta_key = 'car_price' AND pm.meta_value != 'on_request'" );
+				if ( ! empty( $isset_price ) ) {
+					$crrntl_min_max_price = $wpdb->get_results(
+						"SELECT MIN( cast( meta_value AS DECIMAL(10, 2) ) ) AS min_price,
+		 				MAX( cast( meta_value AS DECIMAL(10, 2) ) ) AS max_price
+		 				FROM {$wpdb->postmeta} AS pm, {$wpdb->posts} AS po WHERE pm.post_id = po.ID AND po.post_status = 'publish' AND po.post_type = '{$crrntl_options['post_type_name']}' AND pm.meta_key = 'car_price'" );
+					$crrntl_min_price     = ( isset( $_GET['crrntl_price_min'] ) ) ? $_GET['crrntl_price_min'] : floor( $crrntl_min_max_price[0]->min_price );
+					$crrntl_max_price     = ( isset( $_GET['crrntl_price_max'] ) ) ? $_GET['crrntl_price_max'] : ceil( $crrntl_min_max_price[0]->max_price ); ?>
+					<h4 class="clearfix"><?php _e( 'Price range', 'car-rental' ); ?>
+						<span class="crrntl-select-clear">
+							<a class="crrntl-reset-price" href="#"><?php _e( 'Reset', 'car-rental' ); ?></a>
+						</span>
+					</h4>
+					<div class="crrntl-widget-content-range">
+						<label><?php _e( 'from', 'car-rental' ); ?>: <input type="number" id="crrntl-price-min" name="crrntl_price_min" value="<?php echo $crrntl_min_price; ?>" /></label>
+						<label> <?php _e( 'to', 'car-rental' ); ?>: <input type="number" id="crrntl-price-max" name="crrntl_price_max" value="<?php echo $crrntl_max_price; ?>" /></label>
+						<div class="crrntl-price-range" data-min="<?php echo floor( $crrntl_min_max_price[0]->min_price ); ?>" data-max="<?php echo ceil( $crrntl_min_max_price[0]->max_price ); ?>"></div>
+						<?php if ( ! empty( $crrntl_currency_position ) ) {
+							if ( 'before' == $crrntl_currency_position ) { ?>
+								<div class="crrntl-slider-result crrntl-price-result-from crrntl-hidden">
+									<?php echo $crrntl_currency; ?><span><?php echo $crrntl_min_price; ?></span></div>
+								<div class="crrntl-slider-result crrntl-price-result-to crrntl-hidden">
+									<?php echo $crrntl_currency; ?><span><?php echo $crrntl_max_price; ?></span></div>
+							<?php } else { ?>
+								<div class="crrntl-slider-result crrntl-price-result-from crrntl-hidden">
+									<span><?php echo $crrntl_min_price; ?></span> <?php echo $crrntl_currency; ?></div>
+								<div class="crrntl-slider-result crrntl-price-result-to crrntl-hidden">
+									<span><?php echo $crrntl_max_price; ?></span> <?php echo $crrntl_currency; ?></div>
+							<?php }
+						} else { ?>
 							<div class="crrntl-slider-result crrntl-price-result-from crrntl-hidden">
-								<?php echo $crrntl_currency; ?><span><?php echo $crrntl_min_price; ?></span></div>
+								<span><?php echo $crrntl_min_price; ?></span></div>
 							<div class="crrntl-slider-result crrntl-price-result-to crrntl-hidden">
-								<?php echo $crrntl_currency; ?><span><?php echo $crrntl_max_price; ?></span></div>
-						<?php } else { ?>
-							<div class="crrntl-slider-result crrntl-price-result-from crrntl-hidden">
-								<span><?php echo $crrntl_min_price; ?></span> <?php echo $crrntl_currency; ?></div>
-							<div class="crrntl-slider-result crrntl-price-result-to crrntl-hidden">
-								<span><?php echo $crrntl_max_price; ?></span> <?php echo $crrntl_currency; ?></div>
-						<?php }
-					} else { ?>
-						<div class="crrntl-slider-result crrntl-price-result-from crrntl-hidden">
-							<span><?php echo $crrntl_min_price; ?></span></div>
-						<div class="crrntl-slider-result crrntl-price-result-to crrntl-hidden">
-							<span><?php echo $crrntl_max_price; ?></span></div>
-					<?php } ?>
-				</div><!-- .crrntl-widget-content-range -->
+								<span><?php echo $crrntl_max_price; ?></span></div>
+						<?php } ?>
+					</div><!-- .crrntl-widget-content-range -->
+				<?php } ?>
 				<h4 class="clearfix"><?php _e( 'Manufacturers', 'car-rental' ); ?>
 					<span class="crrntl-select-clear"><a class="crrntl-clear-all" href="#"><?php _e( 'Clear', 'car-rental' ); ?></a> | <a class="crrntl-select-all" href="#"><?php _e( 'Select All', 'car-rental' ); ?></a>
 					</span>

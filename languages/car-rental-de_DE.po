@@ -1,0 +1,1874 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Autovermietung\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-27 13:50+0300\n"
+"PO-Revision-Date: 2017-03-27 13:50+0300\n"
+"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"Language-Team: Info-Bit Software Solutions <mail@info-bit.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: car-rental.php:51
+msgid "Car Rental Settings"
+msgstr "Auto Vermietung Einstellungen"
+
+#: car-rental.php:52 car-rental.php:1838 car-rental.php:1859
+#: includes/class-crrntl-settings.php:25
+#: includes/class-crrntl-settings.php:247
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: car-rental.php:66
+#, fuzzy
+msgid "Slider Settings"
+msgstr "Налаштування слайдера"
+
+#: car-rental.php:67
+msgid "Slider"
+msgstr "Slider"
+
+#: car-rental.php:86
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: car-rental.php:227
+msgid "Sidebar on Car page"
+msgstr "Sidebar auf Auto-Seite"
+
+#: car-rental.php:229
+msgid "Sidebar is displayed on the Choose Car page."
+msgstr "Die Sidebar wird auf der ausgewählen Auto-Seite angezeigt."
+
+#: car-rental.php:234
+msgid "Sidebar on Extras page"
+msgstr "Sidebar auf der Extra Seite"
+
+#: car-rental.php:236
+msgid "Sidebar is displayed on the Choose Extras page."
+msgstr "Sidebar wird auf der ausgewählten Extra-Seite angezeigt"
+
+#: car-rental.php:241
+msgid "Sidebar on Review page"
+msgstr "Sidebar auf Review Seite"
+
+#: car-rental.php:243
+msgid "Sidebar is displayed on the Review page."
+msgstr "Sidebar auf der Bewertungsseite angezeigt."
+
+#: car-rental.php:265 includes/class-crrntl-settings.php:327
+msgid "l/100km"
+msgstr "l/100km"
+
+#: car-rental.php:536
+msgid "Reserved"
+msgstr "Reserviert"
+
+#: car-rental.php:537
+msgid "Free"
+msgstr "Frei"
+
+#: car-rental.php:538
+msgid "In use"
+msgstr "Vermietet"
+
+#: car-rental.php:584
+msgctxt "post type general name"
+msgid "Cars"
+msgstr "Fahrzeuge"
+
+#: car-rental.php:585
+msgctxt "post type singular name"
+msgid "Car"
+msgstr "Fahrzeug"
+
+#: car-rental.php:586
+msgctxt "admin menu"
+msgid "Cars"
+msgstr "Fahrzeuge"
+
+#: car-rental.php:587
+msgctxt "add new on admin bar"
+msgid "Car"
+msgstr "Fahrzeug"
+
+#: car-rental.php:588 includes/orders-table.php:167
+msgid "All Cars"
+msgstr "Alle Fahrzeuge"
+
+#: car-rental.php:589
+msgctxt "car"
+msgid "Add New"
+msgstr "Hinzufügen"
+
+#: car-rental.php:590
+msgid "Add New Car"
+msgstr "Neues Fahrzeug hinzufügen"
+
+#: car-rental.php:591 includes/orders-table.php:582
+msgid "Edit Car"
+msgstr "Fahrzeug bearbeiten"
+
+#: car-rental.php:592
+msgid "New Car"
+msgstr "Neues Fahrzeug"
+
+#: car-rental.php:593
+msgid "View Car"
+msgstr "Fahrzeug anzeigen"
+
+#: car-rental.php:594
+msgid "Search Cars"
+msgstr "Fahrzeug suchen"
+
+#: car-rental.php:595
+msgid "No Cars found."
+msgstr "Kein Fahrzeug gefunden"
+
+#: car-rental.php:596
+msgid "No Cars found in Trash."
+msgstr "Kein Fahrzeug im Papierkorb gefunden"
+
+#: car-rental.php:597
+msgid "Filter Cars list"
+msgstr "Filter Fahrzeug Liste"
+
+#: car-rental.php:598
+msgid "Cars list navigation"
+msgstr "Autos Liste Navigation"
+
+#: car-rental.php:599
+msgid "Cars list"
+msgstr "Fahrzeug Liste"
+
+#: car-rental.php:623
+msgctxt "taxonomy general name"
+msgid "Manufacturers"
+msgstr "Marke"
+
+#: car-rental.php:624
+msgctxt "taxonomy singular name"
+msgid "Manufacturer"
+msgstr "Marke"
+
+#: car-rental.php:625
+msgid "Search Manufacturers"
+msgstr "Marke suchen"
+
+#: car-rental.php:626
+msgid "Popular Manufacturers"
+msgstr "Beliebte Hersteller"
+
+#: car-rental.php:627
+msgid "All Manufacturers"
+msgstr "Alle Hersteller"
+
+#: car-rental.php:630
+msgid "Edit Manufacturer"
+msgstr "Marke bearbeiten"
+
+#: car-rental.php:631
+msgid "Update Manufacturer"
+msgstr "Marke aktualisieren"
+
+#: car-rental.php:632
+msgid "Add New Manufacturer"
+msgstr "Neue Marke hinzufügen"
+
+#: car-rental.php:633
+msgid "View Manufacturer"
+msgstr "Marke ansehen"
+
+#: car-rental.php:634
+msgid "New Manufacturer Name"
+msgstr "Neue Marken Name"
+
+#: car-rental.php:635
+msgid "Separate Manufacturers with commas"
+msgstr "Trenne Marken mit Komma"
+
+#: car-rental.php:636
+msgid "Add or remove Manufacturers"
+msgstr "Marke hinzufügen oder löschen"
+
+#: car-rental.php:637
+msgid "Choose from the most used Manufacturers"
+msgstr "Wählen Sie von den meist gewählten Herstellern"
+
+#: car-rental.php:638
+msgid "No Manufacturers found."
+msgstr "Keine Marke gefunden"
+
+#: car-rental.php:639 includes/widget-filter.php:101
+msgid "Manufacturers"
+msgstr "Marke"
+
+#: car-rental.php:640
+msgid "Manufacturers list navigation"
+msgstr "Hersteller Liste navigieren"
+
+#: car-rental.php:641
+msgid "Manufacturers list"
+msgstr "Hersteller Liste"
+
+#: car-rental.php:659
+msgctxt "taxonomy general name"
+msgid "Vehicle Types"
+msgstr "Fahrzeug Typen"
+
+#: car-rental.php:660
+msgctxt "taxonomy singular name"
+msgid "Vehicle Type"
+msgstr "Fahrzeugtyp"
+
+#: car-rental.php:661
+msgid "Search Vehicle Types"
+msgstr "Fahrzeugtypen suchen"
+
+#: car-rental.php:662
+msgid "Popular Vehicle Types"
+msgstr "beliebte Fahrzeugtypen"
+
+#: car-rental.php:663
+msgid "All Vehicle Types"
+msgstr "Alle Fahrzeugtypen"
+
+#: car-rental.php:666
+msgid "Edit Vehicle Type"
+msgstr "Fahrzeugtyp bearbeiten"
+
+#: car-rental.php:667
+msgid "Update Vehicle Type"
+msgstr "Fahrzeugtyp aktualisieren"
+
+#: car-rental.php:668
+msgid "Add New Vehicle Type"
+msgstr "Neuer Fahrzeugtyp"
+
+#: car-rental.php:669
+msgid "View Vehicle Type"
+msgstr "Fahrzeugtyp ansehen"
+
+#: car-rental.php:670
+msgid "New Vehicle Type Name"
+msgstr "Neuer Fahrzeugtyp Name"
+
+#: car-rental.php:671
+msgid "Separate Vehicle Types with commas"
+msgstr "Trenne Fahrzeugtypen mit Komma"
+
+#: car-rental.php:672
+msgid "Add or remove Vehicle Types"
+msgstr "Fahrzeugtypen hinzufügen oder löschen"
+
+#: car-rental.php:673
+msgid "Choose from the most used Vehicle Types"
+msgstr "Wählen Sie aus den am häufigsten verwendeten Fahrzeugtypen"
+
+#: car-rental.php:674
+msgid "No Vehicle Types found."
+msgstr "Keine Fahrzeugtypen gefunden."
+
+#: car-rental.php:675
+msgid "Vehicle Types"
+msgstr "Fahrzeugtypen"
+
+#: car-rental.php:676
+msgid "Vehicle Types list navigation"
+msgstr "Fahrzeugtypen Listennavigation"
+
+#: car-rental.php:677
+msgid "Vehicle Types list"
+msgstr "Fahrzeugtypen Liste"
+
+#: car-rental.php:695
+msgctxt "taxonomy general name"
+msgid "Car Classes"
+msgstr "Fahrzeugklasse"
+
+#: car-rental.php:696
+msgctxt "taxonomy singular name"
+msgid "Car Class"
+msgstr "Fahrzeug Klasse"
+
+#: car-rental.php:697
+msgid "Search Car Classes"
+msgstr "Fahrzeugklasse suchen"
+
+#: car-rental.php:698
+msgid "Popular Car Classes"
+msgstr "Beliebte Fahrzeugklassen"
+
+#: car-rental.php:699
+msgid "All Car Classes"
+msgstr "Alle Fahrzeugklassen"
+
+#: car-rental.php:702
+msgid "Edit Car Class"
+msgstr "Fahrzeugklasse bearbeiten"
+
+#: car-rental.php:703
+msgid "Update Car Class"
+msgstr "Fahrzeugklasse aktualisieren"
+
+#: car-rental.php:704
+msgid "Add New Car Class"
+msgstr "Neue Fahrzeugklasse hinzufügen"
+
+#: car-rental.php:705
+msgid "View Car Class"
+msgstr "Fahrzeugklasse ansehen"
+
+#: car-rental.php:706
+msgid "New Car Class Name"
+msgstr "Neuer Fahrzeugklassen Name"
+
+#: car-rental.php:707
+msgid "Separate Car Classes with commas"
+msgstr "Trenne Fahrzeugklasse mit Komma"
+
+#: car-rental.php:708
+msgid "Add or remove Car Classes"
+msgstr "Fahrzeugklasse hinzufügen oder löschen"
+
+#: car-rental.php:709
+msgid "Choose from the most used Car Classes"
+msgstr "Wählen Sie aus den am häufigsten verwendeten Fahrzeugklassen"
+
+#: car-rental.php:710
+msgid "No Car Classes found."
+msgstr "Keine Fahrzeugklasse gefunden"
+
+#: car-rental.php:711
+msgid "Car Classes"
+msgstr "Fahrzeugklasse"
+
+#: car-rental.php:712
+msgid "Car Classes list navigation"
+msgstr "Fahrzeugklassen Listennavigation"
+
+#: car-rental.php:713
+msgid "Car Classes list"
+msgstr "Fahrzeugklassen Liste"
+
+#: car-rental.php:731
+msgctxt "taxonomy general name"
+msgid "Extras"
+msgstr "Extras"
+
+#: car-rental.php:732
+msgctxt "taxonomy singular name"
+msgid "Extra"
+msgstr "Extra"
+
+#: car-rental.php:733
+msgid "Search Extras"
+msgstr "Extras suchen"
+
+#: car-rental.php:734
+msgid "Popular Extras"
+msgstr "Beliebte Extras"
+
+#: car-rental.php:735
+msgid "All Extras"
+msgstr "Alle Extras"
+
+#: car-rental.php:738
+msgid "Edit Extra"
+msgstr "Extras bearbeiten"
+
+#: car-rental.php:739
+msgid "Update Extra"
+msgstr "Extras aktualisieren"
+
+#: car-rental.php:740
+msgid "Add New Extra"
+msgstr "Neue Extras hinzufügen"
+
+#: car-rental.php:741
+msgid "View Extra"
+msgstr "Extras anzeigen"
+
+#: car-rental.php:742
+msgid "New Extra Name"
+msgstr "Neue Extra Bezeichnung"
+
+#: car-rental.php:743
+msgid "Separate Extras with commas"
+msgstr "Trenne Extras mit Komma"
+
+#: car-rental.php:744
+msgid "Add or remove Extras"
+msgstr "Extras löschen oder hinzufügen"
+
+#: car-rental.php:745
+msgid "Choose from the most used Extras"
+msgstr "Wählen Sie aus den am häufigsten verwendeten Extras"
+
+#: car-rental.php:746
+msgid "No Extras found."
+msgstr "Keine Extras gefunden"
+
+#: car-rental.php:747 car-rental.php:1786 includes/widget-order-info.php:233
+#: includes/class-crrntl-settings.php:58 includes/orders-table.php:52
+#: includes/orders-table.php:587
+msgid "Extras"
+msgstr "Extras"
+
+#: car-rental.php:748
+msgid "Extras list navigation"
+msgstr "Extras Listennavigation"
+
+#: car-rental.php:749
+msgid "Extras list"
+msgstr "Extras Liste"
+
+#: car-rental.php:792
+#, fuzzy
+msgid "Featured Image"
+msgstr "Bild hochladen"
+
+#: car-rental.php:793
+#, fuzzy
+msgid "Title"
+msgstr "Slide Titel"
+
+#: car-rental.php:915
+msgid "Car's Info"
+msgstr "Fahrzeug Info´s"
+
+#: car-rental.php:965 templates/car-search-form.php:69
+msgid "Location"
+msgstr "Standort"
+
+#: car-rental.php:971 car-rental.php:972 car-rental.php:985
+#: templates/car-search-form.php:70 templates/car-search-form.php:82
+#: templates/car-search-form.php:83
+msgid "Choose location"
+msgstr "Standort auswählen"
+
+#: car-rental.php:977 car-rental.php:996
+msgid "Choose location from list"
+msgstr "Standort von der Liste auswählen"
+
+#: car-rental.php:980 car-rental.php:998
+msgid "Enter a location"
+msgstr "Standort wählen"
+
+#: car-rental.php:981
+msgid "Add new location"
+msgstr "Neuen Standort hinzufügen"
+
+#: car-rental.php:986
+#, fuzzy
+msgid "New Location"
+msgstr "Standort"
+
+#: car-rental.php:1007
+#, fuzzy
+msgid "Number of Doors"
+msgstr "Anzahl der Sitzplätze"
+
+#: car-rental.php:1024
+#, fuzzy
+msgid "Number of Seats"
+msgstr "Anzahl der Sitzplätze"
+
+#: car-rental.php:1031
+msgid "Luggage Quantity"
+msgstr "Gepäckmenge"
+
+#: car-rental.php:1044
+msgid "large suitcases"
+msgstr "große Koffer"
+
+#: car-rental.php:1057
+msgid "small suitcases"
+msgstr "kleine Koffer"
+
+#: car-rental.php:1063
+#, fuzzy
+msgid "Transmission Type"
+msgstr "Getriebe"
+
+#: car-rental.php:1067
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: car-rental.php:1068
+msgid "Automatic"
+msgstr "Automatic"
+
+#: car-rental.php:1069
+msgid "Manual"
+msgstr "Manuell"
+
+#: car-rental.php:1075
+msgid "Air Conditioning"
+msgstr "Klimaanlage"
+
+#: car-rental.php:1083
+#, fuzzy
+msgid "Average Consumption"
+msgstr "Durchschnittlicher Verbrauch"
+
+#: car-rental.php:1092
+#, php-format
+msgid ""
+"You can change unit of consumption on the %1$splugin's settings page%2$s."
+msgstr ""
+
+#: car-rental.php:1101 car-rental.php:1264 car-rental.php:1313
+#, fuzzy
+msgid "Price per Hour"
+msgstr "Preis pro Stunde"
+
+#: car-rental.php:1101 car-rental.php:1264 car-rental.php:1313
+#, fuzzy
+msgid "Price per Day"
+msgstr "Preis pro Tag"
+
+#: car-rental.php:1108
+msgid "for example"
+msgstr "zum Beispiel"
+
+#: car-rental.php:1113 car-rental.php:1766 templates/page-choose-car.php:212
+msgid "Price on request"
+msgstr "Preis auf Anfrage"
+
+#: car-rental.php:1118
+#, php-format
+msgid "You can change currency on the %1$splugin's settings page%2$s."
+msgstr ""
+
+#: car-rental.php:1259 car-rental.php:1304
+#: templates/page-choose-extras.php:138
+msgid "More details"
+msgstr "Mehr Details"
+
+#: car-rental.php:1261 car-rental.php:1308
+msgid "More about this extra"
+msgstr "Mehr über dieses Extra"
+
+#: car-rental.php:1266 car-rental.php:1317
+msgid "The price for one unit. For example"
+msgstr "Preis pro Einheit z.B."
+
+#: car-rental.php:1266 car-rental.php:1317
+msgid "max."
+msgstr "max."
+
+#: car-rental.php:1269
+msgid "Ability to choose a quantity"
+msgstr "Die Möglichkeit, eine Menge zu wählen"
+
+#: car-rental.php:1270 car-rental.php:1325
+msgid "Option is available"
+msgstr "Option ist verfügbar"
+
+#: car-rental.php:1273 car-rental.php:1329 includes/slider-template.php:208
+msgid "Image"
+msgstr "Bild"
+
+#: car-rental.php:1275 car-rental.php:1335 car-rental.php:1339
+#: includes/slider-template.php:212 includes/slider-template.php:214
+msgid "No image chosen"
+msgstr "kein Bild gewählt"
+
+#: car-rental.php:1276 car-rental.php:1340 car-rental.php:1512
+msgid "Add image"
+msgstr "Bild hinzufügen"
+
+#: car-rental.php:1277 car-rental.php:1337 car-rental.php:1341
+msgid "Remove image"
+msgstr "Bild entfernen"
+
+#: car-rental.php:1322
+#, fuzzy
+msgid "Ability to Choose a Quantity"
+msgstr "Die Möglichkeit, eine Menge zu wählen"
+
+#: car-rental.php:1333
+msgid "Extras Image"
+msgstr "Extra Bild"
+
+#: car-rental.php:1336 car-rental.php:1513
+msgid "Change image"
+msgstr "Bild ändern"
+
+#: car-rental.php:1469
+#, fuzzy
+msgid "Please select return location"
+msgstr "Aktivieren Rückgabe Standortwahl"
+
+#: car-rental.php:1508 includes/orders-table.php:72
+#: includes/orders-table.php:80
+msgid "Delete"
+msgstr "Entfernen"
+
+#: car-rental.php:1509 includes/class-crrntl-settings.php:430
+msgid "Enter new status"
+msgstr "Neuen Status eingeben"
+
+#: car-rental.php:1510
+msgid "Choose file"
+msgstr "Datei wählen"
+
+#: car-rental.php:1511
+msgid "No file chosen"
+msgstr "keine Datei gewählt"
+
+#: car-rental.php:1514
+msgid "Warning: You can add only image"
+msgstr "Warnung: Sie können nur Bilddateien auswählen!"
+
+#: car-rental.php:1741
+#, fuzzy, php-format
+msgid ""
+"Thank you for a booking. We will contact you for the order confirmation. "
+"Your order is #%d"
+msgstr ""
+"Vielen Dank für Ihre Reservierungsanfrage. Wir werden Sie für die "
+"Auftragsbestätigung kontaktieren. Ihre Reservierungsanfrage"
+
+#: car-rental.php:1791
+msgid "New booking order #"
+msgstr "Neue Buchungsauftrag #"
+
+#: car-rental.php:1794 includes/widget-order-info.php:107
+msgid "Order Info"
+msgstr "Reservierungs Info"
+
+#: car-rental.php:1795 includes/orders-table.php:57
+#: includes/orders-table.php:553 includes/orders-table.php:562
+msgid "Client"
+msgstr "Kunde"
+
+#: car-rental.php:1796
+msgid "Email"
+msgstr ""
+
+#: car-rental.php:1797 templates/page-review-book.php:308
+msgid "Phone number"
+msgstr "Rückrufnummer"
+
+#: car-rental.php:1798 includes/widget-order-info.php:109
+#: includes/orders-table.php:51 includes/orders-table.php:567
+msgid "Car"
+msgstr "Fahrzeug"
+
+#: car-rental.php:1800 includes/orders-table.php:654
+#, fuzzy
+msgid "Pick Up Date"
+msgstr "Abholdatum"
+
+#: car-rental.php:1801 includes/orders-table.php:670
+#, fuzzy
+msgid "Drop Off Date"
+msgstr "Abgabe-Datum"
+
+#: car-rental.php:1802 includes/orders-table.php:623
+#, fuzzy
+msgid "Pick Up Location"
+msgstr "Abhol Standort"
+
+#: car-rental.php:1803
+#, fuzzy
+msgid "Drop Off Location"
+msgstr "Abstell Standort"
+
+#: car-rental.php:1804 includes/widget-order-info.php:289
+#: includes/orders-table.php:58
+msgid "Total"
+msgstr "Gesamt"
+
+#: car-rental.php:1817
+#, fuzzy
+msgid "An error occured while creating the order."
+msgstr ""
+"Es ist ein Fehler während der Erstellung Reservierungsanfrage aufgetreten."
+
+#: car-rental.php:1839
+msgid "FAQ"
+msgstr "FAQ"
+
+#: car-rental.php:1840
+msgid "Support"
+msgstr "Support"
+
+#: car-rental.php:1958
+#, php-format
+msgid ""
+"Your theme does not declare Car Rental plugin support. Please check out our "
+"%s theme which has been developed specifically for use with Car Rental "
+"plugin."
+msgstr ""
+"Ihr Themeunterstützt das Autovermietung Plugin. Bitte beachten Sie , dass "
+"unsere Themens % s, speziell für die Verwendung mit Autovermietung Plugins "
+"entwickelt wurde."
+
+#: car-rental.php:1961 includes/demo-data/class-bws-demo-data.php:812
+msgid "Close notice"
+msgstr "Schließen Ankündigung"
+
+#: car-rental.php:2194 includes/demo-data/class-bws-demo-data.php:562
+msgid "You have reached the limit for Extras."
+msgstr "Sie haben das Limit für Extras erreicht."
+
+#: includes/slider-template.php:91
+msgid "Slide settings saved."
+msgstr "Slider Einstellung gespeichert"
+
+#: includes/slider-template.php:93
+msgid "Please choose new image for slide. Settings not saved."
+msgstr ""
+"Bitte wählen neues Bild für den Slider. Einstellungen nicht gespeichert."
+
+#: includes/slider-template.php:105
+msgid "Slide was successfully added."
+msgstr "Slide wurde erfolgreich hinzugefügt"
+
+#: includes/slider-template.php:107
+msgid "Please choose image for slide. Settings not saved."
+msgstr ""
+"Bitte wählen Sie die Grafik für einen Slide. Einstellungen nicht gespeichert."
+
+#: includes/slider-template.php:115 includes/slider-template.php:122
+msgid "Slide was successfully deleted"
+msgstr "Slide wurde erfolgreich gelöscht"
+
+#: includes/slider-template.php:142
+#, fuzzy
+msgid ""
+"If you want to display the slider on your homepage, paste the following "
+"strings into the template source code"
+msgstr ""
+"Wenn Sie den Slider hinzufügen möchten, fügen Sie die folgenden "
+"Zeichenfolgen in das Template-Quellcode"
+
+#: includes/slider-template.php:143
+#, fuzzy
+msgid ""
+"If you want to display the slider on any page (e.g. that uses some custom "
+"template), paste the following strings into the source code of the "
+"corresponding template"
+msgstr ""
+"Wenn Sie den Slider hinzufügen möchten, fügen Sie die folgenden "
+"Zeichenfolgen in das Template-Quellcode"
+
+#: includes/slider-template.php:157
+msgid "List of Slides"
+msgstr "Slider Liste"
+
+#: includes/slider-template.php:163 includes/slider-template.php:195
+msgid "Delete Slide"
+msgstr "slider löschen"
+
+#: includes/slider-template.php:166
+msgid "- This slide has no title -"
+msgstr "- Dieser Slide hat keinen Titel -"
+
+#: includes/slider-template.php:171 includes/widget-order-info.php:111
+#: includes/widget-order-info.php:209 includes/widget-order-info.php:236
+#: includes/orders-table.php:71 templates/car-search-form.php:129
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: includes/slider-template.php:182 includes/slider-template.php:258
+msgid "Add Slide"
+msgstr "Slide hinzufügen"
+
+#: includes/slider-template.php:192
+msgid "Add New Slide"
+msgstr "Neuen Slide hinzufügen"
+
+#: includes/slider-template.php:199
+msgid "Back to Slider Settings"
+msgstr "Zurück zu den Slide Einstellungen"
+
+#: includes/slider-template.php:211
+msgid "Slide Image"
+msgstr "Slider Bild"
+
+#: includes/slider-template.php:220
+msgid "Image URL"
+msgstr "Bild URL"
+
+#: includes/slider-template.php:224
+msgid "Upload Image"
+msgstr "Bild hochladen"
+
+#: includes/slider-template.php:224
+msgid "Change Image"
+msgstr "Bild ändern"
+
+#: includes/slider-template.php:229
+msgid "Slide Title"
+msgstr "Slide Titel"
+
+#: includes/slider-template.php:237
+msgid "Slide Description"
+msgstr "Slide beschreibung"
+
+#: includes/slider-template.php:245
+msgid "Slide Link"
+msgstr "Slide Link"
+
+#: includes/slider-template.php:262 includes/orders-table.php:699
+msgid "Save Changes"
+msgstr "Änderung speichern"
+
+#: includes/slider-template.php:343
+msgid "Go to"
+msgstr "Gehe zu"
+
+#: includes/slider-template.php:343
+msgid "Learn More"
+msgstr "Erfahren Sie mehr"
+
+#: includes/widget-order-info.php:22
+msgid "Car Rental Order Info"
+msgstr "Autovermietung Bestell-Info"
+
+#: includes/widget-order-info.php:23
+msgid "Widget for displaying Order Info."
+msgstr "Widget für die Anzeige von Bestellinformationen."
+
+#: includes/widget-order-info.php:79 templates/page-review-book.php:85
+#, fuzzy
+msgid "Please choose Pick Up date"
+msgstr "Bitte wählen Sie Abholdatum"
+
+#: includes/widget-order-info.php:80 templates/page-review-book.php:100
+#, fuzzy
+msgid "Please choose Drop Off date"
+msgstr "Bitte Abgabe-Datum wählen"
+
+#: includes/widget-order-info.php:84 includes/widget-order-info.php:88
+msgid "at"
+msgstr "beim"
+
+#: includes/widget-order-info.php:137 templates/page-choose-car.php:250
+#, php-format
+msgid "%s passenger"
+msgid_plural "%s passengers"
+msgstr[0] "%s Passagier"
+msgstr[1] "%s Passagiere"
+
+#: includes/widget-order-info.php:142 templates/page-choose-car.php:255
+#, php-format
+msgid "%s Door"
+msgid_plural "%s Doors"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/widget-order-info.php:149 templates/page-choose-car.php:264
+#, php-format
+msgid "%s large suitcase"
+msgid_plural "%s large suitcases"
+msgstr[0] "%s große Koffer"
+msgstr[1] "%s große Koffer"
+
+#: includes/widget-order-info.php:152 templates/page-choose-car.php:268
+#, php-format
+msgid "%s small suitcase"
+msgid_plural "%s small suitcases"
+msgstr[0] "%s kleine Koffer"
+msgstr[1] "%s kleine Koffer"
+
+#: includes/widget-order-info.php:158 templates/page-choose-car.php:275
+msgid "automatic transmission"
+msgstr "Automatikgetriebe"
+
+#: includes/widget-order-info.php:158 templates/page-choose-car.php:275
+msgid "manual transmission"
+msgstr "Schaltgetriebe"
+
+#: includes/widget-order-info.php:163 templates/page-choose-car.php:280
+msgid "air conditioning"
+msgstr "Klimaanlage"
+
+#: includes/widget-order-info.php:174 templates/page-choose-car.php:291
+msgid "View car details"
+msgstr "Details anzeigen"
+
+#: includes/widget-order-info.php:175 templates/page-choose-car.php:292
+msgid "Close car details"
+msgstr "Details ausblenden"
+
+#: includes/widget-order-info.php:186 templates/page-review-book.php:75
+#: templates/page-choose-extras.php:87
+#, fuzzy
+msgid "Please choose a Car"
+msgstr "Bitte wählen Sie ein Fahrzeug"
+
+#: includes/widget-order-info.php:207
+msgid "Date & Location"
+msgstr "Datum & Ort"
+
+#: includes/widget-order-info.php:213
+msgid "Pick Up time"
+msgstr "Abholzeit"
+
+#: includes/widget-order-info.php:216
+msgid "Return time"
+msgstr "Rückgabezeit"
+
+#: includes/widget-order-info.php:220
+msgid "Pickup and Return Location"
+msgstr "Abhol- und Rückgabeort"
+
+#: includes/widget-order-info.php:228
+msgid "Subtotal"
+msgstr "Zwischensumme"
+
+#: includes/class-crrntl-settings.php:26
+msgid "Misc"
+msgstr ""
+
+#: includes/class-crrntl-settings.php:27
+#, fuzzy
+msgid "Custom Code"
+msgstr "Benutzerdefinierter Code"
+
+#: includes/class-crrntl-settings.php:28
+msgid "Import / Export"
+msgstr ""
+
+#: includes/class-crrntl-settings.php:29
+msgid "License Key"
+msgstr ""
+
+#: includes/class-crrntl-settings.php:52
+#, fuzzy
+msgid "Choose car"
+msgstr "Fahrzeug auswählen"
+
+#: includes/class-crrntl-settings.php:53
+msgid "Cars"
+msgstr "Автомобілі"
+
+#: includes/class-crrntl-settings.php:57 templates/page-review-book.php:216
+#: templates/page-choose-car.php:69 templates/page-choose-extras.php:66
+msgid "Choose extras"
+msgstr "Extras auswählen"
+
+#: includes/class-crrntl-settings.php:62 includes/class-crrntl-settings.php:63
+#, fuzzy
+msgid "Review & Book"
+msgstr "Überprüfen & Buchen"
+
+#: includes/class-crrntl-settings.php:107
+#, fuzzy
+msgid "Please enter the correct value for custom currency field."
+msgstr ""
+"Bitte geben Sie den richtigen Wert für die benutzerdefinierte Währung ein. "
+"Einstellungen nicht gespeichert."
+
+#: includes/class-crrntl-settings.php:121
+#, fuzzy
+msgid "Please enter the correct value for custom unit of consumption field."
+msgstr ""
+"Bitte geben Sie den richtigen Wert für die benutzerdefinierte Währung ein. "
+"Einstellungen nicht gespeichert."
+
+#: includes/class-crrntl-settings.php:207
+#, php-format
+msgid ""
+"Warning! The status \"%1$s\" can not be removed, because it is used in the "
+"%2$s orders."
+msgstr ""
+"Warnung! Der Status \"%1$s\" kann nicht entfernt werden, da er in der "
+"Bestellung %2$s verwendet wird."
+
+#: includes/class-crrntl-settings.php:217
+msgid "An error occurred during the updating status list."
+msgstr "Ein Fehler ist während der Aktualisierung der Statusliste aufgetreten."
+
+#: includes/class-crrntl-settings.php:223
+#, fuzzy
+msgid "Settings saved"
+msgstr "Einstellungen gespeichert."
+
+#: includes/class-crrntl-settings.php:230
+msgid "Important"
+msgstr "Wichtig"
+
+#: includes/class-crrntl-settings.php:231
+#, fuzzy, php-format
+msgid "for the correct plugin work, please choose page for \"%s\""
+msgstr "für den richtigen Pluginplatz, wählen Sie bitte die Seite %s"
+
+#: includes/class-crrntl-settings.php:232
+msgid "edit"
+msgstr "bearbeiten"
+
+#: includes/class-crrntl-settings.php:252
+msgid "Pages"
+msgstr "Seiten"
+
+#: includes/class-crrntl-settings.php:268
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Auswahl &mdash;"
+
+#: includes/class-crrntl-settings.php:280
+msgid "Currency"
+msgstr "Währung"
+
+#: includes/class-crrntl-settings.php:286
+#, fuzzy
+msgid "Custom currency"
+msgstr "Benutzerdefinierte Währung, zum Beispiel"
+
+#: includes/class-crrntl-settings.php:306
+msgid "Custom currency, for example"
+msgstr "Benutzerdefinierte Währung, zum Beispiel"
+
+#: includes/class-crrntl-settings.php:312
+msgid "Currency Position"
+msgstr "Währungsposition"
+
+#: includes/class-crrntl-settings.php:315
+#, fuzzy
+msgid "Before numerals"
+msgstr "vor Zahlen"
+
+#: includes/class-crrntl-settings.php:317
+#, fuzzy
+msgid "After numerals"
+msgstr "nach Zahlen"
+
+#: includes/class-crrntl-settings.php:324
+#, fuzzy
+msgid "Unit of Consumption"
+msgstr "Verbrauchseinheit"
+
+#: includes/class-crrntl-settings.php:327
+msgid "km/l"
+msgstr "km/l"
+
+#: includes/class-crrntl-settings.php:332
+msgid "Custom unit of consumption"
+msgstr "Benutzerdefinierte Verbrauchseinheit"
+
+#: includes/class-crrntl-settings.php:349
+#, fuzzy
+msgid "Custom Unit of Consumption"
+msgstr "Benutzerdefinierte Verbrauchseinheit"
+
+#: includes/class-crrntl-settings.php:355
+#, fuzzy
+msgid "Pick Up & Drop Off Time"
+msgstr "Abholzeit"
+
+#: includes/class-crrntl-settings.php:358
+msgid "Enable to display Pick Up & Drop Off Time option."
+msgstr ""
+
+#: includes/class-crrntl-settings.php:368 includes/orders-table.php:644
+msgid "Return Location"
+msgstr "Ablieferort"
+
+#: includes/class-crrntl-settings.php:371
+#, fuzzy
+msgid "Enable to display Return Location option."
+msgstr "Aktivieren Rückgabe Standortwahl"
+
+#: includes/class-crrntl-settings.php:375
+#, fuzzy
+msgid "Rent per"
+msgstr "Miete"
+
+#: includes/class-crrntl-settings.php:378
+msgid "Hour"
+msgstr ""
+
+#: includes/class-crrntl-settings.php:379
+msgid "Day"
+msgstr ""
+
+#: includes/class-crrntl-settings.php:385
+#, fuzzy
+msgid "Google Maps API Key"
+msgstr "Google Maps Schlüssel"
+
+#: includes/class-crrntl-settings.php:391
+#, php-format
+msgid ""
+"Including a key in your request allows you to monitor your application's API "
+"usage in the %s."
+msgstr ""
+
+#: includes/class-crrntl-settings.php:394
+#, fuzzy
+msgid "Google API Console"
+msgstr "Google Maps Schlüssel"
+
+#: includes/class-crrntl-settings.php:397
+msgid "Don't have an API key?"
+msgstr ""
+
+#: includes/class-crrntl-settings.php:398
+msgid "Get it now!"
+msgstr ""
+
+#: includes/class-crrntl-settings.php:404
+#, fuzzy
+msgid "Search Pages Show at Most"
+msgstr "Suchseite zeigt am meisten"
+
+#: includes/class-crrntl-settings.php:412
+#, fuzzy
+msgid "Set the Order Status List"
+msgstr "Legen Sie die Reihenfolge Statusliste fest"
+
+#: includes/class-crrntl-settings.php:421
+msgid "delete"
+msgstr "entfernen"
+
+#: includes/class-crrntl-settings.php:444
+#, fuzzy, php-format
+msgid "Add %s"
+msgstr "Hinzufügen"
+
+#: includes/class-crrntl-settings.php:466
+msgid "Download"
+msgstr ""
+
+#: includes/class-crrntl-settings.php:473
+msgid "Activate"
+msgstr ""
+
+#: includes/class-crrntl-settings.php:479
+#, php-format
+msgid "Enable to use %s for Review & Book form."
+msgstr ""
+
+#: includes/class-crrntl-settings.php:484
+#, php-format
+msgid "Your %s plugin is outdated. Please update it to the latest version."
+msgstr ""
+
+#: includes/class-crrntl-settings.php:500
+msgid ""
+"Please enable JavaScript in your browser for fully functional work of the "
+"plugin."
+msgstr ""
+
+#: includes/class-crrntl-settings.php:512
+#, fuzzy
+msgid "Car Rental Post Type"
+msgstr "Autovermietung Filter"
+
+#: includes/class-crrntl-settings.php:514
+msgid ""
+"Enable to avoid conflicts with other plugins installed. All Cars created "
+"earlier will stay unchanged. However, after enabling we recommend to check "
+"settings of other plugins where \"cars\" post type is used."
+msgstr ""
+
+#: includes/class-crrntl-settings.php:523
+#, fuzzy
+msgid "Demo Data"
+msgstr "Demo Daten löschen"
+
+#: includes/class-crrntl-settings.php:525
+#, fuzzy
+msgid ""
+"Install demo-data to create demo-cars with images and details, demo-extras "
+"with images and details, manufacturers, vehicles types and car classes."
+msgstr ""
+"Wenn Sie die Demo-Daten installieren, wird mit Bildern und Details, "
+"Hersteller, Fahrzeugtypen und Fahrzeugklassen Demo-Autos mit Bildern und "
+"Details, Demo-Extras erstellt werden."
+
+#: includes/widget-filter.php:22
+msgid "Car Rental filters"
+msgstr "Autovermietung Filter"
+
+#: includes/widget-filter.php:23
+msgid "Widget for displaying Cars filters."
+msgstr "Widget für Neu- und Gebrauchtwagen Filter anzeigen."
+
+#: includes/widget-filter.php:62 includes/orders-table.php:189
+msgid "Filter"
+msgstr "Filter"
+
+#: includes/widget-filter.php:72
+msgid "Price range"
+msgstr "Preisspanne"
+
+#: includes/widget-filter.php:74 includes/widget-filter.php:117
+msgid "Reset"
+msgstr "zurücksetzen"
+
+#: includes/widget-filter.php:78 includes/widget-filter.php:121
+#: templates/page-choose-car.php:192
+msgid "from"
+msgstr "von"
+
+#: includes/widget-filter.php:79 includes/widget-filter.php:122
+msgid "to"
+msgstr "zu"
+
+#: includes/widget-filter.php:102 includes/widget-filter.php:129
+msgid "Clear"
+msgstr "leeren"
+
+#: includes/widget-filter.php:102 includes/widget-filter.php:129
+msgid "Select All"
+msgstr "Alle wählen"
+
+#: includes/widget-filter.php:115
+msgid "Number of passengers"
+msgstr "Anzahl der Sitzplätze"
+
+#: includes/widget-filter.php:127
+msgid "Vehicle type"
+msgstr "Fahrzeugtyp"
+
+#: includes/widget-filter.php:144
+msgid "Apply filters"
+msgstr "Filter anwenden"
+
+#: includes/orders-table.php:18
+msgid "order"
+msgstr "Auftrag"
+
+#: includes/orders-table.php:19
+msgid "orders"
+msgstr "Aufträge"
+
+#: includes/orders-table.php:36
+msgid "On request"
+msgstr ""
+
+#: includes/orders-table.php:50
+msgid "Order ID"
+msgstr "Auftrags ID"
+
+#: includes/orders-table.php:53
+msgid "Location from"
+msgstr "Abholort"
+
+#: includes/orders-table.php:54
+msgid "Location to"
+msgstr "Ablieferort"
+
+#: includes/orders-table.php:55
+msgid "Date from"
+msgstr "Datum von"
+
+#: includes/orders-table.php:56
+msgid "Date to"
+msgstr "Datum bis"
+
+#: includes/orders-table.php:59 includes/orders-table.php:686
+msgid "Status"
+msgstr "Status"
+
+#: includes/orders-table.php:175
+msgid "All Customers"
+msgstr "Alle Kunden"
+
+#: includes/orders-table.php:183
+msgid "All Statuses"
+msgstr "Alle Statusse"
+
+#: includes/orders-table.php:291 includes/orders-table.php:377
+msgid "Manage orders page"
+msgstr "Verwalten Sie Auftrags Seite"
+
+#: includes/orders-table.php:292 includes/orders-table.php:308
+msgid "Orders"
+msgstr "Aufträge"
+
+#: includes/orders-table.php:344
+msgid "An error occurred during the deleting orders"
+msgstr "Beim Löschen ist ein Fehler aufgetreten"
+
+#: includes/orders-table.php:346
+msgid "The orders have been deleted."
+msgstr "Die Aufträge wurden gelöscht."
+
+#: includes/orders-table.php:390
+msgid "Search"
+msgstr "Suche"
+
+#: includes/orders-table.php:513
+msgid "An error occurred during the saving order"
+msgstr "Beim Speichern der Reservierungsanfrage ist ein Fehler aufgetreten"
+
+#: includes/orders-table.php:515
+msgid "All changes have been saved"
+msgstr "Alle Änderungen wurden gespeichert"
+
+#: includes/orders-table.php:538
+msgid "Edit order"
+msgstr "Reservierungsanfrage bearbeiten"
+
+#: includes/orders-table.php:539
+msgid "Return to Manage orders page"
+msgstr "Zurück zu Bestellseite verwalten"
+
+#: includes/orders-table.php:563
+msgid "This user doesn't exist"
+msgstr ""
+
+#: includes/orders-table.php:606 templates/page-choose-extras.php:133
+msgid "Choose Quantity"
+msgstr "wählen Sie die Menge"
+
+#: includes/orders-table.php:607 templates/page-choose-extras.php:164
+msgid "pcs."
+msgstr "Stk."
+
+#: includes/orders-table.php:616 templates/page-choose-extras.php:183
+msgid "There are no available extras for this car."
+msgstr "Es gibt keine verfügbaren Extras für dieses Auto."
+
+#: includes/orders-table.php:656 templates/car-search-form.php:94
+#, fuzzy
+msgid "Choose Pick Up date"
+msgstr "Abholdatum wählen"
+
+#: includes/orders-table.php:656 templates/car-search-form.php:94
+#: templates/car-search-form.php:106
+msgid "YYYY-MM-DD"
+msgstr "YYYY-MM-TT"
+
+#: includes/orders-table.php:658 includes/orders-table.php:674
+#: templates/car-search-form.php:96
+#, fuzzy
+msgid "Choose Pick Up time"
+msgstr "Wählen Sie die Abhol-Zeit"
+
+#: includes/orders-table.php:672 templates/car-search-form.php:106
+#, fuzzy
+msgid "Choose Drop Off date"
+msgstr "Abgabe-Datum wählen"
+
+#: includes/demo-data/class-bws-demo-data.php:36
+msgid "Install Demo Data"
+msgstr "Demo Daten installieren"
+
+#: includes/demo-data/class-bws-demo-data.php:39
+msgid "Remove Demo Data"
+msgstr "Demo Daten löschen"
+
+#: includes/demo-data/class-bws-demo-data.php:40
+msgid "Delete demo-data and restore old plugin settings."
+msgstr "Demo-Daten löschen und alte Plugin-Einstellungen wiederherstellen."
+
+#: includes/demo-data/class-bws-demo-data.php:44
+#: includes/demo-data/class-bws-demo-data.php:559
+msgid "You have reached the limit for Cars."
+msgstr "Sie haben das Limit für Autos erreicht."
+
+#: includes/demo-data/class-bws-demo-data.php:58
+msgid "Yes, install demo data"
+msgstr "Ja, Demo-Daten installieren"
+
+#: includes/demo-data/class-bws-demo-data.php:59
+msgid "Are you sure you want to install demo data?"
+msgstr "Sind Sie sicher, dass Sie Demo-Daten installieren möchten?"
+
+#: includes/demo-data/class-bws-demo-data.php:61
+msgid "Yes, remove demo data"
+msgstr "Ja, entfernen Demo-Daten"
+
+#: includes/demo-data/class-bws-demo-data.php:62
+msgid "Are you sure you want to remove demo data?"
+msgstr "Sind Sie sicher, dass Sie Demo-Daten entfernen möchten?"
+
+#: includes/demo-data/class-bws-demo-data.php:69
+msgid "No, go back to the settings page"
+msgstr "Nein, zurück zu den Einstellungen"
+
+#: includes/demo-data/class-bws-demo-data.php:128
+msgid "Can not get demo data."
+msgstr "Kann keine Demodaten empfangen"
+
+#: includes/demo-data/class-bws-demo-data.php:135
+msgid "Demo options already installed."
+msgstr "Demo Optionen wurden bereits installiert"
+
+#: includes/demo-data/class-bws-demo-data.php:541
+msgid "Demo data successfully installed."
+msgstr "Demo Daten wurden erfolgreich installiert"
+
+#: includes/demo-data/class-bws-demo-data.php:543
+msgid "View post with shortcodes"
+msgstr "Beitrag mit Shortcodes anzeigen"
+
+#: includes/demo-data/class-bws-demo-data.php:546
+msgid "View page with examples"
+msgstr "Beispielseite anzeigen"
+
+#: includes/demo-data/class-bws-demo-data.php:557
+msgid "Installation of demo data with some errors occurred."
+msgstr "Bei der Installation der Demo Daten sind Fehler aufgetreten."
+
+#: includes/demo-data/class-bws-demo-data.php:566
+msgid "Posts data is missing."
+msgstr "Daten des Posts fehlen"
+
+#: includes/demo-data/class-bws-demo-data.php:656
+msgid "Demo data have already been removed."
+msgstr "Demo Daten wurden bereits entfernt"
+
+#: includes/demo-data/class-bws-demo-data.php:746
+msgid "Demo data successfully removed."
+msgstr "Demo Daten wurden erfolgreich entfernt"
+
+#: includes/demo-data/class-bws-demo-data.php:750
+msgid "Removing demo data with some errors occurred."
+msgstr "Видалення демо даних пройшло з помилками."
+
+#: includes/demo-data/class-bws-demo-data.php:816
+msgid "Install demo data"
+msgstr "Встановити демо дані"
+
+#: includes/demo-data/class-bws-demo-data.php:816
+msgid "for an acquaintance with the possibilities of the"
+msgstr "для ознайомлення з можливостями"
+
+#: templates/page-review-book.php:88
+#, fuzzy
+msgid "Please choose Pick Up time"
+msgstr "Bitte wählen Sie die Abholzeit"
+
+#: templates/page-review-book.php:93
+#, fuzzy
+msgid "Please choose correct Pick Up datetime in format \"YYYY-MM-DD\""
+msgstr "Bitte wählen Sie richtige Abholzeit im Format \"YYYY-MM-TT\""
+
+#: templates/page-review-book.php:95
+#, fuzzy
+msgid "Please choose correct Pick Up datetime"
+msgstr "Bitte wählen Sie richtige Abholzeit"
+
+#: templates/page-review-book.php:103
+#, fuzzy
+msgid "Please choose Drop Off time"
+msgstr "Bitte wählen Sie die Abgabezeit"
+
+#: templates/page-review-book.php:108
+#, fuzzy
+msgid "Please choose correct Drop Off datetime in format \"YYYY-MM-DD\""
+msgstr "Bitte wählen Sie richtig Abgabezeitpunkt im Format \"YYYY-MM-TT\""
+
+#: templates/page-review-book.php:110
+#, fuzzy
+msgid "Please choose correct Drop Off datetime"
+msgstr "Bitte wählen Sie den richtigen Abgabezeitpunk"
+
+#: templates/page-review-book.php:142
+#, fuzzy
+msgid "Please enter correct e-mail address."
+msgstr "Bitte geben Sie eine korrekte E-Mail-Adresse an."
+
+#: templates/page-review-book.php:144
+#, fuzzy
+msgid "Please confirm your e-mail address."
+msgstr "Bitte bestätigen Sie Ihre E-Mail-Adresse."
+
+#: templates/page-review-book.php:174
+#, fuzzy
+msgid "Error during user creation"
+msgstr "Fehler beim Anlegen des Benutzers"
+
+#: templates/page-review-book.php:205 templates/page-choose-car.php:61
+#: templates/page-choose-extras.php:56
+msgid "Create request"
+msgstr "Reservierung anlegen"
+
+#: templates/page-review-book.php:210 templates/page-choose-car.php:65
+#: templates/page-choose-extras.php:61
+msgid "Choose a car"
+msgstr "Fahrzeug auswählen"
+
+#: templates/page-review-book.php:221 templates/page-choose-car.php:73
+#: templates/page-choose-extras.php:70
+msgid "Review &amp; Book"
+msgstr "Überprüfen &amp; Buchen"
+
+#: templates/page-review-book.php:245
+msgid "Complete reservation form"
+msgstr "Vervollständigen Sie die Reservierung"
+
+#: templates/page-review-book.php:253
+msgid "Note"
+msgstr "Notitz"
+
+#: templates/page-review-book.php:261
+msgid "Personal Information"
+msgstr "Persönliche Angaben"
+
+#: templates/page-review-book.php:267
+msgid "First name"
+msgstr "Vorname"
+
+#: templates/page-review-book.php:268
+msgid "Enter your first name"
+msgstr "Geben Sie Ihren Vornamen ein"
+
+#: templates/page-review-book.php:271
+msgid "Last name"
+msgstr "Nachname"
+
+#: templates/page-review-book.php:272
+msgid "Enter your last name"
+msgstr "Geben Sie Ihren Nachnamen an"
+
+#: templates/page-review-book.php:275
+msgid "Age"
+msgstr "Alter"
+
+#: templates/page-review-book.php:277
+msgid "Choose your age"
+msgstr "Wählen Sie Ihr Alter"
+
+#: templates/page-review-book.php:298
+msgid "Email address"
+msgstr "E-mail Adresse"
+
+#: templates/page-review-book.php:299
+msgid "Enter your email address"
+msgstr "Geben Sie Ihre E-Mailadresse ein"
+
+#: templates/page-review-book.php:302
+msgid "Confirm email address"
+msgstr "Emailadresse bestätigen"
+
+#: templates/page-review-book.php:303
+msgid "Confirm your email address"
+msgstr "Bestätigen Sie Ihre Emailadresse"
+
+#: templates/page-review-book.php:309
+msgid "Enter your phone number"
+msgstr "Geben Sie Ihre Telefonnummer ein"
+
+#: templates/page-review-book.php:314
+#, fuzzy
+msgid "Additional information"
+msgstr "Persönliche Angaben"
+
+#: templates/page-review-book.php:346
+msgid "Book Now"
+msgstr "Jetzt reservieren"
+
+#: templates/car-search-form.php:53
+msgid "Book a Car"
+msgstr "Fahrzeug mieten"
+
+#: templates/car-search-form.php:59
+msgid "Edit Locations & Dates"
+msgstr "Standorte  & Termine bearbeiten"
+
+#: templates/car-search-form.php:62
+msgid "Search for a car"
+msgstr "Fahrzeug finden"
+
+#: templates/car-search-form.php:71
+#, fuzzy
+msgid "Any location"
+msgstr "Neuen Standort hinzufügen"
+
+#: templates/car-search-form.php:78
+msgid "Return at different location"
+msgstr "Andere Rückgabeadresse wählen"
+
+#: templates/car-search-form.php:80
+msgid "Return location"
+msgstr "Ablieferort"
+
+#: templates/car-search-form.php:93
+#, fuzzy
+msgid "Pick Up date"
+msgstr "Abholzeit"
+
+#: templates/car-search-form.php:105
+#, fuzzy
+msgid "Drop Off date"
+msgstr "Rückgabedatum"
+
+#: templates/car-search-form.php:108
+#, fuzzy
+msgid "Choose Drop Off time"
+msgstr "Wählen Sie die Abgabe Zeit"
+
+#: templates/car-search-form.php:117
+msgid "Car Class"
+msgstr "Fahrzeugklasse"
+
+#: templates/car-search-form.php:119
+msgid "Choose Car Class"
+msgstr "Fahrzeugklasse auswählen"
+
+#: templates/car-search-form.php:120
+msgid "Choose Class"
+msgstr "wählen"
+
+#: templates/car-search-form.php:130 templates/car-search-form.php:135
+#: templates/page-choose-extras.php:190
+msgid "Update"
+msgstr "aktualisieren"
+
+#: templates/car-search-form.php:133
+msgid "Continue"
+msgstr "Weiter"
+
+#: templates/page-choose-car.php:192
+msgid "Results"
+msgstr "Ergebnis"
+
+#: templates/page-choose-car.php:195
+msgid "Sort by"
+msgstr "sortiert nach"
+
+#: templates/page-choose-car.php:196
+msgid "Price"
+msgstr "Preis"
+
+#: templates/page-choose-car.php:197
+msgid "Name"
+msgstr "Name"
+
+#: templates/page-choose-car.php:304 templates/page-choose-car.php:306
+msgid "Select"
+msgstr "auswählen"
+
+#: templates/page-choose-car.php:319
+msgid "No cars available."
+msgstr "Keine Fahrzeuge verfügbar"
+
+#: templates/page-choose-extras.php:100
+msgid "Available Extras"
+msgstr "Verfügbare Extras"
+
+#: templates/page-choose-extras.php:139
+msgid "Close details"
+msgstr "Details schliesen"
+
+#: templates/page-choose-extras.php:191
+msgid "Continue to checkout"
+msgstr "Weiter zur Reservierung"
+
+#, fuzzy
+#~ msgid "Please enter the correct value for Google Maps Key field."
+#~ msgstr "Bitte geben Sie den richtigen Wert für Google Maps API ein"
+
+#~ msgid ""
+#~ "for the correct plugin work, please choose the %2$s template for the %1$s "
+#~ "page"
+#~ msgstr ""
+#~ "for the correct plugin work, please choose the %2$s template for the %1$s "
+#~ "page"
+
+#, fuzzy
+#~ msgid "Please choose Pick-Up date"
+#~ msgstr "Bitte wählen Sie Abholdatum"
+
+#, fuzzy
+#~ msgid "Please choose Drop-Off date"
+#~ msgstr "Bitte Abgabe-Datum wählen"
+
+#~ msgid "Please, choose location"
+#~ msgstr "Bitte Standort wählen"
+
+#~ msgid "All plugin settings were restored to default."
+#~ msgstr "Alle Plugin-Einstellungen wurden auf Standard wiederhergestellt."
+
+#~ msgid "for choosing a Car"
+#~ msgstr "für Fahrzeugwahl"
+
+#~ msgid "for choosing Extras"
+#~ msgstr "für Extras wahl"
+
+#~ msgid "Notice"
+#~ msgstr "Notitz"
+
+#~ msgid ""
+#~ "The plugin's settings have been changed. In order to save them please "
+#~ "don't forget to click the 'Save Changes' button."
+#~ msgstr ""
+#~ "Die Einstellungen des Plugins wurden geändert. Vergessen Sie nicht "
+#~ "Speichern zu klicken"
+
+#~ msgid "Enable selecting pick-up&drop-off time"
+#~ msgstr "Aktivieren Abhol- & Abgabe-Zeit Auswahl"
+
+#~ msgid "per hour"
+#~ msgstr "pro Stunde"
+
+#~ msgid "per day"
+#~ msgstr "pro Tag"
+
+#~ msgid "How to get a Key"
+#~ msgstr "Wie man einen Schlüssel erhält"
+
+#~ msgid "There are no available extras fo this car."
+#~ msgstr "Es gibt keine verfügbare Extras für dieses Fahrzeug."
+
+#~ msgid "Pickup Location"
+#~ msgstr "Abholort"
+
+#~ msgid "Pick-up date"
+#~ msgstr "Abholdatum"
+
+#~ msgid "Choose Drop-off date"
+#~ msgstr "Abgabe-Datum wählen"
+
+#~ msgid ""
+#~ "The following files '%s', '%s' and '%s' were not found in the directory "
+#~ "of your theme. Please copy them from the directory `%s` to the directory "
+#~ "of your theme for the correct work of the Car Rental plugin"
+#~ msgstr ""
+#~ "Die folgenden Dateien \"% s\", \"% s\" und \"% s 'wurden in das "
+#~ "Verzeichnis Ihres Themes nicht gefunden. Bitte kopieren Sie sie aus dem "
+#~ "Verzeichnis `% s` in das Verzeichnis Ihres Themes für die korrekte Arbeit "
+#~ "der Autovermietung Plugins"
+
+#~ msgid ""
+#~ "You have reached the limit for Cars. Create unlimited Cars and Extras "
+#~ "with %s"
+#~ msgstr ""
+#~ "Sie haben das Limit für Autos erreicht. Erstellen Sie unbegrenzte Autos "
+#~ "und Extras mit% s"
+
+#~ msgid "Go PRO"
+#~ msgstr "Go PRO"
+
+#~ msgid "Plugin \"Car Rental\" is not activated"
+#~ msgstr "Plugin \"Auto Vermietung\" ist nicht aktiv"
+
+#~ msgid "Error in total calculate"
+#~ msgstr "Fehler in der Gesamtkalkulation"
+
+#~ msgid "Extras: "
+#~ msgstr "Опції:"
+
+#~ msgid "Order Info:"
+#~ msgstr "Інформація про замовлення:"
+
+#~ msgid "Car: "
+#~ msgstr "Авто: "
+
+#~ msgid "Total: "
+#~ msgstr "Сума:"
+
+#~ msgid "Total:"
+#~ msgstr "Сума:"
+
+#~ msgid "from:"
+#~ msgstr "від:"
+
+#~ msgid "Get a Key"
+#~ msgstr "Отримати ключ"
+
+#~ msgid ""
+#~ "An error occurred while saving slider settings. Settings were not saved."
+#~ msgstr ""
+#~ "При збереженні налаштувань слайдера сталася помилка. Налаштування не "
+#~ "збережені."
+
+#~ msgid ""
+#~ "You are using the %1$s theme. If you want to enable the slider, find the "
+#~ "\"header.php\" file of your theme, and add the following code after &lt;"
+#~ "header&gt; block or to any necessary place: %2$s"
+#~ msgstr ""
+#~ "Ви використовуєте тему %1$s. Якщо ви хочете щоб слайдер відображався, в "
+#~ "файлі \"header.php\" цієї теми після блоку &lt;header&gt; або в іншому "
+#~ "місці, де ви хочете відображати слайдер, додайте наступний код: %2$s"
+
+#~ msgid "Send me latest news &amp; updates"
+#~ msgstr "Отримувати новини та оновлення"
+
+#~ msgid "Show Slider"
+#~ msgstr "Показувати слайдер"
+
+#~ msgid "- This slide has no image -"
+#~ msgstr "- Слайд не має зображення -"
+
+#~ msgid "Edit Slide"
+#~ msgstr "Редагувати Слайд"
+
+#~ msgid " - No slides yet - "
+#~ msgstr " - Поки немає слайдів - "
+
+#~ msgid "All plugin settings were restored."
+#~ msgstr "Все настройки плагина восстановлены."
+
+#~ msgid "Error while deleting plugin settings. "
+#~ msgstr "При удалении настроек плагина произошла ошибка. "
+
+#~ msgid "Error while deleting slider settings. "
+#~ msgstr "Ошибка при удалении настроек слайдера. "
+
+#~ msgid "Default settings has been already installed."
+#~ msgstr "Настройки по умолчанию уже установлены."
+
+#~ msgid "Class"
+#~ msgstr "Класс"
+
+#~ msgid "Manage reservations"
+#~ msgstr "Управление заказами"
+
+#~ msgctxt "admin menu"
+#~ msgid "Cars for rental"
+#~ msgstr "Авто в Аренду"
+
+#~ msgid "Choose Country"
+#~ msgstr "Выбор страны"
+
+#~ msgid "Choose Language"
+#~ msgstr "Выберите язык"
+
+#~ msgid "Photos"
+#~ msgstr "Фото"
+
+#~ msgid "Add photo"
+#~ msgstr "Добавить фото"
+
+#~ msgid "Option is not available"
+#~ msgstr "Опция не доступна"
+
+#~ msgid "Manage Reservation"
+#~ msgstr "Управление Бронью"
+
+#~ msgid "Airport codes"
+#~ msgstr "Код аэропорта"
+
+#~ msgid "Unlimited free miles included"
+#~ msgstr "Неограниченные бесплатные мили"
+
+#~ msgid "Enter airport, city or zip code"
+#~ msgstr "Аэропорт, город или индекс"
+
+#~ msgid "Credit Card Information"
+#~ msgstr "Информация о кредитной карте"
+
+#~ msgid "%s item"
+#~ msgid_plural "%s items"
+#~ msgstr[0] "%s шт."
+#~ msgstr[1] "%s шт."
+#~ msgstr[2] "%s шт."
+
+#~ msgid "Type"
+#~ msgstr "Тип"
+
+#, fuzzy
+#~ msgid "Learn more"
+#~ msgstr "Читать далее"

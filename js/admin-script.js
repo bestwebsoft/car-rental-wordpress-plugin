@@ -1,32 +1,27 @@
 ( function( $ ) {
 	$( document ).ready( function() {
+		$( '#crrntl-js-location, #crrntl-map' ).show();
 
 		if ( $.fn.sortable ) {
 			$( '#crrntl_gallery.crrntl-gallery' ).sortable();
 		}
 
-		$( '#crrntl_currency' ).on( 'focus', function() {
-			$( '#crrntl_currency_custom_display_false' ).attr( 'checked', 'checked' );
-		} );
-		$( '#crrntl_custom_currency' ).on( 'focus', function() {
-			$( '#crrntl_currency_custom_display_true' ).attr( 'checked', 'checked' );
-		} );
-		$( '#crrntl_unit_consumption' ).on( 'focus', function() {
-			$( '#crrntl_unit_consumption_custom_display_false' ).attr( 'checked', 'checked' );
-		} );
-		$( '#crrntl_custom_unit_consumption' ).on( 'focus', function() {
-			$( '#crrntl_unit_consumption_custom_display_true' ).attr( 'checked', 'checked' );
-		} );
-		$( '#crrntl-choose-car-location' ).on( 'focus', function() {
-			$( '#crrntl-add-new-location-false' ).attr( 'checked', 'checked' );
-		} );
-		$( '#crrntl-pac-input' ).on( 'focus', function() {
-			$( '#crrntl-add-new-location-true' ).attr( 'checked', 'checked' );
-		} );
+		var width = 0;
+		$( window ).on( 'resize', function() {
+			if ( width != $( this ).width() ) {
+				width = $( this ).width();
+				var input_width = $( '#crrntl-map' ).width() - 175;
+				$( '#crrntl-pac-input-js' ).css( { 'max-width' : input_width, 'width' : input_width } );
+			}
+		} ).trigger( 'resize' );
 
-		$( '#crrntl-map' ).show();
-		$( '#crrntl-pac-input' ).keydown( function( event ) {
-			if ( event.keyCode == 13 && $( '#crrntl-pac-input' ).is( ':focus' ) ) {
+		$( '#crrntl-choose-car-location-js' ).on( 'change', function() {
+			if ( 'new' == $( this ).val() ) {
+				$( '#crrntl-pac-input-js' ).focus();
+			}
+		} );
+		$( '#crrntl-pac-input-js' ).keydown( function( event ) {
+			if ( event.keyCode == 13 && $( '#crrntl-pac-input-js' ).is( ':focus' ) ) {
 				event.preventDefault();
 				return false;
 			}
@@ -36,7 +31,7 @@
 		 * Add datepicker script
 		 */
 		var pickUpDate = $( '.crrntl-pick-up .datepicker' ),
-				dropOffDate = $( '.crrntl-drop-off .datepicker' );
+			dropOffDate = $( '.crrntl-drop-off .datepicker' );
 		pickUpDate.datepicker( {
 			dateFormat: 'yy-mm-dd',
 			minDate:    0
@@ -81,7 +76,7 @@
 		 */
 		var imageUrl, imagePreview, button, file_frame, imageId,
 				wp_media_post_id = wp.media.model.settings.post.id, /* Store the old id */
-				set_to_post_id   = 10; /* Set this */
+				set_to_post_id   = 0; /* Set this */
 
 		$( '.crrntl-upload-image' ).on( 'click', function( event ) {
 			button       = $( this );
@@ -94,12 +89,12 @@
 			/* If the media frame already exists, reopen it. */
 			if ( file_frame ) {
 				/* Set the post ID to what we want */
-				file_frame.uploader.uploader.param( 'post_id', set_to_post_id );
+				/* file_frame.uploader.uploader.param( 'post_id', set_to_post_id ); */
 				/* Open frame */
 				file_frame.open();
 				return;
 			} else {
-				/* Set the wp.media post id so the uploader grabs the ID we want when initialised */
+				/* Set the wp.media post id so the uploader grabs the ID we want when initialized */
 				wp.media.model.settings.post.id = set_to_post_id;
 			}
 
@@ -129,12 +124,12 @@
 				imageUrl.val( attachment.url ).trigger( 'change' );
 				imageId.val( attachment.id );
 				if ( ! ( imagePreview.find( '.crrntl-uploaded-image' ).length > 0 ) ) {
-					imagePreview.prepend( '<img class="crrntl-uploaded-image" src="' + attachment.url + '" alt="' + attachment.url + '"/><div class="clear"></div>' );
+					imagePreview.prepend( '<img class="crrntl-uploaded-image" src="' + attachment.sizes.thumbnail.url + '" alt="' + attachment.url + '"/><div class="clear"></div>' );
 					$( '.crrntl-remove-image' ).show();
 					$( '#crrntl-no-image' ).hide();
 				} else {
 					imagePreview.find( '.crrntl-uploaded-image' ).attr( {
-						src: attachment.url,
+						src: attachment.sizes.thumbnail.url,
 						alt: attachment.url
 					} );
 				}
@@ -148,7 +143,7 @@
 		} );
 
 		/* Removing terms image */
-		$( '.crrntl-remove-image' ).on( 'click', function( event ) {
+		$( document ).on( 'click', '.crrntl-remove-image', function( event ) {
 			button       = $( this ).parent().find( '.crrntl-upload-image' );
 			imageId      = $( this ).parent().find( 'input.crrntl-image-id' );
 			imagePreview = $( this ).parent();
@@ -161,20 +156,38 @@
 			imageId.val( '' );
 		} );
 
+		/* Clear thumbnail field after extra is added */
+		$( document ).ajaxComplete( function( event, request, options ) {
+			if (
+				request && 4 === request.readyState && 200 === request.status && options.data &&
+				0 <= options.data.indexOf( 'action=add-tag' ) &&
+				0 <= options.data.indexOf( 'screen=edit-extra' )
+			) {
+				var res = wpAjax.parseAjaxResponse( request.responseXML, 'ajax-response' );
+				if ( ! res || res.errors ) {
+					return;
+				}
+				$( '.crrntl-remove-image' ).click();
+				return;
+			}
+		} );
+
 		/* Validate car price input field */
 		$( '#crrntl-price' ).on( 'input', function() {
-			var input    = $( this );
-			var re       = /^\d{1,9}(\.\d{2})?$/;
-			var is_price = re.test( input.val() );
-			if ( is_price ) {
-				input.removeClass( 'crrntl-confirm-invalid' );
-			} else {
-				input.addClass( 'crrntl-confirm-invalid' );
+			if ( 'on_request' != $( 'input[name="crrntl_price_type"]:checked' ).val() ) {
+				var input    = $( this );
+				var re       = /^\d{1,9}(\.\d{2})?$/;
+				var is_price = re.test( input.val() );
+				if ( is_price ) {
+					input.removeClass( 'crrntl-confirm-invalid' );
+				} else {
+					input.addClass( 'crrntl-confirm-invalid' );
+				}
 			}
 		} );
 
 		/* Validate extra price input field */
-		$( '#crrntl-extra-rpice' ).on( 'input', function() {
+		$( '#crrntl-extra-price' ).on( 'input', function() {
 			var input    = $( this );
 			var re       = /^\d{1,9}(\.\d{2})?$/;
 			var is_price = re.test( input.val() );
@@ -192,5 +205,39 @@
 				$( 'select[name="crrntl_time_from"]' ).show();
 			}
 		} ).trigger( 'change' );
+
+		/* hide/show custom currency field */
+		$( 'select[name="crrntl_currency"]' ).on( 'change', function() {
+			if ( 'custom' == $( this ).val() ) {
+				$( 'label[for="crrntl_custom_currency"]' ).show();
+			} else {
+				$( 'label[for="crrntl_custom_currency"]' ).hide();
+			}
+		} ).trigger( 'change' );
+
+		/* hide/show custom unit consumption field */
+		$( 'select[name="crrntl_unit_consumption"]' ).on( 'change', function() {
+			if ( 'custom' == $( this ).val() ) {
+				$( 'label[for="crrntl_custom_unit_consumption"]' ).show();
+			} else {
+				$( 'label[for="crrntl_custom_unit_consumption"]' ).hide();
+			}
+		} ).trigger( 'change' );
+
+		$( '#crrntl-pac-input-js' ).on( 'input change', function() {
+			$( '#crrntl-choose-car-location-js' ).val('new');
+		} );
+
+		/* Show/hide quantity of extra on the 'Edit order' page */
+		$( '.crrntl-extra-item input[type="checkbox"]' ).on( 'change', function() {
+			var checkbox = $( this ),
+				extraQuantity = checkbox.closest( '.crrntl-extra-item' ).find( '.crrntl-extra-quantity' );
+			if ( checkbox.is( ':checked' ) ) {
+				extraQuantity.show();
+			} else {
+				extraQuantity.hide();
+			}
+		} ).trigger( 'change' );
+
 	} );
 } )( jQuery );

@@ -1,0 +1,52 @@
+.crrntl-unsupported-theme-notice {
+	position: relative;
+	margin: 5px 0 15px;
+	background: #fff;
+	border-left: 4px solid #00a0d2;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+			box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	padding: 1px 40px 1px 12px;
+}
+.rtl .crrntl-unsupported-theme-notice {
+	padding: 1px 12px 1px 40px;
+}
+.crrntl-unsupported-theme-notice .bws_hide_settings_notice {
+	position: absolute;
+	top: 0;
+	right: 1px;
+	border: none;
+	margin: 0;
+	padding: 9px;
+	background: 0 0;
+	color: #b4b9be;
+	cursor: pointer;
+	height: initial;
+	width: initial;
+}
+.crrntl-unsupported-theme-notice .bws_hide_settings_notice:before {
+	background: 0 0;
+	color: #b4b9be;
+	content: "\f153";
+	display: block;
+	font: 400 16px/20px dashicons;
+	speak: none;
+	height: 20px;
+	text-align: center;
+	width: 20px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.crrntl-unsupported-theme-notice .bws_hide_settings_notice:hover:before {
+	color: #c00;
+}
+
+/* Car Rental cars icon in menu */
+.menu-top.menu-icon-cars .wp-menu-image,
+.menu-top.menu-icon-bws-cars .wp-menu-image {
+	font-family: 'bwsicons' !important;
+}
+.menu-top.menu-icon-cars .wp-menu-image:before,
+.menu-top.menu-icon-bws-cars .wp-menu-image:before {
+	content: "\e902";
+	font-family: 'bwsicons' !important;
+}

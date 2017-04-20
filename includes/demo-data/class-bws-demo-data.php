@@ -6,7 +6,7 @@
 
 if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 	class Crrntl_Demo_Data {
-		private $bws_plugin_prefix, $bws_plugin_page, $bws_plugin_name, $bws_plugin_basename, $bws_demo_options, $bws_demo_folder;
+		private $bws_plugin_basename, $bws_plugin_prefix, $bws_plugin_name, $bws_plugin_page, $bws_demo_folder, $bws_demo_options, $bws_plugin_options, $crrntl_car_notice;
 
 		/**
 		 * BWS_Demo_Data constructor.
@@ -14,43 +14,38 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 		 * @param $args
 		 */
 		public function __construct( $args ) {
-			$this->bws_plugin_basename    = $args['plugin_basename'];
-			$this->bws_plugin_prefix      = $args['plugin_prefix'];
-			$this->bws_plugin_name        = $args['plugin_name'];
-			$this->bws_plugin_page        = $args['plugin_page'];
-			$this->bws_demo_folder        = $args['demo_folder'];
-			$this->bws_demo_options       = get_option( $this->bws_plugin_prefix . 'demo_options' );
+			$this->bws_plugin_basename		= $args['plugin_basename'];
+			$this->bws_plugin_prefix		= $args['plugin_prefix'];
+			$this->bws_plugin_name			= $args['plugin_name'];
+			$this->bws_plugin_page			= $args['plugin_page'];
+			$this->bws_demo_folder			= $args['demo_folder'];
+			$this->bws_demo_options			= get_option( $this->bws_plugin_prefix . 'demo_options' );
+			$this->bws_plugin_options		= get_option( $this->bws_plugin_prefix . 'options' );
 		}
 
 		/**
 		 * Display "Install demo data" or "Uninstall demo data" buttons
 		 *
-		 * @param $form_title
+		 * @param $form_info
 		 */
-		function bws_show_demo_button( $form_title ) {
+		function bws_show_demo_button( $form_info ) {
 			if ( ! ( is_multisite() && is_network_admin() ) ) {
-				global $crrntl_car_notice;
 				if ( empty( $this->bws_demo_options ) ) {
 					$value        = 'install';
 					$button_title = __( 'Install Demo Data', 'car-rental' );
 				} else {
 					$value        = 'remove';
 					$button_title = __( 'Remove Demo Data', 'car-rental' );
-					$form_title   = __( 'Delete demo-data and restore old plugin settings.', 'car-rental' );
-				} ?>
-				<form method="post" action="" id="bws_handle_demo_data">
-					<p><?php echo $form_title; ?></p>
-					<p>
-						<?php if ( empty( $this->bws_demo_options ) && true == $crrntl_car_notice ) { ?>
-							<button disabled class="button" name="bws_handle_demo" value="<?php echo $value; ?>"><?php echo $button_title; ?></button>
-							<i><?php _e( 'You have reached the limit for Cars.' ); ?></i>
-						<?php } else { ?>
-							<button class="button" name="bws_handle_demo" value="<?php echo $value; ?>"><?php echo $button_title; ?></button>
-							<?php wp_nonce_field( $this->bws_plugin_basename, 'bws_settings_nonce_name' ); 
-						} ?>
-					</p>
-				</form>
-			<?php }
+					$form_info    = __( 'Delete demo-data and restore old plugin settings.', 'car-rental' );
+				}
+				if ( empty( $this->bws_demo_options ) && true == $this->crrntl_car_notice ) { ?>
+					<button disabled class="button" name="bws_handle_demo" value="<?php echo $value; ?>"><?php echo $button_title; ?></button>
+					<div class="bws_info"><?php _e( 'You have reached the limit for Cars.' ); ?></div>
+				<?php } else { ?>
+					<button class="button" name="bws_handle_demo" value="<?php echo $value; ?>"><?php echo $button_title; ?></button>
+					<div class="bws_info"><?php echo $form_info; ?></div>
+				<?php }
+			}
 		}
 
 		/**
@@ -69,7 +64,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 				<p><?php echo $label; ?></p>
 				<form method="post" action="">
 					<p>
-						<button class="button" name="bws_<?php echo $_POST['bws_handle_demo']; ?>_demo_confirm" value="true"><?php echo $button_title; ?></button>
+						<button class="button button-primary" name="bws_<?php echo $_POST['bws_handle_demo']; ?>_demo_confirm" value="true"><?php echo $button_title; ?></button>
 						<button class="button" name="bws_<?php echo $_POST['bws_handle_demo']; ?>_demo_deny" value="true"><?php _e( 'No, go back to the settings page', 'car-rental' ) ?></button>
 						<?php wp_nonce_field( $this->bws_plugin_basename, 'bws_settings_nonce_name' ); ?>
 					</p>
@@ -123,7 +118,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 			$page_id   = $posttype_post_id = $post_id = '';
 			/* get demo data */
 			@include_once( $this->bws_demo_folder . 'demo-data.php' );
-			$received_demo_data = bws_demo_data_array();
+			$received_demo_data = bws_demo_data_array( $this->bws_plugin_options['post_type_name'] );
 
 			/**
 			 * load demo data
@@ -156,10 +151,10 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 				 * load demo slides
 				 */
 				if ( ! empty( $demo_data['slides'] ) ) {
-					if ( ! get_option( $this->bws_plugin_prefix . 'slider_options' ) ) {
-						add_option( $this->bws_plugin_prefix . 'slider_options' );
+					if ( ! get_option( 'crrntl_slider_options' ) ) {
+						add_option( 'crrntl_slider_options' );
 					}
-					$current_slider_options = get_option( $this->bws_plugin_prefix . 'slider_options' );
+					$current_slider_options = get_option( 'crrntl_slider_options' );
 					if ( empty( $current_slider_options ) ) {
 						$current_slider_options = array();
 					}
@@ -167,49 +162,55 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 					$this->bws_demo_options['slider_attachments'] = array();
 					foreach ( $demo_data['slides'] as $demo_slide ) {
 						if ( ! empty( $demo_slide['image'] ) ) {
-							$url        = plugins_url( 'images/' . $demo_slide['image'], __FILE__ );
-							$tmp        = download_url( $url );
-							$file_array = array(
-								'name'     => basename( $url ),
-								'tmp_name' => $tmp,
-							);
+							$wp_upload_dir           = wp_upload_dir();
+							$attachments_folder      = $this->bws_demo_folder . 'images';
+							$attachment = $demo_slide['image'];
+							$file = $attachments_folder . '/' . $attachment;
+							/* insert current attachment */
+							/* Check if file is image */
+							$file_data = @getimagesize( $file );
+							$bws_is_image = ! ( $file_data || in_array( $file_data[2], array( 1, 2, 3 ) ) ) ? false : true;
+							if ( $bws_is_image ) {
+								$destination   = $wp_upload_dir['path'] . '/' . $this->bws_plugin_prefix . 'demo_' . $attachment; /* path to new file */
+								$wp_filetype   = wp_check_filetype( $file, null ); /* Mime-type */
 
-							/**
-							 * Check for download errors
-							 * if there are error unlink the temp file name
-							 */
-							if ( is_wp_error( $tmp ) ) {
-								@unlink( $file_array['tmp_name'] );
-								return $tmp;
-							}
-							$post_id   = 0;
-							$info      = pathinfo( $url );
-							$desc      = basename( $url, '.' . $info['extension'] );
-							$attach_id = media_handle_sideload( $file_array, $post_id, $desc );
+								if ( copy( $file, $destination ) ) { /* if attachment copied */
 
-							/**
-							 * We don't want to pass something to $id
-							 * if there were upload errors.
-							 * So this checks for errors
-							 */
-							if ( is_wp_error( $attach_id ) ) {
-								@unlink( $file_array['tmp_name'] );
-								return $attach_id;
+									$attachment_data = array(
+										'post_mime_type' => $wp_filetype['type'],
+										'post_title'     => $attachment,
+										'post_content'   => '',
+										'post_status'    => 'inherit'
+									);
+
+									/* insert attschment in to database */
+									$attach_id = wp_insert_attachment( $attachment_data, $destination, 0 );
+									if ( 0 != $attach_id ) {
+										/* remember attachment ID */
+										array_unshift( $this->bws_demo_options['slider_attachments'], $attach_id );
+										$new_slider = array(
+											'image'       => wp_get_attachment_url( $attach_id ),
+											'title'       => $demo_slide['title'],
+											'description' => $demo_slide['description'],
+											'link'        => $demo_slide['link'],
+										);
+										array_unshift( $slider_options, $new_slider );
+										array_unshift( $current_slider_options, $new_slider );
+
+										/* insert attachment metadata */
+										$attach_data = wp_generate_attachment_metadata( $attach_id, $destination );
+										wp_update_attachment_metadata( $attach_id, $attach_data );
+									} else {
+										$error ++;
+									}
+								} else {
+									$error ++;
+								}
 							}
-							/* remember slider attachments ID */
-							array_unshift( $this->bws_demo_options['slider_attachments'], $attach_id );
-							$new_slider = array(
-								'image'       => $image_url = wp_get_attachment_url( $attach_id ),
-								'title'       => $demo_slide['title'],
-								'description' => $demo_slide['description'],
-								'link'        => $demo_slide['link'],
-							);
-							array_unshift( $slider_options, $new_slider );
-							array_unshift( $current_slider_options, $new_slider );
 						}
 					}
 					$current_slider_options = array_values( $current_slider_options );
-					update_option( $this->bws_plugin_prefix . 'slider_options', $current_slider_options );
+					update_option( 'crrntl_slider_options', $current_slider_options );
 					if ( ! empty( $slider_options ) ) {
 						$this->bws_demo_options['slider'] = $slider_options;
 					}
@@ -230,7 +231,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 							foreach ( $terms_values_array as $term_value_single ) {
 								$term_exists = term_exists( $term_value_single['slug'], $taxonomy_name );
 								if ( ! $term_exists ) {
-									$term_id                          = wp_insert_term(
+									$term_id = wp_insert_term(
 										$term_value_single['term'], /* the term. */
 										$taxonomy_name, /* the taxonomy. */
 										array(
@@ -241,45 +242,51 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 									);
 									if ( is_wp_error( $term_id ) ) {
 										$error ++;
+										$display_extra_limitation_notice = true;
 									} else {
 										if ( isset( $term_value_single['meta'] ) && is_array( $term_value_single['meta'] ) && function_exists( 'crrntl_update_term_meta' ) ) {
 											foreach ( $term_value_single['meta'] as $meta_key => $meta_value ) {
 												if ( 'attachment' == $meta_key && is_array( $meta_value ) ) {
 													foreach ( $meta_value as $attach_key => $attach_value ) {
-														$url        = plugins_url( 'images/' . $attach_value, __FILE__ );
-														$tmp        = download_url( $url );
-														$file_array = array(
-															'name'     => basename( $url ),
-															'tmp_name' => $tmp,
-														);
+														$wp_upload_dir           = wp_upload_dir();
+														$attachments_folder      = $this->bws_demo_folder . 'images';
+														$attachment = $attach_value;
+														$file = $attachments_folder . '/' . $attachment;
+														/* insert current attachment */
+														/* Check if file is image */
+														$file_data = @getimagesize( $file );
+														$bws_is_image = ! ( $file_data || in_array( $file_data[2], array( 1, 2, 3 ) ) ) ? false : true;
+														if ( $bws_is_image ) {
+															$destination   = $wp_upload_dir['path'] . '/' . $this->bws_plugin_prefix . 'demo_' . $attachment; /* path to new file */
+															$wp_filetype   = wp_check_filetype( $file, null ); /* Mime-type */
 
-														/**
-														 * Check for download errors
-														 * if there are error unlink the temp file name
-														 */
-														if ( is_wp_error( $tmp ) ) {
-															@unlink( $file_array['tmp_name'] );
-															return $tmp;
+															if ( copy( $file, $destination ) ) { /* if attachment copied */
+
+																$attachment_data = array(
+																	'post_mime_type' => $wp_filetype['type'],
+																	'post_title'     => $attachment,
+																	'post_content'   => '',
+																	'post_status'    => 'inherit'
+																);
+
+																/* insert attschment in to database */
+																$attach_id = wp_insert_attachment( $attachment_data, $destination, 0 );
+																if ( 0 != $attach_id ) {
+
+																	/* insert attachment metadata */
+																	$attach_data = wp_generate_attachment_metadata( $attach_id, $destination );
+																	wp_update_attachment_metadata( $attach_id, $attach_data );
+
+																	crrntl_update_term_meta( $term_id['term_id'], $attach_key, $attach_id );
+																	/* remember attachment ID */
+																	$this->bws_demo_options['attachments'][] = $attach_id;
+																} else {
+																	$error ++;
+																}
+															} else {
+																$error ++;
+															}
 														}
-
-														$post_id    = 0;
-														$info       = pathinfo( $url );
-														$desc       = basename( $url, '.' . $info['extension'] );
-														$attach_id  = media_handle_sideload( $file_array, $post_id, $desc );
-
-														/**
-														 * We don't want to pass something to $id
-														 * if there were upload errors.
-														 * So this checks for errors
-														 */
-														if ( is_wp_error( $attach_id ) ) {
-															@unlink( $file_array['tmp_name'] );
-															return $attach_id;
-														}
-
-														crrntl_update_term_meta( $term_id['term_id'], $attach_key, $attach_id );
-														/* remember attachment ID */
-														$this->bws_demo_options['attachments'][] = $attach_id;
 													}
 												} else {
 													crrntl_update_term_meta( $term_id['term_id'], $meta_key, $meta_value );
@@ -302,6 +309,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 					/**
 					 * load demo posts
 					 */
+					$this->bws_demo_options['pages'] = array();
 					foreach ( $demo_data['posts'] as $demo_post ) {
 						if ( preg_match( '/{last_post_id}/', $demo_post['post_content'] ) && ! empty( $post_id ) ) {
 							$demo_post['post_content'] = preg_replace( '/{last_post_id}/', $post_id, $demo_post['post_content'] );
@@ -318,6 +326,17 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 						$post_id = wp_insert_post( $demo_post, true );
 						if ( 'post' == $demo_post['post_type'] ) {
 							$posttype_post_id = $post_id;
+						} elseif ( 'page' == $demo_post['post_type'] ) {
+							$update = false;
+							$templates 	= array(
+								'bws-choose-car'		=> 'car_page_id',
+								'bws-choose-extras'		=> 'extra_page_id',
+								'bws-review-book'		=> 'review_page_id'
+							);
+							if ( isset( $demo_post['post_name'] ) && isset( $templates[ $demo_post['post_name'] ] ) ) {
+								$page_index = $templates[ $demo_post['post_name'] ];
+								$this->bws_demo_options['pages'][ $page_index ] = $post_id;
+							}
 						}
 
 						/* add taxonomy for posttype */
@@ -363,39 +382,44 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 							 * load post attachments
 							 */
 							if ( ! empty( $demo_post['attachment'] ) ) {
-								$url        = plugins_url( 'images/' . $demo_post['attachment'], __FILE__ );
-								$tmp        = download_url( $url );
-								$file_array = array(
-									'name'     => basename( $url ),
-									'tmp_name' => $tmp,
-								);
+								$wp_upload_dir           = wp_upload_dir();
+								$attachments_folder      = $this->bws_demo_folder . 'images';
+								$attachment =$demo_post['attachment'];
+								$file = $attachments_folder . '/' . $attachment;
+								/* insert current attachment */
+								/* Check if file is image */
+								$file_data = @getimagesize( $file );
+								$bws_is_image = ! ( $file_data || in_array( $file_data[2], array( 1, 2, 3 ) ) ) ? false : true;
+								if ( $bws_is_image ) {
+									$destination   = $wp_upload_dir['path'] . '/' . $this->bws_plugin_prefix . 'demo_' . $attachment; /* path to new file */
+									$wp_filetype   = wp_check_filetype( $file, null ); /* Mime-type */
 
-								/**
-								 * Check for download errors
-								 * if there are error unlink the temp file name
-								 */
-								if ( is_wp_error( $tmp ) ) {
-									@unlink( $file_array['tmp_name'] );
+									if ( copy( $file, $destination ) ) { /* if attachment copied */
 
-									return $tmp;
+										$attachment_data = array(
+											'post_mime_type' => $wp_filetype['type'],
+											'post_title'     => $attachment,
+											'post_content'   => '',
+											'post_status'    => 'inherit'
+										);
+
+										/* insert attachment in to database */
+										$attach_id = wp_insert_attachment( $attachment_data, $destination, 0 );
+										if ( 0 != $attach_id ) {
+											/* insert attachment metadata */
+											$attach_data = wp_generate_attachment_metadata( $attach_id, $destination );
+											wp_update_attachment_metadata( $attach_id, $attach_data );
+											/* remember attachment ID */
+											$this->bws_demo_options['attachments'][] = $attach_id;
+										} else {
+											$error ++;
+										}
+									} else {
+										$error ++;
+									}
 								}
 
-								$info      = pathinfo( $url );
-								$desc      = basename( $url, '.' . $info['extension'] );
-								$attach_id = media_handle_sideload( $file_array, $post_id, $desc );
 
-								/**
-								 * We don't want to pass something to $id
-								 * if there were upload errors.
-								 * So this checks for errors
-								 */
-								if ( is_wp_error( $attach_id ) ) {
-									@unlink( $file_array['tmp_name'] );
-									return $attach_id;
-								}
-
-								/* remember attachment ID */
-								$this->bws_demo_options['attachments'][] = $attach_id;
 							} elseif ( ! empty( $demo_post['attachments_folder'] ) ) {
 								$attachments_list = @scandir( $attachments_folder . '/' . $demo_post['attachments_folder'] );
 								if ( 2 < count( $attachments_list ) ) {
@@ -540,10 +564,18 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 						}
 					} else {
 						$message['error'] = __( 'Installation of demo data with some errors occurred.', 'car-rental' );
+						if ( ! empty( $display_extra_limitation_notice ) ) {
+							$message['error'] .= '<br />' . __( 'You have reached the limit for Extras.', 'car-rental' );
+						}
 					}
 				} else {
 					$message['error'] = __( 'Posts data is missing.', 'car-rental' );
 				}
+			}
+			if ( function_exists( 'crrntl_update_locations' ) )
+				crrntl_update_locations( $this->bws_plugin_options['post_type_name'] );
+			if ( function_exists( 'crrntl_update_pages_id' ) ) {
+				crrntl_update_pages_id( true );
 			}
 
 			return $message;
@@ -576,7 +608,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 			if ( ! empty( $data ) && ! empty( $this->bws_demo_options['distant_attachments'] ) && $attachment_name = array_search( $id, $this->bws_demo_options['distant_attachments'] ) ) {
 				/* get demo data */
 				@include_once( $this->bws_demo_folder . 'demo-data.php' );
-				$received_demo_data = bws_demo_data_array();
+				$received_demo_data = bws_demo_data_array( $this->bws_plugin_options['post_type_name'] );
 
 				if ( isset( $received_demo_data['distant_attachments_metadata'][ $attachment_name ] ) ) {
 
@@ -652,7 +684,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 				 * Delete all slides
 				 */
 				if ( ! empty( $this->bws_demo_options['slider'] ) ) {
-					$current_slider_options = get_option( $this->bws_plugin_prefix . 'slider_options' );
+					$current_slider_options = get_option( 'crrntl_slider_options' );
 					if ( ! empty( $current_slider_options ) ) {
 						foreach ( $this->bws_demo_options['slider'] as $key => $value ) {
 							if ( isset( $current_slider_options[ $key ] ) ) {
@@ -669,7 +701,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 								}
 							}
 						}
-						update_option( $this->bws_plugin_prefix . 'slider_options', $current_slider_options );
+						update_option( 'crrntl_slider_options', $current_slider_options );
 					}
 				}
 
@@ -727,6 +759,10 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 					$message['error'] = __( 'Removing demo data with some errors occurred.', 'car-rental' );
 				}
 			}
+			if ( function_exists( 'crrntl_clear_locations' ) )
+				crrntl_clear_locations( $this->bws_plugin_options['post_type_name'] );
+			if ( function_exists( 'crrntl_update_locations' ) )
+				crrntl_update_locations( $this->bws_plugin_options['post_type_name'] );
 
 			return $message;
 		}
@@ -786,7 +822,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 							<input type="hidden" name="bws_hide_demo_notice" value="hide" />
 							<?php wp_nonce_field( $this->bws_plugin_basename, 'bws_demo_nonce_name' ); ?>
 						</form>
-						<div style="margin: 0 20px;"><a href="<?php echo admin_url( 'admin.php?page=' . $this->bws_plugin_page . '#bws_handle_demo_data' ); ?>"><?php _e( 'Install demo data', 'car-rental' ); ?></a>&nbsp;<?php echo __( 'for an acquaintance with the possibilities of the', 'car-rental' ) . '&nbsp;' . $this->bws_plugin_name; ?>.</div>
+						<div style="margin: 0 20px;"><a href="<?php echo admin_url( $this->bws_plugin_page ); ?>"><?php _e( 'Install demo data', 'car-rental' ); ?></a>&nbsp;<?php echo __( 'for an acquaintance with the possibilities of the', 'car-rental' ) . '&nbsp;' . $this->bws_plugin_name; ?>.</div>
 					</div>
 				<?php }
 			}

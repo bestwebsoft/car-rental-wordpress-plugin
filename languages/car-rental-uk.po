@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Car Rental\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-23 10:26+0300\n"
-"PO-Revision-Date: 2016-09-23 10:26+0300\n"
+"POT-Creation-Date: 2017-03-27 13:50+0300\n"
+"PO-Revision-Date: 2017-03-27 14:02+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language: uk\n"
@@ -21,635 +21,678 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: car-rental.php:54
+#: car-rental.php:51
 msgid "Car Rental Settings"
 msgstr "Налаштування Car Rental"
 
-#: car-rental.php:164
+#: car-rental.php:52 car-rental.php:1838 car-rental.php:1859
+#: includes/class-crrntl-settings.php:25
+#: includes/class-crrntl-settings.php:247
+msgid "Settings"
+msgstr "Налаштування"
+
+#: car-rental.php:66
+msgid "Slider Settings"
+msgstr "Налаштування слайдера"
+
+#: car-rental.php:67
+msgid "Slider"
+msgstr "Слайдер"
+
+#: car-rental.php:86
+msgid "Upgrade to Pro"
+msgstr "Оновити до Pro"
+
+#: car-rental.php:227
 msgid "Sidebar on Car page"
 msgstr "Сайдбар на сторінці Авто"
 
-#: car-rental.php:166
+#: car-rental.php:229
 msgid "Sidebar is displayed on the Choose Car page."
 msgstr "Сайдбар виводиться на сторінці Вибір Автомобіля."
 
-#: car-rental.php:171
+#: car-rental.php:234
 msgid "Sidebar on Extras page"
 msgstr "Сайдбар на сторінці Доповнення"
 
-#: car-rental.php:173
+#: car-rental.php:236
 msgid "Sidebar is displayed on the Choose Extras page."
 msgstr "Сайдбар виводиться на сторінці Вибір Доповнень"
 
-#: car-rental.php:178
+#: car-rental.php:241
 msgid "Sidebar on Review page"
 msgstr "Сайдбар на сторінці Перегляд"
 
-#: car-rental.php:180
+#: car-rental.php:243
 msgid "Sidebar is displayed on the Review page."
 msgstr "Сайдбар виводиться на сторінці Перегляд."
 
-#: car-rental.php:201 includes/admin-panel.php:237
+#: car-rental.php:265 includes/class-crrntl-settings.php:327
 msgid "l/100km"
 msgstr "л/100км"
 
-#: car-rental.php:473
+#: car-rental.php:536
 msgid "Reserved"
 msgstr "Заброньовано"
 
-#: car-rental.php:474
+#: car-rental.php:537
 msgid "Free"
 msgstr "Вільний"
 
-#: car-rental.php:475
+#: car-rental.php:538
 msgid "In use"
 msgstr "Зайнятий"
 
-#: car-rental.php:495
+#: car-rental.php:584
 msgctxt "post type general name"
 msgid "Cars"
 msgstr "Автомобілі"
 
-#: car-rental.php:496
+#: car-rental.php:585
 msgctxt "post type singular name"
 msgid "Car"
 msgstr "Автомобіль"
 
-#: car-rental.php:497
+#: car-rental.php:586
 msgctxt "admin menu"
 msgid "Cars"
 msgstr "Автомобілі"
 
-#: car-rental.php:498
+#: car-rental.php:587
 msgctxt "add new on admin bar"
 msgid "Car"
 msgstr "Автомобіль"
 
-#: car-rental.php:499 includes/orders-table.php:166
+#: car-rental.php:588 includes/orders-table.php:167
 msgid "All Cars"
 msgstr "Всі Автомобілі"
 
-#: car-rental.php:500
+#: car-rental.php:589
 msgctxt "car"
 msgid "Add New"
 msgstr "Додати Новий"
 
-#: car-rental.php:501
+#: car-rental.php:590
 msgid "Add New Car"
 msgstr "Додати Новий Автомобіль"
 
-#: car-rental.php:502 includes/orders-table.php:488
+#: car-rental.php:591 includes/orders-table.php:582
 msgid "Edit Car"
 msgstr "Редагувати Автомобіль"
 
-#: car-rental.php:503
+#: car-rental.php:592
 msgid "New Car"
 msgstr "Додати Авто"
 
-#: car-rental.php:504
+#: car-rental.php:593
 msgid "View Car"
 msgstr "Переглянути Автомобіль"
 
-#: car-rental.php:505
+#: car-rental.php:594
 msgid "Search Cars"
 msgstr "Пошук Автомобілів"
 
-#: car-rental.php:506
+#: car-rental.php:595
 msgid "No Cars found."
 msgstr "Автомобілів не знайдено."
 
-#: car-rental.php:507
+#: car-rental.php:596
 msgid "No Cars found in Trash."
 msgstr "Не знайдено Автомобілів в Кошику."
 
-#: car-rental.php:508
+#: car-rental.php:597
 msgid "Filter Cars list"
 msgstr "Фільтрувати список Класів Авто"
 
-#: car-rental.php:509
+#: car-rental.php:598
 msgid "Cars list navigation"
 msgstr "Шукати Автомобілі"
 
-#: car-rental.php:510
+#: car-rental.php:599
 msgid "Cars list"
 msgstr "Список Автомобілів"
 
-#: car-rental.php:534
+#: car-rental.php:623
 msgctxt "taxonomy general name"
 msgid "Manufacturers"
 msgstr "Виробники"
 
-#: car-rental.php:535
+#: car-rental.php:624
 msgctxt "taxonomy singular name"
 msgid "Manufacturer"
 msgstr "Виробник"
 
-#: car-rental.php:536
+#: car-rental.php:625
 msgid "Search Manufacturers"
 msgstr "Пошук Виробників"
 
-#: car-rental.php:537
+#: car-rental.php:626
 msgid "Popular Manufacturers"
 msgstr "Популярні Виробники"
 
-#: car-rental.php:538
+#: car-rental.php:627
 msgid "All Manufacturers"
 msgstr "Всі Виробники"
 
-#: car-rental.php:541
+#: car-rental.php:630
 msgid "Edit Manufacturer"
 msgstr "Редагувати Виробника"
 
-#: car-rental.php:542
+#: car-rental.php:631
 msgid "Update Manufacturer"
 msgstr "Оновити Виробника"
 
-#: car-rental.php:543
+#: car-rental.php:632
 msgid "Add New Manufacturer"
 msgstr "Додати Нового Виробника"
 
-#: car-rental.php:544
+#: car-rental.php:633
 msgid "View Manufacturer"
 msgstr "Переглянути Виробника"
 
-#: car-rental.php:545
+#: car-rental.php:634
 msgid "New Manufacturer Name"
 msgstr "Назва нового Виробника"
 
-#: car-rental.php:546
+#: car-rental.php:635
 msgid "Separate Manufacturers with commas"
 msgstr "Розділіть Виробників комами"
 
-#: car-rental.php:547
+#: car-rental.php:636
 msgid "Add or remove Manufacturers"
 msgstr "Додати або видалити Виробника"
 
-#: car-rental.php:548
+#: car-rental.php:637
 msgid "Choose from the most used Manufacturers"
 msgstr "Вибрати з часто використовуваних Виробників"
 
-#: car-rental.php:549
+#: car-rental.php:638
 msgid "No Manufacturers found."
 msgstr "Виробників не знайдено."
 
-#: car-rental.php:550 includes/widget-filter.php:97
+#: car-rental.php:639 includes/widget-filter.php:101
 msgid "Manufacturers"
 msgstr "Виробники"
 
-#: car-rental.php:551
+#: car-rental.php:640
 msgid "Manufacturers list navigation"
 msgstr "Шукати Виробників"
 
-#: car-rental.php:552
+#: car-rental.php:641
 msgid "Manufacturers list"
 msgstr "Список Виробників"
 
-#: car-rental.php:570
+#: car-rental.php:659
 msgctxt "taxonomy general name"
 msgid "Vehicle Types"
 msgstr "Типи кузова"
 
-#: car-rental.php:571
+#: car-rental.php:660
 msgctxt "taxonomy singular name"
 msgid "Vehicle Type"
 msgstr "Тип кузова"
 
-#: car-rental.php:572
+#: car-rental.php:661
 msgid "Search Vehicle Types"
 msgstr "Пошук Типів кузова"
 
-#: car-rental.php:573
+#: car-rental.php:662
 msgid "Popular Vehicle Types"
 msgstr "Популярні Типи кузова"
 
-#: car-rental.php:574
+#: car-rental.php:663
 msgid "All Vehicle Types"
 msgstr "Всі Типи кузова"
 
-#: car-rental.php:577
+#: car-rental.php:666
 msgid "Edit Vehicle Type"
 msgstr "Редагувати Тип кузова"
 
-#: car-rental.php:578
+#: car-rental.php:667
 msgid "Update Vehicle Type"
 msgstr "Оновити Тип кузова"
 
-#: car-rental.php:579
+#: car-rental.php:668
 msgid "Add New Vehicle Type"
 msgstr "Додати Новий Тип кузова"
 
-#: car-rental.php:580
+#: car-rental.php:669
 msgid "View Vehicle Type"
 msgstr "Переглянути Тип кузова"
 
-#: car-rental.php:581
+#: car-rental.php:670
 msgid "New Vehicle Type Name"
 msgstr "Назва нового Типу кузова"
 
-#: car-rental.php:582
+#: car-rental.php:671
 msgid "Separate Vehicle Types with commas"
 msgstr "Розділіть Типи кузова комами"
 
-#: car-rental.php:583
+#: car-rental.php:672
 msgid "Add or remove Vehicle Types"
 msgstr "Додати або видалити Типи кузова"
 
-#: car-rental.php:584
+#: car-rental.php:673
 msgid "Choose from the most used Vehicle Types"
 msgstr "Вибрати з часто використовуваних Типів кузова"
 
-#: car-rental.php:585
+#: car-rental.php:674
 msgid "No Vehicle Types found."
 msgstr "Типів кузова не знайдено."
 
-#: car-rental.php:586
+#: car-rental.php:675
 msgid "Vehicle Types"
 msgstr "Типи кузова"
 
-#: car-rental.php:587
+#: car-rental.php:676
 msgid "Vehicle Types list navigation"
 msgstr "Шукати Типи кузова"
 
-#: car-rental.php:588
+#: car-rental.php:677
 msgid "Vehicle Types list"
 msgstr "Список Типів кузова"
 
-#: car-rental.php:606
+#: car-rental.php:695
 msgctxt "taxonomy general name"
 msgid "Car Classes"
 msgstr "Класи Авто"
 
-#: car-rental.php:607
+#: car-rental.php:696
 msgctxt "taxonomy singular name"
 msgid "Car Class"
 msgstr "Клас Авто"
 
-#: car-rental.php:608
+#: car-rental.php:697
 msgid "Search Car Classes"
 msgstr "Пошук Класів Авто"
 
-#: car-rental.php:609
+#: car-rental.php:698
 msgid "Popular Car Classes"
 msgstr "Популярні Класи Авто"
 
-#: car-rental.php:610
+#: car-rental.php:699
 msgid "All Car Classes"
 msgstr "Всі Класи Авто"
 
-#: car-rental.php:613
+#: car-rental.php:702
 msgid "Edit Car Class"
 msgstr "Редагувати Клас Авто"
 
-#: car-rental.php:614
+#: car-rental.php:703
 msgid "Update Car Class"
 msgstr "Оновити Клас Авто"
 
-#: car-rental.php:615
+#: car-rental.php:704
 msgid "Add New Car Class"
 msgstr "Додати Новий Клас Авто"
 
-#: car-rental.php:616
+#: car-rental.php:705
 msgid "View Car Class"
 msgstr "Переглянути Клас Авто"
 
-#: car-rental.php:617
+#: car-rental.php:706
 msgid "New Car Class Name"
 msgstr "Назва нового Класу Авто"
 
-#: car-rental.php:618
+#: car-rental.php:707
 msgid "Separate Car Classes with commas"
 msgstr "Розділіть Класи Авто комами"
 
-#: car-rental.php:619
+#: car-rental.php:708
 msgid "Add or remove Car Classes"
 msgstr "Додати або видалити Класи Авто"
 
-#: car-rental.php:620
+#: car-rental.php:709
 msgid "Choose from the most used Car Classes"
 msgstr "Вибрати з часто використовуваних Класів Авто"
 
-#: car-rental.php:621
+#: car-rental.php:710
 msgid "No Car Classes found."
 msgstr "Класів Авто не знайдено."
 
-#: car-rental.php:622
+#: car-rental.php:711
 msgid "Car Classes"
 msgstr "Класи Авто"
 
-#: car-rental.php:623
+#: car-rental.php:712
 msgid "Car Classes list navigation"
 msgstr "Шукати Класи Автомобілів"
 
-#: car-rental.php:624
+#: car-rental.php:713
 msgid "Car Classes list"
 msgstr "Список Класів Авто"
 
-#: car-rental.php:642
+#: car-rental.php:731
 msgctxt "taxonomy general name"
 msgid "Extras"
 msgstr "Доповнення"
 
-#: car-rental.php:643
+#: car-rental.php:732
 msgctxt "taxonomy singular name"
 msgid "Extra"
 msgstr "Доповнення"
 
-#: car-rental.php:644
+#: car-rental.php:733
 msgid "Search Extras"
 msgstr "Пошук Доповнень"
 
-#: car-rental.php:645
+#: car-rental.php:734
 msgid "Popular Extras"
 msgstr "Популярні Доповнення"
 
-#: car-rental.php:646
+#: car-rental.php:735
 msgid "All Extras"
 msgstr "Всі Доповнення"
 
-#: car-rental.php:649
+#: car-rental.php:738
 msgid "Edit Extra"
 msgstr "Редагувати Доповнення"
 
-#: car-rental.php:650
+#: car-rental.php:739
 msgid "Update Extra"
 msgstr "Оновити Доповнення"
 
-#: car-rental.php:651
+#: car-rental.php:740
 msgid "Add New Extra"
 msgstr "Додати Нове Доповнення"
 
-#: car-rental.php:652
+#: car-rental.php:741
 msgid "View Extra"
 msgstr "Переглянути Доповнення"
 
-#: car-rental.php:653
+#: car-rental.php:742
 msgid "New Extra Name"
 msgstr "Назва нового Доповнення"
 
-#: car-rental.php:654
+#: car-rental.php:743
 msgid "Separate Extras with commas"
 msgstr "Розділіть Доповнення комами"
 
-#: car-rental.php:655
+#: car-rental.php:744
 msgid "Add or remove Extras"
 msgstr "Додати або видалити Доповнення"
 
-#: car-rental.php:656
+#: car-rental.php:745
 msgid "Choose from the most used Extras"
 msgstr "Вибрати з часто використовуваних Доповнень"
 
-#: car-rental.php:657
+#: car-rental.php:746
 msgid "No Extras found."
 msgstr "Доповнення не знайдено."
 
-#: car-rental.php:658 car-rental.php:1398 includes/orders-table.php:51
-#: includes/orders-table.php:493 includes/widget-order-info.php:224
+#: car-rental.php:747 car-rental.php:1786 includes/widget-order-info.php:233
+#: includes/class-crrntl-settings.php:58 includes/orders-table.php:52
+#: includes/orders-table.php:587
 msgid "Extras"
 msgstr "Доповнення"
 
-#: car-rental.php:659
+#: car-rental.php:748
 msgid "Extras list navigation"
 msgstr "Шукати Доповнення"
 
-#: car-rental.php:660
+#: car-rental.php:749
 msgid "Extras list"
 msgstr "Список Опцій"
 
-#: car-rental.php:738
+#: car-rental.php:792
+msgid "Featured Image"
+msgstr "Мініатюра"
+
+#: car-rental.php:793
+msgid "Title"
+msgstr "Назва"
+
+#: car-rental.php:915
 msgid "Car's Info"
 msgstr "Інформація Авто"
 
-#: car-rental.php:781 templates/car-search-form.php:62
+#: car-rental.php:965 templates/car-search-form.php:69
 msgid "Location"
 msgstr "Розташування"
 
-#: car-rental.php:787 car-rental.php:788 templates/car-search-form.php:64
-#: templates/car-search-form.php:65 templates/car-search-form.php:77
-#: templates/car-search-form.php:78
+#: car-rental.php:971 car-rental.php:972 car-rental.php:985
+#: templates/car-search-form.php:70 templates/car-search-form.php:82
+#: templates/car-search-form.php:83
 msgid "Choose location"
 msgstr "Виберіть розташування"
 
-#: car-rental.php:793
+#: car-rental.php:977 car-rental.php:996
 msgid "Choose location from list"
 msgstr "Вибрати розташування з переліку"
 
-#: car-rental.php:802
+#: car-rental.php:980 car-rental.php:998
 msgid "Enter a location"
 msgstr "Введіть розташування"
 
-#: car-rental.php:803
+#: car-rental.php:981
 msgid "Add new location"
 msgstr "Додати нове розташування"
 
-#: car-rental.php:811 includes/widget-filter.php:111
-msgid "Number of passengers"
+#: car-rental.php:986
+msgid "New Location"
+msgstr "Нове місце"
+
+#: car-rental.php:1007
+msgid "Number of Doors"
+msgstr "Кількість дверей"
+
+#: car-rental.php:1024
+msgid "Number of Seats"
 msgstr "Кількість пасажирів"
 
-#: car-rental.php:818
+#: car-rental.php:1031
 msgid "Luggage Quantity"
 msgstr "Обсяг багажу"
 
-#: car-rental.php:820
+#: car-rental.php:1044
 msgid "large suitcases"
 msgstr "для великого багажу"
 
-#: car-rental.php:822
+#: car-rental.php:1057
 msgid "small suitcases"
 msgstr "для дрібного багажу"
 
-#: car-rental.php:827
-msgid "Transmission"
-msgstr "Трансмісія"
+#: car-rental.php:1063
+msgid "Transmission Type"
+msgstr "Тип трансмісії"
 
-#: car-rental.php:831
+#: car-rental.php:1067
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: car-rental.php:832
+#: car-rental.php:1068
 msgid "Automatic"
 msgstr "Автомат"
 
-#: car-rental.php:833
+#: car-rental.php:1069
 msgid "Manual"
 msgstr "Ручна"
 
-#: car-rental.php:839
+#: car-rental.php:1075
 msgid "Air Conditioning"
 msgstr "Кондиціонер"
 
-#: car-rental.php:847
-msgid "Average consumption"
-msgstr "Середня витрата палива"
+#: car-rental.php:1083
+msgid "Average Consumption"
+msgstr "Середня витрата пального"
 
-#: car-rental.php:856 car-rental.php:985 car-rental.php:1036
-msgid "Price per hour"
+#: car-rental.php:1092
+#, php-format
+msgid ""
+"You can change unit of consumption on the %1$splugin's settings page%2$s."
+msgstr ""
+"Ви можете змінити одиниці витрати пального на %1$sсторінці налаштувань "
+"плагіна%2$s."
+
+#: car-rental.php:1101 car-rental.php:1264 car-rental.php:1313
+msgid "Price per Hour"
 msgstr "Ціна за годину"
 
-#: car-rental.php:856 car-rental.php:985 car-rental.php:1036
-msgid "Price per day"
+#: car-rental.php:1101 car-rental.php:1264 car-rental.php:1313
+msgid "Price per Day"
 msgstr "Ціна за добу"
 
-#: car-rental.php:862
+#: car-rental.php:1108
 msgid "for example"
 msgstr "наприклад"
 
-#: car-rental.php:980 car-rental.php:1027 templates/page-choose-extras.php:134
+#: car-rental.php:1113 car-rental.php:1766 templates/page-choose-car.php:212
+msgid "Price on request"
+msgstr "Ціна за запитом"
+
+#: car-rental.php:1118
+#, php-format
+msgid "You can change currency on the %1$splugin's settings page%2$s."
+msgstr "Ви можете змінити валюту на %1$sсторінці налаштувань плагіна%2$s."
+
+#: car-rental.php:1259 car-rental.php:1304
+#: templates/page-choose-extras.php:138
 msgid "More details"
 msgstr "Детальніше"
 
-#: car-rental.php:982 car-rental.php:1031
+#: car-rental.php:1261 car-rental.php:1308
 msgid "More about this extra"
 msgstr "Додаткова інформація про це доповнення"
 
-#: car-rental.php:987 car-rental.php:1040
+#: car-rental.php:1266 car-rental.php:1317
 msgid "The price for one unit. For example"
 msgstr "Ціна для однієї одиниці. Наприклад"
 
-#: car-rental.php:987 car-rental.php:1040
+#: car-rental.php:1266 car-rental.php:1317
 msgid "max."
 msgstr "макс."
 
-#: car-rental.php:990 car-rental.php:1045
+#: car-rental.php:1269
 msgid "Ability to choose a quantity"
 msgstr "Можливість вибору кількості"
 
-#: car-rental.php:991 car-rental.php:1048
+#: car-rental.php:1270 car-rental.php:1325
 msgid "Option is available"
 msgstr "Опція доступна"
 
-#: car-rental.php:994 car-rental.php:1052 includes/slider-template.php:174
+#: car-rental.php:1273 car-rental.php:1329 includes/slider-template.php:208
 msgid "Image"
 msgstr "Зображення"
 
-#: car-rental.php:996 car-rental.php:1058 car-rental.php:1062
-#: includes/slider-template.php:178 includes/slider-template.php:180
+#: car-rental.php:1275 car-rental.php:1335 car-rental.php:1339
+#: includes/slider-template.php:212 includes/slider-template.php:214
 msgid "No image chosen"
 msgstr "Зображення не вибрано"
 
-#: car-rental.php:997 car-rental.php:1063 car-rental.php:1204
+#: car-rental.php:1276 car-rental.php:1340 car-rental.php:1512
 msgid "Add image"
 msgstr "Додати зображення"
 
-#: car-rental.php:998 car-rental.php:1060 car-rental.php:1064
+#: car-rental.php:1277 car-rental.php:1337 car-rental.php:1341
 msgid "Remove image"
 msgstr "Видалити зображення"
 
-#: car-rental.php:1056
+#: car-rental.php:1322
+msgid "Ability to Choose a Quantity"
+msgstr "Можливість вибору кількості"
+
+#: car-rental.php:1333
 msgid "Extras Image"
 msgstr "Зображення Доповнення"
 
-#: car-rental.php:1059 car-rental.php:1205
+#: car-rental.php:1336 car-rental.php:1513
 msgid "Change image"
 msgstr "Змінити зображення"
 
-#: car-rental.php:1161 includes/widget-order-info.php:104
-#: templates/page-review-book.php:81
-msgid "Please, choose location"
-msgstr "Будь ласка, виберіть розташування"
+#: car-rental.php:1469
+msgid "Please select return location"
+msgstr "Будь ласка, оберіть місце повернення"
 
-#: car-rental.php:1200 includes/orders-table.php:71
-#: includes/orders-table.php:79
+#: car-rental.php:1508 includes/orders-table.php:72
+#: includes/orders-table.php:80
 msgid "Delete"
 msgstr "Видалити"
 
-#: car-rental.php:1201 includes/admin-panel.php:311
+#: car-rental.php:1509 includes/class-crrntl-settings.php:430
 msgid "Enter new status"
 msgstr "Введіть новий статус"
 
-#: car-rental.php:1202
+#: car-rental.php:1510
 msgid "Choose file"
 msgstr "Виберіть файл"
 
-#: car-rental.php:1203
+#: car-rental.php:1511
 msgid "No file chosen"
 msgstr "Файл не вибран"
 
-#: car-rental.php:1206
+#: car-rental.php:1514
 msgid "Warning: You can add only image"
 msgstr "Увага: Ви можете додати тільки зображення"
 
-#: car-rental.php:1359
+#: car-rental.php:1741
+#, php-format
 msgid ""
 "Thank you for a booking. We will contact you for the order confirmation. "
-"Your Order"
+"Your order is #%d"
 msgstr ""
-"Дякуємо за замовлення. Ми зв'яжемося з Вами для підтвердження замовлення. "
-"Ваше замовлення"
+"Дякуємо за замовлення. Ми зв'яжемось з Вами для його підтвердження. Номер "
+"вашого замовлення: %d"
 
-#: car-rental.php:1403
+#: car-rental.php:1791
 msgid "New booking order #"
 msgstr "Нове замовлення №"
 
-#: car-rental.php:1406 includes/widget-order-info.php:109
+#: car-rental.php:1794 includes/widget-order-info.php:107
 msgid "Order Info"
 msgstr "Інформація про Замовлення"
 
-#: car-rental.php:1407 includes/orders-table.php:50
-#: includes/orders-table.php:486 includes/widget-order-info.php:111
-msgid "Car"
-msgstr "Автомобіль"
+#: car-rental.php:1795 includes/orders-table.php:57
+#: includes/orders-table.php:553 includes/orders-table.php:562
+msgid "Client"
+msgstr "Клієнт"
 
-#: car-rental.php:1409
-msgid "Pick-Up Date"
-msgstr "Дата отримання"
+#: car-rental.php:1796
+msgid "Email"
+msgstr "Email"
 
-#: car-rental.php:1410
-msgid "Drop-Off Date"
-msgstr "Дата повернення"
-
-#: car-rental.php:1411
-msgid "Pick-Up Location"
-msgstr "Місце отримання"
-
-#: car-rental.php:1412
-msgid "Drop-Off Location"
-msgstr "Місце повернення"
-
-#: car-rental.php:1413 includes/orders-table.php:57
-#: includes/widget-order-info.php:276
-msgid "Total"
-msgstr "Сума"
-
-#: car-rental.php:1414 templates/page-review-book.php:276
+#: car-rental.php:1797 templates/page-review-book.php:308
 msgid "Phone number"
 msgstr "Номер телефону"
 
-#: car-rental.php:1427
-msgid "An error occured during the creating order."
+#: car-rental.php:1798 includes/widget-order-info.php:109
+#: includes/orders-table.php:51 includes/orders-table.php:567
+msgid "Car"
+msgstr "Автомобіль"
+
+#: car-rental.php:1800 includes/orders-table.php:654
+msgid "Pick Up Date"
+msgstr "Дата отримання"
+
+#: car-rental.php:1801 includes/orders-table.php:670
+msgid "Drop Off Date"
+msgstr "Дата повернення"
+
+#: car-rental.php:1802 includes/orders-table.php:623
+msgid "Pick Up Location"
+msgstr "Місце отримання"
+
+#: car-rental.php:1803
+msgid "Drop Off Location"
+msgstr "Місце повернення"
+
+#: car-rental.php:1804 includes/widget-order-info.php:289
+#: includes/orders-table.php:58
+msgid "Total"
+msgstr "Сума"
+
+#: car-rental.php:1817
+msgid "An error occured while creating the order."
 msgstr "Під час створення замовлення сталася помилка."
 
-#: car-rental.php:1446 car-rental.php:1466 includes/admin-panel.php:170
-msgid "Settings"
-msgstr "Налаштування"
-
-#: car-rental.php:1447
+#: car-rental.php:1839
 msgid "FAQ"
 msgstr "FAQ"
 
-#: car-rental.php:1448
+#: car-rental.php:1840
 msgid "Support"
 msgstr "Підтримка"
 
-#: car-rental.php:1508
-#, php-format
-msgid ""
-"The following files '%s', '%s' and '%s' were not found in the directory of "
-"your theme. Please copy them from the directory `%s` to the directory of "
-"your theme for the correct work of the Car Rental plugin"
-msgstr ""
-"Файли '%s', '%s' і '%s' не знайдені в папці вашої теми. Будь ласка, "
-"скопіюйте ці файли з папки `%s` в папку вашої теми для коректної роботи "
-"плагіна Car Rental"
-
-#: car-rental.php:1512
-#, php-format
-msgid ""
-"You have reached the limit for Cars. Create unlimited Cars and Extras with %s"
-msgstr ""
-"Ви досягли ліміту Автомобілів. Створюйте необмежену кількість Автомобілів і "
-"Доповнень з %s"
-
-#: car-rental.php:1547
+#: car-rental.php:1958
 #, php-format
 msgid ""
 "Your theme does not declare Car Rental plugin support. Please check out our "
@@ -657,426 +700,125 @@ msgid ""
 "plugin."
 msgstr ""
 "Тема, що використовується, не заявляє підтримку плагіна Car Rental. Будь "
-"ласка, ознайомтеся з нашою темою %s , що була створена спеціально для "
+"ласка, ознайомтеся з нашою темою %s, яку було створено спеціально для "
 "використання з плагіном Car Rental."
 
-#: car-rental.php:1550 includes/demo-data/class-bws-demo-data.php:785
+#: car-rental.php:1961 includes/demo-data/class-bws-demo-data.php:812
 msgid "Close notice"
 msgstr "Закрити повідомлення"
 
-#: car-rental.php:1687
+#: car-rental.php:2194 includes/demo-data/class-bws-demo-data.php:562
 msgid "You have reached the limit for Extras."
 msgstr "Ви досягли ліміту для Доповнень."
 
-#: includes/admin-panel.php:64
-msgid ""
-"Please, enter the correct value for custom currency field. Settings not "
-"saved."
-msgstr ""
-"Будь ласка, введіть правильне значення для поля користувацької валюти. Зміни "
-"не збережені."
-
-#: includes/admin-panel.php:67
-msgid "Settings saved."
-msgstr "Установки збережено."
-
-#: includes/admin-panel.php:93
-#, php-format
-msgid ""
-"Warning! The status \"%1$s\" can not be removed, because it is used in the "
-"%2$s orders."
-msgstr ""
-"Увага! Статус \"%1$s\" не може бути видалений, так як він використовується в"
-"%2$s замовленні(ах)."
-
-#: includes/admin-panel.php:103
-msgid "An error occurred during the updating status list."
-msgstr "Під час оновлення списку статусів сталася помилка."
-
-#: includes/admin-panel.php:113
-msgid "All plugin settings were restored to default."
-msgstr "Всі налаштування плагіну було скинуто до стандартних."
-
-#: includes/admin-panel.php:126
-msgid "for choosing a Car"
-msgstr "для вибору Авто"
-
-#: includes/admin-panel.php:127
-msgid "for choosing Extras"
-msgstr "для вибору Доповнень"
-
-#: includes/admin-panel.php:128
-msgid "for Review & Book"
-msgstr "для Перегляду та Замовлення"
-
-#: includes/admin-panel.php:137
-msgid "Please, enter the correct value for Google Maps Key field."
-msgstr "Для правильної роботи плагіна, будь ласка, введіть Ключ Google Maps."
-
-#: includes/admin-panel.php:142 includes/admin-panel.php:144
-msgid "Important"
-msgstr "Увага"
-
-#: includes/admin-panel.php:142
-#, php-format
-msgid "for the correct plugin work, please choose the page %s"
-msgstr "для коректної роботи плагіна, будь ласка, виберіть сторінку %s"
-
-#: includes/admin-panel.php:142 includes/admin-panel.php:144
-msgid "edit"
-msgstr "змінити"
-
-#: includes/admin-panel.php:144
-#, php-format
-msgid ""
-"for the correct plugin work, please choose the %2$s template for the %1$s "
-"page"
-msgstr ""
-"для коректної роботи плагіна, будь ласка, виберіть шаблон%2$s для сторінки "
-"%1$s"
-
-#: includes/admin-panel.php:150
-msgid "&mdash; Select &mdash;"
-msgstr "&mdash; Вибрати &mdash;"
-
-#: includes/admin-panel.php:171
-msgid "Slider"
-msgstr "Слайдер"
-
-#: includes/admin-panel.php:172
-msgid "Custom code"
-msgstr "Користувацький код"
-
-#: includes/admin-panel.php:173
-msgid "Go PRO"
-msgstr "Перейти на PRO"
-
-#: includes/admin-panel.php:193
-msgid "Notice"
-msgstr "Увага"
-
-#: includes/admin-panel.php:193
-msgid ""
-"The plugin's settings have been changed. In order to save them please don't "
-"forget to click the 'Save Changes' button."
-msgstr ""
-"Налаштування плагіна були змінені. Не забудьте зберегти їх, натиснувши "
-"кнопку 'Зберегти зміни'."
-
-#: includes/admin-panel.php:200
-msgid "Pages"
-msgstr "Сторінки"
-
-#: includes/admin-panel.php:206
-msgid "Currency"
-msgstr "Валюта"
-
-#: includes/admin-panel.php:216
-msgid "Custom currency, for example"
-msgstr "Користувацька валюта, наприклад"
-
-#: includes/admin-panel.php:220
-msgid "Currency Position"
-msgstr "Розташування символу валюти"
-
-#: includes/admin-panel.php:223
-msgid "before numerals"
-msgstr "до цифр"
-
-#: includes/admin-panel.php:225
-msgid "after numerals"
-msgstr "після цифр"
-
-#: includes/admin-panel.php:232
-msgid "Unit of consumption"
-msgstr "Одиниця виміру витрати палива"
-
-#: includes/admin-panel.php:238
-msgid "km/l"
-msgstr "км/л"
-
-#: includes/admin-panel.php:242
-msgid "Custom unit of consumption"
-msgstr "Користувацька одиниця витрати палива"
-
-#: includes/admin-panel.php:246
-msgid "Enable selecting pick-up&drop-off time"
-msgstr "Можливість вибору часу отримання і повернення"
-
-#: includes/admin-panel.php:258
-msgid "Enable selecting return location"
-msgstr "Можливість вибору місця повернення"
-
-#: includes/admin-panel.php:264
-msgid "Rent"
-msgstr "Оренда"
-
-#: includes/admin-panel.php:267
-msgid "per hour"
-msgstr "погодинно"
-
-#: includes/admin-panel.php:268
-msgid "per day"
-msgstr "подобово"
-
-#: includes/admin-panel.php:274
-msgid "Google Maps Key"
-msgstr "Ключ Google Maps"
-
-#: includes/admin-panel.php:279
-msgid "How to get a Key"
-msgstr "Як отримати Ключ"
-
-#: includes/admin-panel.php:285
-msgid "Search pages show at most"
-msgstr "Показувати на сторінці пошуку не більше"
-
-#: includes/admin-panel.php:293
-msgid "Set the order status list"
-msgstr "Задати список статусів замовлень"
-
-#: includes/admin-panel.php:302
-msgid "delete"
-msgstr "видалити"
-
-#: includes/admin-panel.php:322 includes/slider-template.php:228
-#: includes/orders-table.php:579
-msgid "Save Changes"
-msgstr "Зберегти зміни"
-
-#: includes/admin-panel.php:328
-msgid ""
-"If you install the demo-data, will be created demo-cars with images and "
-"details, demo-extras with images and details, manufacturers, vehicles types "
-"and car classes."
-msgstr ""
-"При установці демо даних будуть створені демо-автомобілі з зображеннями і "
-"подробицями, демо-доповнення з зображеннями і подробицями, виробники, типи "
-"кузова і класи автомобілів."
-
-#: includes/slider-template.php:61
+#: includes/slider-template.php:91
 msgid "Slide settings saved."
 msgstr "Налаштування слайда збережені."
 
-#: includes/slider-template.php:63
+#: includes/slider-template.php:93
 msgid "Please choose new image for slide. Settings not saved."
 msgstr ""
 "Будь ласка, виберіть нове зображення для слайда. Налаштування не збережені."
 
-#: includes/slider-template.php:75
+#: includes/slider-template.php:105
 msgid "Slide was successfully added."
 msgstr "Слайд доданий успішно."
 
-#: includes/slider-template.php:77
+#: includes/slider-template.php:107
 msgid "Please choose image for slide. Settings not saved."
 msgstr "Будь ласка, виберіть зображення для слайда. Налаштування не збережені."
 
-#: includes/slider-template.php:85 includes/slider-template.php:92
+#: includes/slider-template.php:115 includes/slider-template.php:122
 msgid "Slide was successfully deleted"
 msgstr "Слайд видалений успішно "
 
-#: includes/slider-template.php:111
+#: includes/slider-template.php:142
 msgid ""
-"If you want to add the slider, paste the following strings into the template "
-"source code"
+"If you want to display the slider on your homepage, paste the following "
+"strings into the template source code"
 msgstr ""
-"Якщо ви хочете додати слайдер, додайте наступні рядки в вихідний код шаблону"
+"Якщо ви хочете додати слайдер на домашню сторінку, додайте наступні рядки в "
+"вихідний код шаблону"
 
-#: includes/slider-template.php:123
+#: includes/slider-template.php:143
+msgid ""
+"If you want to display the slider on any page (e.g. that uses some custom "
+"template), paste the following strings into the source code of the "
+"corresponding template"
+msgstr ""
+"Якщо ви хочете відображати слайдер на будь-якій сторінці (наприклад на "
+"сторінці, що використовує користувацький шаблон), додайте наступні рядки в "
+"вихідний код відповідного файлу шаблону"
+
+#: includes/slider-template.php:157
 msgid "List of Slides"
 msgstr "Список Слайдів"
 
-#: includes/slider-template.php:129 includes/slider-template.php:161
+#: includes/slider-template.php:163 includes/slider-template.php:195
 msgid "Delete Slide"
 msgstr "Видалити Слайд"
 
-#: includes/slider-template.php:132
+#: includes/slider-template.php:166
 msgid "- This slide has no title -"
 msgstr "- Слайд не має заголовка -"
 
-#: includes/slider-template.php:137 includes/orders-table.php:70
-#: includes/widget-order-info.php:113 includes/widget-order-info.php:204
-#: includes/widget-order-info.php:227 templates/car-search-form.php:124
+#: includes/slider-template.php:171 includes/widget-order-info.php:111
+#: includes/widget-order-info.php:209 includes/widget-order-info.php:236
+#: includes/orders-table.php:71 templates/car-search-form.php:129
 msgid "Edit"
 msgstr "Змінити"
 
-#: includes/slider-template.php:148 includes/slider-template.php:224
+#: includes/slider-template.php:182 includes/slider-template.php:258
 msgid "Add Slide"
 msgstr "Додати Слайд"
 
-#: includes/slider-template.php:158
+#: includes/slider-template.php:192
 msgid "Add New Slide"
 msgstr "Додати Новий Слайд"
 
-#: includes/slider-template.php:165
+#: includes/slider-template.php:199
 msgid "Back to Slider Settings"
 msgstr "Повернутися до налаштувань слайдера"
 
-#: includes/slider-template.php:177
+#: includes/slider-template.php:211
 msgid "Slide Image"
 msgstr "Зображення слайда"
 
-#: includes/slider-template.php:186
+#: includes/slider-template.php:220
 msgid "Image URL"
 msgstr "URL зображення"
 
-#: includes/slider-template.php:190
+#: includes/slider-template.php:224
 msgid "Upload Image"
 msgstr "Завантажити зображення"
 
-#: includes/slider-template.php:190
+#: includes/slider-template.php:224
 msgid "Change Image"
 msgstr "Змінити зображення"
 
-#: includes/slider-template.php:195
+#: includes/slider-template.php:229
 msgid "Slide Title"
 msgstr "Заголовок слайда"
 
-#: includes/slider-template.php:203
+#: includes/slider-template.php:237
 msgid "Slide Description"
 msgstr "Опис слайда"
 
-#: includes/slider-template.php:211
+#: includes/slider-template.php:245
 msgid "Slide Link"
 msgstr "Посилання слайда"
 
-#: includes/slider-template.php:275
+#: includes/slider-template.php:262 includes/orders-table.php:699
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+#: includes/slider-template.php:343
 msgid "Go to"
 msgstr "Перейти до"
 
-#: includes/slider-template.php:275
+#: includes/slider-template.php:343
 msgid "Learn More"
 msgstr "Детальніше"
-
-#: includes/orders-table.php:18
-msgid "order"
-msgstr "замовлення"
-
-#: includes/orders-table.php:19
-msgid "orders"
-msgstr "замовлення"
-
-#: includes/orders-table.php:49
-msgid "Order ID"
-msgstr "ID Замовлення"
-
-#: includes/orders-table.php:52
-msgid "Location from"
-msgstr "Від місця"
-
-#: includes/orders-table.php:53
-msgid "Location to"
-msgstr "До місця"
-
-#: includes/orders-table.php:54
-msgid "Date from"
-msgstr "Від дати"
-
-#: includes/orders-table.php:55
-msgid "Date to"
-msgstr "До дати"
-
-#: includes/orders-table.php:56
-msgid "Client"
-msgstr "Клієнт"
-
-#: includes/orders-table.php:58 includes/orders-table.php:566
-msgid "Status"
-msgstr "Статус"
-
-#: includes/orders-table.php:174
-msgid "All Customers"
-msgstr "Всі Клієнти"
-
-#: includes/orders-table.php:182
-msgid "All Statuses"
-msgstr "Всі Статуси"
-
-#: includes/orders-table.php:188 includes/widget-filter.php:67
-msgid "Filter"
-msgstr "Фільтр"
-
-#: includes/orders-table.php:289 includes/orders-table.php:356
-msgid "Manage orders page"
-msgstr "Сторінка управління замовленнями"
-
-#: includes/orders-table.php:289 includes/orders-table.php:299
-msgid "Orders"
-msgstr "Замовлення"
-
-#: includes/orders-table.php:335
-msgid "An error occurred during the deleting orders"
-msgstr "При видаленні замовлення сталася помилка"
-
-#: includes/orders-table.php:337
-msgid "The orders have been deleted."
-msgstr "Замовлення були видалені."
-
-#: includes/orders-table.php:369
-msgid "Search"
-msgstr "Пошук"
-
-#: includes/orders-table.php:458
-msgid "An error occurred during the saving order"
-msgstr "При збереженні замовлення сталася помилка"
-
-#: includes/orders-table.php:460
-msgid "All changes have been saved"
-msgstr "Всі налаштування збережені"
-
-#: includes/orders-table.php:472
-msgid "Edit order"
-msgstr "Редагувати замовлення"
-
-#: includes/orders-table.php:473
-msgid "Return to Manage orders page"
-msgstr "Повернутися на Сторінку управління замовленнями"
-
-#: includes/orders-table.php:506 templates/page-choose-extras.php:129
-msgid "Choose Quantity"
-msgstr "Виберіть кількість"
-
-#: includes/orders-table.php:506 templates/page-choose-extras.php:160
-msgid "pcs."
-msgstr "шт."
-
-#: includes/orders-table.php:515
-msgid "There are no available extras fo this car."
-msgstr "Немає доступних доповнень для цього автомобіля."
-
-#: includes/orders-table.php:520
-msgid "Pickup Location"
-msgstr "Місце отримання"
-
-#: includes/orders-table.php:524
-msgid "Return Location"
-msgstr "Місце повернення"
-
-#: includes/orders-table.php:534 templates/car-search-form.php:87
-msgid "Pick-up date"
-msgstr "Дата отримання"
-
-#: includes/orders-table.php:536 templates/car-search-form.php:88
-msgid "Choose Pick-up date"
-msgstr "Виберіть дату отримання"
-
-#: includes/orders-table.php:536 templates/car-search-form.php:88
-#: templates/car-search-form.php:100
-msgid "YYYY-MM-DD"
-msgstr "РРРР-ММ-ДД"
-
-#: includes/orders-table.php:538 includes/orders-table.php:554
-#: templates/car-search-form.php:90
-msgid "Choose Pick-up time"
-msgstr "Виберіть час отримання"
-
-#: includes/orders-table.php:550 templates/car-search-form.php:99
-msgid "Drop-off date"
-msgstr "Дата повернення"
-
-#: includes/orders-table.php:552
-msgid "Choose Drop-off date"
-msgstr "Виберіть дату повернення"
 
 #: includes/widget-order-info.php:22
 msgid "Car Rental Order Info"
@@ -1086,19 +828,19 @@ msgstr "Car Rental Інформація про замовлення"
 msgid "Widget for displaying Order Info."
 msgstr "Віджет для відображення Інформації про Замовлення."
 
-#: includes/widget-order-info.php:79 templates/page-review-book.php:88
-msgid "Please, choose Pick-Up date"
-msgstr "Будь ласка, виберіть дату отримання"
+#: includes/widget-order-info.php:79 templates/page-review-book.php:85
+msgid "Please choose Pick Up date"
+msgstr "Будь ласка, оберіть дату отримання"
 
-#: includes/widget-order-info.php:80 templates/page-review-book.php:103
-msgid "Please, choose Drop-Off date"
-msgstr "Будь ласка, виберіть дату повернення"
+#: includes/widget-order-info.php:80 templates/page-review-book.php:100
+msgid "Please choose Drop Off date"
+msgstr "Будь ласка, оберіть дату повернення"
 
 #: includes/widget-order-info.php:84 includes/widget-order-info.php:88
 msgid "at"
 msgstr "в"
 
-#: includes/widget-order-info.php:139 templates/page-choose-car.php:234
+#: includes/widget-order-info.php:137 templates/page-choose-car.php:250
 #, php-format
 msgid "%s passenger"
 msgid_plural "%s passengers"
@@ -1106,7 +848,15 @@ msgstr[0] "%s пасажир"
 msgstr[1] "%s пасажира"
 msgstr[2] "%s пасажирів"
 
-#: includes/widget-order-info.php:146 templates/page-choose-car.php:243
+#: includes/widget-order-info.php:142 templates/page-choose-car.php:255
+#, php-format
+msgid "%s Door"
+msgid_plural "%s Doors"
+msgstr[0] "%s двері"
+msgstr[1] "%s дверей"
+msgstr[2] "%s дверей"
+
+#: includes/widget-order-info.php:149 templates/page-choose-car.php:264
 #, php-format
 msgid "%s large suitcase"
 msgid_plural "%s large suitcases"
@@ -1114,7 +864,7 @@ msgstr[0] "%s великий"
 msgstr[1] "%s великих"
 msgstr[2] "%s великих"
 
-#: includes/widget-order-info.php:149 templates/page-choose-car.php:247
+#: includes/widget-order-info.php:152 templates/page-choose-car.php:268
 #, php-format
 msgid "%s small suitcase"
 msgid_plural "%s small suitcases"
@@ -1122,49 +872,297 @@ msgstr[0] "%s дрібний"
 msgstr[1] "%s дрібних"
 msgstr[2] "%s дрібних"
 
-#: includes/widget-order-info.php:155 templates/page-choose-car.php:254
+#: includes/widget-order-info.php:158 templates/page-choose-car.php:275
 msgid "automatic transmission"
 msgstr "трансмісія автомат"
 
-#: includes/widget-order-info.php:155 templates/page-choose-car.php:254
+#: includes/widget-order-info.php:158 templates/page-choose-car.php:275
 msgid "manual transmission"
 msgstr "ручна трансмісія"
 
-#: includes/widget-order-info.php:160 templates/page-choose-car.php:259
+#: includes/widget-order-info.php:163 templates/page-choose-car.php:280
 msgid "air conditioning"
 msgstr "кондиціонер"
 
-#: includes/widget-order-info.php:171 templates/page-choose-car.php:270
+#: includes/widget-order-info.php:174 templates/page-choose-car.php:291
 msgid "View car details"
 msgstr "Переглянути детальну інформацію про авто"
 
-#: includes/widget-order-info.php:172 templates/page-choose-car.php:271
+#: includes/widget-order-info.php:175 templates/page-choose-car.php:292
 msgid "Close car details"
 msgstr "Закрити детальну інформацію про авто"
 
-#: includes/widget-order-info.php:183 templates/page-review-book.php:78
-msgid "Please, choose a Car"
-msgstr "Будь ласка, виберіть авто"
+#: includes/widget-order-info.php:186 templates/page-review-book.php:75
+#: templates/page-choose-extras.php:87
+msgid "Please choose a Car"
+msgstr "Будь ласка, оберіть авто"
 
-#: includes/widget-order-info.php:202
+#: includes/widget-order-info.php:207
 msgid "Date & Location"
 msgstr "Час і Місце"
 
-#: includes/widget-order-info.php:208
+#: includes/widget-order-info.php:213
 msgid "Pick Up time"
 msgstr "Час отримання"
 
-#: includes/widget-order-info.php:211
+#: includes/widget-order-info.php:216
 msgid "Return time"
 msgstr "Час повернення"
 
-#: includes/widget-order-info.php:214
+#: includes/widget-order-info.php:220
 msgid "Pickup and Return Location"
 msgstr "Місце отримання і повернення"
 
-#: includes/widget-order-info.php:220
+#: includes/widget-order-info.php:228
 msgid "Subtotal"
 msgstr "Вартість"
+
+#: includes/class-crrntl-settings.php:26
+msgid "Misc"
+msgstr "Різне"
+
+#: includes/class-crrntl-settings.php:27
+msgid "Custom Code"
+msgstr "Користувацький код"
+
+#: includes/class-crrntl-settings.php:28
+msgid "Import / Export"
+msgstr "Імпорт / Експорт"
+
+#: includes/class-crrntl-settings.php:29
+msgid "License Key"
+msgstr "Ліцензійний ключ"
+
+#: includes/class-crrntl-settings.php:52
+msgid "Choose car"
+msgstr "Вибір Авто"
+
+#: includes/class-crrntl-settings.php:53
+msgid "Cars"
+msgstr "Автомобілі"
+
+#: includes/class-crrntl-settings.php:57 templates/page-review-book.php:216
+#: templates/page-choose-car.php:69 templates/page-choose-extras.php:66
+msgid "Choose extras"
+msgstr "Доповнення"
+
+#: includes/class-crrntl-settings.php:62 includes/class-crrntl-settings.php:63
+msgid "Review & Book"
+msgstr "Перегляд та замовлення"
+
+#: includes/class-crrntl-settings.php:107
+msgid "Please enter the correct value for custom currency field."
+msgstr "Будь ласка, введіть правильне значення для поля користувацької валюти."
+
+#: includes/class-crrntl-settings.php:121
+msgid "Please enter the correct value for custom unit of consumption field."
+msgstr ""
+"Будь ласка, введіть правильне значення для користувацької одиниці витрати "
+"пального."
+
+#: includes/class-crrntl-settings.php:207
+#, php-format
+msgid ""
+"Warning! The status \"%1$s\" can not be removed, because it is used in the "
+"%2$s orders."
+msgstr ""
+"Увага! Статус \"%1$s\" не може бути видалений, так як він використовується в"
+"%2$s замовленні(ах)."
+
+#: includes/class-crrntl-settings.php:217
+msgid "An error occurred during the updating status list."
+msgstr "Під час оновлення списку статусів сталася помилка."
+
+#: includes/class-crrntl-settings.php:223
+msgid "Settings saved"
+msgstr "Налаштування збережено"
+
+#: includes/class-crrntl-settings.php:230
+msgid "Important"
+msgstr "Увага"
+
+#: includes/class-crrntl-settings.php:231
+#, php-format
+msgid "for the correct plugin work, please choose page for \"%s\""
+msgstr "для коректної роботи плагіна, будь ласка, оберіть сторінку для \"%s\""
+
+#: includes/class-crrntl-settings.php:232
+msgid "edit"
+msgstr "змінити"
+
+#: includes/class-crrntl-settings.php:252
+msgid "Pages"
+msgstr "Сторінки"
+
+#: includes/class-crrntl-settings.php:268
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Вибрати &mdash;"
+
+#: includes/class-crrntl-settings.php:280
+msgid "Currency"
+msgstr "Валюта"
+
+#: includes/class-crrntl-settings.php:286
+msgid "Custom currency"
+msgstr "Користувацька валюта"
+
+#: includes/class-crrntl-settings.php:306
+msgid "Custom currency, for example"
+msgstr "Користувацька валюта, наприклад"
+
+#: includes/class-crrntl-settings.php:312
+msgid "Currency Position"
+msgstr "Розташування символу валюти"
+
+#: includes/class-crrntl-settings.php:315
+msgid "Before numerals"
+msgstr "Перед цифрами"
+
+#: includes/class-crrntl-settings.php:317
+msgid "After numerals"
+msgstr "Після цифр"
+
+#: includes/class-crrntl-settings.php:324
+msgid "Unit of Consumption"
+msgstr "Одиниця виміру витрати пального"
+
+#: includes/class-crrntl-settings.php:327
+msgid "km/l"
+msgstr "км/л"
+
+#: includes/class-crrntl-settings.php:332
+msgid "Custom unit of consumption"
+msgstr "Користувацька одиниця витрати палива"
+
+#: includes/class-crrntl-settings.php:349
+msgid "Custom Unit of Consumption"
+msgstr "Користувацька одиниця витрати пального"
+
+#: includes/class-crrntl-settings.php:355
+msgid "Pick Up & Drop Off Time"
+msgstr "Час отримання і повернення"
+
+#: includes/class-crrntl-settings.php:358
+msgid "Enable to display Pick Up & Drop Off Time option."
+msgstr "Увімкніть для відображення опції вибору часу отримання і повернення."
+
+#: includes/class-crrntl-settings.php:368 includes/orders-table.php:644
+msgid "Return Location"
+msgstr "Місце повернення"
+
+#: includes/class-crrntl-settings.php:371
+msgid "Enable to display Return Location option."
+msgstr "Увімкніть для відображення опції вибору місця повернення"
+
+#: includes/class-crrntl-settings.php:375
+msgid "Rent per"
+msgstr "Оренда на"
+
+#: includes/class-crrntl-settings.php:378
+msgid "Hour"
+msgstr "Годину"
+
+#: includes/class-crrntl-settings.php:379
+msgid "Day"
+msgstr "День"
+
+#: includes/class-crrntl-settings.php:385
+msgid "Google Maps API Key"
+msgstr "API ключ для Google Maps"
+
+#: includes/class-crrntl-settings.php:391
+#, php-format
+msgid ""
+"Including a key in your request allows you to monitor your application's API "
+"usage in the %s."
+msgstr ""
+"Додавання API ключа до запиту дозволяє контролювати використання вашого "
+"додатку в %s."
+
+#: includes/class-crrntl-settings.php:394
+msgid "Google API Console"
+msgstr "консолі Google API"
+
+#: includes/class-crrntl-settings.php:397
+msgid "Don't have an API key?"
+msgstr "Ще немає ключа API?"
+
+#: includes/class-crrntl-settings.php:398
+msgid "Get it now!"
+msgstr "Отримати зараз!"
+
+#: includes/class-crrntl-settings.php:404
+msgid "Search Pages Show at Most"
+msgstr "Показувати на сторінці пошуку не більше"
+
+#: includes/class-crrntl-settings.php:412
+msgid "Set the Order Status List"
+msgstr "Налаштувати список статусів замовлень"
+
+#: includes/class-crrntl-settings.php:421
+msgid "delete"
+msgstr "видалити"
+
+#: includes/class-crrntl-settings.php:444
+#, php-format
+msgid "Add %s"
+msgstr "Додати %s"
+
+#: includes/class-crrntl-settings.php:466
+msgid "Download"
+msgstr "Завантажити"
+
+#: includes/class-crrntl-settings.php:473
+msgid "Activate"
+msgstr "Активувати"
+
+#: includes/class-crrntl-settings.php:479
+#, php-format
+msgid "Enable to use %s for Review & Book form."
+msgstr "Увімкніть для застосування %s у формі  \"Перегляд і замовлення\"."
+
+#: includes/class-crrntl-settings.php:484
+#, php-format
+msgid "Your %s plugin is outdated. Please update it to the latest version."
+msgstr ""
+"Ви використовуєте застарілу версію плагіна %s. Будь ласка, оновіться до "
+"останньої версії."
+
+#: includes/class-crrntl-settings.php:500
+msgid ""
+"Please enable JavaScript in your browser for fully functional work of the "
+"plugin."
+msgstr ""
+"Будь ласка, увімкніть JavaScript у вашому браузері для повнофункціональної "
+"роботи плагіна."
+
+#: includes/class-crrntl-settings.php:512
+msgid "Car Rental Post Type"
+msgstr "Тип записів Car Rental"
+
+#: includes/class-crrntl-settings.php:514
+msgid ""
+"Enable to avoid conflicts with other plugins installed. All Cars created "
+"earlier will stay unchanged. However, after enabling we recommend to check "
+"settings of other plugins where \"cars\" post type is used."
+msgstr ""
+"Увімкніть для уникнення конфліктів з іншими встановленими плагінами. Всі "
+"автомобілі, створені раніше, залишаться без змін. У будь-якому випадку, "
+"після ввімкнення даної опції ми рекомендуємо перевірити налаштування інших "
+"плагінів, де використовується тип записів \"cars\"."
+
+#: includes/class-crrntl-settings.php:523
+msgid "Demo Data"
+msgstr "Демо дані"
+
+#: includes/class-crrntl-settings.php:525
+msgid ""
+"Install demo-data to create demo-cars with images and details, demo-extras "
+"with images and details, manufacturers, vehicles types and car classes."
+msgstr ""
+"Встановіть демо дані для створення демо-автомобілей з зображеннями і "
+"подробицями, демо-доповнень з зображеннями і подробицями, виробників, типів "
+"кузова і класів автомобілів."
 
 #: includes/widget-filter.php:22
 msgid "Car Rental filters"
@@ -1174,336 +1172,542 @@ msgstr "Car Rental фільтри"
 msgid "Widget for displaying Cars filters."
 msgstr "Віджет для відображення фільтрів Автомобілів."
 
-#: includes/widget-filter.php:69
+#: includes/widget-filter.php:62 includes/orders-table.php:189
+msgid "Filter"
+msgstr "Фільтр"
+
+#: includes/widget-filter.php:72
 msgid "Price range"
 msgstr "Ціна"
 
-#: includes/widget-filter.php:71 includes/widget-filter.php:113
+#: includes/widget-filter.php:74 includes/widget-filter.php:117
 msgid "Reset"
 msgstr "Скидання"
 
-#: includes/widget-filter.php:75 includes/widget-filter.php:117
-#: templates/page-choose-car.php:194
+#: includes/widget-filter.php:78 includes/widget-filter.php:121
+#: templates/page-choose-car.php:192
 msgid "from"
 msgstr "з"
 
-#: includes/widget-filter.php:76 includes/widget-filter.php:118
+#: includes/widget-filter.php:79 includes/widget-filter.php:122
 msgid "to"
 msgstr "до"
 
-#: includes/widget-filter.php:98 includes/widget-filter.php:125
+#: includes/widget-filter.php:102 includes/widget-filter.php:129
 msgid "Clear"
 msgstr "Очистити"
 
-#: includes/widget-filter.php:98 includes/widget-filter.php:125
+#: includes/widget-filter.php:102 includes/widget-filter.php:129
 msgid "Select All"
 msgstr "Вибрати все"
 
-#: includes/widget-filter.php:123
+#: includes/widget-filter.php:115
+msgid "Number of passengers"
+msgstr "Кількість пасажирів"
+
+#: includes/widget-filter.php:127
 msgid "Vehicle type"
 msgstr "Тип кузова"
 
-#: includes/widget-filter.php:140
+#: includes/widget-filter.php:144
 msgid "Apply filters"
 msgstr "Застосувати фільтр"
 
-#: includes/demo-data/class-bws-demo-data.php:35
-msgid "Install Demo Data"
-msgstr "Встановити Демо Дані"
-
-#: includes/demo-data/class-bws-demo-data.php:38
-msgid "Remove Demo Data"
-msgstr "Видалити Демо Дані"
-
-#: includes/demo-data/class-bws-demo-data.php:39
-msgid "Delete demo-data and restore old plugin settings."
-msgstr "Видалити демо дані і відновити попередні налаштування плагіна."
-
-#: includes/demo-data/class-bws-demo-data.php:46
-msgid "You have reached the limit for Cars."
-msgstr "Ви досягли ліміту для Автомобілів."
-
-#: includes/demo-data/class-bws-demo-data.php:62
-msgid "Yes, install demo data"
-msgstr "Так, встановити демо дані"
-
-#: includes/demo-data/class-bws-demo-data.php:63
-msgid "Are you sure you want to install demo data?"
-msgstr "Ви впевнені, що хочете встановити демо дані?"
-
-#: includes/demo-data/class-bws-demo-data.php:65
-msgid "Yes, remove demo data"
-msgstr "Так, видалити демо дані"
-
-#: includes/demo-data/class-bws-demo-data.php:66
-msgid "Are you sure you want to remove demo data?"
-msgstr "Ви впевнені, що хочете видалити демо дані?"
-
-#: includes/demo-data/class-bws-demo-data.php:73
-msgid "No, go back to the settings page"
-msgstr "Ні, повернутися на сторінку налаштувань"
-
-#: includes/demo-data/class-bws-demo-data.php:132
-msgid "Can not get demo data."
-msgstr "Неможливо отримати демо дані"
-
-#: includes/demo-data/class-bws-demo-data.php:139
-msgid "Demo options already installed."
-msgstr "Демо налаштування вже встановлені."
-
-#: includes/demo-data/class-bws-demo-data.php:526
-msgid "Demo data successfully installed."
-msgstr "Демо дані успішно встановлені."
-
-#: includes/demo-data/class-bws-demo-data.php:528
-msgid "View post with shortcodes"
-msgstr "Переглянути запис з шорткодами"
-
-#: includes/demo-data/class-bws-demo-data.php:531
-msgid "View page with examples"
-msgstr "Переглянути сторінку з прикладами"
-
-#: includes/demo-data/class-bws-demo-data.php:542
-msgid "Installation of demo data with some errors occurred."
-msgstr "Установка демо даних пройшла з помилками."
-
-#: includes/demo-data/class-bws-demo-data.php:545
-msgid "Posts data is missing."
-msgstr "Дані записів відсутні."
-
-#: includes/demo-data/class-bws-demo-data.php:633
-msgid "Demo data have already been removed."
-msgstr "Демо дані вже були видалені"
-
-#: includes/demo-data/class-bws-demo-data.php:723
-msgid "Demo data successfully removed."
-msgstr "Демо дані успішно видалені."
-
-#: includes/demo-data/class-bws-demo-data.php:727
-msgid "Removing demo data with some errors occurred."
-msgstr "Видалення демо даних пройшло з помилками."
-
-#: includes/demo-data/class-bws-demo-data.php:789
-msgid "Install demo data"
-msgstr "Встановити демо дані"
-
-#: includes/demo-data/class-bws-demo-data.php:789
-msgid "for an acquaintance with the possibilities of the"
-msgstr "для ознайомлення з можливостями"
-
-#: templates/page-choose-car.php:66 templates/page-review-book.php:182
-#: templates/page-choose-extras.php:61
-msgid "Create request"
-msgstr "Створення заявки"
-
-#: templates/page-choose-car.php:71 templates/page-review-book.php:188
-#: templates/page-choose-extras.php:67
-msgid "Choose a car"
-msgstr "Вибір Авто"
-
-#: templates/page-choose-car.php:75 templates/page-review-book.php:194
-#: templates/page-choose-extras.php:72
-msgid "Choose extras"
-msgstr "Доповнення"
-
-#: templates/page-choose-car.php:79 templates/page-review-book.php:199
-#: templates/page-choose-extras.php:76
-msgid "Review &amp; Book"
-msgstr "Перегляд та Замовлення"
-
-#: templates/page-choose-car.php:194
-msgid "Results"
-msgstr "Результати"
-
-#: templates/page-choose-car.php:197
-msgid "Sort by"
-msgstr "Сортування"
-
-#: templates/page-choose-car.php:198
-msgid "Price"
-msgstr "Вартість"
-
-#: templates/page-choose-car.php:199
-msgid "Name"
-msgstr "Им'я"
-
-#: templates/page-choose-car.php:293 templates/page-choose-car.php:295
-msgid "Select"
-msgstr "Вибрати"
-
-#: templates/page-choose-car.php:307
-msgid "No cars available."
-msgstr "Немає доступних автомобілів."
-
-#: templates/page-choose-car.php:324 templates/page-review-book.php:315
-#: templates/page-choose-extras.php:200
-msgid "Plugin \"Car Rental\" is not activated"
-msgstr "Плагін \"Car Rental\" не активований"
-
-#: templates/page-review-book.php:91
-msgid "Please, choose Pick-Up time"
-msgstr "Будь ласка, виберіть час отримання"
-
-#: templates/page-review-book.php:96
-msgid "Please, choose correct Pick-Up datetime in format \"YYYY-MM-DD\""
-msgstr "Будь ласка, виберіть коректну дату отримання у форматі \"РРРР-ММ-ДД\""
-
-#: templates/page-review-book.php:98
-msgid "Please, choose correct Pick-Up datetime"
-msgstr "Будь ласка, виберіть коректну дату отримання"
-
-#: templates/page-review-book.php:106
-msgid "Please, choose Drop-Off time"
-msgstr "Будь ласка, виберіть час повернення"
-
-#: templates/page-review-book.php:111
-msgid "Please, choose correct Drop-Off datetime in format \"YYYY-MM-DD\""
-msgstr "Будь ласка, виберітькоректну дату повернення у форматі \"РРРР-ММ-ДД\""
-
-#: templates/page-review-book.php:113
-msgid "Please, choose correct Drop-Off datetime"
-msgstr "Будь ласка, виберіть коректну дату повернення"
-
-#: templates/page-review-book.php:117
-msgid "Error in total calculate"
-msgstr "Помилка при підрахунку суми"
-
-#: templates/page-review-book.php:121
-msgid "Please, enter correct e-mail address."
-msgstr "Будь ласка, введіть правильну e-mail адресу."
-
-#: templates/page-review-book.php:123
-msgid "Please, confirm your e-mail address."
-msgstr "Підтвердіть ваш e-mail."
-
-#: templates/page-review-book.php:165
-msgid "Error in user create"
-msgstr "Помилка при створенні користувача"
-
-#: templates/page-review-book.php:216
-msgid "Complete reservation form"
-msgstr "Заповніть форму резервування"
-
-#: templates/page-review-book.php:225
-msgid "Note"
-msgstr "Примітка"
-
-#: templates/page-review-book.php:235
-msgid "Personal Information"
-msgstr "Персональна інформація"
-
-#: templates/page-review-book.php:242
-msgid "First name"
-msgstr "Им'я"
-
-#: templates/page-review-book.php:243
-msgid "Enter your first name"
-msgstr "Введіть ваше им'я"
-
-#: templates/page-review-book.php:246
-msgid "Last name"
-msgstr "Прізвище"
-
-#: templates/page-review-book.php:247
-msgid "Enter your last name"
-msgstr "Введіть ваше прізвище"
-
-#: templates/page-review-book.php:250
-msgid "Age"
-msgstr "Вік"
-
-#: templates/page-review-book.php:252
-msgid "Choose your age"
-msgstr "Вкажіть свій вік"
-
-#: templates/page-review-book.php:266
-msgid "Email address"
-msgstr "E-mail Адреса "
-
-#: templates/page-review-book.php:267
-msgid "Enter your email address"
-msgstr "Введіть ваш e-mail"
-
-#: templates/page-review-book.php:270
-msgid "Confirm email address"
-msgstr "Підтвердіть ваш e-mail"
-
-#: templates/page-review-book.php:271
-msgid "Confirm your email address"
-msgstr "Підтвердіть ваш e-mail"
-
-#: templates/page-review-book.php:277
-msgid "Enter your phone number"
-msgstr "Введіть номер телефону"
-
-#: templates/page-review-book.php:298
-msgid "Book Now"
-msgstr "Замовити"
-
-#: templates/car-search-form.php:46
-msgid "Book a Car"
-msgstr "Замовлення Авто"
-
-#: templates/car-search-form.php:52
-msgid "Edit Locations & Dates"
-msgstr "Змінити Розташування і Дати"
-
-#: templates/car-search-form.php:55
-msgid "Search for a car"
-msgstr "Пошук Авто"
-
-#: templates/car-search-form.php:72
-msgid "Return at different location"
-msgstr "Повернення в іншому місці"
-
-#: templates/car-search-form.php:75
-msgid "Return location"
-msgstr "Місце повернення"
-
-#: templates/car-search-form.php:100
-msgid "Choose Drop-Off date"
-msgstr "Виберіть дату повернення"
-
-#: templates/car-search-form.php:102
-msgid "Choose Drop-Off time"
-msgstr "Виберіть час повернення"
-
-#: templates/car-search-form.php:111
-msgid "Car Class"
-msgstr "Клас Авто"
-
-#: templates/car-search-form.php:114
-msgid "Choose Car Class"
-msgstr "Виберіть Клас Авто"
-
-#: templates/car-search-form.php:115
-msgid "Choose Class"
-msgstr "Виберіть Клас"
-
-#: templates/car-search-form.php:125 templates/car-search-form.php:130
-#: templates/page-choose-extras.php:187
-msgid "Update"
-msgstr "Оновити"
-
-#: templates/car-search-form.php:128
-msgid "Continue"
-msgstr "Продовжити"
-
-#: templates/page-choose-extras.php:95
-msgid "Available Extras"
-msgstr "Доступні Доповнення"
-
-#: templates/page-choose-extras.php:135
-msgid "Close details"
-msgstr "Закрити подробиці"
-
-#: templates/page-choose-extras.php:180
+#: includes/orders-table.php:18
+msgid "order"
+msgstr "замовлення"
+
+#: includes/orders-table.php:19
+msgid "orders"
+msgstr "замовлення"
+
+#: includes/orders-table.php:36
+msgid "On request"
+msgstr "За запитом"
+
+#: includes/orders-table.php:50
+msgid "Order ID"
+msgstr "ID Замовлення"
+
+#: includes/orders-table.php:53
+msgid "Location from"
+msgstr "Від місця"
+
+#: includes/orders-table.php:54
+msgid "Location to"
+msgstr "До місця"
+
+#: includes/orders-table.php:55
+msgid "Date from"
+msgstr "Від дати"
+
+#: includes/orders-table.php:56
+msgid "Date to"
+msgstr "До дати"
+
+#: includes/orders-table.php:59 includes/orders-table.php:686
+msgid "Status"
+msgstr "Статус"
+
+#: includes/orders-table.php:175
+msgid "All Customers"
+msgstr "Всі Клієнти"
+
+#: includes/orders-table.php:183
+msgid "All Statuses"
+msgstr "Всі Статуси"
+
+#: includes/orders-table.php:291 includes/orders-table.php:377
+msgid "Manage orders page"
+msgstr "Сторінка управління замовленнями"
+
+#: includes/orders-table.php:292 includes/orders-table.php:308
+msgid "Orders"
+msgstr "Замовлення"
+
+#: includes/orders-table.php:344
+msgid "An error occurred during the deleting orders"
+msgstr "При видаленні замовлення сталася помилка"
+
+#: includes/orders-table.php:346
+msgid "The orders have been deleted."
+msgstr "Замовлення були видалені."
+
+#: includes/orders-table.php:390
+msgid "Search"
+msgstr "Пошук"
+
+#: includes/orders-table.php:513
+msgid "An error occurred during the saving order"
+msgstr "При збереженні замовлення сталася помилка"
+
+#: includes/orders-table.php:515
+msgid "All changes have been saved"
+msgstr "Всі налаштування збережені"
+
+#: includes/orders-table.php:538
+msgid "Edit order"
+msgstr "Редагувати замовлення"
+
+#: includes/orders-table.php:539
+msgid "Return to Manage orders page"
+msgstr "Повернутися на Сторінку управління замовленнями"
+
+#: includes/orders-table.php:563
+msgid "This user doesn't exist"
+msgstr "Такого користувача не існує"
+
+#: includes/orders-table.php:606 templates/page-choose-extras.php:133
+msgid "Choose Quantity"
+msgstr "Виберіть кількість"
+
+#: includes/orders-table.php:607 templates/page-choose-extras.php:164
+msgid "pcs."
+msgstr "шт."
+
+#: includes/orders-table.php:616 templates/page-choose-extras.php:183
 msgid "There are no available extras for this car."
 msgstr "Немає доступних доповнень для цього автомобіля."
 
-#: templates/page-choose-extras.php:188
+#: includes/orders-table.php:656 templates/car-search-form.php:94
+msgid "Choose Pick Up date"
+msgstr "Оберіть дату отримання"
+
+#: includes/orders-table.php:656 templates/car-search-form.php:94
+#: templates/car-search-form.php:106
+msgid "YYYY-MM-DD"
+msgstr "РРРР-ММ-ДД"
+
+#: includes/orders-table.php:658 includes/orders-table.php:674
+#: templates/car-search-form.php:96
+msgid "Choose Pick Up time"
+msgstr "Оберіть час отримання"
+
+#: includes/orders-table.php:672 templates/car-search-form.php:106
+msgid "Choose Drop Off date"
+msgstr "Оберіть дату повернення"
+
+#: includes/demo-data/class-bws-demo-data.php:36
+msgid "Install Demo Data"
+msgstr "Встановити Демо Дані"
+
+#: includes/demo-data/class-bws-demo-data.php:39
+msgid "Remove Demo Data"
+msgstr "Видалити Демо Дані"
+
+#: includes/demo-data/class-bws-demo-data.php:40
+msgid "Delete demo-data and restore old plugin settings."
+msgstr "Видалити демо дані і відновити попередні налаштування плагіна."
+
+#: includes/demo-data/class-bws-demo-data.php:44
+#: includes/demo-data/class-bws-demo-data.php:559
+msgid "You have reached the limit for Cars."
+msgstr "Ви досягли ліміту для Автомобілів."
+
+#: includes/demo-data/class-bws-demo-data.php:58
+msgid "Yes, install demo data"
+msgstr "Так, встановити демо дані"
+
+#: includes/demo-data/class-bws-demo-data.php:59
+msgid "Are you sure you want to install demo data?"
+msgstr "Ви впевнені, що хочете встановити демо дані?"
+
+#: includes/demo-data/class-bws-demo-data.php:61
+msgid "Yes, remove demo data"
+msgstr "Так, видалити демо дані"
+
+#: includes/demo-data/class-bws-demo-data.php:62
+msgid "Are you sure you want to remove demo data?"
+msgstr "Ви впевнені, що хочете видалити демо дані?"
+
+#: includes/demo-data/class-bws-demo-data.php:69
+msgid "No, go back to the settings page"
+msgstr "Ні, повернутися на сторінку налаштувань"
+
+#: includes/demo-data/class-bws-demo-data.php:128
+msgid "Can not get demo data."
+msgstr "Неможливо отримати демо дані"
+
+#: includes/demo-data/class-bws-demo-data.php:135
+msgid "Demo options already installed."
+msgstr "Демо налаштування вже встановлені."
+
+#: includes/demo-data/class-bws-demo-data.php:541
+msgid "Demo data successfully installed."
+msgstr "Демо дані успішно встановлені."
+
+#: includes/demo-data/class-bws-demo-data.php:543
+msgid "View post with shortcodes"
+msgstr "Переглянути запис з шорткодами"
+
+#: includes/demo-data/class-bws-demo-data.php:546
+msgid "View page with examples"
+msgstr "Переглянути сторінку з прикладами"
+
+#: includes/demo-data/class-bws-demo-data.php:557
+msgid "Installation of demo data with some errors occurred."
+msgstr "Установка демо даних пройшла з помилками."
+
+#: includes/demo-data/class-bws-demo-data.php:566
+msgid "Posts data is missing."
+msgstr "Дані записів відсутні."
+
+#: includes/demo-data/class-bws-demo-data.php:656
+msgid "Demo data have already been removed."
+msgstr "Демо дані вже були видалені"
+
+#: includes/demo-data/class-bws-demo-data.php:746
+msgid "Demo data successfully removed."
+msgstr "Демо дані успішно видалені."
+
+#: includes/demo-data/class-bws-demo-data.php:750
+msgid "Removing demo data with some errors occurred."
+msgstr "Видалення демо даних пройшло з помилками."
+
+#: includes/demo-data/class-bws-demo-data.php:816
+msgid "Install demo data"
+msgstr "Встановити демо дані"
+
+#: includes/demo-data/class-bws-demo-data.php:816
+msgid "for an acquaintance with the possibilities of the"
+msgstr "для ознайомлення з можливостями"
+
+#: templates/page-review-book.php:88
+msgid "Please choose Pick Up time"
+msgstr "Будь ласка, оберіть час отримання"
+
+#: templates/page-review-book.php:93
+msgid "Please choose correct Pick Up datetime in format \"YYYY-MM-DD\""
+msgstr "Будь ласка, виберіть коректну дату отримання у форматі \"РРРР-ММ-ДД\""
+
+#: templates/page-review-book.php:95
+msgid "Please choose correct Pick Up datetime"
+msgstr "Будь ласка, виберіть коректну дату отримання"
+
+#: templates/page-review-book.php:103
+msgid "Please choose Drop Off time"
+msgstr "Будь ласка, оберіть час повернення"
+
+#: templates/page-review-book.php:108
+msgid "Please choose correct Drop Off datetime in format \"YYYY-MM-DD\""
+msgstr "Будь ласка, оберіть коректну дату повернення у форматі \"РРРР-ММ-ДД\""
+
+#: templates/page-review-book.php:110
+msgid "Please choose correct Drop Off datetime"
+msgstr "Будь ласка, оберіть коректну дату повернення"
+
+#: templates/page-review-book.php:142
+msgid "Please enter correct e-mail address."
+msgstr "Будь ласка, введіть правильну e-mail адресу."
+
+#: templates/page-review-book.php:144
+msgid "Please confirm your e-mail address."
+msgstr "Підтвердіть ваш e-mail."
+
+#: templates/page-review-book.php:174
+msgid "Error during user creation"
+msgstr "Помилка при створенні користувача"
+
+#: templates/page-review-book.php:205 templates/page-choose-car.php:61
+#: templates/page-choose-extras.php:56
+msgid "Create request"
+msgstr "Створення заявки"
+
+#: templates/page-review-book.php:210 templates/page-choose-car.php:65
+#: templates/page-choose-extras.php:61
+msgid "Choose a car"
+msgstr "Вибір Авто"
+
+#: templates/page-review-book.php:221 templates/page-choose-car.php:73
+#: templates/page-choose-extras.php:70
+msgid "Review &amp; Book"
+msgstr "Перегляд та Замовлення"
+
+#: templates/page-review-book.php:245
+msgid "Complete reservation form"
+msgstr "Заповніть форму резервування"
+
+#: templates/page-review-book.php:253
+msgid "Note"
+msgstr "Примітка"
+
+#: templates/page-review-book.php:261
+msgid "Personal Information"
+msgstr "Персональна інформація"
+
+#: templates/page-review-book.php:267
+msgid "First name"
+msgstr "Им'я"
+
+#: templates/page-review-book.php:268
+msgid "Enter your first name"
+msgstr "Введіть ваше им'я"
+
+#: templates/page-review-book.php:271
+msgid "Last name"
+msgstr "Прізвище"
+
+#: templates/page-review-book.php:272
+msgid "Enter your last name"
+msgstr "Введіть ваше прізвище"
+
+#: templates/page-review-book.php:275
+msgid "Age"
+msgstr "Вік"
+
+#: templates/page-review-book.php:277
+msgid "Choose your age"
+msgstr "Вкажіть свій вік"
+
+#: templates/page-review-book.php:298
+msgid "Email address"
+msgstr "E-mail Адреса "
+
+#: templates/page-review-book.php:299
+msgid "Enter your email address"
+msgstr "Введіть ваш e-mail"
+
+#: templates/page-review-book.php:302
+msgid "Confirm email address"
+msgstr "Підтвердіть ваш e-mail"
+
+#: templates/page-review-book.php:303
+msgid "Confirm your email address"
+msgstr "Підтвердіть ваш e-mail"
+
+#: templates/page-review-book.php:309
+msgid "Enter your phone number"
+msgstr "Введіть номер телефону"
+
+#: templates/page-review-book.php:314
+msgid "Additional information"
+msgstr "Додаткова інформація"
+
+#: templates/page-review-book.php:346
+msgid "Book Now"
+msgstr "Замовити"
+
+#: templates/car-search-form.php:53
+msgid "Book a Car"
+msgstr "Замовлення Авто"
+
+#: templates/car-search-form.php:59
+msgid "Edit Locations & Dates"
+msgstr "Змінити Розташування і Дати"
+
+#: templates/car-search-form.php:62
+msgid "Search for a car"
+msgstr "Пошук Авто"
+
+#: templates/car-search-form.php:71
+msgid "Any location"
+msgstr "Будь-яке місце"
+
+#: templates/car-search-form.php:78
+msgid "Return at different location"
+msgstr "Повернення в іншому місці"
+
+#: templates/car-search-form.php:80
+msgid "Return location"
+msgstr "Місце повернення"
+
+#: templates/car-search-form.php:93
+msgid "Pick Up date"
+msgstr "Дата отримання"
+
+#: templates/car-search-form.php:105
+msgid "Drop Off date"
+msgstr "Дата повернення"
+
+#: templates/car-search-form.php:108
+msgid "Choose Drop Off time"
+msgstr "Оберіть час повернення"
+
+#: templates/car-search-form.php:117
+msgid "Car Class"
+msgstr "Клас Авто"
+
+#: templates/car-search-form.php:119
+msgid "Choose Car Class"
+msgstr "Виберіть Клас Авто"
+
+#: templates/car-search-form.php:120
+msgid "Choose Class"
+msgstr "Виберіть Клас"
+
+#: templates/car-search-form.php:130 templates/car-search-form.php:135
+#: templates/page-choose-extras.php:190
+msgid "Update"
+msgstr "Оновити"
+
+#: templates/car-search-form.php:133
+msgid "Continue"
+msgstr "Продовжити"
+
+#: templates/page-choose-car.php:192
+msgid "Results"
+msgstr "Результати"
+
+#: templates/page-choose-car.php:195
+msgid "Sort by"
+msgstr "Сортування"
+
+#: templates/page-choose-car.php:196
+msgid "Price"
+msgstr "Вартість"
+
+#: templates/page-choose-car.php:197
+msgid "Name"
+msgstr "Им'я"
+
+#: templates/page-choose-car.php:304 templates/page-choose-car.php:306
+msgid "Select"
+msgstr "Вибрати"
+
+#: templates/page-choose-car.php:319
+msgid "No cars available."
+msgstr "Немає доступних автомобілів."
+
+#: templates/page-choose-extras.php:100
+msgid "Available Extras"
+msgstr "Доступні Доповнення"
+
+#: templates/page-choose-extras.php:139
+msgid "Close details"
+msgstr "Закрити подробиці"
+
+#: templates/page-choose-extras.php:191
 msgid "Continue to checkout"
 msgstr "Продовжити замовлення"
+
+#~ msgid "Please enter the correct value for Google Maps Key field."
+#~ msgstr ""
+#~ "Для правильної роботи плагіна, будь ласка, введіть API Ключ Google Maps."
+
+#~ msgid ""
+#~ "for the correct plugin work, please choose the %2$s template for the %1$s "
+#~ "page"
+#~ msgstr ""
+#~ "для коректної роботи плагіна, будь ласка, виберіть шаблон%2$s для "
+#~ "сторінки %1$s"
+
+#~ msgid "Please choose Pick-Up date"
+#~ msgstr "Будь ласка, виберіть дату отримання"
+
+#, fuzzy
+#~ msgid "Please choose Drop-Off date"
+#~ msgstr "Будь ласка, виберіть дату повернення"
+
+#~ msgid "Please, choose location"
+#~ msgstr "Будь ласка, виберіть розташування"
+
+#~ msgid ""
+#~ "The following files '%s', '%s' and '%s' were not found in the directory "
+#~ "of your theme. Please copy them from the directory `%s` to the directory "
+#~ "of your theme for the correct work of the Car Rental plugin"
+#~ msgstr ""
+#~ "Файли '%s', '%s' і '%s' не знайдені в папці вашої теми. Будь ласка, "
+#~ "скопіюйте ці файли з папки `%s` в папку вашої теми для коректної роботи "
+#~ "плагіна Car Rental"
+
+#~ msgid ""
+#~ "You have reached the limit for Cars. Create unlimited Cars and Extras "
+#~ "with %s"
+#~ msgstr ""
+#~ "Ви досягли ліміту Автомобілів. Створюйте необмежену кількість Автомобілів "
+#~ "і Доповнень з %s"
+
+#~ msgid "All plugin settings were restored to default."
+#~ msgstr "Всі налаштування плагіну було скинуто до стандартних."
+
+#~ msgid "for choosing a Car"
+#~ msgstr "для вибору Авто"
+
+#~ msgid "for choosing Extras"
+#~ msgstr "для вибору Доповнень"
+
+#~ msgid "Go PRO"
+#~ msgstr "Перейти на PRO"
+
+#~ msgid "Notice"
+#~ msgstr "Увага"
+
+#~ msgid ""
+#~ "The plugin's settings have been changed. In order to save them please "
+#~ "don't forget to click the 'Save Changes' button."
+#~ msgstr ""
+#~ "Налаштування плагіна були змінені. Не забудьте зберегти їх, натиснувши "
+#~ "кнопку 'Зберегти зміни'."
+
+#~ msgid "Enable selecting pick-up&drop-off time"
+#~ msgstr "Можливість вибору часу отримання і повернення"
+
+#~ msgid "per hour"
+#~ msgstr "погодинно"
+
+#~ msgid "per day"
+#~ msgstr "подобово"
+
+#~ msgid "How to get a Key"
+#~ msgstr "Як отримати Ключ"
+
+#~ msgid "There are no available extras fo this car."
+#~ msgstr "Немає доступних доповнень для цього автомобіля."
+
+#~ msgid "Pickup Location"
+#~ msgstr "Місце отримання"
+
+#~ msgid "Pick-up date"
+#~ msgstr "Дата отримання"
+
+#~ msgid "Choose Drop-off date"
+#~ msgstr "Виберіть дату повернення"
+
+#~ msgid "Plugin \"Car Rental\" is not activated"
+#~ msgstr "Плагін \"Car Rental\" не активований"
+
+#~ msgid "Error in total calculate"
+#~ msgstr "Помилка при підрахунку суми"
 
 #~ msgid "Extras: "
 #~ msgstr "Опції:"
@@ -1522,9 +1726,6 @@ msgstr "Продовжити замовлення"
 
 #~ msgid "from:"
 #~ msgstr "від:"
-
-#~ msgid "Cars"
-#~ msgstr "Автомобілі"
 
 #~ msgid "Get a Key"
 #~ msgstr "Отримати ключ"
@@ -1546,9 +1747,6 @@ msgstr "Продовжити замовлення"
 
 #~ msgid "Send me latest news &amp; updates"
 #~ msgstr "Отримувати новини та оновлення"
-
-#~ msgid "Slider settings"
-#~ msgstr "Налаштування слайдера"
 
 #~ msgid "Show Slider"
 #~ msgstr "Показувати слайдер"

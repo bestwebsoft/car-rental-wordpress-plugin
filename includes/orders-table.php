@@ -29,14 +29,16 @@ if ( ! class_exists( 'Crrntl_List_Table' ) ) {
 				case 'pickup_loc_id':
 				case 'dropoff_loc_id':
 				case 'pickup_date':
-				case 'dropoff_date':				
-				case 'total':
+				case 'dropoff_date':
 				case 'status_id':
 					return $item[ $column_name ];
+				case 'total':
+					return ( NULL == $item[ $column_name ] ) ? __( 'On request', 'car-rental' ) : $item[ $column_name ];
 				case 'user_id':
 					$userdata = get_userdata( $item['user_id'] );
 					$phone = isset( $userdata->user_phone ) ? '<br/>' . $userdata->user_phone : '';
-					return $item['user_name'] . $phone;
+					$email = isset( $userdata->user_email ) ? '<br/>' . $userdata->user_email : '';
+					return $item['user_name'] . $email . $phone;
 				default:
 					return print_r( $item, true ); /* Show the whole array for troubleshooting purposes */
 			}
@@ -147,11 +149,11 @@ if ( ! class_exists( 'Crrntl_List_Table' ) ) {
 					ORDER BY car_name ASC", ARRAY_A );
 
 				$users = $wpdb->get_results( "SELECT DISTINCT
-						ro.user_id  AS user_id,
+						ro.user_id AS user_id,
 						CONCAT(um1.meta_value, ' ', um2.meta_value ) AS user_name
 					FROM {$wpdb->prefix}crrntl_orders AS ro
-						LEFT JOIN wp_usermeta AS um1 ON (um1.user_id = ro.user_id AND um1.meta_key = 'first_name')
-						LEFT JOIN wp_usermeta AS um2 ON (um2.user_id = ro.user_id AND um2.meta_key = 'last_name')
+						LEFT JOIN {$wpdb->usermeta} AS um1 ON (um1.user_id = ro.user_id AND um1.meta_key = 'first_name')
+						LEFT JOIN {$wpdb->usermeta} AS um2 ON (um2.user_id = ro.user_id AND um2.meta_key = 'last_name')
 					ORDER BY user_name ASC", ARRAY_A );
 
 				$statuses = $wpdb->get_results( "SELECT DISTINCT
@@ -274,8 +276,8 @@ if ( ! function_exists( 'crrntl_table_data' ) ) {
 							 GROUP BY xtr_order) AS xtr ON xtr.xtr_order = ro.order_id
 					LEFT JOIN {$wpdb->prefix}crrntl_locations AS rl1 ON rl1.loc_id = ro.pickup_loc_id
 					LEFT JOIN {$wpdb->prefix}crrntl_locations AS rl2 ON rl2.loc_id = ro.dropoff_loc_id
-					LEFT JOIN wp_usermeta AS um1 ON (um1.user_id = ro.user_id AND um1.meta_key = 'first_name')
-					LEFT JOIN wp_usermeta AS um2 ON (um2.user_id = ro.user_id AND um2.meta_key = 'last_name')
+					LEFT JOIN {$wpdb->usermeta} AS um1 ON (um1.user_id = ro.user_id AND um1.meta_key = 'first_name')
+					LEFT JOIN {$wpdb->usermeta} AS um2 ON (um2.user_id = ro.user_id AND um2.meta_key = 'last_name')
 					LEFT JOIN {$wpdb->prefix}crrntl_statuses AS rs ON rs.status_id = ro.status_id
 				WHERE ro.order_id IN ( {$crrntl_orders_ids} )
 				ORDER BY {$order_by} {$order}", ARRAY_A );
@@ -286,7 +288,15 @@ if ( ! function_exists( 'crrntl_table_data' ) ) {
 
 if ( ! function_exists( 'crrntl_add_menu_items' ) ) {
 	function crrntl_add_menu_items() {
-		$hook = add_menu_page( __( 'Manage orders page', 'car-rental' ), __( 'Orders', 'car-rental' ), 'activate_plugins', 'orders', 'crrntl_orders_list_page', '', '58.1' );
+		$hook = add_menu_page(
+			__( 'Manage orders page', 'car-rental' ), /* $page_title */
+			__( 'Orders', 'car-rental' ), /* $menu_title */
+			'activate_plugins', /* $capability */
+			'orders', /* $menu_slug */
+			'crrntl_orders_list_page', /* $callable_function */
+			'', /* $icon_url */
+			'58.1' /* $position */
+		);
 		add_action( "load-$hook", 'crrntl_add_options' );
 	}
 }
@@ -346,8 +356,20 @@ if ( ! function_exists( 'crrntl_orders_list_page' ) ) {
 	function crrntl_orders_list_page() {
 		global $crrntl_orders_table;
 		/* Actions for table */
-		if ( ! isset( $_GET['crrntl_filter_action'] ) && ( ( isset( $_GET['action'] ) && -1 != $_GET['action'] ) || ( isset( $_GET['action2'] ) && -1 != $_GET['action2'] ) ) && ! empty( $_GET['crrntl_order_id'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'crrntl-action' ) ) {
-			$message_value = crrntl_actions( $_GET['action'] );
+		if (
+			! isset( $_GET['crrntl_filter_action'] ) &&
+			(
+				( isset( $_GET['action'] ) && -1 != $_GET['action'] ) ||
+				( isset( $_GET['action2'] ) && -1 != $_GET['action2'] )
+			) &&
+			! empty( $_GET['crrntl_order_id'] ) &&
+			wp_verify_nonce( $_GET['_wpnonce'], 'crrntl-action' )
+		) {
+			if ( isset( $_GET['action'] ) && -1 != $_GET['action'] ) {
+				$message_value = crrntl_actions( $_GET['action'] );
+			} elseif ( isset( $_GET['action2'] ) && -1 != $_GET['action2'] ) {
+				$message_value = crrntl_actions( $_GET['action2'] );
+			}
 		}
 
 		if ( isset( $_GET['page'] ) && 'orders' == $_GET['page'] && ( ! isset( $_GET['action'] ) || 'edit' != $_GET['action'] ) ) {
@@ -384,29 +406,63 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 		/* Save orders changes */
 		if ( ! empty( $_POST['crrntl_save_orders_changes'] ) && check_admin_referer( plugin_basename( __FILE__ ), 'crrntl_nonce_name' ) ) {
 			$extras_update_result = '';
+			/* todo: rewrite code to make car change available. Uncomment the code below and provide ajax extras load on car change.
+			$new_car_id   = intval( $_POST['crrntl_car_id'] );
+			$new_price    = get_post_meta( $new_car_id, 'car_price', true );
+			$new_loc      = intval( $_POST['crrntl_pickup_loc'] );
+			$crrntl_total = ( $new_price * $diff_time );
+			*/
 			$date_from   = strtotime( $_POST['crrntl_date_from'] . ' ' . $_POST['crrntl_time_from'] );
 			$date_to     = strtotime( $_POST['crrntl_date_to'] . ' ' . $_POST['crrntl_time_to'] );
-			$diff_in_hrs = ceil( ( $date_to - $date_from ) / 3600 );
-			$crrntl_total = ( $_POST['crrntl_car_price'] * $diff_in_hrs );
-			if ( ! empty( $_POST['crrntl_opted_extras'] ) ) {
-				foreach ( $_POST['crrntl_opted_extras'] as $extra_id ) {
-					$extra_quantity = isset( $_POST['crrntl_extra_quantity'][ $extra_id ] ) ? $_POST['crrntl_extra_quantity'][ $extra_id ] : 1;
-					$crrntl_total = $crrntl_total + ( $_POST[ 'crrntl_price_extra_' . $extra_id ] * $extra_quantity );
-				}
-			}
+			$diff_time = ( 'hour' == $crrntl_options['rent_per'] ) ? ceil( ( $date_to - $date_from ) / 3600 ) : ceil( ( $date_to - $date_from ) / 86400 );
 			/* Save changes to orders table */
-			$order_update_result = $wpdb->update( $wpdb->prefix . 'crrntl_orders',
-				array(
-					'dropoff_loc_id' => $_POST['crrntl_return_loc_id'],
-					'pickup_date'    => $_POST['crrntl_date_from'] . ' ' . $_POST['crrntl_time_from'],
-					'dropoff_date'   => $_POST['crrntl_date_to'] . ' ' . $_POST['crrntl_time_to'],
-					'total'          => $crrntl_total,
-					'status_id'         => $_POST['crrntl_order_status_id'],
-				),
-				array( 'order_id' => $_GET['crrntl_order_id'] ),
-				array( '%d', '%s', '%s', '%f', '%d' ),
-				array( '%d' )
-			);
+			if ( 'on_request' == $_POST['crrntl_car_price'] ) {
+				$order_update_result = $wpdb->update( $wpdb->prefix . 'crrntl_orders',
+					array(
+						/*
+						'car_id'         => $new_car_id,
+						'pickup_loc_id'  => $new_loc,
+						*/
+						'dropoff_loc_id' => $_POST['crrntl_return_loc_id'],
+						'pickup_date'    => $_POST['crrntl_date_from'] . ' ' . $_POST['crrntl_time_from'],
+						'dropoff_date'   => $_POST['crrntl_date_to'] . ' ' . $_POST['crrntl_time_to'],
+						'status_id'      => $_POST['crrntl_order_status_id']
+					),
+					array( 'order_id' => $_GET['crrntl_order_id'] ),
+					array(
+						/* '%d', '%d', '%d', '%s', '%s', '%f', '%d' */
+						'%d', '%s', '%s', '%d' /* @todo: replace with the line above */
+					),
+					array( '%d' )
+				);
+			} else {
+				$crrntl_total = ( $_POST['crrntl_car_price'] * $diff_time ); /* to remove */
+				if ( ! empty( $_POST['crrntl_opted_extras'] ) ) {
+					foreach ( $_POST['crrntl_opted_extras'] as $extra_id ) {
+						$extra_quantity = isset( $_POST['crrntl_extra_quantity'][ $extra_id ] ) ? $_POST['crrntl_extra_quantity'][ $extra_id ] : 1;
+						$crrntl_total = $crrntl_total + ( $_POST[ 'crrntl_price_extra_' . $extra_id ] * $extra_quantity * $diff_time );
+					}
+				}
+				$order_update_result = $wpdb->update( $wpdb->prefix . 'crrntl_orders',
+					array(
+						/*
+						'car_id'         => $new_car_id,
+						'pickup_loc_id'  => $new_loc,
+						*/
+						'dropoff_loc_id' => $_POST['crrntl_return_loc_id'],
+						'pickup_date'    => $_POST['crrntl_date_from'] . ' ' . $_POST['crrntl_time_from'],
+						'dropoff_date'   => $_POST['crrntl_date_to'] . ' ' . $_POST['crrntl_time_to'],
+						'total'          => $crrntl_total,
+						'status_id'      => $_POST['crrntl_order_status_id']
+					),
+					array( 'order_id' => $_GET['crrntl_order_id'] ),
+					array(
+						/* '%d', '%d', '%d', '%s', '%s', '%f', '%d' */
+						'%d', '%s', '%s', '%f', '%d' /* @todo: replace with the line above */
+					),
+					array( '%d' )
+				);
+			}
 			/* Save changes to extras order table */
 			if ( ! empty( $_POST['crrntl_opted_extras'] ) ) {
 				$get_extra_orders = $wpdb->get_results( $wpdb->prepare( "SELECT `extra_id`
@@ -420,7 +476,7 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 						);
 					}
 				}
-				
+
 				foreach ( $_POST['crrntl_opted_extras'] as $extra_id ) {
 					$extra_quantity = isset( $_POST['crrntl_extra_quantity'][ $extra_id ] ) ? $_POST['crrntl_extra_quantity'][ $extra_id ] : 1;
 
@@ -464,10 +520,21 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 		$crrntl_opted_extras = $wpdb->get_results( $wpdb->prepare( "SELECT extra_id, extra_quantity FROM {$wpdb->prefix}crrntl_extras_order WHERE `order_id` = %d", $_GET['crrntl_order_id'] ), OBJECT_K );
 		$crrntl_statuses = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}crrntl_statuses", OBJECT_K );
 		$crrntl_locations = $wpdb->get_results( "SELECT loc_id, formatted_address FROM {$wpdb->prefix}crrntl_locations", OBJECT_K );
+
+		$userinfo = get_userdata( $crrntl_order_data['user_id'] );
+		if ( $userinfo  ) {
+			$user_name = "{$userinfo->first_name} {$userinfo->last_name}";
+			$user_email = $userinfo->user_email;
+			$user_phone = $userinfo->user_phone;
+		}
+		/*
+		$cars = get_posts( array( 'per_page' => -1, 'post_type' => $crrntl_options['post_type_name'], '' ) );
+		*/
+
 		$extras = get_the_terms( $crrntl_order_data['car_id'], 'extra' );
 		$pickup_date = explode( ' ', $crrntl_order_data['pickup_date'] );
 		$dropoff_date = explode( ' ', $crrntl_order_data['dropoff_date'] );
-		$car_price = get_post_meta( $crrntl_order_data['car_id'], 'car_price', true ); ?>
+		$car_price = get_post_meta( $crrntl_order_data['car_id'], 'car_price', true ); /* to remove */ ?>
 		<div class="wrap">
 			<h1><?php echo __( 'Edit order', 'car-rental' ) . ' #' . $_GET['crrntl_order_id']; ?></h1>
 			<p><a href="admin.php?page=orders">&larr; <?php _e( 'Return to Manage orders page', 'car-rental' ); ?></a></p>
@@ -482,46 +549,100 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 			<form method="post" action="#">
 				<table class="form-table crrntl-edit-order">
 					<tbody>
+						<?php if ( $userinfo ) { ?>
+							<tr>
+								<th><?php _e( 'Client', 'car-rental' ); ?></th>
+								<td>
+									<?php echo "<p>{$user_name}</p>
+												<p>{$user_email}</p>
+												<p>{$user_phone}</p>"; ?>
+								</td>
+							</tr>
+						<?php } else { ?>
+							<tr>
+								<th><?php _e( 'Client', 'car-rental' ); ?></th>
+								<td><?php _e( 'This user doesn\'t exist', 'car-rental' ); ?></td>
+							</tr>
+						<?php } ?>
 						<tr>
-							<th><?php _e( 'Car', 'car-rental' ); ?>:</th>
+							<th><?php _e( 'Car', 'car-rental' ); ?></th>
 							<td>
-								<?php echo get_the_title( $crrntl_order_data['car_id'] ) . ' (<a href="' . get_edit_post_link( $crrntl_order_data['car_id'] ) . '">' . __( 'Edit Car', 'car-rental' ) . '</a>)'; ?>
-								<input type="hidden" name="crrntl_car_price" value="<?php echo $car_price; ?>" />
+								<?php /*
+								<select name="crrntl_car_id">
+									<?php foreach ( $cars as $car ) {
+										$car_id = $car->ID;
+										printf(
+											'<option value="%1$s" %2$s>%3$s</option>',
+											$car_id,
+											selected( $car_id == $crrntl_order_data['car_id'], true, false ),
+											( ( $car_id == $crrntl_order_data['car_id'] ) ? '* ' : '' ) . get_the_title( $car_id )
+										);
+									} ?>
+								</select>
+								*/
+								echo get_the_title( $crrntl_order_data['car_id'] ) . ' (<a href="' . get_edit_post_link( $crrntl_order_data['car_id'] ) . '">' . __( 'Edit Car', 'car-rental' ) . '</a>)'; ?>
+								<input type="hidden" name="crrntl_car_price" value="<?php echo $car_price; ?>" /><?php /* to remove */ ?>
 							</td>
 						</tr>
 						<tr>
 							<th><?php _e( 'Extras', 'car-rental' ); ?>:</th>
 							<td>
 								<?php if ( ! empty( $extras ) ) { ?>
-									<table class="crrntl-table-extras">
-										<tbody>
-											<?php foreach ( $extras as $extra ) {
-												$extra_metadata = crrntl_get_term_meta( $extra->term_id, '', true );
-												$crrntl_extra_price = $extra_metadata['extra_price'][0]; ?>
-												<tr>
-													<td><label for="crrntl-extra-<?php echo $extra->term_id; ?>"><?php echo $extra->name; ?></label></td>
-													<td>
-														<input id="crrntl-extra-<?php echo $extra->term_id; ?>" type="checkbox" name="crrntl_opted_extras[]" value="<?php echo $extra->term_id; ?>" <?php checked( isset( $crrntl_opted_extras[ $extra->term_id ] ) ); ?> />
-														<?php if ( '1' == $extra_metadata['extra_quantity'][0] ) { ?>
-															<input class="crrntl-product-quantity" name="crrntl_extra_quantity[<?php echo $extra->term_id; ?>]" type="number" min="1" value="<?php echo isset( $crrntl_opted_extras[ $extra->term_id ]->extra_quantity ) ? $crrntl_opted_extras[ $extra->term_id ]->extra_quantity : 1; ?>" title="<?php _e( 'Choose Quantity', 'car-rental' ); ?>" /> <span><?php _e( 'pcs.', 'car-rental' ); ?></span>
-														<?php } ?>
-														<input type="hidden" name="crrntl_price_extra_<?php echo $extra->term_id; ?>" value="<?php echo $crrntl_extra_price; ?>" />
-													</td>
-												</tr>
-											<?php } ?>
-										</tbody>
-									</table>
+									<fieldset>
+										<table class="crrntl-table-extras">
+											<tbody>
+												<?php foreach ( $extras as $extra ) {
+													$extra_metadata = crrntl_get_term_meta( $extra->term_id, '', true );
+													$crrntl_extra_price = $extra_metadata['extra_price'][0]; ?>
+													<tr class="crrntl-extra-item">
+														<td>
+															<input id="crrntl-extra-<?php echo $extra->term_id; ?>" type="checkbox" name="crrntl_opted_extras[]" value="<?php echo $extra->term_id; ?>" <?php checked( isset( $crrntl_opted_extras[ $extra->term_id ] ) ); ?> />
+														</td>
+														<td>
+															<label for="crrntl-extra-<?php echo $extra->term_id; ?>"><?php echo $extra->name; ?></label>
+															<input type="hidden" name="crrntl_price_extra_<?php echo $extra->term_id; ?>" value="<?php echo $crrntl_extra_price; ?>" />
+														</td>
+														<td class="crrntl-extra-quantity">
+															<?php if ( '1' == $extra_metadata['extra_quantity'][0] ) { ?>
+																<input class="crrntl-product-quantity" name="crrntl_extra_quantity[<?php echo $extra->term_id; ?>]" type="number" min="1" value="<?php echo isset( $crrntl_opted_extras[ $extra->term_id ]->extra_quantity ) ? $crrntl_opted_extras[ $extra->term_id ]->extra_quantity : 1; ?>" title="<?php _e( 'Choose Quantity', 'car-rental' ); ?>" />
+																<span> <?php _e( 'pcs.', 'car-rental' ); ?></span>
+															<?php } ?>
+														</td>
+													</tr>
+												<?php } ?>
+											</tbody>
+										</table>
+									</fieldset>
 								<?php } else {
-									_e( 'There are no available extras fo this car.', 'car-rental' );
+									_e( 'There are no available extras for this car.', 'car-rental' );
 								} ?>
 							</td>
 						</tr>
 						<tr>
-							<th><?php _e( 'Pickup Location', 'car-rental' ); ?>:</th>
-							<td><?php echo $crrntl_locations[ $crrntl_order_data['pickup_loc_id'] ]->formatted_address; ?></td>
+							<th>
+								<!-- <label for="crrntl-pickup-loc"> -->
+									<?php _e( 'Pick Up Location', 'car-rental' ); ?>
+								<!-- </label> -->
+							</th>
+							<td>
+								<?php /* if ( isset( $crrntl_locations[ $crrntl_order_data['pickup_loc_id'] ] ) ) { */ ?>
+								<?php if ( isset( $crrntl_locations[ $crrntl_order_data['pickup_loc_id'] ]->formatted_address ) ) { /* to remove */ ?>
+									<!-- <select name="crrntl_pickup_loc" id="crrntl-pickup-loc">
+										<?php foreach ( $crrntl_locations as $loc_id => $location ) {
+											printf(
+												'<option value="%1$s" %2$s>%3$s</option>',
+												$loc_id,
+												selected( $loc_id == $crrntl_order_data['pickup_loc_id'], true, false ),
+												( $loc_id == $crrntl_order_data['pickup_loc_id'] ? '* ' : '' ) . $location->formatted_address
+											);
+										} ?>
+									</select> -->
+									<?php echo $crrntl_locations[ $crrntl_order_data['pickup_loc_id'] ]->formatted_address; ?>
+								<?php } ?>
+							</td>
 						</tr>
 						<tr>
-							<th><label for="crrntl-return-loc"><?php _e( 'Return Location', 'car-rental' ); ?>:</label></th>
+							<th><label for="crrntl-return-loc"><?php _e( 'Return Location', 'car-rental' ); ?></label></th>
 							<td>
 								<select id="crrntl-return-loc" name="crrntl_return_loc_id">
 									<?php foreach ( $crrntl_locations as $crrntl_location ) {
@@ -531,14 +652,14 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 							</td>
 						</tr>
 						<tr>
-							<th><?php _e( 'Pick-up date', 'car-rental' ); ?>:</th>
+							<th><?php _e( 'Pick Up Date', 'car-rental' ); ?></th>
 							<td class="crrntl-pick-up">
-								<input class="datepicker" type="text" value="<?php echo $pickup_date[0]; ?>" name="crrntl_date_from" title="<?php _e( 'Choose Pick-up date', 'car-rental' ); ?>" placeholder="<?php _e( 'YYYY-MM-DD', 'car-rental' ); ?>" />
+								<input class="datepicker" type="text" value="<?php echo $pickup_date[0]; ?>" name="crrntl_date_from" title="<?php _e( 'Choose Pick Up date', 'car-rental' ); ?>" placeholder="<?php _e( 'YYYY-MM-DD', 'car-rental' ); ?>" />
 								<?php if ( 1 == $crrntl_options['time_selecting'] ) { ?>
-									<select name="crrntl_time_from" title="<?php _e( 'Choose Pick-up time', 'car-rental' ); ?>">
-										<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
-											<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00:00', $pickup_date['1'] ); ?>><?php echo $i; ?>:00</option>
-											<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30:00', $pickup_date['1'] ); ?>><?php echo $i; ?>:30</option>
+									<select name="crrntl_time_from" title="<?php _e( 'Choose Pick Up time', 'car-rental' ); ?>">
+										<?php for ( $i = 0; $i <= 23; $i ++ ) { ?>
+											<option value="<?php echo $i; ?>:00" <?php selected( sprintf("%02d:00:00", $i ), $pickup_date['1'] ); ?>><?php echo $i; ?>:00</option>
+											<option value="<?php echo $i; ?>:30" <?php selected( sprintf("%02d:30:00", $i ), $pickup_date['1'] ); ?>><?php echo $i; ?>:30</option>
 										<?php } ?>
 									</select>
 								<?php } else {
@@ -547,14 +668,14 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 							</td>
 						</tr>
 						<tr>
-							<th><?php _e( 'Drop-off date', 'car-rental' ); ?>:</th>
+							<th><?php _e( 'Drop Off Date', 'car-rental' ); ?></th>
 							<td class="crrntl-drop-off">
-								<input class="datepicker" type="text" value="<?php echo $dropoff_date[0]; ?>" name="crrntl_date_to" title="<?php _e( 'Choose Drop-off date', 'car-rental' ); ?>" />
+								<input class="datepicker" type="text" value="<?php echo $dropoff_date[0]; ?>" name="crrntl_date_to" title="<?php _e( 'Choose Drop Off date', 'car-rental' ); ?>" />
 								<?php if ( 1 == $crrntl_options['time_selecting'] ) { ?>
-									<select name="crrntl_time_to" title="<?php _e( 'Choose Pick-up time', 'car-rental' ); ?>">
+									<select name="crrntl_time_to" title="<?php _e( 'Choose Pick Up time', 'car-rental' ); ?>">
 										<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
-											<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00:00', $dropoff_date['1'] ); ?>><?php echo $i; ?>:00</option>
-											<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30:00', $dropoff_date['1'] ); ?>><?php echo $i; ?>:30</option>
+											<option value="<?php echo $i; ?>:00" <?php selected( sprintf("%02d:00:00", $i ), $dropoff_date['1'] ); ?>><?php echo $i; ?>:00</option>
+											<option value="<?php echo $i; ?>:30" <?php selected( sprintf("%02d:30:00", $i ), $dropoff_date['1'] ); ?>><?php echo $i; ?>:30</option>
 										<?php } ?>
 									</select>
 								<?php } else {
@@ -563,7 +684,7 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 							</td>
 						</tr>
 						<tr>
-							<th><label for="crrntl-order-status"><?php _e( 'Status', 'car-rental' ); ?>:</label></th>
+							<th><label for="crrntl-order-status"><?php _e( 'Status', 'car-rental' ); ?></label></th>
 							<td>
 								<select id="crrntl-order-status" name="crrntl_order_status_id">
 									<?php foreach ( $crrntl_statuses as $crrntl_statuse ) {
@@ -579,7 +700,7 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 					<input type="submit" class="button-primary" value="<?php _e( 'Save Changes', 'car-rental' ); ?>" />
 					<input type="hidden" name="crrntl_save_orders_changes" value="1" />
 					<?php wp_nonce_field( plugin_basename( __FILE__ ), 'crrntl_nonce_name' ); ?>
-				</div>				
+				</div>
 			</form>
 		</div>
 	<?php }

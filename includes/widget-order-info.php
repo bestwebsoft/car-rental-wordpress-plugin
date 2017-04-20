@@ -76,8 +76,8 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 					unset( $_SESSION['crrntl_opted_extras'], $_SESSION['crrntl_extra_quantity'] );
 				}
 			}
-			$crrntl_pickup = '<span class="crrntl-error-message">' . __( 'Please, choose Pick-Up date', 'car-rental' ) . '</span>';
-			$crrntl_dropoff = '<span class="crrntl-error-message">' . __( 'Please, choose Drop-Off date', 'car-rental' ) . '</span>';
+			$crrntl_pickup = '<span class="crrntl-error-message">' . __( 'Please choose Pick Up date', 'car-rental' ) . '</span>';
+			$crrntl_dropoff = '<span class="crrntl-error-message">' . __( 'Please choose Drop Off date', 'car-rental' ) . '</span>';
 			if ( ! empty( $_SESSION['crrntl_date_from'] ) ) {
 				$date_from = strtotime( $_SESSION['crrntl_date_from'] . ' ' . $_SESSION['crrntl_time_from'] );
 				if ( $date_from > time() ) {
@@ -93,15 +93,13 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 					}
 				}
 			}
-			
+
 			if ( ! empty( $_SESSION['crrntl_location'] ) ) {
 				$crrntl_locations = $wpdb->get_var( $wpdb->prepare( "SELECT `formatted_address` FROM {$wpdb->prefix}crrntl_locations WHERE `loc_id` = %d", $_SESSION['crrntl_location'] ) );
 				if ( ! empty( $_SESSION['crrntl_return_location'] ) && $_SESSION['crrntl_location'] != $_SESSION['crrntl_return_location'] ) {
 					$crrntl_dropoff_loc = $wpdb->get_var( $wpdb->prepare( "SELECT `formatted_address` FROM {$wpdb->prefix}crrntl_locations WHERE `loc_id` = %d", $_SESSION['crrntl_return_location'] ) );
 					$crrntl_locations .= ' -<br />' . $crrntl_dropoff_loc;
 				}
-			} else {
-				$crrntl_locations = '<span class="crrntl-error-message">' . __( 'Please, choose location', 'car-rental' ) . '</span>';
 			}
 
 			echo $args['before_widget'] . $args['before_title']; ?>
@@ -137,6 +135,11 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 									<?php if ( ! empty( $car_passengers ) ) { ?>
 										<p>
 											<img src="<?php echo $crrntl_plugin_directory . '/images/passengers-icon.png'; ?>" alt="" /> <?php echo sprintf( _n( '%s passenger', '%s passengers', $car_passengers, 'car-rental' ), $car_passengers ); ?>
+										</p>
+									<?php }
+									if ( ! empty( $car_info['doors'] ) ) { ?>
+										<p>
+											<img src="<?php echo $crrntl_plugin_directory . '/images/doors-icon.png'; ?>" alt="" /> <?php printf( _n( '%s Door', '%s Doors', $car_info['doors'], 'car-rental' ), $car_info['doors'] ); ?>
 										</p>
 									<?php }
 									if ( ! empty( $car_info['luggage_large'] ) || ! empty( $car_info['luggage_small'] ) ) { ?>
@@ -180,46 +183,52 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 					<?php }
 				} else { ?>
 					<div class="widget-content crrntl-widget-product-info">
-						<p class="crrntl-error-message"><?php _e( 'Please, choose a Car', 'car-rental' ); ?></p>
+						<p class="crrntl-error-message"><?php _e( 'Please choose a Car', 'car-rental' ); ?></p>
 					</div>
 				<?php }
 				wp_reset_postdata();
-				if ( isset( $diff_time ) ) {
-					$crrntl_subtotal = $crrntl_total = ( isset( $car_price ) ? $car_price : 0 ) * $diff_time;
-				} else {
-					$crrntl_subtotal = $crrntl_total = 0;
-				}
-				if ( ! empty( $crrntl_currency_position ) ) {
-					if ( 'before' == $crrntl_currency_position ) {
-						$crrntl_subtotal_display = $crrntl_currency . '<span data-price="' . $crrntl_subtotal . '">' . number_format_i18n( $crrntl_subtotal, 2 ) . '</span>';
+				if ( ! empty( $crrntl_selected_prod_id ) && isset( $car_price ) && 'on_request' != $car_price ) {
+					if ( isset( $diff_time ) ) {
+						$crrntl_subtotal = $crrntl_total = isset( $car_price ) ? $car_price * $diff_time : 0;
+						$crrntl_subtotal = number_format_i18n( $crrntl_subtotal, 2 );
 					} else {
-						$crrntl_subtotal_display = '<span data-price="' . $crrntl_subtotal . '">' . number_format_i18n( $crrntl_subtotal, 2 ) . '</span> ' . $crrntl_currency;
+						$crrntl_subtotal = $crrntl_total = 0;
 					}
-				} else {
-					$crrntl_subtotal_display = '<span data-price="' . $crrntl_subtotal . '">' . number_format_i18n( $crrntl_subtotal, 2 ) . '</span>';
+					if ( ! empty( $crrntl_currency_position ) ) {
+						if ( 'before' == $crrntl_currency_position ) {
+							$crrntl_subtotal_display = '<span data-price="' . $crrntl_total . '">' . $crrntl_currency . ' ' . $crrntl_subtotal . '</span>';
+						} else {
+							$crrntl_subtotal_display = '<span data-price="' . $crrntl_total . '">' . $crrntl_subtotal . ' ' . $crrntl_currency . '</span> ';
+						}
+					} else {
+						$crrntl_subtotal_display = '<span data-price="' . $crrntl_total . '">' . $crrntl_subtotal . '</span>';
+					}
 				} ?>
-
 				<h4><?php _e( 'Date & Location', 'car-rental' ); ?>
 					<span class="crrntl-select-clear">
 						<a href="<?php echo ( ! empty( $crrntl_options['car_page_id'] ) ) ? get_permalink( $crrntl_options['car_page_id'] ) : ''; ?>"><?php _e( 'Edit', 'car-rental' ); ?></a>
 					</span>
 				</h4>
-				<div class="widget-content crrntl-widget-time-info">
+				<div class="widget-content crrntl-widget-time-info" data-time-diff="<?php if ( isset( $diff_time ) ) echo $diff_time; ?>">
 					<h4><?php _e( 'Pick Up time', 'car-rental' ); ?></h4>
 					<p><?php echo $crrntl_pickup; ?></p>
 
 					<h4><?php _e( 'Return time', 'car-rental' ); ?></h4>
 					<p><?php echo $crrntl_dropoff; ?></p>
 
-					<h4><?php _e( 'Pickup and Return Location', 'car-rental' ); ?></h4>
-					<p><?php echo $crrntl_locations; ?></p>
+					<?php if ( ! empty( $crrntl_locations ) ) { ?>
+						<h4><?php _e( 'Pickup and Return Location', 'car-rental' ); ?></h4>
+						<p><?php echo $crrntl_locations; ?></p>
+					<?php } ?>
 				</div><!-- .widget-content .crrntl-widget-time-info -->
 
-				<div class="crrntl-subtotal-content">
-					<div class="crrntl-subtotal clearfix">
-						<?php _e( 'Subtotal', 'car-rental' ); ?>: <p class="crrntl-price"><?php echo $crrntl_subtotal_display; ?></p>
-					</div>
-				</div><!-- .crrntl-subtotal-content -->
+				<?php if ( isset( $crrntl_subtotal_display ) ) { ?>
+					<div class="crrntl-subtotal-content">
+						<div class="crrntl-subtotal clearfix">
+							<?php _e( 'Subtotal', 'car-rental' ); ?>: <div class="crrntl-price"><?php echo $crrntl_subtotal_display; ?></div>
+						</div>
+					</div><!-- .crrntl-subtotal-content -->
+				<?php } ?>
 
 				<h4 class="crrntl-extras"><?php _e( 'Extras', 'car-rental' ); ?>
 					<?php if ( is_page_template( 'page-review-book.php' ) ) { ?>
@@ -242,18 +251,19 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 							}
 							if ( isset( $diff_time ) ) {
 								$selected_extra_total = $selected_extra_total * $diff_time;
-								$crrntl_total = $crrntl_total + $selected_extra_total;
-							}							
+								$crrntl_total = isset( $crrntl_total ) ? $crrntl_total + $selected_extra_total : $selected_extra_total;
+							}
+
 							if ( ! empty( $crrntl_currency_position ) ) {
 								if ( 'before' == $crrntl_currency_position ) {
-									$selected_extra_total_display = $crrntl_currency . '<span data-price="' . $selected_extra_total . '">' . number_format_i18n( $selected_extra_total, 2 ) . '</span>';
+									$selected_extra_total_display = '<span data-price="' . $selected_extra_total . '">' . $crrntl_currency . ' ' . number_format_i18n( $selected_extra_total, 2 ) . '</span>';
 								} else {
-									$selected_extra_total_display = '<span data-price="' . $selected_extra_total . '">' . number_format_i18n( $selected_extra_total, 2 ) . '</span> ' . $crrntl_currency;
+									$selected_extra_total_display = '<span data-price="' . $selected_extra_total . '">' . number_format_i18n( $selected_extra_total, 2 ) . ' ' . $crrntl_currency . '</span>';
 								}
 							} else {
 								$selected_extra_total_display = '<span data-price="' . $selected_extra_total . '">' . number_format_i18n( $selected_extra_total, 2 ) . '</span>';
 							} ?>
-							<div class="crrntl-selected-extra-<?php echo $selected_extra_id; ?>"><?php echo $selected_extra_name; ?> <p class="crrntl-price"><?php echo $selected_extra_total_display; ?></p></div>
+							<div class="crrntl-selected-extra-<?php echo $selected_extra_id; ?>"><?php echo $selected_extra_name; ?> <div class="crrntl-price"><?php echo $selected_extra_total_display; ?></div></div>
 						<?php }
 					}
 					if ( ! empty( $crrntl_currency_position ) ) { ?>
@@ -262,25 +272,25 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 						<div class="crrntl-currency-data" data-cur="<?php echo $crrntl_currency; ?>" data-cur-pos="" data-dec-point="<?php echo $wp_locale->number_format['decimal_point']; ?>" data-thous-sep="<?php echo $wp_locale->number_format['thousands_sep']; ?>"></div>
 					<?php } ?>
 				</div><!-- .widget-content .crrntl-widget-extras-info -->
-
-				<div class="crrntl-widget-footer-total clearfix" data-time-diff="<?php if ( isset( $diff_time ) ) echo $diff_time; ?>">
-					<?php if ( ! empty( $crrntl_currency_position ) ) {
-						if ( 'before' == $crrntl_currency_position ) {
-							$crrntl_total_display    = $crrntl_currency . '<span data-price="' . $crrntl_total . '">' . number_format_i18n( $crrntl_total, 2 ) . '</span>';
+				<?php if ( isset( $crrntl_subtotal_display ) ) { ?>
+					<div class="crrntl-widget-footer-total clearfix" data-time-diff="<?php if ( isset( $diff_time ) ) echo $diff_time; ?>">
+						<?php if ( ! empty( $crrntl_currency_position ) ) {
+							if ( 'before' == $crrntl_currency_position ) {
+								$crrntl_total_display    = '<span data-price="' . $crrntl_total . '">' . $crrntl_currency . ' ' . number_format_i18n( $crrntl_total, 2 ) . '</span>';
+							} else {
+								$crrntl_total_display    = '<span data-price="' . $crrntl_total . '">' . number_format_i18n( $crrntl_total, 2 ) . ' ' . $crrntl_currency . '</span>';
+							}
 						} else {
-							$crrntl_total_display    = '<span data-price="' . $crrntl_total . '">' . number_format_i18n( $crrntl_total, 2 ) . '</span> ' . $crrntl_currency;
+							$crrntl_total_display = '<span data-price="' . $crrntl_total . '">' . number_format_i18n( $crrntl_total, 2 ) . '</span>';
 						}
-					} else {
-						$crrntl_total_display = '<span data-price="' . $crrntl_total . '">' . number_format_i18n( $crrntl_total, 2 ) . '</span>';
-					}
-					_e( 'Total', 'car-rental' ); ?>: <p class="crrntl-price"><?php echo $crrntl_total_display; ?></p>
-					<?php if ( is_page_template( 'page-review-book.php' ) ) {
-						$_SESSION['crrntl_total'] = $crrntl_total;
-					} ?>
-				</div><!-- .crrntl-widget-footer-total -->
+						if ( isset( $crrntl_options['review_page_id'] ) && get_the_ID() == $crrntl_options['review_page_id'] ) {
+							$_SESSION['crrntl_total'] = $crrntl_total;
+						}
+						_e( 'Total', 'car-rental' ); ?>: <p class="crrntl-price"><?php echo $crrntl_total_display; ?></p>
+					</div><!-- .crrntl-widget-footer-total -->
+				<?php } ?>
 				<div class="clear"></div>
 			</div><!-- #crrntl-order-info -->
-
 			<?php echo $args['after_widget'];
 		}
 	}

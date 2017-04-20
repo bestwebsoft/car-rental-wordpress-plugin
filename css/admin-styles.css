@@ -20,13 +20,16 @@
 .crrntl-hidden {
 	display: none;
 }
-
 #crrntl-map {
 	max-width: 600px;
 	height: 400px;
+}
+#crrntl-js-location {
 	display: none;
 }
-
+#crrntl-choose-car-location-js {
+	width: 100%;
+}
 .crrntl-controls {
 	box-sizing: border-box;
 	margin-top: 10px;
@@ -51,6 +54,10 @@
 	width: 105px;
 }
 
+.taxonomy-extra input[type="checkbox"] {
+	width: initial;
+}
+
 .crrntl-table-extras td {
 	padding: 0 10px 0 0;
 }
@@ -60,9 +67,15 @@
 	width: 105px;
 }
 
+.crrntl-wrap select,
+.crrntl-car-info select {
+	margin-bottom: 10px;
+}
+
 .crrntl-status-item input[type="text"] {
 	max-width: 88% !important;
 	display: inline-block !important;
+	margin-bottom: 10px;
 }
 
 .crrntl-status-item label {
@@ -359,4 +372,70 @@
 	border: 1px solid #ef5a37 !important;
 	box-shadow: 0 0 3px #ef5a37 !important;
 	color: #ef5a37 !important;
+}
+
+/* Settings Page */
+
+/* Theme notice styles */
+.crrntl-settings-form td {
+	vertical-align: top;
+}
+.crrntl-settings-form th,
+.crrntl-settings-form td {
+	padding-top: 10px;
+}
+
+.crrntl-settings-form #crrntl-pages-settings td {
+	padding: 0;
+}
+
+.crrntl-settings-form #crrntl-pages-settings th,
+.crrntl-settings-form #crrntl-pages-settings td {
+	vertical-align: baseline;
+}
+
+.crrntl-settings-form #crrntl_currency {
+	max-width: 220px;
+}
+#crrntl_time_from {
+	margin: 10px 0;
+}
+/* Featured image column width */
+.post-type-cars .wp-list-table .column-featured-image,
+.post-type-bws-cars .wp-list-table .column-featured-image {
+	width: 105px;
+}
+.post-type-cars .wp-list-table .column-title,
+.post-type-bws-cars .wp-list-table .column-title {
+	width: 210px;
+}
+/* Hide column title content */
+@media screen and (max-width: 782px) {
+	.crrntl-settings-form #crrntl-pages-settings {
+		width: 100%;
+	}
+	.crrntl-settings-form #crrntl_currency {
+		max-width: none;
+	}
+	.post-type-cars .wp-list-table thead .column-featured-image,
+	.post-type-cars .wp-list-table tfoot .column-featured-image,
+	.post-type-bws-cars .wp-list-table thead .column-featured-image,
+	.post-type-bws-cars .wp-list-table tfoot .column-featured-image {
+		display:none;
+	}
+	.post-type-cars .wp-list-table tr:not(.inline-edit-row):not(.no-items) td:not(.check-column),
+	.post-type-bws-cars .wp-list-table tr:not(.inline-edit-row):not(.no-items) td:not(.check-column) {
+		position: relative;
+		clear: both;
+		display: block;
+		width: auto!important;
+	}
+	.post-type-cars .wp-list-table tr:not(.inline-edit-row):not(.no-items) td.featured-image.column-featured-image:not(.column-primary)::before,
+	.post-type-bws-cars .wp-list-table tr:not(.inline-edit-row):not(.no-items) td.featured-image.column-featured-image:not(.column-primary)::before {
+		display: none;
+	}
+	.post-type-cars .wp-list-table .column-title,
+	.post-type-bws-cars .wp-list-table .column-title {
+		width: 100%;
+	}
 }

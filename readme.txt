@@ -1,10 +1,10 @@
 === Car Rental by BestWebSoft ===
 Contributors: bestwebsoft
-Donate link: http://bestwebsoft.com/donate/
+Donate link: https://bestwebsoft.com/donate/
 Tags: cars, rental, renting, booking, retail, add cars, car rental plugin, renting cars, cars website, manufacturers, machine, vehicle
 Requires at least: 3.8
-Tested up to: 4.6.1
-Stable tag: 1.0.4
+Tested up to: 4.7.3
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,8 @@ Create your personal car rental/booking and reservation website.
 Car Rental plugin is a key tool which helps you to create fully functional WordPress website for renting cars. Add, edit and manage cars info, manufacturers, vehicle types, car classes, extras, orders, and many other advanced features with a single plugin.
 
 Start your online car rental business on WordPress website today!
+
+[View Demo](https://bestwebsoft.com/wordpress_demo_theme/renty/)
 
 http://www.youtube.com/watch?v=Oq4pkADwTks
 
@@ -44,9 +46,10 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 	* Location
 		* Choose from the list
 		* Add custom one
-	* Number of passengers 
+	* Number of seats
+	* Number of doors [NEW]
 	* Luggage quantity
-		* Large suitcases 
+		* Large suitcases
 		* Small suitcases
 	* Transmission
 		* Unknown
@@ -78,8 +81,12 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 	* Hour
 	* Day
 * Enable select field for:
-	* Pick-up & drop-off time
+	* Pick up & drop off time
 	* Return location
+* Compatible with: [NEW]
+	* [Captcha](https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9)
+	* [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135)
+* Install/Delete demo data
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
@@ -90,73 +97,84 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 > All features from Free version included plus:
 >
 > * Add unlimited number of Cars and Extras
-> * Get answer to your support question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+> * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
-> [Upgrade to Pro Now](http://bestwebsoft.com/products/wordpress/plugins/car-rental/?k=3f5c94058f6e182a4530050cbb63dd44)
+> [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/car-rental/?k=3f5c94058f6e182a4530050cbb63dd44)
 
-If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](https://support.bestwebsoft.com/hc/en-us/requests/new)
+
+== Documentation and videos ==
+
+* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
 
 = Help & Support =
 
-Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
 
 = Translation =
 
+* French (fr_FR) (thanks to [Albert Bea](mailto:almadise84@yahoo.fr), www.readycar.fr)
+* German (de_DE) (thanks to [Janes Lenz](mailto:mail@info-bit.org), www.info-bit.org)
 * Russian (ru_RU)
 * Ukrainian (uk_UA)
 
-Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](https://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
 = Recommended Plugins =
 
-* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=0f949d8b3b87e3f7d52f08b79cb230a1) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
-
-= Donate =
-
-Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
-
-[Donate Now](http://bestwebsoft.com/donate/)
+* [Captcha](https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9) - #1 super security anti-spam captcha plugin for WordPress forms.
+* [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135) - #1 super security anti-spam captcha plugin for WordPress forms.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=0f949d8b3b87e3f7d52f08b79cb230a1) - Automatically check and update WordPress core with all installed plugins to the latest versions.
 
 == Installation ==
 
-1. Upload the folder `car-rental` to the directory '/wp-content/plugins/'
+1. Upload the folder 'car-rental' to the directory '/wp-content/plugins/'
 2. Activate the plugin via the 'Plugins' menu in WordPress
-3. Please check if you have the template files `page-choose-car.php`, `page-choose-extras.php` and `page-review-book.php` in your themes directory. If you can't find these files, then just copy them from the directory `/wp-content/plugins/car-rental/templates/` to your themes directory.
-4. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "Car Rental".
+3. You can adjust the necessary settings using your WordPress admin panel in "Cars" > "Settings".
 
 == Frequently Asked Questions ==
 
 = How can I add a Car? =
 
-To create a new car:
-
+Please follow the next steps:
 1. Click on "Cars" on the admin panel, then click on the "Add New";
-2. Fill all fields;
+2. Fill in all fields;
 3. Click "Publish" button.
 
 = How can I add a slide? =
 
-To add a slide, you need to:
+Please complete the following steps:
+1. Go to the "Cars" > "Slider" page in the admin panel.
+2. Click "Add New Slide".
+3. Fill in the necessary fields.
+4. Click "Add Slide" button.
 
-1. Go to "Car Rental Settings" page in the admin panel.
-2. Click on "Slider" tab.
-3. Click on "Add New Slide" on the slider settings page.
-4. Fill the necessary fields.
-4. Click on "Add Slide" button.
+= How can I display the Slider on my homepage? =
 
-= How can I display the Slider? =
-
-if you want to use the plugin with another theme and enable the slider, find the "header.php" file of your theme, and add the following code after <header> block or to any necessary place:
+If you want to use the plugin with another theme and enable the slider on your homepage, find the "header.php" file of your theme, and add the following code after <header> block or to any necessary place:
 `<?php do_action( 'crrntl_display_slider' ); ?>`
+
+= How can I add the Slider to a custom template? =
+
+In order to display the Slider on any page (e.g. that uses some custom template), add the following code to the necessary place of the corresponding template file:
+`<?php do_action( 'crrntl_display_slider_custom' ); ?>`
+
+= How to change or override plugin templates? =
+
+Plugin template files can be found in the '/wp-content/plugins/car-rental-pro/templates/' directory.
+You can edit these files in an upgrade-safe way using overrides. Copy them into a directory with your theme named '/bws-templates'.
+
+Example: To override the 'BWS Choose Car' page template, please copy '/wp-content/plugins/car-rental-pro/templates/page-choose-car.php' to 'wp-content/themes/your-theme/bws-templates/page-choose-car.php'.
+
+Do not edit these files in the plugin's core directly as they are overwritten during the upgrade process and any customizations will be lost.
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
-
-1. the link to the page where the problem occurs
-2. the name of the plugin and its version. If you are using a pro version - your order number.
-3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
+Please make sure that the problem hasn't been discussed yet on our forum (https://support.bestwebsoft.com). If no, please provide the following data along with your problem's description:
+- The link to the page where the problem occurs
+- The name of the plugin and its version. If you are using a pro version - your order number.
+- The version of your WordPress installation
+- Copy and paste into the message your system status report. Please read more here: Instruction on System Status (https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/)
 
 == Screenshots ==
 
@@ -178,7 +196,20 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 
 == Changelog ==
 
-= V1.0.4 - 21.10.2016 = 
+= V1.0.5 - 20.04.2017 =
+* Update : The plugin's settings page has been updated.
+* Update : 'cars' post type name has been changed to 'bws-cars'.
+* Update : Functionality to remove unused locations has been added.
+* NEW : User's name and email have been added to email and order info.
+* NEW : Number of doors has been added to car's info.
+* NEW : Ability to set price on request has been added.
+* NEW : Ability to add Captcha by BestWebSoft has been added.
+* NEW : RTL support has been added.
+* NEW : The French language file has been added (thanks to [Albert Bea](mailto:almadise84@yahoo.fr), www.readycar.fr).
+* NEW : The German language file has been added (thanks to [Janes Lenz](mailto:mail@info-bit.org), www.info-bit.org).
+* Bugfix : Bug with max number of cars has been fixed.
+
+= V1.0.4 - 21.10.2016 =
 * NEW : Responsive design has been implemented.
 * NEW : Slider script has been replaced with "Owl Carousel".
 
@@ -198,6 +229,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<http:
 * NEW : Release date of Car Rental by BestWebSoft plugin.
 
 == Upgrade Notice ==
+
+= V1.0.5 =
+* Functionality expanded.
+* New languages added.
+* Bugs fixed.
 
 = V1.0.4 =
 * Appearance improved.
