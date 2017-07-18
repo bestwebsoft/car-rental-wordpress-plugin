@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: cars, rental, renting, booking, retail, add cars, car rental plugin, renting cars, cars website, manufacturers, machine, vehicle
-Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 1.0.5
+Requires at least: 3.9
+Tested up to: 4.8
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,7 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 		* Choose from the list
 		* Add custom one
 	* Number of seats
-	* Number of doors [NEW]
+	* Number of doors
 	* Luggage quantity
 		* Large suitcases
 		* Small suitcases
@@ -83,7 +83,7 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 * Enable select field for:
 	* Pick up & drop off time
 	* Return location
-* Compatible with: [NEW]
+* Compatible with:
 	* [Captcha](https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9)
 	* [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135)
 * Install/Delete demo data
@@ -91,6 +91,7 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
 * Detailed step-by-step documentation and videos
+* Multilingual and RTL ready
 
 > **Pro Features**
 >
@@ -106,6 +107,7 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 == Documentation and videos ==
 
 * [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+* [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
 
 = Help & Support =
 
@@ -123,8 +125,8 @@ Some of these translations are not complete. We are constantly adding new featur
 = Recommended Plugins =
 
 * [Captcha](https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9) - #1 super security anti-spam captcha plugin for WordPress forms.
-* [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135) - #1 super security anti-spam captcha plugin for WordPress forms.
-* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=0f949d8b3b87e3f7d52f08b79cb230a1) - Automatically check and update WordPress core with all installed plugins to the latest versions.
+* [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135) - Add email newsletter sign up form to WordPress posts, pages, and widgets. Collect data and subscribe your user.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=0f949d8b3b87e3f7d52f08b79cb230a1) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 
 == Installation ==
 
@@ -196,6 +198,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (https:
 
 == Changelog ==
 
+= V1.0.6 - 18.07.2017 =
+* Bugfix : The compatibility with Captcha by BestWebSoft has been fixed.
+
 = V1.0.5 - 20.04.2017 =
 * Update : The plugin's settings page has been updated.
 * Update : 'cars' post type name has been changed to 'bws-cars'.
@@ -229,6 +234,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (https:
 * NEW : Release date of Car Rental by BestWebSoft plugin.
 
 == Upgrade Notice ==
+
+= V1.0.6 =
+* Bugs fixed.
 
 = V1.0.5 =
 * Functionality expanded.

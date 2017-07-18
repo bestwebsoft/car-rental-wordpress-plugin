@@ -1,12 +1,10 @@
 <a href="https://bestwebsoft.com/products/wordpress/plugins/car-rental/" target=_blank>Car Rental WordPress Plugin</a>
 ========================
 
-
-
 <p>Car Rental plugin is a key tool which helps you to create fully functional WordPress website for renting cars. Add, edit and manage cars info, manufacturers, vehicle types, car classes, extras, orders, and many other advanced features with a single plugin.</p>
 <p>Start your online car rental business on WordPress website today!</p>
 <p><a href="https://bestwebsoft.com/wordpress_demo_theme/renty/" rel="nofollow">View Demo</a></p>
-<p><span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='640' height='390' src='https://www.youtube.com/embed/Oq4pkADwTks?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span></p>
+<p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
 <h4>Free Features</h4>
 <ul>
 <li>Add and manage:
@@ -50,7 +48,7 @@
 </ul>
 </li>
 <li>Number of seats</li>
-<li>Number of doors [NEW]</li>
+<li>Number of doors</li>
 <li>Luggage quantity
 <ul>
 <li>Large suitcases</li>
@@ -112,7 +110,7 @@
 <li>Return location</li>
 </ul>
 </li>
-<li>Compatible with: [NEW]
+<li>Compatible with:
 <ul>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9" rel="nofollow">Captcha</a></li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135" rel="nofollow">Subscriber</a></li>
@@ -123,6 +121,7 @@
 <li>Compatible with latest WordPress version</li>
 <li>Incredibly simple settings for fast setup without modifying code</li>
 <li>Detailed step-by-step documentation and videos</li>
+<li>Multilingual and RTL ready</li>
 </ul>
 <blockquote>
 <p><strong>Pro Features</strong></p>
@@ -137,6 +136,7 @@
 <h3>Documentation and videos</h3>
 <ul>
 <li><a href="https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/" rel="nofollow">[Doc] Installation</a></li>
+<li><a href="https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/" rel="nofollow">[Doc] Purchase</a></li>
 </ul>
 <h4>Help &amp; Support</h4>
 <p>Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <a href="https://support.bestwebsoft.com/" rel="nofollow">https://support.bestwebsoft.com/</a></p>
@@ -151,6 +151,6 @@
 <h4>Recommended Plugins</h4>
 <ul>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9" rel="nofollow">Captcha</a> &#8211; #1 super security anti-spam captcha plugin for WordPress forms.</li>
-<li><a href="https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135" rel="nofollow">Subscriber</a> &#8211; #1 super security anti-spam captcha plugin for WordPress forms.</li>
-<li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=0f949d8b3b87e3f7d52f08b79cb230a1" rel="nofollow">Updater</a> &#8211; Automatically check and update WordPress core with all installed plugins to the latest versions.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135" rel="nofollow">Subscriber</a> &#8211; Add email newsletter sign up form to WordPress posts, pages, and widgets. Collect data and subscribe your user.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=0f949d8b3b87e3f7d52f08b79cb230a1" rel="nofollow">Updater</a> &#8211; Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.</li>
 </ul>

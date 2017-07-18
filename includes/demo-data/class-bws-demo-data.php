@@ -805,10 +805,8 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 								border: none;
 								background: url("<?php echo plugins_url( $plugin_dir_array[0] . '/bws_menu/images/close_banner.png' ); ?>") no-repeat center center;
 								box-shadow: none;
-								<?php if ( 3.8 <= $wp_version ) { ?>
-									position: relative;
-									top: -4px;
-								<?php } ?>
+								position: relative;
+								top: -4px;
 								cursor: pointer;
 							}
 							.rtl #bws_handle_notice_form {

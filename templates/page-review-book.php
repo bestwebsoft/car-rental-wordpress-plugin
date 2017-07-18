@@ -115,7 +115,7 @@ if ( isset( $_POST['crrntl_form_save_order'] ) && wp_verify_nonce( $_POST['crrnt
 
 	if ( 'outdated' != $captcha_status['active'] && $captcha_status['enabled'] ) {
 		/* Checking Captcha answer */
-		$cptch_error = apply_filters( 'cptch_verify', true );
+		$cptch_error = apply_filters( 'cptch_verify', true, 'string', 'bws_carrental' );
 		if ( true !== $cptch_error ) {
 			/* the CAPTCHA answer is wrong or there are some other errors */
 			$personal_info_error .= $cptch_error . '<br />';

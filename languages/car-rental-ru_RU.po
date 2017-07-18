@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Car Rental\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-27 13:50+0300\n"
-"PO-Revision-Date: 2017-03-27 13:58+0300\n"
+"PO-Revision-Date: 2017-07-18 11:47+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
@@ -18,7 +18,7 @@ msgstr ""
 "esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
 "_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: car-rental.php:51
@@ -26,8 +26,7 @@ msgid "Car Rental Settings"
 msgstr "Настройки Car Rental"
 
 #: car-rental.php:52 car-rental.php:1838 car-rental.php:1859
-#: includes/class-crrntl-settings.php:25
-#: includes/class-crrntl-settings.php:247
+#: includes/class-crrntl-settings.php:25 includes/class-crrntl-settings.php:247
 msgid "Settings"
 msgstr "Настройки"
 
@@ -545,8 +544,7 @@ msgstr "Цена по запросу"
 msgid "You can change currency on the %1$splugin's settings page%2$s."
 msgstr "Вы можете изменить валюту на %1$sстранице настроек плагина%2$s."
 
-#: car-rental.php:1259 car-rental.php:1304
-#: templates/page-choose-extras.php:138
+#: car-rental.php:1259 car-rental.php:1304 templates/page-choose-extras.php:138
 msgid "More details"
 msgstr "Подробнее"
 
@@ -699,9 +697,9 @@ msgid ""
 "%s theme which has been developed specifically for use with Car Rental "
 "plugin."
 msgstr ""
-"Используемая тема не заявляет поддержку плагина Car Rental. Пожалуйста, "
-"ознакомьтесь с нашей темой %s, которая была разработана специально для "
-"использования с плагином Car Rental."
+"Используемая тема не гарантирует поддержки всех возможностей плагина Car "
+"Rental. Пожалуйста, ознакомьтесь с нашей темой %s, которая была разработана "
+"специально для плагина Car Rental."
 
 #: car-rental.php:1961 includes/demo-data/class-bws-demo-data.php:812
 msgid "Close notice"

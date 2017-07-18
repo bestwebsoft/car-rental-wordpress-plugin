@@ -6,7 +6,7 @@ Description: Create your personal car rental/booking and reservation website.
 Author: BestWebSoft
 Text Domain: car-rental
 Domain Path: /languages
-Version: 1.0.5
+Version: 1.0.6
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -113,7 +113,7 @@ if ( ! function_exists( 'crrntl_init' ) ) {
 		}
 
 		/* Function check if plugin is compatible with current WP version */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $crrntl_plugin_info, '3.8' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $crrntl_plugin_info, '3.9' );
 
 		if ( ! session_id() )
 			session_start();
@@ -1981,7 +1981,7 @@ if ( ! function_exists( 'crrntl_add_tabs' ) ) {
  */
 if ( ! function_exists( 'crrntl_admin_notices' ) ) {
 	function crrntl_admin_notices() {
-		global $hook_suffix, $crrntl_plugin_info, $crrntl_options, $crrntl_BWS_demo_data, $crrntl_car_notice, $wp_version, $crrntl_settings_page_link;
+		global $hook_suffix, $crrntl_plugin_info, $crrntl_options, $crrntl_BWS_demo_data, $crrntl_car_notice, $crrntl_settings_page_link;
 
 		if ( empty( $crrntl_options ) )
 			$crrntl_options = get_option( 'crrntl_options' );
