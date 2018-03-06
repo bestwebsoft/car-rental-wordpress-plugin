@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: cars, rental, renting, booking, retail, add cars, car rental plugin, renting cars, cars website, manufacturers, machine, vehicle
 Requires at least: 3.9
-Tested up to: 4.8
-Stable tag: 1.0.6
+Tested up to: 4.9.4
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,8 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 	* Car filters
 	* Order info
 * Manage orders
+* Set working hours [NEW]
+* Customize minimum rental age [NEW]
 * Add slider with unlimited slides including:
 	* Image
 	* Title
@@ -86,6 +88,7 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 * Compatible with:
 	* [Captcha](https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9)
 	* [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135)
+	* [Google Captcha (reCAPTCHA)](https://bestwebsoft.com/products/wordpress/plugins/google-captcha/) [NEW]
 * Install/Delete demo data
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
@@ -126,6 +129,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 * [Captcha](https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9) - #1 super security anti-spam captcha plugin for WordPress forms.
 * [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135) - Add email newsletter sign up form to WordPress posts, pages, and widgets. Collect data and subscribe your user.
+* [Google Captcha (reCAPTCHA)](http://bestwebsoft.com/products/google-captcha/) – Protect WordPress website forms from spam entries with Google reCAPTCHA.
 * [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=0f949d8b3b87e3f7d52f08b79cb230a1) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 
 == Installation ==
@@ -153,7 +157,7 @@ Please complete the following steps:
 
 = How can I display the Slider on my homepage? =
 
-If you want to use the plugin with another theme and enable the slider on your homepage, find the "header.php" file of your theme, and add the following code after <header> block or to any necessary place:
+If you want to use the plugin with another theme and enable the slider on your homepage, find the "header.php" file of your theme, and add the following code after `<header>` block or to any necessary place:
 `<?php do_action( 'crrntl_display_slider' ); ?>`
 
 = How can I add the Slider to a custom template? =
@@ -198,6 +202,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (https:
 
 == Changelog ==
 
+= V1.0.7 - 06.03.2018 =
+* NEW : Ability to choose the recipient of the order notifications has been added.
+* NEW : Ability to change date format, set the minimum age to rent a car and select working hours has been added to the plugin.
+* NEW : The compatibility with Google Captcha (reCAPTCHA) by BestWebSoft has been added.
+
 = V1.0.6 - 18.07.2017 =
 * Bugfix : The compatibility with Captcha by BestWebSoft has been fixed.
 
@@ -234,6 +243,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (https:
 * NEW : Release date of Car Rental by BestWebSoft plugin.
 
 == Upgrade Notice ==
+
+= V1.0.7 =
+* Functionality expanded.
 
 = V1.0.6 =
 * Bugs fixed.

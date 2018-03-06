@@ -11,7 +11,7 @@ global $crrntl_options, $wpdb, $crrntl_currency, $crrntl_selected_prod_id, $crrn
 if ( empty( $crrntl_options ) ) {
 	$crrntl_options = get_option( 'crrntl_options' );
 }
-if ( empty( $crrntl_options['custom_currency'] ) || 0 == $crrntl_options['currency_custom_display'] ) {
+if ( empty( $crrntl_options['custom_currency'] ) || empty( $crrntl_options['currency_custom_display'] ) ) {
 	$crrntl_currency = $wpdb->get_var( "SELECT `currency_unicode` FROM {$wpdb->prefix}crrntl_currency WHERE `currency_id` = {$crrntl_options['currency_unicode']}" );
 	if ( empty( $crrntl_currency ) ) {
 		$crrntl_currency = '&#36;';
@@ -133,7 +133,7 @@ get_header(); ?>
 														</div><!-- .crrntl-product-features -->
 														<?php if ( ! empty( $extra_metadata['extra_details'][0] ) ) { ?>
 															<div class="crrntl-product-details">
-																<div class="crrntl-view-details">[+] <?php _e( 'More details', 'car-rental' ); ?></div>
+																<div class="crrntl-view-details">[+] <?php _e( 'Learn more', 'car-rental' ); ?></div>
 																<div class="crrntl-close-details">[-] <?php _e( 'Close details', 'car-rental' ); ?></div>
 																<p class="crrntl-details-more">
 																	<?php echo $extra_metadata['extra_details'][0]; ?>

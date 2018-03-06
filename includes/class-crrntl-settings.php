@@ -22,24 +22,24 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 			global $wpdb, $wp_version, $crrntl_options, $crrntl_plugin_info, $crrntl_BWS_demo_data;
 
 			$tabs = array(
-				'settings' 		=> array( 'label' => __( 'Settings', 'car-rental' ) ),
-				'misc' 			=> array( 'label' => __( 'Misc', 'car-rental' ) ),
+				'settings' 			=> array( 'label' => __( 'Settings', 'car-rental' ) ),
+				'misc' 					=> array( 'label' => __( 'Misc', 'car-rental' ) ),
 				'custom_code' 	=> array( 'label' => __( 'Custom Code', 'car-rental' ) ),
 				'import-export' => array( 'label' => __( 'Import / Export', 'car-rental' ) ),
-				'license'		=> array( 'label' => __( 'License Key', 'car-rental' ) ),
+				'license'				=> array( 'label' => __( 'License Key', 'car-rental' ) ),
 			);
 
 			parent::__construct( array(
-				'plugin_basename'				=> $plugin_basename,
-				'plugins_info'					=> $crrntl_plugin_info,
-				'prefix'						=> 'crrntl',
-				'default_options'				=> crrntl_get_options_default(),
-				'options'						=> $crrntl_options,
-				'tabs'							=> $tabs,
-				'wp_slug'						=> 'car-rental',
+				'plugin_basename'			=> $plugin_basename,
+				'plugins_info'				=> $crrntl_plugin_info,
+				'prefix'							=> 'crrntl',
+				'default_options'			=> crrntl_get_options_default(),
+				'options'							=> $crrntl_options,
+				'tabs'								=> $tabs,
+				'wp_slug'							=> 'car-rental',
 				'demo_data'						=> $crrntl_BWS_demo_data,
 				'pro_page' 						=> "edit.php?post_type={$crrntl_options['post_type_name']}&amp;page=car-rental-pro-settings",
-				'bws_license_plugin'			=> 'car-rental-pro/car-rental-pro.php',
+				'bws_license_plugin'	=> 'car-rental-pro/car-rental-pro.php',
 				'link_key' 						=> '664b00b8cd82b35c4f9b2a4838de35ff',
 				'link_pn' 						=> '576'
 			) );
@@ -67,18 +67,17 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 			$this->statuses = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}crrntl_statuses", ARRAY_A );
 			$this->related_plugins = array(
 				'captcha' => array(
-					'name'				=> 'Captcha by BestWebSoft',
+					'name'					=> 'Captcha Pro by BestWebSoft',
 					'short_name'		=> 'Captcha',
-					'download_link'		=> 'https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=0cb1f30e297633615b78123d2a0866aa&amp;pn=' . $this->link_pn . '&amp;v=' . $this->plugins_info["Version"] . '&amp;wp_v=' . $wp_version,
-					'status'			=> crrntl_get_related_plugin_status( 'captcha' )
+					'download_link'	=> 'https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=0cb1f30e297633615b78123d2a0866aa&amp;pn=' . $this->link_pn . '&amp;v=' . $this->plugins_info["Version"] . '&amp;wp_v=' . $wp_version,
+					'status'				=> crrntl_get_related_plugin_status( 'captcha' )
 				),
-				/* todo: uncomment after the corresponding changes are implemented into the Google Captcha plugin */
-				/*'recaptcha' => array(
+				'recaptcha' => array(
 					'name'				=> 'Google Captcha (reCAPTCHA) by BestWebSoft',
 					'short_name'		=> 'Google Captcha',
 					'download_link'		=> 'https://bestwebsoft.com/products/wordpress/plugins/google-captcha/?k=6b0f3eab7392eac42ca57facd180fd24&amp;pn=' . $this->link_pn . '&v=' . $this->plugins_info["Version"] . '&amp;wp_v=' . $wp_version,
 					'status'			=> crrntl_get_related_plugin_status( 'recaptcha' )
-				),*/
+				),
 			);
 
 			add_action( get_parent_class( $this ) . '_display_custom_messages', array( $this, 'display_custom_messages' ) );
@@ -118,23 +117,72 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 					$this->options['unit_consumption_custom_display']	= 1;
 				} else {
 					$this->options['unit_consumption_custom_display']	= 0;
-					$error .= __( 'Please enter the correct value for custom unit of consumption field.', 'car-rental' ) . '<br />';
+					$error .= __( 'Please enter the correct value for custom unit in the consumption field.', 'car-rental' ) . '<br />';
 				}
 			} else {
 				$this->options['unit_consumption']						= sanitize_text_field( $_POST['crrntl_unit_consumption'] );
 				$this->options['unit_consumption_custom_display']		= 0;
 			}
 
-			$this->options['per_page']									= ! empty( $_POST['crrntl_per_page'] ) ? intval( $_POST['crrntl_per_page'] ) : get_option( 'posts_per_page' );
-			$this->options['car_page_id']								= intval( $_POST['crrntl_car_page_id'] );
-			$this->options['extra_page_id']								= intval( $_POST['crrntl_extra_page_id'] );
-			$this->options['review_page_id']							= intval( $_POST['crrntl_review_page_id'] );
-			$this->options['time_selecting']							= isset( $_POST['crrntl_time_selecting'] ) ? 1 : 0;
-			$this->options['time_from']									= sanitize_text_field( $_POST['crrntl_time_from'] );
-			$this->options['rent_per']									= in_array( $_POST['crrntl_rent_per'], array( 'hour', 'day' ) ) ? $_POST['crrntl_rent_per'] : 'day';
-			$this->options['return_location_selecting']					= isset( $_POST['crrntl_return_location_selecting'] ) ? 1 : 0;
-			$this->options['maps_key']									= sanitize_text_field( trim( $_POST['crrntl_maps_key'] ) );
+			$this->options['per_page']							= ! empty( $_POST['crrntl_per_page'] ) ? intval( $_POST['crrntl_per_page'] ) : get_option( 'posts_per_page' );
+			$this->options['car_page_id']						= intval( $_POST['crrntl_car_page_id'] );
+			$this->options['min_from']                          = ( preg_match( "/^\d{1,2}:\d{1,2}$/", $_POST['crrntl_min_from'] ) ) ? $_POST['crrntl_min_from'] : '00:00';
+			$this->options['max_to']                            = ( preg_match( "/^\d{1,2}:\d{1,2}$/", $_POST['crrntl_max_to'] ) ) ? $_POST['crrntl_max_to'] : '23:30';
+			$this->options['extra_page_id']						= intval( $_POST['crrntl_extra_page_id'] );
+			$this->options['review_page_id']					= intval( $_POST['crrntl_review_page_id'] );
+			$this->options['time_selecting']					= isset( $_POST['crrntl_time_selecting'] ) ? 1 : 0;
+			$this->options['time_from']							= sanitize_text_field( $_POST['crrntl_time_from'] );
+			$this->options['rent_per']							= in_array( $_POST['crrntl_rent_per'], array( 'hour', 'day' ) ) ? $_POST['crrntl_rent_per'] : 'day';
+			$this->options['return_location_selecting']			= isset( $_POST['crrntl_return_location_selecting'] ) ? 1 : 0;
+			$this->options['maps_key']							= sanitize_text_field( trim( $_POST['crrntl_maps_key'] ) );
+			$this->options['min_age']							= ! empty( $_POST['crrntl_min_age'] ) ? intval( $_POST['crrntl_min_age'] ) : 16;
+			$this->options['datepicker_type']					= isset( $_POST['crrntl_datepicker_type'] ) &&
+																 in_array( $_POST['crrntl_datepicker_type'], array( 'yy-mm-dd', 'yy-dd-mm', 'mm-dd-yy', 'dd-mm-yy', 'custom' ) ) ? $_POST['crrntl_datepicker_type'] : 'yy-mm-dd';
+			$this->options['datepicker_custom_format']			= ! empty( $_POST['crrntl_datepicker_custom_format'] ) ? sanitize_text_field( $_POST['crrntl_datepicker_custom_format'] ) : 'yy-mm-dd';
 
+			$this->options['send_email_sa']						= isset( $_POST['crrntl_send_email_sa'] ) ? 1 : 0;
+			$this->options['send_email_customer']				= isset( $_POST['crrntl_send_email_customer'] ) ? 1 : 0;
+			$this->options['send_email_custom']					= isset( $_POST['crrntl_send_email_custom'] ) ? 1 : 0;
+
+			$list = array();
+			if ( ! empty( $_POST['custom_email_area'] ) ) {
+				$custom_email = explode( ",", $_POST['custom_email_area'] );
+				foreach ( $custom_email as $email ) {
+					$email = trim( $email );
+					if ( is_email( $email ) ) {
+						$list[] = $email;
+					}
+				}
+			}
+			$this->options['custom_email_list'] = $list;
+
+			if ( empty( $this->options['custom_email_list'] ) ) {
+				$this->options['send_email_custom'] = 0;
+			}
+
+			if ( empty( $this->options['send_email_sa'] ) && empty( $this->options['send_email_customer'] ) && empty( $this->options['send_email_custom'] ) ) {
+				$this->options['send_email_sa'] = 1;
+				$this->options['send_email_customer'] = 1;
+			}
+
+			if ( isset( $_POST['crrntl_send_email_custom'] ) && empty( $list ) ) {
+				$notice .= sprintf(
+					'<p><strong>%1$s:</strong> %2$s</p>',
+					__( 'Important', 'car-rental' ),
+					__( 'you should add at least one email for custom email list.', 'car-rental' )
+				);
+			}
+
+			if ( 'custom' == $this->options['datepicker_type'] && isset( $_POST['crrntl_datepicker_custom_format'] ) ) {
+				if ( strpos( $_POST['crrntl_datepicker_custom_format'], 'M' ) !== false ) {
+					$notice .= sprintf(
+						'<p><strong>%1$s:</strong> "%2$s" %3$s</p>',
+						__( 'Important', 'car-rental' ),
+						sanitize_text_field( $_POST["crrntl_datepicker_custom_format"] ),
+						__( 'date format is not supported.', 'car-rental' )
+					);
+				}
+			}
 
 			/* Updating Captcha and reCAPTCHA options and status on form submit */
 			foreach ( $this->related_plugins as $plugin_slug => $plugin_data ) {
@@ -220,7 +268,7 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 			}
 
 			update_option( 'crrntl_options', $this->options );
-			$message = __( "Settings saved", 'car-rental' );
+			$message = __( "Settings saved.", 'car-rental' );
 
 			foreach ( $this->pages as $page_slug => $page ) {
 				$selected_page_id = ! empty( $this->options[ $page_slug . '_id' ] ) ? $this->options[ $page_slug . '_id' ] : 0;
@@ -228,12 +276,11 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 					$notice .= sprintf(
 						'<p><strong>%1$s:</strong> %2$s - <a href="' . $crrntl_settings_page_link . '">%3$s</a></p>',
 						__( 'Important', 'car-rental' ),
-						sprintf( __( 'for the correct plugin work, please choose page for "%s"', 'car-rental' ), $page['description'] ),
+						sprintf( __( 'for the correct plugin work, please choose the page for "%s"', 'car-rental' ), $page['description'] ),
 						__( 'edit', 'car-rental' )
 					);
 				}
 			}
-
 			return compact( 'message', 'notice', 'error' );
 		}
 
@@ -253,30 +300,22 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 			<table class="form-table crrntl-settings-form">
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Pages', 'car-rental' ); ?></th>
-					<td style="padding: 10px 0;">
-						<table id="crrntl-pages-settings">
-							<tbody>
-								<?php foreach ( $this->pages as $page_slug => $page ) {
-									$selected_page_id = ! empty( $this->options[ $page_slug . '_id' ] ) ? $this->options[ $page_slug . '_id' ] : 0; ?>
-									<tr>
-										<td>
-											<label for="crrntl_<?php echo $page_slug; ?>_id">
-												<span><?php echo $page['description']; ?></span>&emsp;
-											</label>
-										</td>
-										<td>
-											<?php wp_dropdown_pages( array(
-												'name'				=> 'crrntl_' . $page_slug . '_id',
-												'echo'				=> 1,
-												'show_option_none'	=> __( '&mdash; Select &mdash;' ),
-												'option_none_value'	=> '0',
-												'selected'			=> $selected_page_id,
-											) ); ?>
-										</td>
-									</tr>
-								<?php } ?>
-							</tbody>
-						</table>
+					<td>
+						<?php foreach ( $this->pages as $page_slug => $page ) {
+							$selected_page_id = ! empty( $this->options[ $page_slug . '_id' ] ) ? $this->options[ $page_slug . '_id' ] : 0; ?>
+								<div>
+									<label class="crrntl-pages-settings-labels" for="crrntl_<?php echo $page_slug; ?>_id">
+										<span><?php echo $page['description']; ?></span>&emsp;
+									</label>
+									<?php wp_dropdown_pages( array(
+										'name'				=> 'crrntl_' . $page_slug . '_id',
+										'echo'				=> 1,
+										'show_option_none'	=> __( '&mdash; Select &mdash;' ),
+										'option_none_value'	=> '0',
+										'selected'			=> $selected_page_id,
+									) ); ?>
+								</div>
+						<?php } ?>
 					</td>
 				</tr>
 				<tr valign="top">
@@ -324,15 +363,15 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 				</tr>
 				<tr valign="top">
 					<th scope="row">
-						<label for="crrntl_unit_consumption"><?php _e( 'Unit of Consumption', 'car-rental' ); ?></label>
+						<label for="crrntl_unit_consumption"><?php _e( 'Consumption Unit', 'car-rental' ); ?></label>
 					</th>
 					<td>
 						<?php $consumption_units = array( __( 'l/100km', 'car-rental' ), __( 'km/l', 'car-rental' ) ); ?>
-						<select name="crrntl_unit_consumption" id="crrntl_unit_consumption">
+						<select class="crrntl_unit_select" name="crrntl_unit_consumption" id="crrntl_unit_consumption">
 							<?php printf(
 								'<option value="custom" %1$s>%2$s</option>',
 								selected( 1 == $this->options['unit_consumption_custom_display'], true, false ),
-								__( 'Custom unit of consumption', 'car-rental' )
+								__( 'Custom consumption unit', 'car-rental' )
 							); ?>
 							<?php foreach ( $consumption_units as $units ) {
 								printf(
@@ -349,7 +388,7 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 						<label for="crrntl_custom_unit_consumption">
 							<input type="text" id="crrntl_custom_unit_consumption" name="crrntl_custom_unit_consumption" value="<?php echo $this->options['custom_unit_consumption']; ?>" />
 							<noscript>
-								<br /><span class="bws_info"><?php _e( 'Custom Unit of Consumption', 'car-rental' ); ?></span>
+								<br /><span class="bws_info"><?php _e( 'Custom Consumption Unit', 'car-rental' ); ?></span>
 							</noscript>
 						</label>
 					</td>
@@ -357,7 +396,7 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 				<tr valign="top">
 					<th scope="row"><label for="crrntl-time-selecting"><?php _e( 'Pick Up & Drop Off Time', 'car-rental' ); ?></label></th>
 					<td>
-						<input type="checkbox" <?php if ( 1 == $this->options['time_selecting'] ) echo 'checked="checked"'; ?> value="1" name="crrntl_time_selecting" id="crrntl-time-selecting" />&nbsp;
+						<input type="checkbox" <?php if ( ! empty( $this->options['time_selecting'] ) ) echo 'checked="checked"'; ?> value="1" name="crrntl_time_selecting" id="crrntl-time-selecting" class="bws_option_affect" data-affect-hide="#crrntl_time_from" data-affect-show=".crrntl-work-hours" />&nbsp;
 						<label for="crrntl-time-selecting"><span class="bws_info"><?php _e( 'Enable to display Pick Up & Drop Off Time option.', 'car-rental' ); ?></span></label><br />
 						<select id="crrntl_time_from" name="crrntl_time_from">
 							<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
@@ -367,10 +406,28 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 						</select>
 					</td>
 				</tr>
+				<tr class="crrntl-work-hours" valign="top">
+					<th scope="row"><label for="crrntl-time-selecting"><?php _e( 'Working Hours', 'car-rental' ); ?></label></th>
+					<td>
+						<select name="crrntl_min_from">
+							<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
+								<option value="<?php echo $i; ?>:00" <?php selected( ( $i . ':00' ) == $this->options['min_from'] ); ?>><?php echo $i; ?>:00</option>
+								<option value="<?php echo $i; ?>:30" <?php selected( ( $i . ':30' ) == $this->options['min_from'] ); ?>><?php echo $i; ?>:30</option>
+							<?php } ?>
+						</select>
+						<span> - </span>
+						<select name="crrntl_max_to">
+							<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
+								<option value="<?php echo $i; ?>:00" <?php selected( ( $i . ':00' ) == $this->options['max_to'] ); ?>><?php echo $i; ?>:00</option>
+								<option value="<?php echo $i; ?>:30" <?php selected( ( $i . ':30' ) == $this->options['max_to'] ); ?>><?php echo $i; ?>:30</option>
+							<?php } ?>
+						</select>
+					</td>
+				</tr>
 				<tr valign="top">
 					<th scope="row"><label for="crrntl-return-location-selecting"><?php _e( 'Return Location', 'car-rental' ); ?></label></th>
 					<td>
-						<input type="checkbox" <?php if ( 1 == $this->options['return_location_selecting'] ) echo 'checked="checked"'; ?> value="1" name="crrntl_return_location_selecting" id="crrntl-return-location-selecting" />&nbsp;
+						<input type="checkbox" <?php if ( ! empty( $this->options['return_location_selecting'] ) ) echo 'checked="checked"'; ?> value="1" name="crrntl_return_location_selecting" id="crrntl-return-location-selecting" />&nbsp;
 						<label for="crrntl-return-location-selecting"><span class="bws_info"><?php _e( 'Enable to display Return Location option.', 'car-rental' ); ?></span></label>
 					</td>
 				</tr>
@@ -391,7 +448,7 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 						<input id="crrntl_maps_key" type="text" value="<?php echo ( ! empty( $this->options['maps_key'] ) ) ? $this->options['maps_key'] : ''; ?>" name="crrntl_maps_key" /><br>
 						<span class="bws_info">
 							<?php printf(
-								__( "Including a key in your request allows you to monitor your application's API usage in the %s.", 'car-rental' ),
+								__( "If you include a key in your request it will allow you to monitor your application's API usage in the %s.", 'car-rental' ),
 								sprintf(
 									'<a href="https://console.developers.google.com/" target="_blank">%s</a>',
 									__( 'Google API Console', 'car-rental' )
@@ -436,6 +493,53 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 								<span style="display: none;" class="crrntl-delete-status-live dashicons dashicons-dismiss"></span>
 							</label>
 						</div>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label for="crrntl_min_age"><?php _e( 'Minimum Age', 'car-rental' ); ?></label>
+					</th>
+					<td>
+						<input id="crrntl_min_age" type="number" min="0" max="100" name="crrntl_min_age" value="<?php echo $this->options['min_age']; ?>" />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><?php _e( 'Date Format', 'car-rental' ); ?></th>
+					<td>
+						<fieldset>
+							<?php foreach ( array( 'yy-mm-dd', 'yy-dd-mm', 'mm-dd-yy', 'dd-mm-yy' ) as $format ) { ?>
+								<label><input type="radio" class="bws_option_affect" data-affect-hide="#check_custom_datepicker_format" name="crrntl_datepicker_type" value="<?php echo $format ?>" <?php checked( $this->options['datepicker_type'], $format ); ?>/>&nbsp;<?php echo $format ?></label><br/>
+							<?php } ?>
+							<label><input type="radio" class="bws_option_affect" data-affect-show="#check_custom_datepicker_format" name="crrntl_datepicker_type" value="custom" <?php checked( $this->options['datepicker_type'], 'custom' ); ?> /> <?php _e( 'Custom', 'car-rental' ); ?></label><br/>
+							<label id="check_custom_datepicker_format">
+								<input type="text" id="custom_datepicker_format" name="crrntl_datepicker_custom_format" value="<?php echo $this->options['datepicker_custom_format']; ?>"/><br/>
+								<span class="bws_info"><?php _e( 'You can make your own date format.', 'car-rental' ); ?></span>
+								<a target="_blank" href="http://api.jqueryui.com/datepicker/#utility-formatDate"><?php _e( 'Learn more', 'car-rental' ); ?></a>
+							</label>
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
+					<th><?php _e( 'Recipient of the Order Notification', 'car-rental' );?></th>
+					<td>
+						<fieldset>
+							<label>
+								<input type="checkbox" name="crrntl_send_email_sa" value="1" <?php checked( ! empty( $this->options['send_email_sa'] ) ); ?> />
+								<span><?php _e( 'Administrator', 'car-rental' ); ?></span>
+							</label><br/>
+							<label>
+								<input type="checkbox" name="crrntl_send_email_customer" value="1" <?php checked( ! empty( $this->options['send_email_customer'] ) ); ?> />
+								<span><?php _e( 'Customer', 'car-rental' ); ?></span>
+							</label><br/>
+							<label>
+								<input type="checkbox" name="crrntl_send_email_custom" value="1" <?php checked( ! empty( $this->options['send_email_custom'] ) ); ?> class="bws_option_affect" data-affect-show="#custom_email_list"/>
+								<span><?php _e( 'Custom email list', 'car-rental' ); ?></span></br>
+								<label for="custom_email_area" id="custom_email_list">
+									<textarea id="custom_email_area" name="custom_email_area" cols="30" rows="3"><?php echo implode( ', ', $this->options['custom_email_list'] ); ?></textarea>
+									<span class="bws_info"><?php _e( 'You can enter more than one address. For example: ', 'car-rental' ) ?>example@example.com, example1@example.com</span>
+								</label>
+							</label>
+						</fieldset>
 					</td>
 				</tr>
 				<?php /* Display Captcha and reCAPTCHA settings */

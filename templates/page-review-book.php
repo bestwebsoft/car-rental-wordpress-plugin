@@ -10,10 +10,11 @@ global $crrntl_options, $wpdb, $crrntl_currency, $crrntl_selected_prod_id;
 
 $crrntl_error = $message = $confirm_invalid = $personal_info_error = '';
 
-if ( empty( $crrntl_options ) )
+if ( empty( $crrntl_options ) ) {
 	$crrntl_options = get_option( 'crrntl_options' );
+}
 
-if ( empty( $crrntl_options['custom_currency'] ) || 0 == $crrntl_options['currency_custom_display'] ) {
+if ( empty( $crrntl_options['custom_currency'] ) || empty( $crrntl_options['currency_custom_display'] ) ) {
 	$crrntl_currency = $wpdb->get_var( "SELECT currency_unicode FROM {$wpdb->prefix}crrntl_currency WHERE currency_id = {$crrntl_options['currency_unicode']}" );
 	if ( empty( $crrntl_currency ) ) {
 		$crrntl_currency = '&#36;';
@@ -58,14 +59,18 @@ if ( $crrntl_logged_in ) {
 	$crrntl_current_user  = wp_get_current_user();
 
 	$_SESSION['crrntl_user_id']    = $crrntl_current_user->ID;
-	if ( ! isset( $_POST['crrntl_first_name'] ) && isset( $crrntl_current_user->user_firstname ) )
+	if ( ! isset( $_POST['crrntl_first_name'] ) && isset( $crrntl_current_user->user_firstname ) ) {
 		$_SESSION['crrntl_first_name'] = $crrntl_current_user->user_firstname;
-	if ( ! isset( $_POST['crrntl_last_name'] ) && isset( $crrntl_current_user->user_lastname ) )
+	}
+	if ( ! isset( $_POST['crrntl_last_name'] ) && isset( $crrntl_current_user->user_lastname ) ) {
 		$_SESSION['crrntl_last_name']  = $crrntl_current_user->user_lastname;
-	if ( ! isset( $_POST['crrntl_user_age'] ) && isset( $crrntl_current_user->user_age ) )
+	}
+	if ( ! isset( $_POST['crrntl_user_age'] ) && isset( $crrntl_current_user->user_age ) ) {
 		$_SESSION['crrntl_user_age']   = $crrntl_current_user->user_age;
-	if ( ! isset( $_POST['crrntl_user_phone'] ) && isset( $crrntl_current_user->user_phone ) )
+	}
+	if ( ! isset( $_POST['crrntl_user_phone'] ) && isset( $crrntl_current_user->user_phone ) ) {
 		$_SESSION['crrntl_user_phone'] = $crrntl_current_user->user_phone;
+	}
 }
 
 if ( empty( $crrntl_selected_prod_id ) ) {
@@ -78,37 +83,6 @@ if ( empty( $crrntl_selected_prod_id ) ) {
 
 if ( empty( $_SESSION['crrntl_return_location'] ) ) {
 	$_SESSION['crrntl_return_location'] = ! empty( $_SESSION['crrntl_location'] ) ? $_SESSION['crrntl_location'] : '';
-}
-
-if ( empty( $_SESSION['crrntl_date_from'] ) || empty( $_SESSION['crrntl_time_from'] ) ) {
-	if ( empty( $_SESSION['crrntl_date_from'] ) ) {
-		$crrntl_error .= __( 'Please choose Pick Up date', 'car-rental' ) . '<br />';
-	}
-	if ( empty( $_SESSION['crrntl_time_from'] ) ) {
-		$crrntl_error .= __( 'Please choose Pick Up time', 'car-rental' ) . '<br />';
-	}
-} else {
-	$date_from = strtotime( $_SESSION['crrntl_date_from'] . ' ' . $_SESSION['crrntl_time_from'] );
-	if ( crrntl_check_date_format( $_SESSION['crrntl_date_from'] ) === false ) {
-		$crrntl_error .= __( 'Please choose correct Pick Up datetime in format "YYYY-MM-DD"', 'car-rental' ) . '<br />';
-	} elseif ( $date_from <= time() ) {
-		$crrntl_error .= __( 'Please choose correct Pick Up datetime', 'car-rental' ) . '<br />';
-	}
-}
-if ( empty( $_SESSION['crrntl_date_to'] ) || empty( $_SESSION['crrntl_time_to'] ) ) {
-	if ( empty( $_SESSION['crrntl_date_to'] ) ) {
-		$crrntl_error .= __( 'Please choose Drop Off date', 'car-rental' ) . '<br />';
-	}
-	if ( empty( $_SESSION['crrntl_time_to'] ) ) {
-		$crrntl_error .= __( 'Please choose Drop Off time', 'car-rental' ) . '<br />';
-	}
-} else {
-	$date_to = strtotime( $_SESSION['crrntl_date_to'] . ' ' . $_SESSION['crrntl_time_to'] );
-	if ( crrntl_check_date_format( $_SESSION['crrntl_date_to'] ) === false ) {
-		$crrntl_error .= __( 'Please choose correct Drop Off datetime in format "YYYY-MM-DD"', 'car-rental' ) . '<br />';
-	} elseif ( ( isset( $date_from ) && $date_to <= $date_from ) || $date_to <= time() ) {
-		$crrntl_error .= __( 'Please choose correct Drop Off datetime', 'car-rental' ) . '<br />';
-	}
 }
 
 if ( isset( $_POST['crrntl_form_save_order'] ) && wp_verify_nonce( $_POST['crrntl_nonce_name'], plugin_basename( __FILE__ ) ) ) {
@@ -124,10 +98,10 @@ if ( isset( $_POST['crrntl_form_save_order'] ) && wp_verify_nonce( $_POST['crrnt
 
 	if ( 'outdated' != $recaptcha_status['active'] && $recaptcha_status['enabled'] ) {
 		/* Checking Google Captcha answer */
-		$gglcptch_verified = apply_filters( 'crrntl_check_recaptcha', true );
-		if ( true !== $gglcptch_verified ) {
+		$check_result = apply_filters( 'gglcptch_verify_recaptcha', true, 'string' );
+		if ( true !== $check_result ) {
 			/* the CAPTCHA answer is wrong or there are some other errors */
-			$personal_info_error .= $gglcptch_verified . '<br />';
+			$personal_info_error .= $check_result . '<br />';
 		}
 	}
 
@@ -137,6 +111,13 @@ if ( isset( $_POST['crrntl_form_save_order'] ) && wp_verify_nonce( $_POST['crrnt
 	$userdata['user_age']   = $_SESSION['crrntl_user_age'] = ( isset( $_POST['crrntl_user_age'] ) ) ? $_POST['crrntl_user_age'] : '';
 	$userdata['user_phone'] = $_SESSION['crrntl_user_phone'] = ( isset( $_POST['crrntl_user_phone'] ) ) ? sanitize_text_field( $_POST['crrntl_user_phone'] ) : '';
 
+	$car_info = get_post_meta( $_SESSION['crrntl_selected_product_id'], 'car_info', true );
+	$min_rent_age = ( isset( $car_info['min_age'] ) ) ? $car_info['min_age'] : $crrntl_options['min_age'];
+
+	if ( isset( $_POST['crrntl_user_age'] ) && $_POST['crrntl_user_age'] < $min_rent_age ) {
+		$personal_info_error .= __( 'Inappropriate age to submit the order.', 'car-rental' );
+	}
+	
 	if ( ! $crrntl_logged_in && empty( $personal_info_error ) ) {
 		if ( ! is_email( $_POST['crrntl_user_email'] ) ) {
 			$personal_info_error .= __( 'Please enter correct e-mail address.', 'car-rental' ) . '<br />';
@@ -251,9 +232,13 @@ get_header(); ?>
 													<?php echo $post->post_content; ?>
 												</div><!-- .crrntl-product-details -->
 											<?php }
-											if ( ! empty( $message ) ) {
-												echo '<div class="crrntl-notice-message">' . $message . '</div>';
-											} else { ?>
+											if ( ! empty( $message ) ) { ?>
+												<div class="crrntl-notice-message">
+													<p><?php echo $message; ?></p>
+													<a class="crrntl-from-order-page" href="<?php echo get_home_url(); ?>"><?php _e( 'Home Page', 'car-rental' ); ?></a>
+													<a class="crrntl-from-order-page" href="<?php echo ( ! empty( $crrntl_options['car_page_id'] ) ) ? get_permalink( $crrntl_options['car_page_id'] ) : '' ?>"><?php _e( 'Choose Car', 'car-rental' ); ?></a>
+												</div>
+											<?php } else { ?>
 												<h4><?php _e( 'Personal Information', 'car-rental' ); ?></h4>
 												<div>
 													<?php if ( ! empty( $personal_info_error ) ) {
@@ -271,13 +256,15 @@ get_header(); ?>
 														<div><?php _e( 'Age', 'car-rental' ); ?></div>
 														<div class="crrntl-user-age">
 															<select name="crrntl_user_age" title="<?php _e( 'Choose your age', 'car-rental' ); ?>" required="required">
-																<?php for ( $i = 16; $i <= 100; $i ++ ) {
+																<?php $car_info_book = get_post_meta( $_SESSION['crrntl_selected_product_id'], 'car_info', true );
+																$min_rent_age = ( isset( $car_info_book['min_age'] ) ) ? $car_info_book['min_age'] : $crrntl_options['min_age'];
+																for ( $i = $min_rent_age; $i <= 100; $i ++ ) {
 																	printf(
 																		'<option value="%1$s" %2$s>%1$s</option>',
 																		$i,
 																		selected(
 																			(
-																				( empty( $_SESSION['crrntl_user_age'] ) && 16 == $i ) ||
+																				( empty( $_SESSION['crrntl_user_age'] ) && $min_rent_age == $i ) ||
 																				( ! empty( $_SESSION['crrntl_user_age'] ) && $i == $_SESSION['crrntl_user_age'] )
 																			),
 																			true,
@@ -328,7 +315,7 @@ get_header(); ?>
 													<?php }
 													if ( 'outdated' != $recaptcha_status['active'] && $recaptcha_status['enabled'] ) { ?>
 														<div class="crrntl-recaptcha-field">
-															<?php echo apply_filters( 'crrntl_display_captcha', '' ); ?>
+															<?php echo apply_filters( 'gglcptch_display_recaptcha', '', 'carrental_form' ); ?>
 														</div>
 														<div class="clear"></div>
 													<?php } ?>

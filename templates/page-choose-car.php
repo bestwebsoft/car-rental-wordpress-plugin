@@ -8,10 +8,12 @@
 
 global $crrntl_options, $wpdb, $crrntl_currency, $crrntl_filepath;
 
+$crrntl_error = '';
+
 if ( empty( $crrntl_options ) ) {
 	$crrntl_options = get_option( 'crrntl_options' );
 }
-if ( empty( $crrntl_options['custom_currency'] ) || 0 == $crrntl_options['currency_custom_display'] ) {
+if ( empty( $crrntl_options['custom_currency'] ) || empty( $crrntl_options['currency_custom_display'] ) ) {
 	$crrntl_currency = $wpdb->get_var( "SELECT currency_unicode FROM {$wpdb->prefix}crrntl_currency WHERE currency_id = {$crrntl_options['currency_unicode']}" );
 	if ( empty( $crrntl_currency ) ) {
 		$crrntl_currency = '&#36;';
@@ -20,27 +22,57 @@ if ( empty( $crrntl_options['custom_currency'] ) || 0 == $crrntl_options['curren
 	$crrntl_currency = $crrntl_options['custom_currency'];
 }
 $crrntl_currency_position = $crrntl_options['currency_position'];
-if ( empty( $crrntl_options['custom_unit_consumption'] ) || 0 == $crrntl_options['unit_consumption_custom_display'] ) {
+if ( empty( $crrntl_options['custom_unit_consumption'] ) || empty( $crrntl_options['unit_consumption_custom_display'] ) ) {
 	$unit_consumption = $crrntl_options['unit_consumption'];
 } else {
 	$unit_consumption = $crrntl_options['custom_unit_consumption'];
 }
 $crrntl_plugin_directory = plugins_url( 'car-rental' );
-$crrntl_search_data      = array(
-	'crrntl_location',
-	'crrntl_date_from',
-	'crrntl_time_from',
-	'crrntl_date_to',
-	'crrntl_time_to',
-	'crrntl_select_carclass',
-);
-foreach ( $crrntl_search_data as $one_search_data ) {
-	if ( isset( $_POST[ $one_search_data ] ) ) {
-		$_SESSION[ $one_search_data ] = $_POST[ $one_search_data ];
+
+foreach ( array( 'crrntl_location', 'crrntl_select_carclass' ) as $one_search_data ) {
+	if ( isset( $_POST[$one_search_data] ) ) {
+		$_SESSION[$one_search_data] = $_POST[$one_search_data];
 	}
 }
+
+/* Write the date value as a integer. Check whether the client has the ability to choose the time. */
+$date_format = crrntl_get_date_format();
+
+$crrntl_time_from = ( ! empty( $crrntl_options['time_selecting'] && isset( $_POST['crrntl_time_from'] ) ) ) ? $_POST['crrntl_time_from'] : $crrntl_options['time_from'];
+if ( isset( $_POST['crrntl_date_from'] ) && ! empty( $crrntl_time_from ) ) {
+	if ( crrntl_check_date_format( $_POST['crrntl_date_from'] ) ) {
+		if ( crrntl_get_date_int( $_POST['crrntl_date_from'], $crrntl_time_from ) > time() ) {
+			$_SESSION['crrntl_date_from'] = crrntl_get_date_int( $_POST['crrntl_date_from'], $crrntl_time_from );
+		} else {
+			$crrntl_error .= __( 'Please choose correct Pick Up datetime', 'car-rental' ) . '<br />';
+		}
+	} else {
+		$crrntl_error .= __( 'Please choose correct Pick Up datetime in format ', 'car-rental' ) . '"' . $date_format . '"' . '<br />';
+	}
+}
+
+$crrntl_time_to = ( ! empty( $crrntl_options['time_selecting'] && isset( $_POST['crrntl_time_to'] ) ) ) ? $_POST['crrntl_time_to'] : $crrntl_options['time_from'];
+if ( isset( $_SESSION['crrntl_date_from'] ) && isset( $_POST['crrntl_date_to'] ) && ! empty( $crrntl_time_to ) ) {
+	if ( crrntl_check_date_format( $_POST['crrntl_date_to'] ) ) {
+		if ( crrntl_get_date_int( $_POST['crrntl_date_to'], $crrntl_time_to ) > $_SESSION['crrntl_date_from'] &&
+			crrntl_get_date_int( $_POST['crrntl_date_to'], $crrntl_time_to ) > time() ) {
+			$_SESSION['crrntl_date_to'] = crrntl_get_date_int( $_POST['crrntl_date_to'], $crrntl_time_to );
+		} else {
+			$crrntl_error .= __( 'Please choose correct Drop Off datetime', 'car-rental' ) . '<br />';
+		}
+	} else {
+		$crrntl_error .= __( 'Please choose correct Drop Off datetime in format ', 'car-rental' ) . '"' . $date_format . '"' . '<br />';
+	}
+}
+
+if ( ! empty( $_GET ) ) {
+	if ( empty( $_SESSION['crrntl_date_from'] ) || empty( $_SESSION['crrntl_date_to'] ) ) {
+		$crrntl_error .= __( 'Please choose datetime', 'car-rental' ) . '<br />';
+	}
+}
+
 $required_data_exists = 1;
-if ( empty( $_SESSION['crrntl_date_from'] ) || empty( $_SESSION['crrntl_time_from'] ) || empty( $_SESSION['crrntl_date_to'] ) || empty( $_SESSION['crrntl_time_to'] ) ) {
+if ( empty( $_SESSION['crrntl_date_from'] ) || empty( $_SESSION['crrntl_date_to'] ) ) {
 	$required_data_exists = 0;
 }
 if ( isset( $_POST['crrntl_search_submit'] ) && isset( $_POST['crrntl_checkbox_location'] ) ) {
@@ -78,6 +110,17 @@ get_header(); ?>
 				<div class="crrntl-with-form-search">
 					<?php load_template( $crrntl_filepath . 'car-search-form.php' ); ?>
 					<div class="crrntl-content-area crrntl-wrapper">
+						<?php if ( ! empty( $crrntl_error ) ) { ?>
+							<div class="crrntl-site-content">
+								<article class="crrntl-review clearfix">
+									<div class="crrntl-choose-car-message">
+										<span>
+											<?php echo $crrntl_error; ?>
+										</span>
+									</div>
+								</article>
+							</div>
+						<?php } ?>
 						<main id="content" class="crrntl-site-content">
 							<?php /* WP_Query arguments */
 							if ( get_query_var( 'paged' ) ) {
@@ -320,7 +363,6 @@ get_header(); ?>
 									</div>
 								</article>
 							<?php } ?>
-
 							<div class="clear"></div>
 						</main><!-- #content -->
 						<div class="clear"></div>

@@ -198,14 +198,6 @@
 			}
 		} );
 
-		$( 'input[name="crrntl_time_selecting"]' ).change( function() {
-			if ( $( this ).is( ':checked' ) ) {
-				$( 'select[name="crrntl_time_from"]' ).hide();
-			} else {
-				$( 'select[name="crrntl_time_from"]' ).show();
-			}
-		} ).trigger( 'change' );
-
 		/* hide/show custom currency field */
 		$( 'select[name="crrntl_currency"]' ).on( 'change', function() {
 			if ( 'custom' == $( this ).val() ) {
@@ -225,7 +217,7 @@
 		} ).trigger( 'change' );
 
 		$( '#crrntl-pac-input-js' ).on( 'input change', function() {
-			$( '#crrntl-choose-car-location-js' ).val('new');
+			$( '#crrntl-choose-car-location-js' ).val( 'new' );
 		} );
 
 		/* Show/hide quantity of extra on the 'Edit order' page */
@@ -238,6 +230,5 @@
 				extraQuantity.hide();
 			}
 		} ).trigger( 'change' );
-
 	} );
 } )( jQuery );

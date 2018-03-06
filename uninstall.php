@@ -1,6 +1,7 @@
 <?php /* If uninstall is not called from WordPress, exit */
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit();
+}
 
 if ( ! function_exists( 'crrntl_plugin_delete' ) ) {
 	function crrntl_plugin_delete() {
@@ -11,11 +12,13 @@ if ( ! function_exists( 'crrntl_plugin_delete' ) ) {
 		}
 
 		/* Deactivating plugin if it is active */
-		if ( ! function_exists( 'deactivate_plugins' ) )
+		if ( ! function_exists( 'deactivate_plugins' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
 
-		if ( is_plugin_active( 'car-rental/car-rental.php' ) )
+		if ( is_plugin_active( 'car-rental/car-rental.php' ) ) {
 			deactivate_plugins( 'car-rental/car-rental.php' );
+		}
 
 		$all_plugins = get_plugins();
 		if ( ! array_key_exists( 'car-rental-pro/car-rental-pro.php', $all_plugins ) ) {

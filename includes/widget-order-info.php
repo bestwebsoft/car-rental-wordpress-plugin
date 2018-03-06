@@ -20,7 +20,7 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 			parent::__construct(
 				'car-rental-order-info',
 				__( 'Car Rental Order Info', 'car-rental' ),
-				array( 'description' => __( 'Widget for displaying Order Info.', 'car-rental' ) )
+				array( 'description' => __( 'Widget for Order Info displaying.', 'car-rental' ) )
 			);
 		}
 
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 			if ( empty( $crrntl_options ) ) {
 				$crrntl_options = get_option( 'crrntl_options' );
 			}
-			if ( empty( $crrntl_options['custom_currency'] ) || 0 == $crrntl_options['currency_custom_display'] ) {
+			if ( empty( $crrntl_options['custom_currency'] ) || empty( $crrntl_options['currency_custom_display'] ) ) {
 				$crrntl_currency = $wpdb->get_var( "SELECT currency_unicode FROM {$wpdb->prefix}crrntl_currency WHERE currency_id = {$crrntl_options['currency_unicode']}" );
 				if ( empty( $crrntl_currency ) ) {
 					$crrntl_currency = '&#36;';
@@ -46,7 +46,7 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 				$crrntl_currency = $crrntl_options['custom_currency'];
 			}
 			$crrntl_currency_position = $crrntl_options['currency_position'];
-			if ( empty( $crrntl_options['custom_unit_consumption'] ) || 0 == $crrntl_options['unit_consumption_custom_display'] ) {
+			if ( empty( $crrntl_options['custom_unit_consumption'] ) || empty( $crrntl_options['unit_consumption_custom_display'] ) ) {
 				$unit_consumption = $crrntl_options['unit_consumption'];
 			} else {
 				$unit_consumption = $crrntl_options['custom_unit_consumption'];
@@ -79,15 +79,15 @@ if ( ! class_exists( 'Car_Rental_Order_Info_Widget' ) ) {
 			$crrntl_pickup = '<span class="crrntl-error-message">' . __( 'Please choose Pick Up date', 'car-rental' ) . '</span>';
 			$crrntl_dropoff = '<span class="crrntl-error-message">' . __( 'Please choose Drop Off date', 'car-rental' ) . '</span>';
 			if ( ! empty( $_SESSION['crrntl_date_from'] ) ) {
-				$date_from = strtotime( $_SESSION['crrntl_date_from'] . ' ' . $_SESSION['crrntl_time_from'] );
+				$date_from = $_SESSION['crrntl_date_from'];
 				if ( $date_from > time() ) {
 					$crrntl_pickup = date_i18n( 'D, d M, Y ', $date_from ) . __( 'at', 'car-rental' ) . date_i18n( ' H:i', $date_from );
 					if ( ! empty( $_SESSION['crrntl_date_to'] ) ) {
-						$date_to = strtotime( $_SESSION['crrntl_date_to'] . ' ' . $_SESSION['crrntl_time_to'] );
+						$date_to = $_SESSION['crrntl_date_to'];
 						if ( $date_to > $date_from ) {
 							$crrntl_dropoff = date_i18n( 'D, d M, Y ', $date_to ) . __( 'at', 'car-rental' ) . date_i18n( ' H:i', $date_to );
 							if ( ! empty( $date_from ) && ! empty( $date_to ) ) {
-								$diff_time = ( 'hour' == $crrntl_options['rent_per'] ) ? ceil( ( $date_to - $date_from ) / 3600 ) : ceil( ( $date_to - $date_from ) / 86400 );
+								$diff_time = ( 'hour' == $crrntl_options['rent_per'] ) ? ceil( ( $date_to - $date_from ) / HOUR_IN_SECONDS ) : ceil( ( $date_to - $date_from ) / DAY_IN_SECONDS );
 							}
 						}
 					}

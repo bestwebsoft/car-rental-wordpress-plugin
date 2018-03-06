@@ -49,7 +49,7 @@ if ( ! function_exists( 'crrntl_slider_settings' ) ) {
 		$theme = wp_get_theme();
 
 		if ( ! get_option( 'crrntl_slider_options' ) ) {
-			if ( 'Renty' == $theme['Name'] ) {
+			if ( $theme['Name'] == 'Renty' ) {
 				$slider_options = get_option( 'renty_slider_options' );
 				add_option( 'crrntl_slider_options', $slider_options );
 			} else {
@@ -310,8 +310,9 @@ if ( ! function_exists( 'crrntl_slider_template' ) ) {
 			$display_on_mobile = ! empty( $renty_options['mobile_slider_is_enabled'] );
 		}
 
-		if ( empty( $crrntl_slider_options ) )
+		if ( empty( $crrntl_slider_options ) ) {
 			$crrntl_slider_options = get_option( 'crrntl_slider_options' );
+		}
 
 		if (
 			(

@@ -16,10 +16,10 @@ $bws_plugins_category = array(
 );
 
 $bws_plugins = array(
-	'captcha/captcha.php' => array(
+	'captcha-bws/captcha-bws.php' => array(
 		'category'		=> array( 'security', 'recommended' ),
 		'name'			=> 'Captcha',
-		'description'	=> __( 'Protect WordPress website forms from spam entries by means of math logic.', 'bestwebsoft' ),
+		'description'	=> __( 'Best secure captcha plugin to protect your WordPress forms.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=d678516c0990e781edfb6a6c874f0b8a&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'settings'		=> 'admin.php?page=captcha.php',
 		'pro_version'	=> 'captcha-pro/captcha_pro.php',

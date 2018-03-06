@@ -7,12 +7,13 @@
 
 if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 	class Bws_Settings_Tabs {
-		private $tabs;		
-		private $plugin_basename;
-		private $prefix;
+		private $tabs;
 		private $pro_plugin_is_activated = false;
 		private $custom_code_args = array();
-		private $wp_slug;
+
+		public $plugin_basename;
+		public $prefix;
+		public $wp_slug;
 				
 		public $options;
 		public $default_options;
@@ -128,7 +129,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						<div id="post-body" class="metabox-holder columns-2">
 							<div id="post-body-content" style="position: relative;">
 								<?php $this->display_tabs(); ?>					
-							</div><!-- /post-body-content -->
+							</div><!-- #post-body-content -->
 							<div id="postbox-container-1" class="postbox-container">
 								<div class="meta-box-sortables ui-sortable">
 									<div id="submitdiv" class="postbox">
@@ -153,7 +154,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 																		$daysleft = floor( ( $finish - $today ) / ( 60*60*24 ) );
 																		$license_status = sprintf( __( '%s day(-s) left', 'bestwebsoft' ), $daysleft );
 																	}
-																	$license_status .= '. <a target="_blank" href="' . $this->plugins_info['PluginURI'] . '">' . __( 'Upgrade to Pro', 'bestwebsoft' ) . '</a>';							 		
+																	$license_status .= '. <a target="_blank" href="' . esc_url( $this->plugins_info['PluginURI'] ) . '">' . __( 'Upgrade to Pro', 'bestwebsoft' ) . '</a>';							 		
 																} else {
 																	$license_type = isset( $bstwbsftwppdtplgns_options['nonprofit'][ $this->plugin_basename ] ) ? 'Nonprofit Pro' : 'Pro';
 																	if ( $finish < $today ) {
@@ -260,9 +261,11 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 			foreach ( $this->tabs as $tab_slug => $data ) { 
 				if ( ! empty( $data['is_pro'] ) && $this->hide_pro_tabs )
 					continue; ?>
-				<div class="bws_tab ui-tabs-panel ui-widget-content ui-corner-bottom" id="<?php echo $this->prefix . '_' . $tab_slug; ?>_tab" aria-labelledby="ui-id-2" role="tabpanel" aria-hidden="false" style="display: block;">					
-					<?php if ( method_exists( $this, 'tab_' . str_replace( '-', '_', $tab_slug ) ) ) {
-						call_user_func( array( $this, 'tab_' . str_replace( '-', '_', $tab_slug ) ) );
+				<div class="bws_tab ui-tabs-panel ui-widget-content ui-corner-bottom" id="<?php echo esc_attr( $this->prefix . '_' . $tab_slug . '_tab' ); ?>" aria-labelledby="ui-id-2" role="tabpanel" aria-hidden="false" style="display: block;">					
+					<?php $tab_slug = str_replace( '-', '_', $tab_slug );
+					if ( method_exists( $this, 'tab_' . $tab_slug ) ) {
+						call_user_func( array( $this, 'tab_' . $tab_slug ) );
+						do_action_ref_array( __CLASS__ . '_after_tab_' . $tab_slug, array( &$this ) );
 					} ?>
 				</div>
 			<?php }
@@ -397,7 +400,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						
 				if ( file_exists( $real_file ) ) {
 					update_recently_edited( $real_file );
-					$this->custom_code_args["content_{$extension}"] = esc_textarea( file_get_contents( $real_file ) );
+					$this->custom_code_args["content_{$extension}"] = file_get_contents( $real_file );
 					if ( ( $this->is_multisite && isset( $bstwbsftwppdtplgns_options['custom_code'][ $this->custom_code_args['blog_id'] ][ $file ] ) ) ||
 						( ! $this->is_multisite && isset( $bstwbsftwppdtplgns_options['custom_code'][ $file ] ) ) ) {
 						$this->custom_code_args["is_{$extension}_active"] = true;
@@ -429,7 +432,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 				'css' => array( 'description' 	=> __( 'These styles will be added to the header on all pages of your site.', 'bestwebsoft' ),
 							'learn_more_link'	=> 'https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started' 
 						), 
-				'php' => array( 'description' 	=> sprintf( __( 'This PHP code will be hooked to the %s action and will be printed on front end only.', 'bestwebsoft' ), '<a href="http://codex.wordpress.org/Plugin_API/Action_Reference/init" target="_blank"><code>init</code></a>' ),
+				'php' => array( 'description' 	=> sprintf( __( 'This PHP code will be hooked to the %s action and will be printed on front end only.', 'bestwebsoft' ), '<a href="https://codex.wordpress.org/Plugin_API/Action_Reference/init" target="_blank"><code>init</code></a>' ),
 							'learn_more_link'	=> 'http://php.net/' 
 						),  
 				'js' => array( 'description' 	=> __( 'These code will be added to the header on all pages of your site.', 'bestwebsoft' ),
@@ -453,14 +456,16 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						echo '(' . __( 'Browsing', 'bestwebsoft' ) . ')'; ?>
 				</big></p>
 				<p class="bws_info">
-					<input type="checkbox" name="bws_custom_<?php echo $extension; ?>_active" value="1" <?php if ( $this->custom_code_args["is_{$extension}_active"] ) echo "checked"; ?> /> 
-					<?php printf( __( 'Activate custom %s code.', 'bestwebsoft' ), $name ); ?>
+					<label>
+						<input type="checkbox" name="bws_custom_<?php echo $extension; ?>_active" value="1" <?php if ( $this->custom_code_args["is_{$extension}_active"] ) echo "checked"; ?> /> 
+						<?php printf( __( 'Activate custom %s code.', 'bestwebsoft' ), $name ); ?>
+					</label>
 				</p>
-				<textarea cols="70" rows="25" name="bws_newcontent_<?php echo $extension; ?>" id="bws_newcontent_<?php echo $extension; ?>"><?php if ( isset( $this->custom_code_args["content_{$extension}"] ) ) echo $this->custom_code_args["content_{$extension}"]; ?></textarea>
+				<textarea cols="70" rows="25" name="bws_newcontent_<?php echo $extension; ?>" id="bws_newcontent_<?php echo $extension; ?>"><?php if ( isset( $this->custom_code_args["content_{$extension}"] ) ) echo esc_textarea( $this->custom_code_args["content_{$extension}"] ); ?></textarea>
 				<p class="bws_info">
 					<?php echo $extension_data['description']; ?>
 					<br>
-					<a href="<?php echo $extension_data['learn_more_link']; ?>" target="_blank">
+					<a href="<?php echo esc_url( $extension_data['learn_more_link'] ); ?>" target="_blank">
 						<?php printf( __( 'Learn more about %s', 'bestwebsoft' ), $name ); ?>
 					</a>
 				</p>
@@ -483,6 +488,8 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 				if ( isset( $_POST["bws_newcontent_{$extension}"] ) &&
 					$this->custom_code_args["{$extension}_writeable"] ) {
 					$newcontent = trim( wp_unslash( $_POST["bws_newcontent_{$extension}"] ) );
+					if ( 'css' == $extension )
+						$newcontent = wp_kses( $newcontent, 'strip' );
 
 					if ( ! empty( $newcontent ) && isset( $_POST["bws_custom_{$extension}_active"] ) ) {
 						$this->custom_code_args["is_{$extension}_active"] = true;
@@ -544,16 +551,20 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						<tr>
 							<th scope="row"><?php _e( 'Pro Options', 'bestwebsoft' ); ?></th>
 							<td>
-								<input <?php echo $this->change_permission_attr; ?> name="bws_hide_premium_options_submit" type="checkbox" value="1" <?php if ( ! $this->hide_pro_tabs ) echo 'checked="checked "'; ?> /> 
-								<span class="bws_info"><?php _e( 'Enable to display plugin Pro options.', 'bestwebsoft' ); ?></span>
+								<label>
+									<input <?php echo $this->change_permission_attr; ?> name="bws_hide_premium_options_submit" type="checkbox" value="1" <?php if ( ! $this->hide_pro_tabs ) echo 'checked="checked "'; ?> /> 
+									<span class="bws_info"><?php _e( 'Enable to display plugin Pro options.', 'bestwebsoft' ); ?></span>
+								</label>
 							</td>
 						</tr>
 					<?php } ?>
 					<tr>
 						<th scope="row"><?php _e( 'Track Usage', 'bestwebsoft' ); ?></th>
 						<td>
-							<input <?php echo $this->change_permission_attr; ?> name="bws_track_usage" type="checkbox" value="1" <?php if ( ! empty( $bstwbsftwppdtplgns_options['track_usage']['products'][ $this->plugin_basename ] ) ) echo 'checked="checked "'; ?>/> 
-							<span class="bws_info"><?php _e( 'Enable to allow tracking plugin usage anonymously in order to make it better.', 'bestwebsoft' ); ?></span>
+							<label>
+								<input <?php echo $this->change_permission_attr; ?> name="bws_track_usage" type="checkbox" value="1" <?php if ( ! empty( $bstwbsftwppdtplgns_options['track_usage']['products'][ $this->plugin_basename ] ) ) echo 'checked="checked "'; ?>/> 
+								<span class="bws_info"><?php _e( 'Enable to allow tracking plugin usage anonymously in order to make it better.', 'bestwebsoft' ); ?></span>
+							</label>
 						</td>
 					</tr>
 					<tr>
@@ -692,7 +703,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 			<?php $this->help_phrase(); ?>
 			<hr>
 			<?php if ( ! empty( $this->pro_page ) ) {
-				$bws_license_key = ( isset( $_POST['bws_license_key'] ) ) ? stripslashes( esc_html( trim( $_POST['bws_license_key'] ) ) ) : "";
+				$bws_license_key = ( isset( $_POST['bws_license_key'] ) ) ? stripslashes( sanitize_text_field( $_POST['bws_license_key'] ) ) : "";
 
 				if ( $this->pro_plugin_is_activated ) { 
 					deactivate_plugins( $this->plugin_basename ); ?>
@@ -702,7 +713,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 							function bws_set_timeout() {
 								i--;
 								if ( 0 == i ) {
-									window.location.href = '<?php echo $this->pro_page; ?>';
+									window.location.href = '<?php echo esc_url( self_admin_url( $this->pro_page ) ); ?>';
 								} else {
 									$( '#bws_timeout_counter' ).text( i );
 									window.setTimeout( bws_set_timeout, 1000 );
@@ -712,7 +723,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						})(jQuery);
 					</script>
 					<p><strong><?php _e( 'Congratulations! Pro license is activated successfully.', 'bestwebsoft' ); ?></strong></p>
-					<p><?php printf( __( 'You will be automatically redirected to the %s in %s seconds.', 'bestwebsoft' ), '<a href="' . $this->pro_page . '">' . __( 'Settings page', 'bestwebsoft' ) . '</a>', '<span id="bws_timeout_counter">7</span>' ); ?></p>
+					<p><?php printf( __( 'You will be automatically redirected to the %s in %s seconds.', 'bestwebsoft' ), '<a href="' . esc_url( self_admin_url( $this->pro_page ) ) . '">' . __( 'Settings page', 'bestwebsoft' ) . '</a>', '<span id="bws_timeout_counter">7</span>' ); ?></p>
 				<?php } else { 			
 					$attr = '';
 					if ( isset( $bstwbsftwppdtplgns_options['go_pro'][ $this->bws_license_plugin ]['count'] ) &&
@@ -723,17 +734,17 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 						<tr>
 							<th scope="row"><?php _e( 'License Key', 'bestwebsoft' ); ?></th>
 							<td>
-								<input <?php echo $attr; ?> type="text" name="bws_license_key" value="<?php echo $bws_license_key; ?>" />
-								<input <?php echo $attr; ?> type="hidden" name="bws_license_plugin" value="<?php echo $this->bws_license_plugin; ?>" />
+								<input <?php echo $attr; ?> type="text" name="bws_license_key" value="<?php echo esc_attr( $bws_license_key ); ?>" />
+								<input <?php echo $attr; ?> type="hidden" name="bws_license_plugin" value="<?php echo esc_attr( $this->bws_license_plugin ); ?>" />
 								<input <?php echo $attr; ?> type="submit" class="button button-secondary" name="bws_license_submit" value="<?php _e( 'Activate', 'bestwebsoft' ); ?>" />
 								<div class="bws_info">
-									<?php printf( __( 'Enter your license key to activate %s and get premium plugin features.', 'bestwebsoft' ), '<a href="' . $this->plugins_info['PluginURI'] . '?k=' . $this->link_key . '&pn=' . $this->link_pn . '&v=' . $this->plugins_info["Version"] . '&wp_v=' . $wp_version . '" target="_blank" title="' . $this->plugins_info["Name"] . ' Pro">' . $this->plugins_info["Name"] . ' Pro</a>' ); ?>
+									<?php printf( __( 'Enter your license key to activate %s and get premium plugin features.', 'bestwebsoft' ), '<a href="' . esc_url( $this->plugins_info['PluginURI'] . '?k=' . $this->link_key . '&pn=' . $this->link_pn . '&v=' . $this->plugins_info["Version"] . '&wp_v=' . $wp_version ) . '" target="_blank" title="' . $this->plugins_info["Name"] . ' Pro">' . $this->plugins_info["Name"] . ' Pro</a>' ); ?>
 								</div>
 								<?php if ( '' != $attr ) { ?>
 									<p><?php _e( "Unfortunately, you have exceeded the number of available tries per day. Please, upload the plugin manually.", 'bestwebsoft' ); ?></p>
 								<?php }
 								if ( $this->trial_days !== false )
-									echo '<p>' . __( 'or', 'bestwebsoft' ) . ' <a href="' . $this->plugins_info['PluginURI'] . 'trial/?k=' . $this->link_key . '&pn=' . $this->link_pn . '&v=' . $this->plugins_info["Version"] . '&wp_v=' . $wp_version . '" target="_blank">' . sprintf( __( 'Start Your Free %s-Day Trial Now', 'bestwebsoft' ), $this->trial_days ) . '</a></p>'; ?>
+									echo '<p>' . __( 'or', 'bestwebsoft' ) . ' <a href="' . esc_url( $this->plugins_info['PluginURI'] . 'trial/?k=' . $this->link_key . '&pn=' . $this->link_pn . '&v=' . $this->plugins_info["Version"] . '&wp_v=' . $wp_version ) . '" target="_blank">' . sprintf( __( 'Start Your Free %s-Day Trial Now', 'bestwebsoft' ), $this->trial_days ) . '</a></p>'; ?>
 							</td>
 						</tr>
 					</table>
@@ -745,7 +756,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 					<tr>
 						<th scope="row"><?php _e( 'License Key', 'bestwebsoft' ); ?></th>
 						<td>
-							<input type="text" maxlength="100" name="bws_license_key" value="<?php echo $license_key; ?>" />
+							<input type="text" maxlength="100" name="bws_license_key" value="<?php echo esc_attr( $license_key ); ?>" />
 							<input type="submit" class="button button-secondary" name="bws_license_submit" value="<?php _e( 'Check license key', 'bestwebsoft' ); ?>" />
 							<div class="bws_info">
 								<?php _e( 'If necessary, you can check if the license key is correct or reenter it in the field below.', 'bestwebsoft' ); ?>
@@ -774,7 +785,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 		private function save_options_license_key() {
 			global $wp_version, $bstwbsftwppdtplgns_options;
 
-			$bws_license_key = ( isset( $_POST['bws_license_key'] ) ) ? stripslashes( esc_html( trim( $_POST['bws_license_key'] ) ) ) : '';
+			$bws_license_key = ( isset( $_POST['bws_license_key'] ) ) ? stripslashes( sanitize_text_field( $_POST['bws_license_key'] ) ) : '';
 			
 			if ( '' != $bws_license_key ) {
 				if ( strlen( $bws_license_key ) != 18 ) {
@@ -831,7 +842,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 													$message .= ' ' . __( 'Your license will expire on', 'bestwebsoft' ) . ' ' . $single_response->time_out . '.';
 
 												if ( isset( $single_response->trial ) && $this->is_trial )
-													$message .= ' ' . sprintf( __( 'In order to continue using the plugin it is necessary to buy a %s license.', 'bestwebsoft' ), '<a href="' . $this->plugins_info['PluginURI'] . '?k=' . $this->link_key . '&pn=' . $this->link_pn . '&v=' . $this->plugins_info["Version"] . '&wp_v=' . $wp_version . '" target="_blank" title="' . $this->plugins_info["Name"] . '">Pro</a>' );
+													$message .= ' ' . sprintf( __( 'In order to continue using the plugin it is necessary to buy a %s license.', 'bestwebsoft' ), '<a href="' . esc_url( $this->plugins_info['PluginURI'] . '?k=' . $this->link_key . '&pn=' . $this->link_pn . '&v=' . $this->plugins_info["Version"] . '&wp_v=' . $wp_version ) . '" target="_blank" title="' . $this->plugins_info["Name"] . '">Pro</a>' );
 											}
 
 											if ( isset( $single_response->trial ) ) {
@@ -878,7 +889,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 					/* Go Pro */
 					} else {
 
-						$bws_license_plugin = stripslashes( esc_html( $_POST['bws_license_plugin'] ) );
+						$bws_license_plugin = stripslashes( sanitize_text_field( $_POST['bws_license_plugin'] ) );
 						if ( isset( $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] ) && $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['time'] > ( time() - (24 * 60 * 60) ) ) {
 							$bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] = $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] + 1;
 						} else {
@@ -919,7 +930,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 											} elseif ( "you_are_banned" == $single_response->package ) {
 												$error = __( "Unfortunately, you have exceeded the number of available tries per day. Please, upload the plugin manually.", 'bestwebsoft' );
 											} elseif ( "time_out" == $single_response->package ) {
-												$error = sprintf( __( "Unfortunately, Your license has expired. To continue getting top-priority support and plugin updates, you should extend it in your %s", 'bestwebsoft' ), ' <a href="https://bestwebsoft.com/client-area">Client Area</a>' );
+												$error = sprintf( __( "Unfortunately, Your license has expired. To continue getting top-priority support and plugin updates, you should extend it in your %s.", 'bestwebsoft' ), ' <a href="https://bestwebsoft.com/client-area">Client Area</a>' );
 											} elseif ( "duplicate_domen_for_trial" == $single_response->package ) {
 												$error = __( "Unfortunately, the Pro licence was already installed to this domain. The Pro Trial license can be installed only once.", 'bestwebsoft' );
 											}
@@ -945,7 +956,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 											}
 
 											if ( ! $received_content ) {
-												$error = __( "Failed to download the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
+												$error = __( "Failed to download the zip archive. Please, upload the plugin manually.", 'bestwebsoft' );
 											} else {
 												if ( is_writable( $this->upload_dir["path"] ) ) {
 													$file_put_contents = $this->upload_dir["path"] . "/" . $zip_name[0] . ".zip";
@@ -957,20 +968,20 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 																$zip->extractTo( WP_PLUGIN_DIR );
 																$zip->close();
 															} else {
-																$error = __( "Failed to open the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
+																$error = __( "Failed to open the zip archive. Please, upload the plugin manually.", 'bestwebsoft' );
 															}
 														} elseif ( class_exists( 'Phar' ) ) {
 															$phar = new PharData( $file_put_contents );
 															$phar->extractTo( WP_PLUGIN_DIR );
 														} else {
-															$error = __( "Your server does not support either ZipArchive or Phar. Please, upload the plugin manually", 'bestwebsoft' );
+															$error = __( "Your server does not support either ZipArchive or Phar. Please, upload the plugin manually.", 'bestwebsoft' );
 														}
 														@unlink( $file_put_contents );
 													} else {
-														$error = __( "Failed to download the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
+														$error = __( "Failed to download the zip archive. Please, upload the plugin manually.", 'bestwebsoft' );
 													}
 												} else {
-													$error = __( "UploadDir is not writable. Please, upload the plugin manually", 'bestwebsoft' );
+													$error = __( "UploadDir is not writable. Please, upload the plugin manually.", 'bestwebsoft' );
 												}
 											}
 
@@ -989,7 +1000,7 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 												}
 												$this->pro_plugin_is_activated = true;
 											} elseif ( empty( $error ) ) {
-												$error = __( "Failed to download the zip archive. Please, upload the plugin manually", 'bestwebsoft' );
+												$error = __( "Failed to download the zip archive. Please, upload the plugin manually.", 'bestwebsoft' );
 											}
 										}
 									} else {
@@ -1042,22 +1053,22 @@ if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 		public function help_phrase() {
 			echo '<div class="bws_tab_description">' . __( 'Need Help?', 'bestwebsoft' ) . ' ';
 			if ( '' != $this->doc_link )
-				echo '<a href="' . $this->doc_link . '" target="_blank">' . __( 'Read the Instruction', 'bestwebsoft' );
+				echo '<a href="' . esc_url( $this->doc_link ) . '" target="_blank">' . __( 'Read the Instruction', 'bestwebsoft' );
 			else
 				echo '<a href="https://support.bestwebsoft.com/hc/en-us/" target="_blank">' . __( 'Visit Help Center', 'bestwebsoft' );
 			if ( '' != $this->doc_video_link )
-				echo '</a>' . ' ' . __( 'or', 'bestwebsoft' ) . ' ' . '<a href="' . $this->doc_video_link . '" target="_blank">' . __( 'Watch the Video', 'bestwebsoft' );
+				echo '</a>' . ' ' . __( 'or', 'bestwebsoft' ) . ' ' . '<a href="' . esc_url( $this->doc_video_link ) . '" target="_blank">' . __( 'Watch the Video', 'bestwebsoft' );
 			echo '</a></div>';
 		}
 
 		public function bws_pro_block_links() { 
 			global $wp_version; ?>
 			<div class="bws_pro_version_tooltip">							
-				<a class="bws_button" href="<?php echo $this->plugins_info['PluginURI']; ?>?k=<?php echo $this->link_key; ?>&amp;pn=<?php echo $this->link_pn; ?>&amp;v=<?php echo $this->plugins_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php echo $this->plugins_info["Name"]; ?>"><?php _e( 'Upgrade to Pro', 'bestwebsoft' ); ?></a>
+				<a class="bws_button" href="<?php echo esc_url( $this->plugins_info['PluginURI'] ); ?>?k=<?php echo $this->link_key; ?>&amp;pn=<?php echo $this->link_pn; ?>&amp;v=<?php echo $this->plugins_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php echo $this->plugins_info["Name"]; ?>"><?php _e( 'Upgrade to Pro', 'bestwebsoft' ); ?></a>
 				<?php if ( $this->trial_days !== false ) { ?>
 					<span class="bws_trial_info">
 						<?php _e( 'or', 'bestwebsoft' ); ?> 
-						<a href="<?php echo $this->plugins_info['PluginURI']; ?>?k=<?php echo $this->link_key; ?>&amp;pn=<?php echo $this->link_pn; ?>&amp;v=<?php echo $this->plugins_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php echo $this->plugins_info["Name"]; ?>"><?php _e( 'Start Your Free Trial', 'bestwebsoft' ); ?></a>
+						<a href="<?php echo esc_url( $this->plugins_info['PluginURI'] . '?k=' . $this->link_key . '&pn=' . $this->link_pn . '&v=' . $this->plugins_info["Version"] . '&wp_v=' . $wp_version ); ?>" target="_blank" title="<?php echo $this->plugins_info["Name"]; ?>"><?php _e( 'Start Your Free Trial', 'bestwebsoft' ); ?></a>
 					</span>
 				<?php } ?>
 				<div class="clear"></div>

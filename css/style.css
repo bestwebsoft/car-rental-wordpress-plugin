@@ -102,7 +102,6 @@ a.crrntl-progress-bar-step:hover {
 	padding: 1% 0 0;
 	width: 32.1%;
 	word-wrap: break-word;
-	word-break: break-word;
 }
 
 .rtl .crrntl-sidebar-info {
@@ -231,6 +230,10 @@ a.crrntl-progress-bar-step:hover {
 .crrntl-filter label {
 	padding: 0;
 	display: inline-block;
+}
+
+.rtl .crrntl-filter label {
+	padding: 0 10px 0 0;
 }
 
 .crrntl-filter-quantity {
@@ -469,15 +472,6 @@ a.crrntl-progress-bar-step:hover {
 	background-color: #fff;
 }
 
-/* Fix for Twenty Sixteen WordPress theme */
-.page-template-page-choose-car.crrntl_twentysixteen #page,
-.page-template-page-choose-extras.crrntl_twentysixteen #page,
-.page-template-page-review-book.crrntl_twentysixteen #page {
-	min-width: -moz-calc(960px + 9.091%);
-	min-width: -webkit-calc(960px + 9.091%);
-	min-width: calc(960px + 9.091%);
-}
-
 /* Fix for Twenty Twelve WordPres Theme */
 .crrntl-content-area .crrntl-site-content article {
 	margin-bottom: 0;
@@ -663,7 +657,6 @@ a.crrntl-progress-bar-step:hover {
 	box-sizing: border-box;
 	padding: 10px 20px 10px 15px;
 	word-wrap: break-word;
-	word-break: break-word;
 }
 
 .crrntl-product-title h3 {
@@ -910,6 +903,23 @@ input.crrntl-blue-button:hover {
 .crrntl-notice-message {
 	color: #378eef;
 	font-weight: 700;
+}
+
+.crrntl-from-order-page {
+	display: inline-block;
+	padding: 10px;
+	background: #f08743;
+	color: #fff !important;
+	border: 1px solid #cc692f !important;
+	border-radius: 5px;
+	margin: 10px;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.crrntl-from-order-page:hover {
+	background: #ec702f;
+	text-decoration: none;
 }
 
 /***** Pagination for pages *****/
@@ -1536,7 +1546,7 @@ input[type="button"].crrntl-continue-button:focus {
 	.blog .crrntl-form-block.crrntl-pick-up,
 	.page .crrntl-form-block.crrntl-pick-up,
 	.rtl.blog .crrntl-form-block.crrntl-drop-off,
-	.rtl.page .crrntl-form-block.crrntl-drop-off, {
+	.rtl.page .crrntl-form-block.crrntl-drop-off {
 		margin-right: 1%;
 		margin-left: 0;
 	}

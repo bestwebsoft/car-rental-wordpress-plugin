@@ -23,6 +23,8 @@
 </ul>
 </li>
 <li>Manage orders</li>
+<li>Set working hours [NEW]</li>
+<li>Customize minimum rental age [NEW]</li>
 <li>Add slider with unlimited slides including:
 <ul>
 <li>Image</li>
@@ -114,6 +116,7 @@
 <ul>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9" rel="nofollow">Captcha</a></li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135" rel="nofollow">Subscriber</a></li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/google-captcha/" rel="nofollow">Google Captcha (reCAPTCHA)</a> [NEW]</li>
 </ul>
 </li>
 <li>Install/Delete demo data</li>
@@ -152,5 +155,6 @@
 <ul>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9" rel="nofollow">Captcha</a> &#8211; #1 super security anti-spam captcha plugin for WordPress forms.</li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135" rel="nofollow">Subscriber</a> &#8211; Add email newsletter sign up form to WordPress posts, pages, and widgets. Collect data and subscribe your user.</li>
+<li><a href="http://bestwebsoft.com/products/google-captcha/" rel="nofollow">Google Captcha (reCAPTCHA)</a> – Protect WordPress website forms from spam entries with Google reCAPTCHA.</li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=0f949d8b3b87e3f7d52f08b79cb230a1" rel="nofollow">Updater</a> &#8211; Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.</li>
 </ul>

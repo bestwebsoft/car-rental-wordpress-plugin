@@ -15,9 +15,9 @@ if ( ! class_exists( 'Crrntl_List_Table' ) ) {
 		/* conctructor */
 		function __construct() {
 			parent::__construct( array(
-				'singular' => __( 'order', 'car-rental' ), /* singular name of the listed records */
-				'plural'   => __( 'orders', 'car-rental' ), /* plural name of the listed records */
-				'ajax'     => true, /* does this table support ajax? */
+				'singular'	=> __( 'order', 'car-rental' ), /* singular name of the listed records */
+				'plural'	=> __( 'orders', 'car-rental' ), /* plural name of the listed records */
+				'ajax'		=> true, /* does this table support ajax? */
 			) );
 		}
 
@@ -342,7 +342,7 @@ if ( ! function_exists( 'crrntl_actions' ) ) {
 					);
 				}
 				if ( ( isset( $result1 ) && false === $result1 ) || ( isset( $result2 ) && false === $result2 ) ) {
-					$message_value['error'] = __( 'An error occurred during the deleting orders', 'car-rental' );
+					$message_value['error'] = __( 'An error occurred during the order deletion.', 'car-rental' );
 				} else {
 					$message_value['success'] = __( 'The orders have been deleted.', 'car-rental' );
 				}
@@ -414,7 +414,7 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 			*/
 			$date_from   = strtotime( $_POST['crrntl_date_from'] . ' ' . $_POST['crrntl_time_from'] );
 			$date_to     = strtotime( $_POST['crrntl_date_to'] . ' ' . $_POST['crrntl_time_to'] );
-			$diff_time = ( 'hour' == $crrntl_options['rent_per'] ) ? ceil( ( $date_to - $date_from ) / 3600 ) : ceil( ( $date_to - $date_from ) / 86400 );
+			$diff_time = ( 'hour' == $crrntl_options['rent_per'] ) ? ceil( ( $date_to - $date_from ) / HOUR_IN_SECONDS ) : ceil( ( $date_to - $date_from ) / DAY_IN_SECONDS );
 			/* Save changes to orders table */
 			if ( 'on_request' == $_POST['crrntl_car_price'] ) {
 				$order_update_result = $wpdb->update( $wpdb->prefix . 'crrntl_orders',
@@ -511,7 +511,7 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 				);
 			}
 			if ( false === $order_update_result || false === $extras_update_result ) {
-				$error_message = __( 'An error occurred during the saving order', 'car-rental' );
+				$error_message = __( 'An error occurred during the order saving.', 'car-rental' );
 			} else {
 				$crrntl_message = __( 'All changes have been saved', 'car-rental' );
 			}
@@ -655,11 +655,11 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 							<th><?php _e( 'Pick Up Date', 'car-rental' ); ?></th>
 							<td class="crrntl-pick-up">
 								<input class="datepicker" type="text" value="<?php echo $pickup_date[0]; ?>" name="crrntl_date_from" title="<?php _e( 'Choose Pick Up date', 'car-rental' ); ?>" placeholder="<?php _e( 'YYYY-MM-DD', 'car-rental' ); ?>" />
-								<?php if ( 1 == $crrntl_options['time_selecting'] ) { ?>
+								<?php if ( ! empty( $crrntl_options['time_selecting'] ) ) { ?>
 									<select name="crrntl_time_from" title="<?php _e( 'Choose Pick Up time', 'car-rental' ); ?>">
 										<?php for ( $i = 0; $i <= 23; $i ++ ) { ?>
-											<option value="<?php echo $i; ?>:00" <?php selected( sprintf("%02d:00:00", $i ), $pickup_date['1'] ); ?>><?php echo $i; ?>:00</option>
-											<option value="<?php echo $i; ?>:30" <?php selected( sprintf("%02d:30:00", $i ), $pickup_date['1'] ); ?>><?php echo $i; ?>:30</option>
+											<option value="<?php echo $i; ?>:00" <?php selected( sprintf( "%02d:00:00", $i ), $pickup_date['1'] ); ?>><?php echo $i; ?>:00</option>
+											<option value="<?php echo $i; ?>:30" <?php selected( sprintf( "%02d:30:00", $i ), $pickup_date['1'] ); ?>><?php echo $i; ?>:30</option>
 										<?php } ?>
 									</select>
 								<?php } else {
@@ -671,11 +671,11 @@ if ( ! function_exists( 'crrntl_order_edit_page' ) ) {
 							<th><?php _e( 'Drop Off Date', 'car-rental' ); ?></th>
 							<td class="crrntl-drop-off">
 								<input class="datepicker" type="text" value="<?php echo $dropoff_date[0]; ?>" name="crrntl_date_to" title="<?php _e( 'Choose Drop Off date', 'car-rental' ); ?>" />
-								<?php if ( 1 == $crrntl_options['time_selecting'] ) { ?>
+								<?php if ( ! empty( $crrntl_options['time_selecting'] ) ) { ?>
 									<select name="crrntl_time_to" title="<?php _e( 'Choose Pick Up time', 'car-rental' ); ?>">
 										<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
-											<option value="<?php echo $i; ?>:00" <?php selected( sprintf("%02d:00:00", $i ), $dropoff_date['1'] ); ?>><?php echo $i; ?>:00</option>
-											<option value="<?php echo $i; ?>:30" <?php selected( sprintf("%02d:30:00", $i ), $dropoff_date['1'] ); ?>><?php echo $i; ?>:30</option>
+											<option value="<?php echo $i; ?>:00" <?php selected( sprintf( "%02d:00:00", $i ), $dropoff_date['1'] ); ?>><?php echo $i; ?>:00</option>
+											<option value="<?php echo $i; ?>:30" <?php selected( sprintf( "%02d:30:00", $i ), $dropoff_date['1'] ); ?>><?php echo $i; ?>:30</option>
 										<?php } ?>
 									</select>
 								<?php } else {

@@ -20,7 +20,7 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 			parent::__construct(
 				'car-rental-filter',
 				__( 'Car Rental filters', 'car-rental' ),
-				array( 'description' => __( 'Widget for displaying Cars filters.', 'car-rental' ) )
+				array( 'description' => __( 'Widget for Car filters displaying.', 'car-rental' ) )
 			);
 		}
 
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 			if ( empty( $crrntl_options ) ) {
 				$crrntl_options = get_option( 'crrntl_options' );
 			}
-			if ( empty( $crrntl_options['custom_currency'] ) || 0 == $crrntl_options['currency_custom_display'] ) {
+			if ( empty( $crrntl_options['custom_currency'] ) || empty( $crrntl_options['currency_custom_display'] ) ) {
 				$crrntl_currency = $wpdb->get_var( "SELECT currency_unicode FROM {$wpdb->prefix}crrntl_currency WHERE currency_id = {$crrntl_options['currency_unicode']}" );
 				if ( empty( $crrntl_currency ) ) {
 					$crrntl_currency = '&#36;';
@@ -52,8 +52,8 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 
 			$crrntl_min_max_pass  = $wpdb->get_results(
 				"SELECT MIN( cast( meta_value AS UNSIGNED ) ) AS min_pass,
- 				MAX( cast( meta_value AS UNSIGNED ) ) AS max_pass
- 				FROM {$wpdb->postmeta} AS pm, {$wpdb->posts} AS po WHERE pm.post_id = po.ID AND po.post_status = 'publish' AND po.post_type = '{$crrntl_options['post_type_name']}' AND pm.meta_key = 'car_passengers'" );
+				MAX( cast( meta_value AS UNSIGNED ) ) AS max_pass
+				FROM {$wpdb->postmeta} AS pm, {$wpdb->posts} AS po WHERE pm.post_id = po.ID AND po.post_status = 'publish' AND po.post_type = '{$crrntl_options['post_type_name']}' AND pm.meta_key = 'car_passengers'" );
 			$crrntl_min_pass      = ( isset( $_GET['crrntl_pass_min'] ) ) ? $_GET['crrntl_pass_min'] : $crrntl_min_max_pass[0]->min_pass;
 			$crrntl_max_pass      = ( isset( $_GET['crrntl_pass_max'] ) ) ? $_GET['crrntl_pass_max'] : $crrntl_min_max_pass[0]->max_pass;
 
@@ -65,8 +65,8 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 				if ( ! empty( $isset_price ) ) {
 					$crrntl_min_max_price = $wpdb->get_results(
 						"SELECT MIN( cast( meta_value AS DECIMAL(10, 2) ) ) AS min_price,
-		 				MAX( cast( meta_value AS DECIMAL(10, 2) ) ) AS max_price
-		 				FROM {$wpdb->postmeta} AS pm, {$wpdb->posts} AS po WHERE pm.post_id = po.ID AND po.post_status = 'publish' AND po.post_type = '{$crrntl_options['post_type_name']}' AND pm.meta_key = 'car_price'" );
+						MAX( cast( meta_value AS DECIMAL(10, 2) ) ) AS max_price
+						FROM {$wpdb->postmeta} AS pm, {$wpdb->posts} AS po WHERE pm.post_id = po.ID AND po.post_status = 'publish' AND po.post_type = '{$crrntl_options['post_type_name']}' AND pm.meta_key = 'car_price'" );
 					$crrntl_min_price     = ( isset( $_GET['crrntl_price_min'] ) ) ? $_GET['crrntl_price_min'] : floor( $crrntl_min_max_price[0]->min_price );
 					$crrntl_max_price     = ( isset( $_GET['crrntl_price_max'] ) ) ? $_GET['crrntl_price_max'] : ceil( $crrntl_min_max_price[0]->max_price ); ?>
 					<h4 class="clearfix"><?php _e( 'Price range', 'car-rental' ); ?>
@@ -112,7 +112,7 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 						</div><!-- .crrntl-filter -->
 					<?php } ?>
 				</div><!-- .widget-content .crrntl-widget-filter -->
-				<h4 class="clearfix"><?php _e( 'Number of passengers', 'car-rental' ); ?>
+				<h4 class="clearfix"><?php _e( 'Number of seats', 'car-rental' ); ?>
 					<span class="crrntl-select-clear">
 						<a class="crrntl-reset-pass" href="#"><?php _e( 'Reset', 'car-rental' ); ?></a>
 					</span>
@@ -141,7 +141,7 @@ if ( ! class_exists( 'Car_Rental_Filters_Widget' ) ) {
 					<?php } ?>
 				</div><!-- #crrntl-vehicle-type .widget-content .crrntl-widget-filter -->
 				<div class="widget-content crrntl-widget-filter">
-					<input class="crrntl-orange-button crrntl-filter-form-update" type="submit" value="<?php _e( 'Apply filters', 'car-rental' ); ?>">
+					<input class="crrntl-orange-button crrntl-filter-form-update" type="submit" value="<?php _e( 'Apply filter', 'car-rental' ); ?>">
 				</div><!-- .widget-content .crrntl-widget-filter -->
 				<div class="clear"></div>
 			</form><!-- #crrntl-filter-form -->

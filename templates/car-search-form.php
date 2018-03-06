@@ -28,23 +28,16 @@ if ( is_page_template( 'page-choose-extras.php' ) ) {
 	$disabled_form = ' crrntl-disabled-form';
 }
 
-if ( ! empty( $_POST['crrntl_location'] ) )
+$date_format = crrntl_get_date_format();
+$pattern = "/\w{1,}/";
+$date_format_new = preg_replace_callback( $pattern, 'crrntl_convert_jsformat_tophp', $date_format );
+
+if ( ! empty( $_POST['crrntl_location'] ) ) {
 	$_SESSION['crrntl_location'] = $_POST['crrntl_location'];
+}
 
-if ( empty( $_SESSION['crrntl_date_from'] ) )
-	$_SESSION['crrntl_date_from'] = date( 'Y-m-d', mktime( 0, 0, 0, date( 'm' ), date( 'd' ) + 1, date( 'Y' ) ) );
-if ( empty( $_SESSION['crrntl_date_to'] ) )
-	$_SESSION['crrntl_date_to'] = date( 'Y-m-d', mktime( 0, 0, 0, date( 'm' ), date( 'd' ) + 2, date( 'Y' ) ) );
-if ( empty( $_SESSION['crrntl_time_from'] ) )
-	$_SESSION['crrntl_time_from'] = $crrntl_options['time_from'];
-if ( empty( $_SESSION['crrntl_time_to'] ) )
-	$_SESSION['crrntl_time_to'] = $crrntl_options['time_from'];
-
-if ( strtotime( $_SESSION['crrntl_date_from'] . ' ' . $_SESSION['crrntl_time_from'] ) <= time() )
-	$_SESSION['crrntl_date_from'] = date( 'Y-m-d', mktime( 0, 0, 0, date( 'm' ), date( 'd' ) + 1, date( 'Y' ) ) );
-
-if ( strtotime( $_SESSION['crrntl_date_to'] . ' ' . $_SESSION['crrntl_time_to'] ) <= strtotime( $_SESSION['crrntl_date_from'] . ' ' . $_SESSION['crrntl_time_from'] ) )
-	$_SESSION['crrntl_date_to'] = date( 'Y-m-d', strtotime( $_SESSION['crrntl_date_from'] .' +1 day' ) );
+$crrntl_date_from = ( empty( $_SESSION['crrntl_date_from'] ) || ! is_int( $_SESSION['crrntl_date_from'] ) ) ? ( strtotime( '+1day ' . $crrntl_options['min_from'] ) ) : $_SESSION['crrntl_date_from'];
+$crrntl_date_to = ( empty( $_SESSION['crrntl_date_to'] ) || ! is_int( $_SESSION['crrntl_date_to'] ) ) ? ( strtotime( '+2days ' . $crrntl_options['max_to'] ) ) : $_SESSION['crrntl_date_to'];
 
 $crrntl_car_classes = get_terms( 'car_class' ); ?>
 <form id="crrntl-slider-form" action="<?php echo $action_link; ?>" class="crrntl-main-form" method="post">
@@ -73,7 +66,7 @@ $crrntl_car_classes = get_terms( 'car_class' ); ?>
 					<option value="<?php echo $one_location['loc_id']; ?>" <?php selected( ! empty( $_SESSION['crrntl_location'] ) && ( $one_location['loc_id'] ) == $_SESSION['crrntl_location'] ); ?>><?php echo $one_location['formatted_address']; ?></option>
 				<?php } ?>
 			</select><!-- #crrntl-pickup-location .crrntl-location-select -->
-			<?php if ( 1 == $crrntl_options['return_location_selecting'] ) { ?>
+			<?php if ( ! empty( $crrntl_options['return_location_selecting'] ) ) { ?>
 				<input id="crrntl-location-checkbox" type="checkbox" class="styled" name="crrntl_checkbox_location" value="1" <?php checked( ! empty( $_SESSION['crrntl_checkbox_location'] ) ); ?> />
 				<label for="crrntl-location-checkbox"> <?php _e( 'Return at different location', 'car-rental' ); ?></label>
 				<div class="crrntl-location-block crrntl-return-location">
@@ -91,25 +84,35 @@ $crrntl_car_classes = get_terms( 'car_class' ); ?>
 		</div><!-- .crrntl-location-block .crrntl-return-location -->
 		<div class="crrntl-form-block crrntl-pick-up">
 			<h4><?php _e( 'Pick Up date', 'car-rental' ); ?></h4>
-			<input class="datepicker" type="text" value="<?php echo $_SESSION['crrntl_date_from']; ?>" name="crrntl_date_from"  title="<?php _e( 'Choose Pick Up date', 'car-rental' ); ?>" placeholder="<?php _e( 'YYYY-MM-DD', 'car-rental' ); ?>" required="required" />
-			<?php if ( 1 == $crrntl_options['time_selecting'] ) { ?>
+			<input class="datepicker" type="text" value="<?php echo date( $date_format_new, $crrntl_date_from ); ?>" name="crrntl_date_from"  title="<?php _e( 'Choose Pick Up date', 'car-rental' ); ?>" placeholder="<?php echo date( $date_format_new, time() ); ?>" required="required" />
+			<?php if ( ! empty( $crrntl_options['time_selecting'] ) ) {
+				$i_min = explode( ':', $crrntl_options['min_from'] );
+				$i_max = explode( ':', $crrntl_options['max_to'] ); ?>
 				<select class="crrntl-time-select" name="crrntl_time_from" title="<?php _e( 'Choose Pick Up time', 'car-rental' ); ?>">
-					<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
-						<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00' == $_SESSION['crrntl_time_from'] ); ?>><?php echo $i; ?>:00</option>
-						<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30' == $_SESSION['crrntl_time_from'] ); ?>><?php echo $i; ?>:30</option>
-					<?php } ?>
+					<?php for ( $i = $i_min[0]; $i <= $i_max[0]; $i ++ ) {
+						if ( $i != $i_min[0] || $i_min[1] != '30' ) { ?>
+							<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00' == date( "G:i", $crrntl_date_from ) ); ?>><?php echo $i; ?>:00</option>
+						<?php }
+						if ( $i != $i_max[0] || $i_max[1] != '00' ) { ?>
+							<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30' == date( "G:i", $crrntl_date_from ) ); ?>><?php echo $i; ?>:30</option>
+						<?php }
+					} ?>
 				</select><!-- .crrntl-time-select -->
 			<?php } ?>
 		</div><!-- .crrntl-form-block .crrntl-pick-up -->
 		<div class="crrntl-form-block crrntl-drop-off">
 			<h4><?php _e( 'Drop Off date', 'car-rental' ); ?></h4>
-			<input class="datepicker" type="text" value="<?php echo $_SESSION['crrntl_date_to']; ?>" name="crrntl_date_to"  title="<?php _e( 'Choose Drop Off date', 'car-rental' ); ?>" placeholder="<?php _e( 'YYYY-MM-DD', 'car-rental' ); ?>" required="required" />
-			<?php if ( 1 == $crrntl_options['time_selecting'] ) { ?>
+			<input class="datepicker" type="text" value="<?php echo date( $date_format_new, $crrntl_date_to ); ?>" name="crrntl_date_to"  title="<?php _e( 'Choose Drop Off date', 'car-rental' ); ?>" placeholder="<?php echo date( $date_format_new, time() ); ?>" required="required" />
+			<?php if ( ! empty( $crrntl_options['time_selecting'] ) ) { ?>
 				<select class="crrntl-time-select" name="crrntl_time_to" title="<?php _e( 'Choose Drop Off time', 'car-rental' ); ?>">
-					<?php for ( $i = 00; $i <= 23; $i ++ ) { ?>
-						<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00' == $_SESSION['crrntl_time_to'] ); ?>><?php echo $i; ?>:00</option>
-						<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30' == $_SESSION['crrntl_time_to'] ); ?>><?php echo $i; ?>:30</option>
-					<?php } ?>
+					<?php for ( $i = $i_min[0]; $i <= $i_max[0]; $i ++ ) {
+						if ( $i != $i_min[0] || $i_min[1] != '30' ) { ?>
+							<option value="<?php echo $i; ?>:00" <?php selected( $i . ':00' == date( "G:i", $crrntl_date_to ) ); ?>><?php echo $i; ?>:00</option>
+						<?php } 
+						if ( $i != $i_max[0] || $i_max[1] != '00' ) { ?>
+							<option value="<?php echo $i; ?>:30" <?php selected( $i . ':30' == date( "G:i", $crrntl_date_to ) ); ?>><?php echo $i; ?>:30</option>
+						<?php } 
+					} ?>
 				</select><!-- .crrntl-time-select -->
 			<?php } ?>
 		</div><!-- .crrntl-form-block .crrntl-drop-off -->

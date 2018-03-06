@@ -5,7 +5,7 @@
 
 if ( ! function_exists ( 'bws_include_init' ) ) {
 	function bws_include_init( $base, $bws_menu_source = 'plugins' ) {
-		global $bstwbsftwppdtplgns_options, $bstwbsftwppdtplgns_added_menu;
+		global $bstwbsftwppdtplgns_options, $bstwbsftwppdtplgns_added_menu, $bstwbsftwppdtplgns_active_plugins;
 		if ( ! function_exists( 'get_plugin_data' ) )
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
@@ -14,6 +14,7 @@ if ( ! function_exists ( 'bws_include_init' ) ) {
 
 		if ( $bws_menu_source == 'plugins' ) {
 			$bws_menu_dir = $wp_plugins_dir . '/' .  dirname( $base ) . '/bws_menu/bws_menu.php';
+			$bstwbsftwppdtplgns_active_plugins[ $base ] = get_plugin_data( $wp_plugins_dir . '/' . $base );
 		} else {
 			$bws_menu_dir = $wp_content_dir . '/themes/' . $base . '/inc/bws_menu/bws_menu.php';
 		}

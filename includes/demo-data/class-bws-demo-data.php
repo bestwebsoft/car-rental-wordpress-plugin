@@ -40,7 +40,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 				}
 				if ( empty( $this->bws_demo_options ) && true == $this->crrntl_car_notice ) { ?>
 					<button disabled class="button" name="bws_handle_demo" value="<?php echo $value; ?>"><?php echo $button_title; ?></button>
-					<div class="bws_info"><?php _e( 'You have reached the limit for Cars.' ); ?></div>
+					<div class="bws_info"><?php _e( 'You have reached the limit for Cars.', 'car-rental' ); ?></div>
 				<?php } else { ?>
 					<button class="button" name="bws_handle_demo" value="<?php echo $value; ?>"><?php echo $button_title; ?></button>
 					<div class="bws_info"><?php echo $form_info; ?></div>
@@ -131,7 +131,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 				 * check if demo options already loaded
 				 */
 				if ( ! empty( $this->bws_demo_options ) ) {
-					$message['error'] = __( 'Demo options already installed.', 'car-rental' );
+					$message['error'] = __( 'Demo data has been already installed.', 'car-rental' );
 					return $message;
 				}
 
@@ -418,8 +418,6 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 										$error ++;
 									}
 								}
-
-
 							} elseif ( ! empty( $demo_post['attachments_folder'] ) ) {
 								$attachments_list = @scandir( $attachments_folder . '/' . $demo_post['attachments_folder'] );
 								if ( 2 < count( $attachments_list ) ) {
@@ -546,7 +544,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 					 */
 					add_option( $this->bws_plugin_prefix . 'demo_options', $this->bws_demo_options );
 
-					if ( 0 == $error ) {
+					if ( empty( $error ) ) {
 						$message['done'] = __( 'Demo data successfully installed.', 'car-rental' );
 						if ( ! empty( $posttype_post_id ) ) {
 							$message['done'] .= '<br />' . __( 'View post with shortcodes', 'car-rental' ) . ':&nbsp;<a href="' . get_permalink( $posttype_post_id ) . '" target="_blank">' . get_the_title( $posttype_post_id ) . '</a>';
@@ -563,7 +561,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 							call_user_func( $callback );
 						}
 					} else {
-						$message['error'] = __( 'Installation of demo data with some errors occurred.', 'car-rental' );
+						$message['error'] = __( 'Some errors occurred during demo data installation.', 'car-rental' );
 						if ( ! empty( $display_extra_limitation_notice ) ) {
 							$message['error'] .= '<br />' . __( 'You have reached the limit for Extras.', 'car-rental' );
 						}
@@ -572,8 +570,9 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 					$message['error'] = __( 'Posts data is missing.', 'car-rental' );
 				}
 			}
-			if ( function_exists( 'crrntl_update_locations' ) )
+			if ( function_exists( 'crrntl_update_locations' ) ) {
 				crrntl_update_locations( $this->bws_plugin_options['post_type_name'] );
+			}
 			if ( function_exists( 'crrntl_update_pages_id' ) ) {
 				crrntl_update_pages_id( true );
 			}
@@ -756,13 +755,15 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 					$message['options'] = get_option( $this->bws_plugin_prefix . 'options' );
 					$this->bws_demo_options = array();
 				} else {
-					$message['error'] = __( 'Removing demo data with some errors occurred.', 'car-rental' );
+					$message['error'] = __( 'Some errors occurred during demo data removing.', 'car-rental' );
 				}
 			}
-			if ( function_exists( 'crrntl_clear_locations' ) )
+			if ( function_exists( 'crrntl_clear_locations' ) ) {
 				crrntl_clear_locations( $this->bws_plugin_options['post_type_name'] );
-			if ( function_exists( 'crrntl_update_locations' ) )
+			}
+			if ( function_exists( 'crrntl_update_locations' ) ) {
 				crrntl_update_locations( $this->bws_plugin_options['post_type_name'] );
+			}
 
 			return $message;
 		}
@@ -779,7 +780,7 @@ if ( ! class_exists( 'Crrntl_Demo_Data' ) ) {
 
 		function bws_handle_demo_notice( $show_demo_notice ) {
 
-			if ( 1 == $show_demo_notice ) {
+			if ( ! empty( $show_demo_notice ) ) {
 				global $wp_version;
 
 				if ( isset( $_POST['bws_hide_demo_notice'] ) && check_admin_referer( $this->bws_plugin_basename, 'bws_demo_nonce_name' ) ) {
