@@ -6,7 +6,7 @@ Description: Create your personal car rental/booking and reservation website.
 Author: BestWebSoft
 Text Domain: car-rental
 Domain Path: /languages
-Version: 1.0.7
+Version: 1.0.8
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -291,6 +291,10 @@ if ( ! function_exists( 'crrntl_get_options_default' ) ) {
 			'send_email_sa'							=> 1,
 			'send_email_customer'					=> 1,
 			'send_email_custom'						=> 0,
+			'gdpr'									=> 0,
+			'gdpr_link'								=> '',
+			'gdpr_text'								=> '',
+			'gdpr_cb_name'							=> __( 'I consent to having this site collect my personal data.', 'car-rental' ),
 			'custom_email_list'						=> array(),
 		);
 		return $default_options;

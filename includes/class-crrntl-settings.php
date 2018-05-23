@@ -143,6 +143,11 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 			$this->options['send_email_sa']						= isset( $_POST['crrntl_send_email_sa'] ) ? 1 : 0;
 			$this->options['send_email_customer']				= isset( $_POST['crrntl_send_email_customer'] ) ? 1 : 0;
 			$this->options['send_email_custom']					= isset( $_POST['crrntl_send_email_custom'] ) ? 1 : 0;
+			
+			$this->options['gdpr']								= isset( $_POST['crrntl_gdpr'] ) ? 1 : 0;
+			$this->options['gdpr_link']							= sanitize_text_field( $_POST['crrntl_gdpr_link'] );
+			$this->options['gdpr_text']							= sanitize_text_field( $_POST['crrntl_gdpr_text'] );
+			$this->options['gdpr_cb_name']						= sanitize_text_field( $_POST['crrntl_gdpr_cb_name'] );
 
 			$list = array();
 			if ( ! empty( $_POST['custom_email_area'] ) ) {
@@ -598,6 +603,28 @@ if ( ! class_exists( 'Crrntl_Settings_Tabs' ) ) {
 						</td>
 					</tr>
 				<?php } ?>
+				<tr>
+					<th>
+						<label for="crrntl_gdpr"><?php _e( 'GDPR Compliance', 'car-rental' ); ?></label>
+					</th>
+					<td>
+						<input type="checkbox" id="crrntl_gdpr" name="crrntl_gdpr" value="1" <?php checked( '1', $this->options['gdpr'] ); ?> />
+						<div id="crrntl_gdpr_link_options" >
+							<label class="crrntl_privacy_policy_text" >
+								<?php _e( 'Checkbox label', 'car-rental' ); ?>
+								<input type="text" id="crrntl_gdpr_cb_name" size="29" name="crrntl_gdpr_cb_name" value="<?php echo $this->options['gdpr_cb_name']; ?>"/>
+							</label>
+							<label class="crrntl_privacy_policy_text" >
+								<?php _e( "Link to Privacy Policy Page", 'car-rental' ); ?>
+								<input type="url" id="crrntl_gdpr_link" name="crrntl_gdpr_link" value="<?php echo $this->options['gdpr_link']; ?>" />
+							</label>
+							<label class="crrntl_privacy_policy_text" >
+								<?php _e( "Text for Privacy Policy Link", 'car-rental' ); ?>
+								<input type="text" id="crrntl_gdpr_text" name="crrntl_gdpr_text" value="<?php echo $this->options['gdpr_text']; ?>" />
+							</label>
+						</div>
+					</td>
+				</tr>
 			</table>
 		<?php }
 

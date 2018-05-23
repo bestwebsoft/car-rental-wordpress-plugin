@@ -117,7 +117,7 @@ if ( isset( $_POST['crrntl_form_save_order'] ) && wp_verify_nonce( $_POST['crrnt
 	if ( isset( $_POST['crrntl_user_age'] ) && $_POST['crrntl_user_age'] < $min_rent_age ) {
 		$personal_info_error .= __( 'Inappropriate age to submit the order.', 'car-rental' );
 	}
-	
+
 	if ( ! $crrntl_logged_in && empty( $personal_info_error ) ) {
 		if ( ! is_email( $_POST['crrntl_user_email'] ) ) {
 			$personal_info_error .= __( 'Please enter correct e-mail address.', 'car-rental' ) . '<br />';
@@ -307,6 +307,21 @@ get_header(); ?>
 															<div class="clear"></div>
 														<?php }
 													}
+													if( ! empty( $crrntl_options['gdpr'] ) ) { ?>
+														<div class="crrntl-form-element gdpr-form-element">
+															<p class="crrntl-GDPR-wrap">
+																<label for="crrntl-GDPR-checkbox">
+																	<input id="crrntl-GDPR-checkbox" required type="checkbox" name="crrntl_GDPR" style="vertical-align: middle;"/>
+																	<?php echo $crrntl_options['gdpr_cb_name'];
+																	if( ! empty( $crrntl_options['gdpr_link'] ) ) { ?>
+																		<a style="text-decoration: underline;" target="_blank" href="<?php echo $crrntl_options['gdpr_link']; ?>"><?php echo $crrntl_options['gdpr_text']; ?></a>
+																	<?php } else { ?>
+																		<span><?php echo $crrntl_options['gdpr_text']; ?></span>
+																	<?php } ?>
+																</label>
+															</p>
+														</div>
+													<?php }
 													if ( 'outdated' != $captcha_status['active'] && $captcha_status['enabled'] ) { ?>
 														<div class="crrntl-captcha-field">
 															<?php echo apply_filters( 'cptch_display', '', 'bws_carrental' ); ?>

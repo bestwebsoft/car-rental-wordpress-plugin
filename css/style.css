@@ -1493,6 +1493,18 @@ input[type="button"].crrntl-continue-button:focus {
 	height: 447px;
 }
 
+.gdpr-form-element {
+	margin-top: 0;
+}
+
+.crrntl-form-element p {
+	text-transform: uppercase;
+	font-size: 11px;
+}
+.crrntl-GDPR-wrap {
+	margin: 0;
+}
+
 @media screen and (max-width: 1024px) {
 	#crrntl-slider-form-container {
 		margin: 0 2.5%;

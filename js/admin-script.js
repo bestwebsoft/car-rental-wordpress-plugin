@@ -1,5 +1,13 @@
 ( function( $ ) {
 	$( document ).ready( function() {
+		$( '#crrntl_gdpr' ).on( 'change', function() {
+			if( $( this).is( ':checked' ) ) {
+				$( '#crrntl_gdpr_link_options' ).show();
+			} else {
+				$( '#crrntl_gdpr_link_options' ).hide();
+			}
+		} ).trigger( 'change' );
+
 		$( '#crrntl-js-location, #crrntl-map' ).show();
 
 		if ( $.fn.sortable ) {

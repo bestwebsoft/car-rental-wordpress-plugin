@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: cars, rental, renting, booking, retail, add cars, car rental plugin, renting cars, cars website, manufacturers, machine, vehicle
 Requires at least: 3.9
-Tested up to: 4.9.4
-Stable tag: 1.0.7
+Tested up to: 4.9.6
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,7 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 
 = Free Features =
 
+* GDPR Compliant [NEW]
 * Add and manage:
 	* Cars
 	* Manufacturers
@@ -32,8 +33,8 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 	* Car filters
 	* Order info
 * Manage orders
-* Set working hours [NEW]
-* Customize minimum rental age [NEW]
+* Set working hours
+* Customize minimum rental age
 * Add slider with unlimited slides including:
 	* Image
 	* Title
@@ -88,7 +89,7 @@ http://www.youtube.com/watch?v=Oq4pkADwTks
 * Compatible with:
 	* [Captcha](https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9)
 	* [Subscriber](https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135)
-	* [Google Captcha (reCAPTCHA)](https://bestwebsoft.com/products/wordpress/plugins/google-captcha/) [NEW]
+	* [Google Captcha (reCAPTCHA)](https://bestwebsoft.com/products/wordpress/plugins/google-captcha/)
 * Install/Delete demo data
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
@@ -167,10 +168,10 @@ In order to display the Slider on any page (e.g. that uses some custom template)
 
 = How to change or override plugin templates? =
 
-Plugin template files can be found in the '/wp-content/plugins/car-rental-pro/templates/' directory.
+Plugin template files can be found in the '/wp-content/plugins/car-rental/templates/' directory.
 You can edit these files in an upgrade-safe way using overrides. Copy them into a directory with your theme named '/bws-templates'.
 
-Example: To override the 'BWS Choose Car' page template, please copy '/wp-content/plugins/car-rental-pro/templates/page-choose-car.php' to 'wp-content/themes/your-theme/bws-templates/page-choose-car.php'.
+Example: To override the 'BWS Choose Car' page template, please copy '/wp-content/plugins/car-rental/templates/page-choose-car.php' to 'wp-content/themes/your-theme/bws-templates/page-choose-car.php'.
 
 Do not edit these files in the plugin's core directly as they are overwritten during the upgrade process and any customizations will be lost.
 
@@ -201,6 +202,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (https:
 15. "Edit Order" page in the admin panel.
 
 == Changelog ==
+
+= V1.0.8 - 23.05.2018 =
+* NEW : GDPR Compliance has been added.
 
 = V1.0.7 - 06.03.2018 =
 * NEW : Ability to choose the recipient of the order notifications has been added.
@@ -243,6 +247,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (https:
 * NEW : Release date of Car Rental by BestWebSoft plugin.
 
 == Upgrade Notice ==
+
+= V1.0.8 =
+* Functionality improved.
 
 = V1.0.7 =
 * Functionality expanded.

@@ -7,6 +7,7 @@
 <p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
 <h4>Free Features</h4>
 <ul>
+<li>GDPR Compliant [NEW]</li>
 <li>Add and manage:
 <ul>
 <li>Cars</li>
@@ -23,8 +24,8 @@
 </ul>
 </li>
 <li>Manage orders</li>
-<li>Set working hours [NEW]</li>
-<li>Customize minimum rental age [NEW]</li>
+<li>Set working hours</li>
+<li>Customize minimum rental age</li>
 <li>Add slider with unlimited slides including:
 <ul>
 <li>Image</li>
@@ -116,7 +117,7 @@
 <ul>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/captcha/?k=4da2d234b0a0d3eb784f4e489d22f1b9" rel="nofollow">Captcha</a></li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/subscriber/?k=6afd5ac7a9888bf6ce52d8a53af54135" rel="nofollow">Subscriber</a></li>
-<li><a href="https://bestwebsoft.com/products/wordpress/plugins/google-captcha/" rel="nofollow">Google Captcha (reCAPTCHA)</a> [NEW]</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/google-captcha/" rel="nofollow">Google Captcha (reCAPTCHA)</a></li>
 </ul>
 </li>
 <li>Install/Delete demo data</li>
