@@ -57,6 +57,10 @@ if ( ! function_exists( 'crrntl_slider_settings' ) ) {
 			}
 		}
 		$crrntl_slider_options = get_option( 'crrntl_slider_options' );
+		if (is_string ($crrntl_slider_options) ) {
+			$crrntl_slider_options = explode(" ", $crrntl_slider_options);
+		}
+
 
 		$action_query = add_query_arg( array(
 				'post_type'		=> $crrntl_options['post_type_name'],
@@ -100,7 +104,7 @@ if ( ! function_exists( 'crrntl_slider_settings' ) ) {
 								$crrntl_slide_data['title']       = isset( $_POST['crrntl_slide_title'] ) ? sanitize_text_field( $_POST['crrntl_slide_title'] ) : '';
 								$crrntl_slide_data['description'] = isset( $_POST['crrntl_slide_desc'] ) ? sanitize_text_field( $_POST['crrntl_slide_desc'] ) : '';
 								$crrntl_slide_data['link']        = isset( $_POST['crrntl_slide_link'] ) ? esc_url_raw( $_POST['crrntl_slide_link'] ) : '';
-								$crrntl_slider_options[]          = $crrntl_slide_data;
+								$crrntl_slider_options []         = $crrntl_slide_data;
 								update_option( 'crrntl_slider_options', $crrntl_slider_options );
 								$message .= __( 'Slide was successfully added.', 'car-rental' );
 							} elseif ( empty( $_POST['crrntl_slide_url'] ) ) {

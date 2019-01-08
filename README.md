@@ -7,7 +7,7 @@
 <p><span class="embed-youtube" style="text-align:center; display: block;"></span></p>
 <h4>Free Features</h4>
 <ul>
-<li>GDPR Compliant [NEW]</li>
+<li>GDPR Compliant</li>
 <li>Add and manage:
 <ul>
 <li>Cars</li>

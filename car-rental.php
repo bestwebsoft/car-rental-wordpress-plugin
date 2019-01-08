@@ -6,12 +6,12 @@ Description: Create your personal car rental/booking and reservation website.
 Author: BestWebSoft
 Text Domain: car-rental
 Domain Path: /languages
-Version: 1.0.8
+Version: 1.0.9
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
 
-/*  © Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2019  BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -139,17 +139,6 @@ if ( ! function_exists( 'crrntl_init' ) ) {
 if ( ! function_exists( 'crrntl_admin_init' ) ) {
 	function crrntl_admin_init() {
 		global $bws_plugin_info, $crrntl_options, $crrntl_plugin_info;
-
-		/**
-		 * Added in order to support renty theme versions older than 1.0.5
-		 * @todo: remove after 10.03.2018
-		 */
-		if ( isset( $_GET['page'] ) && 'car-rental-settings' == $_GET['page'] && isset( $_GET['tab'] ) && 'slider' == $_GET['tab'] ) {
-			if ( wp_redirect( self_admin_url( "edit.php?post_type={$crrntl_options['post_type_name']}&page=car-rental-slider-settings" ) ) ) {
-				exit;
-			}
-		}
-		/* todo end */
 
 		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '576', 'version' => $crrntl_plugin_info['Version'] );
@@ -593,7 +582,7 @@ if ( ! function_exists( 'crrntl_upgrade_tables' ) ) {
 		$orders_table			= $wpdb->prefix . 'crrntl_orders';
 		$orders_table_exist		= $wpdb->query( "SHOW TABLES LIKE '{$orders_table}';" );
 		if ( $orders_table_exist ) {
-			$wpdb->query( "ALTER TABLE `{$orders_table}` CHANGE `total` `total` DECIMAL(20, 2) NULL DEFAULT NULL;" );
+			$wpdb->query( "ALTER TABLE `{$orders_table}` CHANGE `total` `total` DECIMAL ( 20, 2 ) NULL DEFAULT NULL;" );
 		}
 	}
 }
@@ -1320,7 +1309,7 @@ if ( ! function_exists( 'crrntl_extra_add_form_fields' ) ) {
 		<div class="form-field">
 			<label for="crrntl-extra-price"><?php if ( 'hour' == $crrntl_options['rent_per'] ) _e( 'Price per Hour', 'car-rental' ); else _e( 'Price per Day', 'car-rental' ); ?> (<?php echo $crrntl_currency; ?>)</label>
 			<input type="text" pattern="^\d{1,9}(\.\d{2})?$" name="crrntl_extra_price" id="crrntl-extra-price" />
-			<p class="description"><?php _e( 'The price for one unit. For example', 'car-rental' ); ?>: 258.00 <span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999999999.99)</span></p>
+			<p class="description"><?php _e( 'The price for one unit. For example', 'car-rental' ); ?>: 258.00 <span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999999999.99 )</span></p>
 		</div>
 		<div>
 			<label for="crrntl-extra-quantity-on"><?php _e( 'Ability to choose quantity', 'car-rental' ); ?></label>
@@ -1371,7 +1360,7 @@ if ( ! function_exists( 'crrntl_extra_edit_form_fields' ) ) {
 			</th>
 			<td>
 				<input type="text" pattern="^\d{1,9}(\.\d{2})?$" name="crrntl_extra_price" id="crrntl-extra-price" value="<?php echo ( ! empty( $extra_metadata['extra_price'][0] ) ) ? $extra_metadata['extra_price'][0] : ''; ?>" />
-				<p class="description"><?php _e( 'The price for one unit. For example', 'car-rental' ); ?>: 258.00 <span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999999999.99)</span></p>
+				<p class="description"><?php _e( 'The price for one unit. For example', 'car-rental' ); ?>: 258.00 <span class="bws_info">(<?php _e( 'max.', 'car-rental' ); ?>: 999999999.99 )</span></p>
 			</td>
 		</tr>
 		<tr class="form-field">
@@ -1991,8 +1980,8 @@ if ( ! function_exists( 'crrntl_add_tabs' ) ) {
 		/* Adding border above the 'Settings' menu item */
 		if ( ! empty( $crrntl_car_notice ) ) { ?>
 			<style type="text/css">
-				#adminmenu #menu-posts-cars .wp-submenu li:nth-child(7) a,
-				#adminmenu #menu-posts-bws-cars .wp-submenu li:nth-child(7) a {
+				#adminmenu #menu-posts-cars .wp-submenu li:nth-child ( 7 ) a,
+				#adminmenu #menu-posts-bws-cars .wp-submenu li:nth-child ( 7 ) a {
 					border-top: 1px solid #444;
 					padding-top: 12px;
 					margin-top: 6px;
@@ -2000,8 +1989,8 @@ if ( ! function_exists( 'crrntl_add_tabs' ) ) {
 			</style>
 		<?php } else { ?>
 			<style type="text/css">
-				#adminmenu #menu-posts-cars .wp-submenu li:nth-child(8) a,
-				#adminmenu #menu-posts-bws-cars .wp-submenu li:nth-child(8) a {
+				#adminmenu #menu-posts-cars .wp-submenu li:nth-child ( 8 ) a,
+				#adminmenu #menu-posts-bws-cars .wp-submenu li:nth-child ( 8 ) a {
 					border-top: 1px solid #444;
 					padding-top: 12px;
 					margin-top: 6px;

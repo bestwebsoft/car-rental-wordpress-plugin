@@ -38,7 +38,7 @@ foreach ( array( 'crrntl_location', 'crrntl_select_carclass' ) as $one_search_da
 /* Write the date value as a integer. Check whether the client has the ability to choose the time. */
 $date_format = crrntl_get_date_format();
 
-$crrntl_time_from = ( ! empty( $crrntl_options['time_selecting'] && isset( $_POST['crrntl_time_from'] ) ) ) ? $_POST['crrntl_time_from'] : $crrntl_options['time_from'];
+$crrntl_time_from = ( ! empty( $crrntl_options['time_selecting']) && isset( $_POST['crrntl_time_from'] ) )  ? $_POST['crrntl_time_from'] : $crrntl_options['time_from'];
 if ( isset( $_POST['crrntl_date_from'] ) && ! empty( $crrntl_time_from ) ) {
 	if ( crrntl_check_date_format( $_POST['crrntl_date_from'] ) ) {
 		if ( crrntl_get_date_int( $_POST['crrntl_date_from'], $crrntl_time_from ) > time() ) {
@@ -51,7 +51,7 @@ if ( isset( $_POST['crrntl_date_from'] ) && ! empty( $crrntl_time_from ) ) {
 	}
 }
 
-$crrntl_time_to = ( ! empty( $crrntl_options['time_selecting'] && isset( $_POST['crrntl_time_to'] ) ) ) ? $_POST['crrntl_time_to'] : $crrntl_options['time_from'];
+$crrntl_time_to = ( ! empty( $crrntl_options['time_selecting'] ) && isset( $_POST['crrntl_time_to'] ) ) ? $_POST['crrntl_time_to'] : $crrntl_options['time_from'];
 if ( isset( $_SESSION['crrntl_date_from'] ) && isset( $_POST['crrntl_date_to'] ) && ! empty( $crrntl_time_to ) ) {
 	if ( crrntl_check_date_format( $_POST['crrntl_date_to'] ) ) {
 		if ( crrntl_get_date_int( $_POST['crrntl_date_to'], $crrntl_time_to ) > $_SESSION['crrntl_date_from'] &&
