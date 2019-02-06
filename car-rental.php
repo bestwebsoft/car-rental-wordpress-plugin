@@ -6,7 +6,7 @@ Description: Create your personal car rental/booking and reservation website.
 Author: BestWebSoft
 Text Domain: car-rental
 Domain Path: /languages
-Version: 1.0.9
+Version: 1.1.0
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */
@@ -2024,7 +2024,7 @@ if ( ! function_exists( 'crrntl_add_tabs' ) ) {
  */
 if ( ! function_exists( 'crrntl_admin_notices' ) ) {
 	function crrntl_admin_notices() {
-		global $hook_suffix, $crrntl_plugin_info, $crrntl_options, $crrntl_BWS_demo_data, $crrntl_car_notice, $crrntl_settings_page_link;
+		global $hook_suffix, $crrntl_plugin_info, $crrntl_options, $crrntl_BWS_demo_data, $crrntl_car_notice, $crrntl_settings_page_link, $bws_plugin_banner_to_settings;
 
 		if ( empty( $crrntl_options ) ) {
 			$crrntl_options = get_option( 'crrntl_options' );
@@ -2061,20 +2061,46 @@ if ( ! function_exists( 'crrntl_admin_notices' ) ) {
 			return;
 		}
 
+        if  ( is_plugin_active( 'car-rental/car-rental.php' ) )  { ?>
+            <div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
+                <div class="crrntl_banner_on_plugin_page_car_renty">
+                    <div class="icon">
+                        <img title="" src="http://ps.w.org/car-rental/assets/icon-128x128.png" alt="" />
+                    </div>
+                    <div class="crrntl_banner_on_plugin_page_car_renty_wrapper">
+                        <label for="button">
+                            <?php _e( 'Load More','car-rental-pro')?>
+                        </label>
+                        <input type="checkbox" id="button">
+                        <div class="crrntl_banner_on_plugin_page_car_renty_xpandable_block">
+                            <strong><?php printf( __( 'Meet the new plugin by BestWebSoft company - Car Rental V2.', 'car-rental' ) ); ?></strong>
+                            <br />
+                            <?php _e( "We have developed a new plugin for car rental service -", 'car-rental');?>
+                            <a href="<?php echo esc_url( 'https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/' ); ?>"><?php _e( 'Car Rental V2', 'car-rental' ); ?></a>
+                            <?php _e("by BestWebSoft. Starting from the 01, Feb 2019, when the new plugin will be released, the current plugin version will no longer be supported.<br/>",'car-rental');?>
+                            <?php _e( "We will stop supporting the current Car Rental plugin completely by 2020. If you want to try a new Car Rental V2 plugin, and save all the data created (cars, extras, orders, etc.), create a private ticket on our ", 'car-rental' );?>
+                            <a href="<?php echo esc_url( 'https://support.bestwebsoft.com/hc/en-us/requests/new' ); ?>"><?php _e( 'support forum.', 'car-rental' ); ?></a><br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php }
+
 		if ( 'Renty' != wp_get_theme() && isset( $crrntl_options['theme_banner'] ) && ! empty( $crrntl_options['theme_banner'] ) ) { ?>
-			<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
-				<div class="notice notice-info crrntl-unsupported-theme-notice">
-					<p>
-						<strong><?php printf( __( 'Your theme does not declare Car Rental plugin support. Please check out our %s theme which has been developed specifically for use with Car Rental plugin.', 'car-rental' ), '<a href="https://bestwebsoft.com/products/wordpress/themes/renty-car-rental-booking-wordpress-theme/" target="_blank">Renty</a>' ); ?></strong>
-					</p>
-					<form action="" method="post">
-						<button class="notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
-						<input type="hidden" name="crrntl_hide_theme_banner" value="hide" />
-						<?php wp_nonce_field( plugin_basename( __FILE__ ), 'crrntl_nonce_name' ); ?>
-					</form>
-				</div>
-			</div>
-		<?php }
+            <div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
+                <div class="notice notice-info crrntl-unsupported-theme-notice">
+                    <p>
+                        <strong><?php printf( __( 'Your theme does not declare Car Rental plugin support. Please check out our %s theme which has been developed specifically for use with Car Rental plugin.', 'car-rental' ), '<a href="https://bestwebsoft.com/products/wordpress/themes/renty-car-rental-booking-wordpress-theme/" target="_blank">Renty</a>' ); ?></strong>
+                    </p>
+                    <form action="" method="post">
+                        <button class="notice-dismiss bws_hide_settings_notice" title="<?php _e( 'Close notice', 'bestwebsoft' ); ?>"></button>
+                        <input type="hidden" name="crrntl_hide_theme_banner" value="hide" />
+                        <?php wp_nonce_field( plugin_basename( __FILE__ ), 'crrntl_nonce_name' ); ?>
+                    </form>
+                </div>
+            </div>
+
+        <?php }
 		$screen = get_current_screen();
 		if (
 			'edit-' . $crrntl_options['post_type_name'] == $screen->id || /* Cars main page */

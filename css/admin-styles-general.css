@@ -23,6 +23,66 @@
 	height: initial;
 	width: initial;
 }
+.crrntl-unsupported-theme-notice .bws_hide_settings_notice {
+	position: absolute;
+	top: 0;
+	right: 1px;
+	border: none;
+	margin: 0;
+	padding: 9px;
+	background: 0 0;
+	color: #b4b9be;
+	cursor: pointer;
+	height: initial;
+	width: initial;
+}
+.crrntl_banner_on_plugin_page_car_renty img{
+	border: none;
+	max-width: 60px;
+	margin: 14px 8px 8px 14px;
+	float: left;
+}
+.crrntl_banner_on_plugin_page_car_renty .wrapper {
+	display: flex;
+	align-items: flex-end;
+	margin-bottom: 25px;
+}
+.crrntl_banner_on_plugin_page_car_renty_xpandable_block {
+	color: #000;
+	font-size: 15px;
+	line-height: 26px;
+	overflow: hidden;
+	margin: 8px 8px 30px;
+	float: left;
+	width: auto;
+	max-width: 80%;
+	height: 75px;
+	order: 0;
+}
+input[type="checkbox"] {
+	display: none;
+}
+input[type="checkbox"]:checked + .crrntl_banner_on_plugin_page_car_renty_xpandable_block {
+	height: auto;
+}
+.crrntl_banner_on_plugin_page_car_renty  label {
+	order: 1;
+	color: #0073aa;
+	font-size: 14px;
+	vertical-align: top;
+	margin-left: 8px;
+	position: absolute;
+	bottom:7px;
+}
+
+.crrntl_banner_on_plugin_page_car_renty {
+	border: 1px solid #d4d4d4;
+	margin: 12px 0;
+	background: #FFF;
+	position: relative;
+	overflow: hidden;
+	content: "\f347";
+}
 .crrntl-unsupported-theme-notice .bws_hide_settings_notice:before {
 	background: 0 0;
 	color: #b4b9be;
