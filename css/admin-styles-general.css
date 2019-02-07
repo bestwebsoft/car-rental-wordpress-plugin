@@ -59,10 +59,10 @@
 	height: 75px;
 	order: 0;
 }
-input[type="checkbox"] {
+.crrntl_banner_on_plugin_page_car_renty_wrapper input[type="checkbox"] {
 	display: none;
 }
-input[type="checkbox"]:checked + .crrntl_banner_on_plugin_page_car_renty_xpandable_block {
+.crrntl_banner_on_plugin_page_car_renty_wrapper input[type="checkbox"]:checked + .crrntl_banner_on_plugin_page_car_renty_xpandable_block {
 	height: auto;
 }
 .crrntl_banner_on_plugin_page_car_renty  label {
