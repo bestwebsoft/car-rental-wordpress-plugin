@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bestwebsoft\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-11 16:42+0300\n"
-"PO-Revision-Date: 2017-09-11 16:42+0300\n"
+"POT-Creation-Date: 2018-03-02 10:14+0200\n"
+"PO-Revision-Date: 2018-03-02 10:15+0200\n"
 "Last-Translator: Mik013\n"
 "Language-Team: Mik013\n"
 "Language: cs_CZ\n"
@@ -43,7 +43,7 @@ msgstr "Líbí se vám plugin?"
 #: bws_functions.php:93
 #, php-format
 msgid "%s reviews"
-msgstr ""
+msgstr "%s hodnocení"
 
 #: bws_functions.php:94
 msgid "Rate it"
@@ -51,9 +51,9 @@ msgstr "Ohodnoťte jej"
 
 #: bws_functions.php:103
 msgid "Need help?"
-msgstr "Potřebujete pomoc?"
+msgstr "Potřebujete pomoci?"
 
-#: bws_functions.php:104 bws_functions.php:917 class-bws-settings.php:1058
+#: bws_functions.php:104 bws_functions.php:919 class-bws-settings.php:1058
 msgid "Visit Help Center"
 msgstr "Navštivte Centrum pomoci"
 
@@ -130,7 +130,7 @@ msgstr ""
 #: bws_functions.php:208
 #, php-format
 msgid "Thank you for installing %s plugin!"
-msgstr "Děkujeme vám za instalaci %s pluginu!"
+msgstr "Děkujeme vám za instalaci pluginu %s!"
 
 #: bws_functions.php:210
 msgid "Let's get started"
@@ -205,7 +205,7 @@ msgstr ""
 #: bws_functions.php:482
 #, php-format
 msgid "Thank you for choosing %s plugin!"
-msgstr "Děkujeme, že jste si vybrali %s plugin!"
+msgstr "Děkujeme, že jste si vybrali plugin %s!"
 
 #: bws_functions.php:483
 msgid ""
@@ -243,20 +243,20 @@ msgstr ""
 
 #: bws_functions.php:653
 msgid "Add BWS Shortcode"
-msgstr "Přidávejte zkrácený kód BWS"
+msgstr "Přidat zkrácený kód BWS"
 
 #: bws_functions.php:654
 msgid "Add BWS Plugins Shortcode"
-msgstr "Přidávejte zkrácený kód BWS pluginů"
+msgstr "Přidat zkrácený kód BWS pluginu"
 
 #: bws_functions.php:673
 msgid "Add shortcode"
-msgstr "Přidat krátký kód"
+msgstr "Přidat zkrácený kód"
 
 #: bws_functions.php:673
 msgid "Add BestWebSoft plugins' shortcodes using this button."
 msgstr ""
-"Pomocí tohoto tlačítka můžete přidávat krátké kódy BestWebSoft pluginu."
+"Pomocí tohoto tlačítka můžete přidávat zkrácené kódy BestWebSoft pluginů."
 
 #: bws_functions.php:729
 msgid "Close"
@@ -280,29 +280,30 @@ msgstr "Plugin"
 
 #: bws_functions.php:876
 msgid "Shortcode settings"
-msgstr "Nastavení krátkých kódů"
+msgstr "Nastavení zkrácených kódů"
 
 #: bws_functions.php:881
 msgid "The shortcode will be inserted"
-msgstr "Bude vložen krátký kód"
+msgstr "Bude vložen zkrácený kód"
 
-#: bws_functions.php:922
+#: bws_functions.php:924
 msgid "FAQ"
-msgstr "Často kladené otázky (FAQ)"
+msgstr ""
+"Časté dotazy <acronym title=\"Frequently asked questions\">(FAQ)</acronym>"
 
-#: bws_functions.php:928
+#: bws_functions.php:930
 msgid "For more information:"
 msgstr "Pro více informací:"
 
-#: bws_functions.php:929
+#: bws_functions.php:931
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: bws_functions.php:930
+#: bws_functions.php:932
 msgid "Video Instructions"
 msgstr "Video instrukce"
 
-#: bws_functions.php:931
+#: bws_functions.php:933
 msgid "Submit a Request"
 msgstr "Odeslat požadavek"
 
@@ -374,7 +375,7 @@ msgstr "Vaše licence vyprší"
 
 #: bws_menu.php:146
 msgid "Congratulations! Pro Membership license is activated successfully."
-msgstr ""
+msgstr "Gratulujeme! PRO členství bylo úspěšně aktivováno."
 
 #: bws_menu.php:153 class-bws-settings.php:1007 deprecated.php:436
 msgid ""
@@ -449,7 +450,7 @@ msgstr "Aktivovat šablonu"
 #: bws_menu.php:203 bws_menu.php:248 bws_menu.php:251
 #, php-format
 msgid "by %s"
-msgstr "podle %s"
+msgstr "od %s"
 
 #: bws_menu.php:207
 msgid "Server Environment"
@@ -538,7 +539,7 @@ msgstr "Prosím vložte platnou e-mailovou adresu."
 #: bws_menu.php:262
 #, php-format
 msgid "Email with system info is sent to %s."
-msgstr ""
+msgstr "E-mail s informacemi o systému byl odeslán na %s."
 
 #: bws_menu.php:266
 msgid "Thank you for contacting us."
@@ -575,7 +576,7 @@ msgstr "Získejte přístup k %s+ Premiovým pluginům"
 
 #: bws_menu.php:326
 msgid "Subscribe to Pro Membership"
-msgstr "Přihlásit se k Pro členství"
+msgstr "Přihlaste se k PRO členství"
 
 #: bws_menu.php:334 bws_menu.php:345 class-bws-settings.php:760
 #: deprecated.php:227
@@ -735,7 +736,7 @@ msgstr "Již instalováno"
 
 #: bws_menu.php:645
 msgid "Browse More WordPress Themes"
-msgstr ""
+msgstr "Procházet další WordPress šablony"
 
 #: bws_menu.php:654
 msgid "Send to support"
@@ -901,7 +902,7 @@ msgstr "Gratulujeme! PRO licence byla úspěšně aktivována."
 #: class-bws-settings.php:726
 #, php-format
 msgid "You will be automatically redirected to the %s in %s seconds."
-msgstr "Za %s sekund budete automaticky přesměrováni na %s."
+msgstr "Budete automaticky přesměrováni na %s za %s sekund."
 
 #: class-bws-settings.php:726
 msgid "Settings page"
@@ -911,7 +912,8 @@ msgstr "Stránka nastavení"
 #, php-format
 msgid "Enter your license key to activate %s and get premium plugin features."
 msgstr ""
-"Vložte váš licenční klíč pro aktivaci %s a získání prémiových fukcí pluginu."
+"Vložte váš licenční klíč pro aktivaci %s a získejte tak prémiové fukcе "
+"pluginu."
 
 #: class-bws-settings.php:744 class-bws-settings.php:931 deprecated.php:363
 #: deprecated.php:706
@@ -925,7 +927,7 @@ msgstr ""
 #: class-bws-settings.php:747 deprecated.php:697
 #, php-format
 msgid "Start Your Free %s-Day Trial Now"
-msgstr "Vyzkoušejte vaší %s-denní zkušební verzi zdarma nyní"
+msgstr "Vyzkoušejte %s-denní zkušební verzi zdarma nyní"
 
 #: class-bws-settings.php:762
 msgid ""
@@ -993,25 +995,29 @@ msgid ""
 "Unfortunately, Your license has expired. To continue getting top-priority "
 "support and plugin updates, you should extend it in your %s."
 msgstr ""
+"Bohužel, Vaše licence vypršela. Chcete-li mít nadále přístup k top-prioritní "
+"podpoře a aktualizacím pluginu měli byste ji prodloužit ve vašem %s."
 
 #: class-bws-settings.php:959 class-bws-settings.php:981
 #: class-bws-settings.php:1003
 msgid "Failed to download the zip archive. Please, upload the plugin manually."
-msgstr ""
+msgstr "Stažení zip archivu selhalo. Nahrajte prosím plugin ručně."
 
 #: class-bws-settings.php:971
 msgid "Failed to open the zip archive. Please, upload the plugin manually."
-msgstr ""
+msgstr "Otevření zip archivu selhalo. Nahrajte prosím plugin ručně."
 
 #: class-bws-settings.php:977
 msgid ""
 "Your server does not support either ZipArchive or Phar. Please, upload the "
 "plugin manually."
 msgstr ""
+"Váš server nepodporuje buď ZipArchive nebo Phar. Prosím, nahrajte plugin "
+"ručně."
 
 #: class-bws-settings.php:984
 msgid "UploadDir is not writable. Please, upload the plugin manually."
-msgstr ""
+msgstr "Nelze zapisovat do UploadDir. Prosím, nahrajte plugin ručně."
 
 #: class-bws-settings.php:1042 deprecated.php:464
 msgid "Please, enter Your license key"
@@ -1019,7 +1025,7 @@ msgstr "Prosím, vložte váš licenční klíč"
 
 #: class-bws-settings.php:1054
 msgid "Need Help?"
-msgstr "Potřebujete pomoc?"
+msgstr "Potřebujete pomoci?"
 
 #: class-bws-settings.php:1056
 msgid "Read the Instruction"
@@ -1061,7 +1067,7 @@ msgstr "Co jste očekávali?"
 
 #: deactivation-form.php:44
 msgid "The plugin suddenly stopped working"
-msgstr "Plugin náhle přestal pracovat"
+msgstr "Plugin přestal náhle pracovat"
 
 #: deactivation-form.php:51
 msgid "The plugin broke my site"
@@ -1094,7 +1100,7 @@ msgstr "Nadále již tento plugin nepotřebuji"
 
 #: deactivation-form.php:83
 msgid "It's a temporary deactivation, I'm just debugging an issue"
-msgstr "Jedná se o dočasnou deaktivaci, pouze jsem ladím problém"
+msgstr "Jedná se o dočasnou deaktivaci, pouze ladím problém"
 
 #: deactivation-form.php:89
 msgid "Other"
@@ -1110,7 +1116,7 @@ msgstr "Máte-li chvilku, sdělte nám důvod, proč deaktivujete tento plugin"
 
 #: deactivation-form.php:127
 msgid "Send website data and allow to contact me back"
-msgstr ""
+msgstr "Odeslat data webu a umožnit zpětně mě kontaktovat"
 
 #: deactivation-form.php:132
 msgid "Cancel"
@@ -1177,7 +1183,7 @@ msgstr "Gratulujeme! PRO licence pluginu je úspěšně aktivována."
 
 #: deprecated.php:281 deprecated.php:672
 msgid "Please, go to"
-msgstr "Prosím, jděte na"
+msgstr "Prosím, přejděte na"
 
 #: deprecated.php:281 deprecated.php:672
 msgid "the setting page"
@@ -1272,7 +1278,7 @@ msgstr "SMM"
 
 #: product_list.php:22
 msgid "Best secure captcha plugin to protect your WordPress forms."
-msgstr ""
+msgstr "Nejbezpečnější captcha plugin k ochraně WordPress formulářů."
 
 #: product_list.php:32
 msgid "Create your personal car rental/booking and reservation website."
@@ -1596,7 +1602,7 @@ msgid ""
 "Add Twitter Follow, Tweet, Hashtag, and Mention buttons to WordPress posts "
 "and pages."
 msgstr ""
-"Přidávejte Twitter tlačítka sledovat, twítnout a zmínit do WordPress "
+"Přidávejte Twitter tlačítka Sledovat, Tweetnout a Zmínit do WordPress "
 "příspěvků a stránek."
 
 #: product_list.php:427
@@ -1630,73 +1636,3 @@ msgid ""
 msgstr ""
 "Automaticky zálohujte a exportujte obsah centra nápovědy Zendesk do databáze "
 "vašeho WordPress webu."
-
-#~ msgid "Anonymous feedback"
-#~ msgstr "Anonymní zpětná vazba"
-
-#~ msgid ""
-#~ "Protect WordPress website forms from spam entries by means of math logic."
-#~ msgstr ""
-#~ "Chraňte WordPress webové formuláře před spamem pomocí matematické logiky."
-
-#~ msgid "Congratulations! Pro Membership license is  activated successfully."
-#~ msgstr "Gratulujeme! PRO členství bylo úspěšně aktivováno."
-
-#~ msgid "Email with system info is sent to"
-#~ msgstr "E-mail se systémovým nastavením byl odeslán na"
-
-#~ msgid "Browse Free WordPress Themes"
-#~ msgstr "Procházet WordPress šablony zdarma"
-
-#~ msgid ""
-#~ "You can use one license of the Pro plugin for one domain only. Please "
-#~ "check and edit your license or domain if necessary using you personal "
-#~ "Client Area. We strongly recommend you to solve the problem within 24 "
-#~ "hours, otherwise the Pro plugin will be deactivated."
-#~ msgstr ""
-#~ "Pro licenci pluginu můžete používat pouze pro jednu doménu. Prosím "
-#~ "zkontrolujte a případně upravte Váš licenční klíč na vaší osobní stránce "
-#~ "- Klientské zóně. Důrazně doporučujeme, aby jste tento problém odstranili "
-#~ "během 24 hodin, jinak bude Pro plugin deaktivován."
-
-#~ msgid "Insert"
-#~ msgstr "Vložit"
-
-#~ msgid ""
-#~ "Automatically add outgoing email messages to queue instead of sending "
-#~ "them immediately."
-#~ msgstr ""
-#~ "Automaticky přidávejte odchozí e-mailové zprávy do fronty namísto jejich "
-#~ "okamžitého odesílání."
-
-#~ msgid ""
-#~ "Add unlimited gallery categories. Organize images to make the navigation "
-#~ "through content easier."
-#~ msgstr ""
-#~ "Přidávejte neomezený počet kategorií galerie. Organizujte obrázky pro "
-#~ "jednodušší orientaci v obsahu."
-
-#~ msgid ""
-#~ "Attach, un-attach and re-attach media files quickly to WordPress posts "
-#~ "and pages."
-#~ msgstr ""
-#~ "Připojujte, odpojujte a znovu připojujte mediální soubory do WordPress "
-#~ "příspěvků a stránek."
-
-#~ msgid "Advertisement"
-#~ msgstr "Reklama"
-
-#~ msgid "Content & Media"
-#~ msgstr "Obsah & Média"
-
-#~ msgid "Management"
-#~ msgstr "Správa"
-
-#~ msgid "Site Stats"
-#~ msgstr "Statistiky webu"
-
-#~ msgid "Social"
-#~ msgstr "Sociální"
-
-#~ msgid "Utilities"
-#~ msgstr "Utility"

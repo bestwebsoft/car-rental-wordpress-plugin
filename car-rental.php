@@ -6,7 +6,7 @@ Description: Create your personal car rental/booking and reservation website.
 Author: BestWebSoft
 Text Domain: car-rental
 Domain Path: /languages
-Version: 1.1.1
+Version: 1.1.2
 Author URI: https://bestwebsoft.com/
 License: GPLv2 or later
 */

@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: cars, rental, renting, booking, retail, add cars, car rental plugin, renting cars, cars website, manufacturers, machine, vehicle
 Requires at least: 3.9
-Tested up to: 5.0.3
-Stable tag: 1.1.1
+Tested up to: 5.2.2
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -203,6 +203,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (https:
 
 == Changelog ==
 
+= V1.1.2 - 04.09.2019 =
+* Update: The deactivation feedback has been changed. Misleading buttons have been removed.
+
 = V1.1.1 - 07.02.2019 =
 * Bugfix : Bug with the disappearance of checkboxes in the admin panel has been fixed.
 
@@ -256,6 +259,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (https:
 * NEW : Release date of Car Rental by BestWebSoft plugin.
 
 == Upgrade Notice ==
+
+= V1.1.2 =
+* Usability improved.
 
 = V1.1.1 =
 * Bugs fixed.

@@ -123,13 +123,12 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 						    + '		    <h2><?php _e( 'Quick Feedback', 'bestwebsoft' ); ?></h2>'
 						    + '			<div class="bws-modal-panel active"><p><?php _e( 'If you have a moment, please let us know why you are deactivating', 'bestwebsoft' ); ?>:</p><ul>' + <?php echo json_encode( $reasons_list_items_html ); ?> + '</ul>'
 						    + '         <label class="bws-modal-anonymous-label">'
-							+ '				<input type="checkbox" checked="checked" />'
+							+ '				<input type="checkbox" />'
 							+ '				<?php _e( 'Send website data and allow to contact me back', 'bestwebsoft' ); ?>'
 							+ '			</label>'
 						    + '			</div>'
 						    + '		</div>'
 						    + '		<div class="bws-modal-footer">'
-						    + '			<a href="#" class="button button-secondary bws-modal-button-close"><?php _e(  'Cancel', 'bestwebsoft' ); ?></a>'
 						    + '			<a href="#" class="button button-primary bws-modal-button-deactivate"></a>'
 						    + '			<div class="clear"></div>'
 						    + '		</div>'
@@ -180,11 +179,17 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 									return;
 								}
 
+								/**
+                                 *
+                                 * @todo Remove after 01.01.2020
+                                 * This code need to be removed after WordPress letter "[WordPress Plugin Directory] Notice: Captcha by BestWebSoft" from 04.09.2019 by kdo
+                                 *
+                                 */
 								/* If reason is empty, add the error-message class to the message container to change the message color to red. */
-								if ( 0 === $userReason.val().trim().length ) {
+								/*if ( 0 === $userReason.val().trim().length ) {
 									$modal.find( '.message' ).addClass( 'error-message' );
 									BwsModalDisableDeactivateButton();
-								}
+								}*/
 							}, 150 );
 						});
 
@@ -211,9 +216,15 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 								    $input = $selected_reason.find( 'textarea, input[type="text"]' ),
 								    userReason = ( 0 !== $input.length ) ? $input.val().trim() : '';
 
-								if ( BwsModalIsReasonSelected( 'OTHER' ) && '' === userReason ) {
+								/**
+								 *
+								 * @todo Remove after 01.01.2020
+								 * This code need to be removed after WordPress letter "[WordPress Plugin Directory] Notice: Captcha by BestWebSoft" from 04.09.2019 by kdo
+								 *
+								 */
+								/*if ( BwsModalIsReasonSelected( 'OTHER' ) && '' === userReason ) {
 									return;
-								}
+								}*/
 
 								var is_anonymous = ( $anonymousFeedback.find( 'input' ).is( ':checked' ) ) ? 0 : 1;
 
@@ -259,7 +270,7 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 
 							$modal.find( '.bws-modal-reason-input' ).remove();
 							$modal.find( '.bws-modal-internal-message' ).hide();
-							$modal.find( '.bws-modal-button-deactivate' ).text( '<?php _e( 'Submit & Deactivate', 'bestwebsoft' ); ?>' );
+							$modal.find( '.bws-modal-button-deactivate' ).text( '<?php _e( 'Submit and Deactivate', 'bestwebsoft' ); ?>' );
 
 							BwsModalEnableDeactivateButton();
 
@@ -275,7 +286,13 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 
 								if ( BwsModalIsReasonSelected( 'OTHER' ) ) {
 									$modal.find( '.message' ).text( '<?php _e( 'Please tell us the reason so we can improve it.', 'bestwebsoft' ); ?>' ).show();
-									BwsModalDisableDeactivateButton();
+									/**
+									 *
+									 * @todo Remove after 01.01.2020
+									 * This code need to be removed after WordPress letter "[WordPress Plugin Directory] Notice: Captcha by BestWebSoft" from 04.09.2019 by kdo
+									 *
+									 */
+									//BwsModalDisableDeactivateButton();
 								}
 							}
 						});
@@ -320,7 +337,13 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 
 						$modal.find( '.message' ).hide();
 
-						$anonymousFeedback.find( 'input' ).prop( 'checked', true );
+						/**
+						 *
+						 * @todo Remove after 01.01.2020
+						 * This code need to be removed after WordPress letter "[WordPress Plugin Directory] Notice: Captcha by BestWebSoft" from 04.09.2019 by kdo
+						 *
+						 */
+						//$anonymousFeedback.find( 'input' ).prop( 'checked', true );
 
 						/* Hide, since by default there is no selected reason.*/
 						$anonymousFeedback.hide();
@@ -342,7 +365,7 @@ if ( ! function_exists( 'bws_add_deactivation_feedback_dialog_box' ) ) {
 					function BwsModalShowPanel() {
 						$modal.find( '.bws-modal-panel' ).addClass( 'active' );
 						/* Update the deactivate button's text */
-						$modal.find( '.bws-modal-button-deactivate' ).text( '<?php _e( 'Deactivate', 'bestwebsoft' ); ?>' );
+						$modal.find( '.bws-modal-button-deactivate' ).text( '<?php _e( 'Skip and Deactivate', 'bestwebsoft' ); ?>' );
 					}
 				})(jQuery);
 			</script>

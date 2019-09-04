@@ -36,6 +36,18 @@ $bws_plugins = array(
 		'purchase'		=> 'https://bestwebsoft.com/products/wordpress/plugins/car-rental/buy/?k=7643d4f0698252fa1159de078d22269c&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'pro_settings'	=> 'admin.php?page=car-rental-pro-settings'
 	),
+	'bws-car-rental/bws-car-rental.php' => array(
+		'category'		=> array( 'ecommerce' ),
+		'name'			=> 'Car Rental V2',
+		'description'	=> __( 'Create your own rental website for car renting and booking.', 'bestwebsoft' ),
+		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/?k=ca43df54beefae7128a7005bce0ec651&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+		'settings'		=> 'admin.php?page=bws-car-rental-settings',
+		'pro_version'	=> 'bws-car-rental-pro/bws-car-rental-pro.php',
+		'purchase'		=> 'https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/buy/?k=63cac1b736047a3f5a2f5a7c5336f3c4&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+		'pro_settings'	=> 'admin.php?page=bws-car-rental-pro-settings',
+		'icon'          => '//ps.w.org/car-rental/assets/icon-128x128.png',
+		'install_url'   => 'https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/'
+	),
 	'contact-form-plugin/contact_form.php' => array(
 		'category'		=> array( 'marketing', 'recommended' ),
 		'name'			=> 'Contact Form',
@@ -71,7 +83,10 @@ $bws_plugins = array(
 		'name'			=> 'Custom Admin Page',
 		'description'	=> __( 'Add unlimited custom pages to WordPress admin dashboard.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/custom-admin-page/?k=9ac03f16c25e845e8e055a221c3e1467&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=custom-admin-page.php'
+		'settings'		=> 'admin.php?page=custom-admin-page.php',
+		'pro_version'	=> 'custom-admin-page-pro/custom-admin-page-pro.php',
+		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/custom-admin-page/buy/?k=b986f456dba092b537f1a7755a363be9&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+		'pro_settings' 	=> 'admin.php?page=custom-admin-page.php'
 	),
 	'custom-fields-search/custom-fields-search.php' => array(
 		'category'		=> array( 'navigation' ),
@@ -106,7 +121,7 @@ $bws_plugins = array(
 	),
 	'facebook-button-plugin/facebook-button-plugin.php' => array(
 		'category'		=> array( 'smm' ),
-		'name'			=> 'Facebook Button',
+		'name'			=> 'Bestwebsoft Buttons for Facebook',
 		'description'	=> __( 'Add Facebook Follow, Like, and Share buttons to WordPress posts, pages, and widgets.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/facebook-like-button/?k=05ec4f12327f55848335802581467d55&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
 		'settings'		=> 'admin.php?page=facebook-button-plugin.php',
@@ -293,14 +308,20 @@ $bws_plugins = array(
 		'name'			=> 'Post to CSV',
 		'description'	=> __( 'Export WordPress posts to CSV file format easily. Configure data order.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/post-to-csv/?k=653aa55518ae17409293a7a894268b8f&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=post-to-csv.php'
+		'settings'		=> 'admin.php?page=post-to-csv.php',
+		'pro_version'	=> 'post-to-csv-pro/post-to-csv-pro.php',
+		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/post-to-csv/buy/?k=b6521601d1579ed9c556ba98234f2d8f&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+		'pro_settings' 	=> 'admin.php?page=post-to-csv-pro.php'
 	),
 	'profile-extra-fields/profile-extra-fields.php' => array(
 		'category'		=> array( 'admin-tools' ),
 		'name'			=> 'Profile Extra Fields',
 		'description'	=> __( 'Add extra fields to default WordPress user profile. The easiest way to create and manage additional custom values.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/profile-extra-fields/?k=fe3b6c3dbc80bd4b1cf9a27a2f339820&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=profile-extra-fields.php'
+		'settings'		=> 'admin.php?page=profile-extra-fields.php',
+		'pro_version'	=> 'profile-extra-fields-pro/profile-extra-fields-pro.php',
+		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/profile-extra-fields/buy/?k=a1f0b20e50ea10e5453aba399de496c0&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+		'pro_settings' 	=> 'admin.php?page=profile-extra-fields-pro.php'
 	),
 	'promobar/promobar.php' => array(
 		'category'		=> array( 'marketing' ),
@@ -324,7 +345,10 @@ $bws_plugins = array(
 		'name'			=> 'Rating',
 		'description'	=> __( 'Add rating plugin to your WordPress website to receive feedback from your customers.', 'bestwebsoft' ),
 		'link'			=> 'https://bestwebsoft.com/products/wordpress/plugins/rating/?k=c00e0824bb999735a3224616ef51f4c5&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
-		'settings'		=> 'admin.php?page=rating.php'
+		'settings'		=> 'admin.php?page=rating.php',
+		'pro_version'	=> 'rating-bws-pro/rating-bws-pro.php',
+		'purchase' 		=> 'https://bestwebsoft.com/products/wordpress/plugins/rating/buy/?k=ba459f3115edb7be610e8d6f8e05df6c&pn=' . $bws_plugin_info["id"] . '&v=' . $bws_plugin_info["version"] . '&wp_v=' . $wp_version,
+		'pro_settings'	=> 'admin.php?page=rating-bws-pro.php'
 	),
 	'realty/realty.php' => array(
 		'category'		=> array( 'ecommerce' ),
